@@ -14,10 +14,10 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
         <title>UMKM | {pageTitle}</title>
       </Helmet>
       <div className="flex flex-col min-h-screen relative">
-        <div className="sticky top-0">
+        <div className="sticky top-0 z-10">
           <Navbar />
         </div>
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow z-0">{children}</main>
       </div>
     </>
   );

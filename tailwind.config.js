@@ -16,7 +16,7 @@ export default {
         silver: '#F5F7FA',
         white: '#FFFFFF',
         greyBlue: '#ABBED1',
-        hoverPrimary:'#81C784'
+        hoverPrimary: '#81C784'
       },
       fontSize: {
         'xs': '.75rem',     // ukuran ekstra kecil
@@ -32,6 +32,10 @@ export default {
         '7xl': '5rem',      // ukuran sangat besar
         '8xl': '6rem',      // ukuran sangat besar
         '9xl': '8rem',      // ukuran sangat besar
+      },
+      padding: {
+        '3xl': '3rem',
+        '6xl': '7rem', // Add a new padding size with a custom value
       },
     },
   },
