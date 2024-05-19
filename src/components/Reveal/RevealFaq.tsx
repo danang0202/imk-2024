@@ -5,7 +5,7 @@ interface Props {
   children: JSX.Element;
 }
 
-const Reveal: React.FC<Props> = ({ children }) => {
+const RevealFaq: React.FC<Props> = ({ children }) => {
   const ref = useRef(null);
   const isInview = useInView(ref, { once: true });
   const mainControls = useAnimation();
@@ -17,15 +17,15 @@ const Reveal: React.FC<Props> = ({ children }) => {
   }, [isInview]);
 
   return (
-    <div ref={ref} className="relative overflow-hidden">
+    <div ref={ref} className="relative">
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: 75 },
+          hidden: { opacity: 0, y: 25 },
           visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.25 }}
+        transition={{ duration: 0.3, delay:.2}}
       >
         {children}
       </motion.div>
@@ -33,4 +33,4 @@ const Reveal: React.FC<Props> = ({ children }) => {
   );
 };
 
-export default Reveal;
+export default RevealFaq;

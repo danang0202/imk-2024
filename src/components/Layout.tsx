@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,11 +14,16 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
       <Helmet>
         <title>UMKM | {pageTitle}</title>
       </Helmet>
-      <div className="flex flex-col min-h-screen relative">
-        <div className="sticky top-0 z-10">
+      <div className={`flex flex-col justify-between min-h-screen ${
+            pageTitle == "DASHBOARD" ? "bg-white" : "bg-silver"
+          }`}>
+        <div className="sticky top-0 z-40">
           <Navbar />
         </div>
-        <main className="flex-grow z-0">{children}</main>
+        <main className="flex-grow">{children}</main>
+        <div className="box mt-2 transform translate-y-6">
+          <Footer />
+        </div>
       </div>
     </>
   );

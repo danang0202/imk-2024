@@ -9,10 +9,10 @@ interface ButtonProps {
   icon?: string;
 }
 
-const ButtonPrimary: React.FC<ButtonProps> = ({text, size, onClick,icon,}) => {
+const ButtonWarning: React.FC<ButtonProps> = ({text, size, onClick,icon,}) => {
   return (
     <button
-      className={`px-5 py-2 lg:px-5 py-2 rounded bg-primary text-white hover:bg-hoverPrimary text-${size}`}
+      className={`px-5 py-2 lg:px-5 py-2 rounded bg-warning text-white hover:bg-warningHover text-${size}`}
       onClick={onClick}
     >
       {text}
@@ -21,4 +21,4 @@ const ButtonPrimary: React.FC<ButtonProps> = ({text, size, onClick,icon,}) => {
   );
 };
 
-export default ButtonPrimary;
+export default ButtonWarning;

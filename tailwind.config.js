@@ -8,15 +8,19 @@ export default {
     extend: {
       colors: {
         primary: '#4BAF4F',
+        primaryTint2:'#E8F5E9',
         black: '#263238',
         info: '#2194f3',
         success: '#2E7D31',
         error: '#E53835',
-        warning: '#FBC02D',
+        warningHover: '#FBC02D',
+        warning: '#f59c0b',
         silver: '#F5F7FA',
         white: '#FFFFFF',
         greyBlue: '#ABBED1',
-        hoverPrimary: '#81C784'
+        grey: '#717171',
+        primaryHover: '#81C784',
+        inactive:'#BCBDBE'
       },
       fontSize: {
         'xs': '.75rem',     // ukuran ekstra kecil
@@ -35,6 +39,7 @@ export default {
       },
       padding: {
         '3xl': '3rem',
+        '5xl': '5rem',
         '6xl': '7rem', // Add a new padding size with a custom value
       },
     },
@@ -42,3 +47,5 @@ export default {
   plugins: [],
 }
 
+
+// dark : bg-grey-600 / 700
