@@ -6,7 +6,11 @@ const FaqForm = () => {
   };
   return (
     <form className="">
-      <div className="relative w-full mb-5 group">
+      <div
+        className="relative w-full mb-5 group"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <input
           type="email"
           name="floating_email"
@@ -22,7 +26,11 @@ const FaqForm = () => {
           Alamat Email
         </label>
       </div>
-      <div className="relative z-0 w-full mb-5 group">
+      <div
+        className="relative z-0 w-full mb-5 group"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <input
           type="text"
           name="floating_password"
@@ -38,7 +46,11 @@ const FaqForm = () => {
           Nama
         </label>
       </div>
-      <div className="relative z-0 w-full mb-5 group">
+      <div
+        className="relative z-0 w-full mb-5 group"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <textarea
           name="floating_area"
           id="floating_area"
@@ -53,7 +65,11 @@ const FaqForm = () => {
           Pertanyaan
         </label>
       </div>
-      <div className="text-center xl:text-left">
+      <div
+        className="text-center xl:text-left"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <ButtonPrimary text="Submit" size="base" onClick={onClick} />
       </div>
     </form>

@@ -12,7 +12,7 @@ const LogoSocialMedia: React.FC<Props> = ({ path, url }) => {
 
   return (
     <div
-      className="icon bg-grey p-3 rounded-full cursor-pointer hover:bg-warning hover:scale-110"
+      className="icon bg-grey p-3 rounded-full cursor-pointer hover:bg-warning transform hover:-translate-y-1"
       onClick={() => goTo(url)}
     >
       <img src={path} alt="IG" />

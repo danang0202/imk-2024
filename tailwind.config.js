@@ -7,19 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#4BAF4F',
+        primary: '#4BAF4F',  // hijau utama
         primaryTint2:'#E8F5E9',
-        black: '#263238',
+        black: '#263238', 
         info: '#2194f3',
         success: '#2E7D31',
         error: '#E53835',
         warningHover: '#FBC02D',
-        warning: '#f59c0b',
-        silver: '#F5F7FA',
+        warning: '#f59c0b', // oren
+        silver: '#F5F7FA', // bg silver
         white: '#FFFFFF',
-        greyBlue: '#ABBED1',
+        greyBlue: '#ABBED1', // yang ada di landign page pojok kanan bawah
         grey: '#717171',
-        primaryHover: '#81C784',
+        primaryHover: '#81C784', // hijau ketika dihover
         inactive:'#BCBDBE'
       },
       fontSize: {

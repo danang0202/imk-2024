@@ -38,10 +38,12 @@ const Pagination: React.FC<Props> = ({
     }
   };
   return (
-    <div className="pagination">
-      <div className="flex flex-row gap-8 w-full">
-        <div className="box flex flex-row items-center gap-4">
-          <label htmlFor="show-number">Tampilkan : </label>
+    <div className="pagination text-sm md:text-base w-full md:w-fit">
+      <div className="flex flex-row justify-between md:gap-8 w-full md:w-auto">
+        <div className="box flex flex-col md:flex-row items-center gap-4">
+          <label htmlFor="show-number" className="hidden lg:inline">
+            Tampilkan :{" "}
+          </label>
           <select
             id="show-number"
             value={limit}

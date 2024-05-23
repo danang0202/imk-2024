@@ -1,4 +1,15 @@
-const SearchBar = () => {
+import { useState } from "react";
+import { dataColumnUMKMBuilder, titleSlugType } from "../../DataBuilder";
+import { getTitleNameFromSlug } from "../../function";
+
+interface Props {
+  width: string;
+}
+
+const SearchBar: React.FC<Props> = ({ width }) => {
+  const [showFilfterColumn, setShowFilterColumn] = useState(false);
+  const [filterColumn, setFilterColumn] = useState("all");
+  const columns: titleSlugType[] = dataColumnUMKMBuilder;
   return (
     <form className="">
       <div className="flex relative">
@@ -11,10 +22,11 @@ const SearchBar = () => {
         <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
-          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 w-[10rem]"
           type="button"
+          onClick={() => setShowFilterColumn(!showFilfterColumn)}
         >
-          All categories
+          {getTitleNameFromSlug(columns, filterColumn)}
           <svg
             className="w-2.5 h-2.5 ms-2.5"
             aria-hidden="true"
@@ -31,56 +43,53 @@ const SearchBar = () => {
             />
           </svg>
         </button>
-        <div
-          id="dropdown"
-          className="z-10 hidden absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 transform translate-y-12"
-        >
-          <ul
-            className="py-2 text-sm text-gray-700 "
-            aria-labelledby="dropdown-button"
+        {showFilfterColumn && (
+          <div
+            id="dropdown"
+            className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 transform translate-y-12"
           >
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 "
-              >
-                Mockups
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100"
-              >
-                Templates
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100"
-              >
-                Design
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100"
-              >
-                Logos
-              </button>
-            </li>
-          </ul>
-        </div>
+            <ul
+              className="py-2 text-sm text-gray-700 "
+              aria-labelledby="dropdown-button"
+            >
+              <li>
+                <button
+                  onClick={() => {
+                    setFilterColumn("all");
+                    setShowFilterColumn(false);
+                  }}
+                  type="button"
+                  className="inline-flex w-full px-4 py-2 hover:bg-gray-100 "
+                >
+                  Semua
+                </button>
+              </li>
+              {columns.map((item) => (
+                <li>
+                  <button
+                    onClick={() => {
+                      setFilterColumn(item.slug);
+                      setShowFilterColumn(false);
+                    }}
+                    type="button"
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 "
+                  >
+                    {item.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div className="relative">
           <input
             type="search"
             id="search-dropdown"
             className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2"
-            placeholder="Search Mockups, Logos, Design Templates..."
+            placeholder="Kata kunci..."
             required
-            style={{ width:'25rem' }}
+            style={{ width: width }}
           />
           <button
             type="submit"

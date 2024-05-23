@@ -1,6 +1,5 @@
 import { ChevronDown } from "lucide-react";
 import React from "react";
-import RevealFaq from "../Reveal/RevealFaq";
 
 interface Item {
   index: number;
@@ -8,6 +7,7 @@ interface Item {
   title: string;
   content: string;
   toggleFaq: (index: number) => void;
+  aos: string;
 }
 const FaqQuestion: React.FC<Item> = ({
   index,
@@ -15,9 +15,14 @@ const FaqQuestion: React.FC<Item> = ({
   title,
   content,
   toggleFaq,
+  aos,
 }) => {
   return (
-    <div className="border border-gray-300 mb-3 rounded-xl p-4 hover:bg-slate-50 w-full">
+    <div
+      className="border border-gray-300 mb-3 rounded-xl p-4 hover:bg-slate-50 w-full"
+      data-aos={aos}
+      data-aos-duration="800"
+    >
       <button
         onClick={() => toggleFaq(index)}
         className="flex justify-between w-full items-center focus:outline-none"
@@ -36,11 +41,9 @@ const FaqQuestion: React.FC<Item> = ({
         />
       </button>
       {activeIndex.includes(index) && (
-        <RevealFaq>
-          <div className="mt-3">
-            <p className="text-base">{content}</p>
-          </div>
-        </RevealFaq>
+        <div className="mt-3" data-aos="zoom-in" data-aos-duration="400">
+          <p className="text-base">{content}</p>
+        </div>
       )}
     </div>
   );

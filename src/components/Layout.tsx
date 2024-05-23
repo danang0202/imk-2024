@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
       <div className={`flex flex-col justify-between min-h-screen ${
             pageTitle == "DASHBOARD" ? "bg-white" : "bg-silver"
           }`}>
-        <div className="sticky top-0 z-40">
+        <div className="fixed w-screen top-0 z-40">
           <Navbar />
         </div>
         <main className="flex-grow">{children}</main>
