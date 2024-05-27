@@ -1,15 +1,5 @@
 import _ from 'lodash';
-
-interface UMKMProperties {
-    index: number;
-    avatar: string;
-    name: string;
-    bidang: string;
-    pengampu: string;
-    noTelp: string;
-    alamat: string;
-    [key: string]: any;
-  }
+import { UMKMProperties } from './DataBuilder';
 
 export const paginationUtils = (totalPage:number, page:number, siblings:number) => {
   const totalPgeNoInArray = 7 + siblings;

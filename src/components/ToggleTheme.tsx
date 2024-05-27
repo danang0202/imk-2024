@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Toggle from "react-toggle";
 
 const ToggleTheme: React.FC = () => {
   const [theme, setTheme] = useState<string>(

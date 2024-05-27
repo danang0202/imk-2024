@@ -19,7 +19,7 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter }) => {
   const headerDataTable: titleSlugType[] = dataColumnUMKMBuilder;
   const [activeColumn, setActiveColumn] = useState<string>("Price");
   const [sortingColumn, setSortingColumn] = useState<string | null>("Price");
-  const [sortingData, setSortingData] = useState<UMKMProperties[]>([]);
+  const [sortingData, setSortingData] = useState<UMKMProperties[]>();
   const [limit, setLimit] = useState(2);
   const [totalPage, setTotalpage] = useState(1);
   const [page, setPage] = useState(1);
@@ -47,7 +47,11 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter }) => {
   };
 
   useEffect(() => {
-    const paginatedData = fetchDataByPagination(dataUmkm, page, limit);
+    const paginatedData: UMKMProperties[] = fetchDataByPagination(
+      dataUmkm,
+      page,
+      limit
+    );
     setSortingData(paginatedData);
     setTotalpage(Math.ceil(dataUmkm.length / limit));
   }, [dataUmkm, limit, page]);
