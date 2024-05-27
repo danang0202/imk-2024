@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Login from "./assets/screens/Login";
+import "react-toggle/style.css"
 function App() {
   useEffect(() => {
     AOS.init({

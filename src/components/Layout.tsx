@@ -14,9 +14,11 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
       <Helmet>
         <title>UMKM | {pageTitle}</title>
       </Helmet>
-      <div className={`flex flex-col justify-between min-h-screen ${
-            pageTitle == "DASHBOARD" ? "bg-white" : "bg-silver"
-          }`}>
+      <div
+        className={`flex flex-col justify-between min-h-screen ${
+          pageTitle == "DASHBOARD" ? "bg-white" : "bg-silver"
+        }`}
+      >
         <div className="fixed w-screen top-0 z-40">
           <Navbar />
         </div>

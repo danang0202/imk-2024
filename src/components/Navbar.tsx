@@ -3,6 +3,7 @@ import { IonIcon } from "@ionic/react";
 import { useLocation } from "react-router-dom";
 import ButtonPrimary from "./Button/ButtonPrimary";
 import { menuItemsData } from "../DataBuilder";
+import ToggleTheme from "./ToggleTheme";
 
 interface MenuItem {
   label: string;
@@ -72,7 +73,7 @@ const Navbar = () => {
 
         <ul
           className={`${
-            location.pathname == "/" ? navBgItem : "bg-white"
+            location.pathname == "/" ? navBgItem : "bg-white dark:bg-slate-800"
           } gap-x-7 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9 transition-all duration-500 ease-in ${
             open ? "top-20 " : "top-[-490px]"
           }`}
@@ -90,6 +91,7 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <ToggleTheme />
           <div className="">
             <ButtonPrimary text="Log In" size="base" onClick={logInOnClick} />
           </div>

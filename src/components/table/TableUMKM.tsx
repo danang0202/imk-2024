@@ -106,13 +106,17 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter }) => {
                   </div>
                 </td>
                 <td className="px-4 whitespace-nowrap font-normal text-center  border-t">
-                  {data?.skala}
+                  <span className="bg-blue-100 text-blue-600 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                    {data?.skala}
+                  </span>
                 </td>
                 <td className="px-4  whitespace-nowrap font-normal text-center border-t">
                   {data?.bidang}
                 </td>
                 <td className="px-4 whitespace-nowrap font-normal text-center border-t">
-                  {data?.badanHukum}
+                  <span className="bg-blue-100 text-blue-600 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                    {data?.badanHukum}
+                  </span>
                 </td>
                 <td className="px-4 whitespace-nowrap font-normal text-center border-t">
                   {data?.pengampu}

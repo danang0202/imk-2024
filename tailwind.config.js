@@ -4,12 +4,13 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'selector',
   theme: {
     extend: {
       colors: {
         primary: '#4BAF4F',  // hijau utama
-        primaryTint2:'#E8F5E9',
-        black: '#263238', 
+        primaryTint2: '#E8F5E9',
+        black: '#263238',
         info: '#2194f3',
         success: '#2E7D31',
         error: '#E53835',
@@ -20,7 +21,7 @@ export default {
         greyBlue: '#ABBED1', // yang ada di landign page pojok kanan bawah
         grey: '#717171',
         primaryHover: '#81C784', // hijau ketika dihover
-        inactive:'#BCBDBE'
+        inactive: '#BCBDBE'
       },
       fontSize: {
         'xs': '.75rem',     // ukuran ekstra kecil
