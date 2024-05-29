@@ -4,6 +4,7 @@ import Faq from "../../components/FAQ/Faq";
 import FaqForm from "../../components/FAQ/FaqForm";
 import Layout from "../../components/Layout";
 import ButtonWarning from "../../components/Button/ButtonWarning";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface ServiceItem {
   title: string;
@@ -19,6 +20,7 @@ interface FaqProps {
 const LandingPage: React.FC = () => {
   const serviceItems: ServiceItem[] = serviceItemsData;
   const Faqs: FaqProps[] = FaqsData;
+  const { theme } = useThemeContext();
 
   const registerNowOnClick = () => {
     console.log("test");
@@ -27,14 +29,18 @@ const LandingPage: React.FC = () => {
   return (
     <Layout pageTitle="DASHBOARD">
       <div
-        className="px-4 md:px-3xl xl:px-6xl bg-gradient-to-br from-silver via-silver to-greyBlue flex flex-row justify-between items-center gap-2 min-h-screen pb-3xl"
+        className={`px-4 md:px-3xl xl:px-6xl ${
+          theme == "light"
+            ? "bg-gradient-to-br from-silver via-silver to-greyBlue"
+            : "bg-black"
+        } flex flex-row justify-between items-center gap-2 min-h-screen pb-3xl`}
       >
         <div
           data-aos="fade-right"
           data-aos-duration="800"
           className="home-title py-8 md:py-8 xl:py-0 md:w-3/4"
         >
-          <h1 className="text-black font-semibold text-xl md:text-2xl lg:text-3xl xl:text-5xl text-center md:text-left">
+          <h1 className="text-black font-semibold text-xl md:text-2xl lg:text-3xl xl:text-5xl text-center md:text-left dark:text-white">
             Hai, Selamat datang di e-UMKM
           </h1>
           <h1 className="text-primary font-semibold text-2xl md:text-2xl  lg:text-3xl xl:text-5xl text-center md:text-left">
@@ -50,7 +56,7 @@ const LandingPage: React.FC = () => {
               data-aos-duration="800"
             />
           </div>
-          <div className="desc py-4 md:py-8 text-center md:text-left">
+          <div className="desc py-4 md:py-8 text-center md:text-left dark:text-white">
             <p>
               Aplikasi ini merupakan aplikasi pengelolaan UMKM di Kabupaten
               Kulon Progo.

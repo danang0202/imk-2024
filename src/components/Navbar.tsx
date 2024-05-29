@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import ButtonPrimary from "./Button/ButtonPrimary";
 import { menuItemsData } from "../DataBuilder";
 import ToggleTheme from "./ToggleTheme";
+import { useThemeContext } from "../layout/ThemeContext";
 
 interface MenuItem {
   label: string;
@@ -14,8 +15,10 @@ const Navbar = () => {
   const menuItems: MenuItem[] = menuItemsData;
   const location = useLocation();
   const [open, setOpen] = useState(false);
-  const [navBg, setNavBg] = useState("bg-silver");
-  const [navBgItem, setNavBgItem] = useState("bg-silver");
+  const [navBg, setNavBg] = useState("bg-silver dark:bg-black");
+  const [navBgItem, setNavBgItem] = useState("bg-silver dark:bg-black");
+  const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
+  const { theme } = useThemeContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,11 +26,11 @@ const Navbar = () => {
         const scrollY = window.scrollY;
 
         if (scrollY > 100) {
-          setNavBg("bg-white shadow-lg");
-          setNavBgItem("bg-white");
+          setNavBg("bg-white shadow-lg dark:bg-slate-800");
+          setNavBgItem("bg-white dark:bg-slate-800");
         } else {
-          setNavBg("bg-silver");
-          setNavBgItem("bg-silver");
+          setNavBg("bg-silver dark:bg-black");
+          setNavBgItem("bg-silver dark:bg-black");
         }
       }
     };
@@ -37,6 +40,14 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (theme == "dark") {
+      setLogoUrl("/logo/logo_white.png");
+    } else {
+      setLogoUrl("/logo/logo.png");
+    }
+  }, [theme]);
+
   const logInOnClick = () => {
     console.log("test");
   };
@@ -44,19 +55,21 @@ const Navbar = () => {
   return (
     <div
       className={`w-full top-0 left-0 xl:px-8 py-4 ${
-        location.pathname == "/" ? navBg : "bg-white shadow-lg"
+        location.pathname == "/"
+          ? navBg
+          : "bg-white shadow-lg dark:bg-slate-800"
       }`}
     >
       <div className="xl:flex items-center justify-between xl:px-10 px-7">
         {/* logo */}
         <div className="font-bold cursor-pointer flex items-center">
           <img
-            src={`/logo/logo.png`}
+            src={logoUrl}
             alt="Logo e-UMKM"
             className="pr-3"
             style={{ height: "50px" }}
           />
-          <div className="flex flex-col">
+          <div className="flex flex-col dark:text-white">
             <h1>PEMKAB</h1>
             <h1>KULON PROGO</h1>
           </div>
@@ -64,17 +77,19 @@ const Navbar = () => {
 
         {/* logo */}
 
-        <div
-          onClick={() => setOpen(!open)}
-          className="text-3xl absolute right-8 top-6 cursor-pointer xl:hidden"
-        >
-          <IonIcon name={open ? "close" : "menu"}></IonIcon>
+        <div className="text-3xl absolute right-8 top-6 cursor-pointer xl:hidden flex align-center gap-4">
+          <ToggleTheme />
+          <IonIcon
+            onClick={() => setOpen(!open)}
+            name={open ? "close" : "menu"}
+            className="text-black dark:text-white"
+          ></IonIcon>
         </div>
 
         <ul
           className={`${
             location.pathname == "/" ? navBgItem : "bg-white dark:bg-slate-800"
-          } gap-x-7 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9 transition-all duration-500 ease-in ${
+          } gap-x-7 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9 ${
             open ? "top-20 " : "top-[-490px]"
           }`}
         >
@@ -85,13 +100,13 @@ const Navbar = () => {
             >
               <a
                 href={link.href}
-                className="text-black hover:text-primary font-semibold"
+                className="text-black hover:text-primary font-semibold dark:text-white"
               >
                 {link.label}
               </a>
             </li>
           ))}
-          <ToggleTheme />
+          {!open && <ToggleTheme />}
           <div className="">
             <ButtonPrimary text="Log In" size="base" onClick={logInOnClick} />
           </div>
