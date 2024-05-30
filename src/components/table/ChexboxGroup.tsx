@@ -1,10 +1,26 @@
-import { nameSlugType } from "../../DataBuilder";
+import { TypeData } from "./Selection";
 
 interface Props {
-  data: nameSlugType[];
+  data: TypeData[];
+  selectedData: TypeData[];
+  setSelectedData: React.Dispatch<React.SetStateAction<TypeData[]>>;
 }
 
-const ChexboxGroup: React.FC<Props> = ({ data }) => {
+const ChexboxGroup: React.FC<Props> = ({
+  data,
+  selectedData,
+  setSelectedData,
+}) => {
+  const handleCheckboxChange = (item: TypeData) => {
+    if (!selectedData.includes(item)) {
+      setSelectedData([...selectedData, item]);
+    } else {
+      setSelectedData(
+        selectedData.filter((selectedItem) => selectedItem !== item)
+      );
+    }
+  };
+
   return (
     <ul
       className="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg"
@@ -18,6 +34,8 @@ const ChexboxGroup: React.FC<Props> = ({ data }) => {
               id={`${item.name}-checkbox`}
               type="checkbox"
               value=""
+              onClick={() => handleCheckboxChange(item)}
+              checked={selectedData.includes(item)}
               className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary cursor-pointer"
             />
             <label

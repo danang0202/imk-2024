@@ -18,18 +18,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleDown, faFilter } from "@fortawesome/free-solid-svg-icons";
 import AdvancedFilter from "../../components/table/AdvancedFilter";
 import { filterDataUMKM } from "../../utils/utils";
+import BadgeFilter from "../../components/commons/BadgeFilter";
 
 const DataUmkm = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true);
   const [showAdvancedFilter, setShowAdvancedFilter] = useState<boolean>(false);
   const [searchColumn, setSearchColumn] = useState<string>("all");
   const [keyword, setKeyword] = useState<string>("");
-  const [skalaUsahaFilter, setSkalaUsahaFilter] = useState<TypeData[]>([]);
-  const [dinasPengampuFilter, setDinasPengampuFilter] = useState<TypeData[]>(
-    []
-  );
-  const [badanHukumFilter, setBadanHukumFilter] = useState<TypeData[]>([]);
-  const [bidangUsahaFilter, setBidangUsahaFilter] = useState<TypeData[]>([]);
+  const [skalaUsahaFilter, setSkalaUsahaFilter] =
+    useState<TypeData[]>(skalaUsaha);
+  const [dinasPengampuFilter, setDinasPengampuFilter] =
+    useState<TypeData[]>(dinasPengampu);
+  const [badanHukumFilter, setBadanHukumFilter] =
+    useState<TypeData[]>(badanHukumUsaha);
+  const [bidangUsahaFilter, setBidangUsahaFilter] =
+    useState<TypeData[]>(bidangUsaha);
   const data = umkmData;
   const [filteredData, setFilteredData] = useState<UMKMProperties[]>([]);
 
@@ -76,16 +79,59 @@ const DataUmkm = () => {
     data,
   ]);
 
+  const handleDeleteBidangUsahaFilter = (item: TypeData) => {
+    if (bidangUsahaFilter.length == 1) {
+      setBidangUsahaFilter(bidangUsaha);
+    } else {
+      setBidangUsahaFilter(
+        bidangUsahaFilter.filter((selectedItem) => selectedItem !== item)
+      );
+    }
+  };
+
+  const handleDeleteBadanHukumFilter = (item: TypeData) => {
+    if (badanHukumFilter.length == 1) {
+      setBadanHukumFilter(badanHukumUsaha);
+    } else {
+      setBadanHukumFilter(
+        badanHukumFilter.filter((selectedItem) => selectedItem !== item)
+      );
+    }
+  };
+
+  const handleDeleteSkalaUsahaFilter = (item: TypeData) => {
+    if (skalaUsahaFilter.length == 1) {
+      setSkalaUsahaFilter(skalaUsaha);
+    } else {
+      setSkalaUsahaFilter(
+        skalaUsahaFilter.filter((selectedItem) => selectedItem !== item)
+      );
+    }
+  };
+
+  const handleDinasPengampuFilter = (item: TypeData) => {
+    if (dinasPengampuFilter.length == 1) {
+      setDinasPengampuFilter(dinasPengampu);
+    } else {
+      setDinasPengampuFilter(
+        dinasPengampuFilter.filter((selectedItem) => selectedItem !== item)
+      );
+    }
+  };
+
   return (
     <Layout pageTitle="DATA UMKM">
-      <div className="flex flex-row w-full pt-6xl pb-4 xl:gap-8 xl:px-8 items-start dark:bg-slate-800">
+      <div className="flex flex-row w-full pt-6xl pb-3xl xl:gap-8 xl:px-8 items-start dark:bg-slate-800 dark:text-white">
         <CSSTransition
           in={showAdvancedFilter}
           timeout={300}
           classNames="fade"
           unmountOnExit
         >
-          <div className="w-1/4 z-10 flex flex-col bg-white shadow rounded-lg px-5 py-4 relative dark:bg-black">
+          <div
+            className="w-1/4 z-10 flex flex-col bg-white shadow rounded-lg px-5 py-4 relative 
+          min-h-[47rem] dark:bg-black"
+          >
             <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
               <ChevronDown
                 className={`w-9 h-9 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer ${
@@ -95,7 +141,20 @@ const DataUmkm = () => {
               />
             </div>
             <div className="w-full">
-              <AdvancedFilter />
+              <AdvancedFilter
+                searchColumn={searchColumn}
+                setSearchColumn={setSearchColumn}
+                keyword={keyword}
+                setKeyword={setKeyword}
+                skalaUsahaFilter={skalaUsahaFilter}
+                setSkalaUsahaFilter={setSkalaUsahaFilter}
+                dinasPengampuFilter={dinasPengampuFilter}
+                setDinasPengampuFilter={setDinasPengampuFilter}
+                badanHukumFilter={badanHukumFilter}
+                setBadanHukumFilter={setBadanHukumFilter}
+                bidangUsahaFilter={bidangUsahaFilter}
+                setBidangUsahaFilter={setBidangUsahaFilter}
+              />
             </div>
           </div>
         </CSSTransition>
@@ -192,9 +251,9 @@ const DataUmkm = () => {
               <div className="w-full flex justify-end lg:justify-start pt-6">
                 <p
                   onClick={() => setShowAdvancedFilter(true)}
-                  className="text-grey hover:text-black cursor-pointer"
+                  className="text-grey hover:text-black cursor-pointer dark:text-white dark:hover:text-grey"
                 >
-                  <FontAwesomeIcon icon={faFilter} className="pr-2" /> Advanced
+                  <FontAwesomeIcon icon={faFilter} className="pr-2 dark:text-white" /> Advanced
                   filter
                 </p>
               </div>
@@ -203,13 +262,44 @@ const DataUmkm = () => {
 
           <div className="py-4 table-container bg-white rounded-lg shadow-lg w-full dark:bg-black">
             <div className="box flex flex-row justify-between px-4 lg:px-8 py-4 items-center">
-              <h1 className="font-bold lg:text-lg text-black">
+              <h1 className="font-bold lg:text-lg text-black dark:text-white">
                 Data UMKM Kabupaten Kulon Progo Tahun 2024
               </h1>
               <div className="bg-warning flex flex-row gap-2 items-center px-2 py-2 rounded hover:bg-warningHover cursor-pointer text-white">
                 <p>Download</p>
                 <FontAwesomeIcon icon={faCircleDown} />
               </div>
+            </div>
+            <div className="badge-filter px-3xl pb-4 flex flex-grow flex-wrap gap-4">
+              {skalaUsahaFilter.length != skalaUsaha.length &&
+                skalaUsahaFilter.map((item) => (
+                  <BadgeFilter
+                    item={item}
+                    handleClick={handleDeleteSkalaUsahaFilter}
+                  />
+                ))}
+              {badanHukumFilter &&
+                badanHukumFilter.length != badanHukumUsaha.length &&
+                badanHukumFilter.map((item) => (
+                  <BadgeFilter
+                    item={item}
+                    handleClick={handleDeleteBadanHukumFilter}
+                  />
+                ))}
+              {dinasPengampuFilter.length != dinasPengampu.length &&
+                dinasPengampuFilter.map((item) => (
+                  <BadgeFilter
+                    item={item}
+                    handleClick={handleDinasPengampuFilter}
+                  />
+                ))}
+              {bidangUsahaFilter.length != bidangUsaha.length &&
+                bidangUsahaFilter.map((item) => (
+                  <BadgeFilter
+                    item={item}
+                    handleClick={handleDeleteBidangUsahaFilter}
+                  />
+                ))}
             </div>
             <TableUMKM
               showAdvancedFilter={showAdvancedFilter}

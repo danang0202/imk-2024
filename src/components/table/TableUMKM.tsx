@@ -64,7 +64,11 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
   }, [sortingData, limit, page]);
 
   return (
-    <div className={`mt-2 w-full ${showAdvancedFilter ? "px-4" : "px-0"}`}>
+    <div
+      className={`mt-2 w-full ${
+        showAdvancedFilter ? "px-4" : "px-0"
+      } min-h-[40rem] flex flex-col justify-between`}
+    >
       <div
         className={`table-container overflow-x-auto ${
           showAdvancedFilter ? "w-[85rem]" : "w-full"
@@ -77,7 +81,7 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
                 <th
                   className={`py-3 text-black justify-center font-bold bg-silver ${
                     item.slug == "index" && "pl-3xl"
-                  }`}
+                  } dark:bg-slate-700 dark:text-white`}
                 >
                   <div className="flex items-center justify-center">
                     <ArrowSorting
@@ -95,7 +99,7 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
                   </div>
                 </th>
               ))}
-              <th className="py-3 pr-3xl justify-center text-black sm:text-base font-bold bg-silver">
+              <th className="py-3 pr-3xl justify-center text-black sm:text-base font-bold bg-silver dark:bg-slate-700 dark:text-white">
                 Tindakan
               </th>
             </tr>
@@ -103,10 +107,10 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
           <tbody className="text-sm md:text-base">
             {paginatedUMKM?.map((data, index) => (
               <tr key={index}>
-                <td className="py-6 whitespace-nowrap pl-3xl text-center border-t font-bold">
+                <td className="py-6 whitespace-nowrap pl-3xl text-center border-t font-bold dark:border-slate-700">
                   {data?.index}
                 </td>
-                <td className="px-3 whitespace-nowrap font-normal text-center border-t">
+                <td className="px-3 whitespace-nowrap font-normal text-center border-t dark:border-slate-700">
                   <div className="flex flex-row items-center w-full gap-3">
                     <img
                       src={data.avatar}
@@ -116,26 +120,26 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
                     {data?.name}
                   </div>
                 </td>
-                <td className="px-4 whitespace-nowrap font-normal text-center  border-t">
+                <td className="px-4 whitespace-nowrap font-normal text-center  border-t dark:border-slate-700">
                   <span className="bg-blue-100 text-blue-600 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
                     {data?.skala}
                   </span>
                 </td>
-                <td className="px-4  whitespace-nowrap font-normal text-center border-t">
+                <td className="px-4  whitespace-nowrap font-normal text-center border-t dark:border-slate-700">
                   {data?.bidang}
                 </td>
-                <td className="px-4 whitespace-nowrap font-normal text-center border-t">
+                <td className="px-4 whitespace-nowrap font-normal text-center border-t dark:border-slate-700">
                   <span className="bg-blue-100 text-blue-600 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
                     {data?.badanHukum}
                   </span>
                 </td>
-                <td className="px-4 whitespace-nowrap font-normal text-center border-t">
+                <td className="px-4 whitespace-nowrap font-normal text-center border-t dark:border-slate-700">
                   {data?.pengampu}
                 </td>
-                <td className="py-2 px-4 font-normal text-center border-t min-w-[15rem]">
+                <td className="py-2 px-4 font-normal text-center border-t min-w-[15rem] dark:border-slate-700">
                   {data?.alamat}
                 </td>
-                <td className="text-center pr-3xl border-t">
+                <td className="text-center pr-3xl border-t dark:border-slate-700">
                   <LinkText text="Detail" branding="warning" url="#" />
                 </td>
               </tr>

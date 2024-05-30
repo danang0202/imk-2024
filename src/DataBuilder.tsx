@@ -1,3 +1,5 @@
+import { TypeData } from "./components/table/Selection";
+
 export const menuItemsData = [
   { label: "Beranda", href: "/" },
   { label: "Data UMKM", href: "/data-umkm" },
@@ -109,7 +111,7 @@ export const skalaUsaha = [
   },
 ];
 
-export const badanHukumUsaha = [
+export const badanHukumUsaha:TypeData[] = [
   {
     name: "PT",
     slug: "pt",
@@ -256,7 +258,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Kopi Starprog",
     skala: "Usaha Menengah",
-    bidang: "Makanan dan minuman",
+    bidang: "Industri Manufaktur",
     badanHukum: "CV",
     pengampu: "Dinas Koperasi dan UKM",
     noTelp: "086868130401",
@@ -267,9 +269,9 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-2.jpg",
     name: "Tigan Jaya",
     skala: "Usaha Kecil",
-    badanHukum: "Perorangan",
-    bidang: "Peternakan",
-    pengampu: "Dinas Peternakan",
+    badanHukum: "Perseorangan",
+    bidang: "Industri Manufaktur",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130401",
     alamat: "RT 12 RW 00, Pulo, Gulurejo, Lendah",
   },
@@ -279,7 +281,7 @@ export const umkmData = [
     name: "Kangenanku",
     skala: "Usaha Mikro",
     badanHukum: "PT",
-    bidang: "Produksi Batik",
+    bidang: "Industri Manufaktur",
     pengampu: "Dinas Koperasi dan UKM",
     noTelp: "086868130401",
     alamat: "RT 05 RW 01, Banaran, Jatirejo, Lendah",

@@ -18,33 +18,24 @@ export const filterDataUMKM = (
         filters.some((filter) => itemValue === filter.name);
 
     // Apply Skala Usaha filter if it's not empty
-    if (skalaUsaha.length > 0) {
-        filteredData = filteredData.filter((item) =>
-            matchesFilter(item.skala, skalaUsaha)
-        );
-    }
-
+    filteredData = filteredData.filter((item) =>
+        matchesFilter(item.skala, skalaUsaha)
+    );
 
     // Apply Dinas Pengampu filter if it's not empty
-    if (dinasPengampu.length > 0) {
-        filteredData = filteredData.filter((item) =>
-            matchesFilter(item.pengampu, dinasPengampu)
-        );
-    }
-
+    filteredData = filteredData.filter((item) =>
+        matchesFilter(item.pengampu, dinasPengampu)
+    );
     // Apply Badan Hukum filter if it's not empty
-    if (badanHukum.length > 0) {
-        filteredData = filteredData.filter((item) =>
-            matchesFilter(item.badanHukum, badanHukum)
-        );
-    }
+    filteredData = filteredData.filter((item) =>
+        matchesFilter(item.badanHukum, badanHukum)
+    );
 
-    // Apply Bidang Usaha filter if it's not empty
-    if (bidangUsaha.length > 0) {
-        filteredData = filteredData.filter((item) =>
-            matchesFilter(item.bidang, bidangUsaha)
-        );
-    }
+    // Apply Bidang Usaha filter if it's not empt
+    filteredData = filteredData.filter((item) =>
+        matchesFilter(item.bidang, bidangUsaha)
+    );
+
     if (keyword) {
         filteredData = filteredData.filter((item) => {
             if (searchColumn === 'all') {
@@ -64,6 +55,5 @@ export const filterDataUMKM = (
             }
         });
     }
-
     return filteredData;
 };
