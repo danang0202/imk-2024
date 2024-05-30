@@ -25,7 +25,7 @@ const Navbar = () => {
       if (location.pathname == "/") {
         const scrollY = window.scrollY;
 
-        if (scrollY > 100) {
+        if (scrollY > 500) {
           setNavBg("bg-white shadow-lg dark:bg-slate-800");
           setNavBgItem("bg-white dark:bg-slate-800");
         } else {

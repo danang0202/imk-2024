@@ -4,25 +4,30 @@ import {
   UMKMProperties,
   dataColumnUMKMBuilder,
   titleSlugType,
-  umkmData,
 } from "../../DataBuilder";
 import LinkText from "../LinkText";
 import Pagination from "./Pagination";
 import { fetchDataByPagination } from "../../utils";
 
 interface Props {
+  dataUmkm: UMKMProperties[];
   showAdvancedFilter: boolean;
 }
 
-const TableUMKM: React.FC<Props> = ({ showAdvancedFilter }) => {
-  const dataUmkm: UMKMProperties[] = umkmData;
+const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
   const headerDataTable: titleSlugType[] = dataColumnUMKMBuilder;
   const [activeColumn, setActiveColumn] = useState<string>("Price");
   const [sortingColumn, setSortingColumn] = useState<string | null>("Price");
-  const [sortingData, setSortingData] = useState<UMKMProperties[]>();
+  const [sortingData, setSortingData] = useState<UMKMProperties[]>([]);
+  const [paginatedUMKM, setPaginatedUMKM] = useState<UMKMProperties[]>([]);
   const [limit, setLimit] = useState(2);
   const [totalPage, setTotalpage] = useState(1);
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    setPage(1);
+    setSortingData(dataUmkm);
+  }, [dataUmkm]);
 
   const sortByColumn = (column: string) => {
     const isCurrentlySorted = sortingColumn === column;
@@ -47,14 +52,16 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter }) => {
   };
 
   useEffect(() => {
-    const paginatedData: UMKMProperties[] = fetchDataByPagination(
-      dataUmkm,
-      page,
-      limit
-    );
-    setSortingData(paginatedData);
-    setTotalpage(Math.ceil(dataUmkm.length / limit));
-  }, [dataUmkm, limit, page]);
+    if (sortingData) {
+      const paginatedData: UMKMProperties[] = fetchDataByPagination(
+        sortingData,
+        page,
+        limit
+      );
+      setPaginatedUMKM(paginatedData);
+      setTotalpage(Math.ceil(sortingData.length / limit));
+    }
+  }, [sortingData, limit, page]);
 
   return (
     <div className={`mt-2 w-full ${showAdvancedFilter ? "px-4" : "px-0"}`}>
@@ -94,7 +101,7 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter }) => {
             </tr>
           </thead>
           <tbody className="text-sm md:text-base">
-            {sortingData?.map((data, index) => (
+            {paginatedUMKM?.map((data, index) => (
               <tr key={index}>
                 <td className="py-6 whitespace-nowrap pl-3xl text-center border-t font-bold">
                   {data?.index}

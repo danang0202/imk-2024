@@ -23,7 +23,7 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
           <Navbar />
         </div>
         <main className="flex-grow">{children}</main>
-        <div className="box mt-2 transform translate-y-6">
+        <div className="box">
           <Footer />
         </div>
       </div>

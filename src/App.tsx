@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Login from "./assets/screens/Login";
-import "react-toggle/style.css"
+import "react-toggle/style.css";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -14,16 +14,14 @@ function App() {
     });
   }, []);
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />}></Route>
-          <Route path="/data-umkm" element={<DataUmkm />}></Route>
-          <Route path="/statistics" element={<Statistics />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/data-umkm" element={<DataUmkm />}></Route>
+        <Route path="/statistics" element={<Statistics />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

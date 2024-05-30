@@ -17,6 +17,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
+#root {
+  background: #263238;
+}
 
 /* * {
   transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, all .3s ease;
@@ -44,4 +51,27 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  height: 0 !important;
+  width: 0 I !important;
+  transform: scale(0.8);
+  transition: opacity 300ms, transform 300ms, height 300ms, width 300ms;
 }

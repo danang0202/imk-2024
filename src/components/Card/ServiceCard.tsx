@@ -14,7 +14,7 @@ const ServiceCard: React.FC<CardProps> = ({ title, desc, image }) => {
         data-aos="fade-up"
         data-aos-duration="800"
       >
-        <div className="box bg-greyBlue  rounded hover:scale-110 shadow-lg cursor-pointer transform hover:-translate-y-5">
+        <div className="box bg-greyBlue  rounded shadow-lg cursor-pointer transform hover:-translate-y-5 transition duration-300">
           <img
             src={`/image/${image}`}
             alt="Ilustrator"
@@ -23,10 +23,10 @@ const ServiceCard: React.FC<CardProps> = ({ title, desc, image }) => {
           />
         </div>
         <div
-          className="transform -translate-y-14 border border-grey-500 bg-silver text-center p-4 py-5 rounded shadow-lg flex flex-col gap-3 items-center z-40"
+          className="transform -translate-y-14 border border-grey-500 bg-silver text-center p-4 py-5 rounded shadow-lg flex flex-col gap-3 items-center z-40 dark:bg-black dark:border-slate-800"
           style={{ maxWidth: "300px" }}
         >
-          <p className="font-semibold text-gray-700">{desc}</p>
+          <p className="font-semibold text-gray-700 dark:text-white">{desc}</p>
           <LinkText text={title} url={"#"} branding={"primary"} />
         </div>
       </div>

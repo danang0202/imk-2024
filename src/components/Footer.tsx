@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <div className="bg-black py-8 px-8 xl:p-3xl xl:px-6xl text-white flex  flex-col md:flex-row justify-between gap-8">
+      <div className="bg-black py-8 px-8 xl:p-3xl xl:px-6xl text-white flex flex-col md:flex-row justify-between gap-8">
         <div className="flex flex-col gap-y-8">
           {/* logo */}
           <div className="flex flex-row gap-3">
