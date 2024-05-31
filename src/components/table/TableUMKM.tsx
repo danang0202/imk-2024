@@ -20,7 +20,7 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
   const [sortingColumn, setSortingColumn] = useState<string | null>("Price");
   const [sortingData, setSortingData] = useState<UMKMProperties[]>([]);
   const [paginatedUMKM, setPaginatedUMKM] = useState<UMKMProperties[]>([]);
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(10);
   const [totalPage, setTotalpage] = useState(1);
   const [page, setPage] = useState(1);
 
