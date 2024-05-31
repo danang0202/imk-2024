@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { dataColumnUMKMBuilder, titleSlugType } from "../../DataBuilder";
 import { getTitleNameFromSlug } from "../../function";
 
 interface Props {
   width: string;
+  searchColumn: string;
+  setSearchColumn: (column: string) => void;
+  keyword: string;
+  setKeyword: (column: string) => void;
 }
 
-const SearchBar: React.FC<Props> = ({ width }) => {
-  const [showFilfterColumn, setShowFilterColumn] = useState(false);
-  const [filterColumn, setFilterColumn] = useState("all");
+const SearchBar: React.FC<Props> = ({
+  width,
+  searchColumn,
+  setSearchColumn,
+  keyword,
+  setKeyword,
+}) => {
+  const [showFilfterColumn, setShowsearchColumn] = useState(false);
   const columns: titleSlugType[] = dataColumnUMKMBuilder;
+
+  useEffect(() => {
+    console.log(searchColumn);
+  }, [searchColumn]);
   return (
     <form className="">
       <div className="flex relative">
@@ -22,11 +35,11 @@ const SearchBar: React.FC<Props> = ({ width }) => {
         <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
-          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 w-[10rem]"
+          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 w-[10rem] dark:bg-slate-800 dark:border-grey  dark:text-white dark:hover:bg-black"
           type="button"
-          onClick={() => setShowFilterColumn(!showFilfterColumn)}
+          onClick={() => setShowsearchColumn(!showFilfterColumn)}
         >
-          {getTitleNameFromSlug(columns, filterColumn)}
+          {getTitleNameFromSlug(columns, searchColumn)}
           <svg
             className="w-2.5 h-2.5 ms-2.5"
             aria-hidden="true"
@@ -46,7 +59,7 @@ const SearchBar: React.FC<Props> = ({ width }) => {
         {showFilfterColumn && (
           <div
             id="dropdown"
-            className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 transform translate-y-12"
+            className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 transform translate-y-12 dark:bg-slate-800"
           >
             <ul
               className="py-2 text-sm text-gray-700 "
@@ -55,11 +68,11 @@ const SearchBar: React.FC<Props> = ({ width }) => {
               <li>
                 <button
                   onClick={() => {
-                    setFilterColumn("all");
-                    setShowFilterColumn(false);
+                    setSearchColumn("all");
+                    setShowsearchColumn(false);
                   }}
                   type="button"
-                  className="inline-flex w-full px-4 py-2 hover:bg-gray-100 "
+                  className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-black dark:text-white"
                 >
                   Semua
                 </button>
@@ -68,11 +81,11 @@ const SearchBar: React.FC<Props> = ({ width }) => {
                 <li>
                   <button
                     onClick={() => {
-                      setFilterColumn(item.slug);
-                      setShowFilterColumn(false);
+                      setSearchColumn(item.slug);
+                      setShowsearchColumn(false);
                     }}
                     type="button"
-                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 "
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100  dark:hover:bg-black dark:text-white "
                   >
                     {item.title}
                   </button>
@@ -84,9 +97,11 @@ const SearchBar: React.FC<Props> = ({ width }) => {
 
         <div className="relative">
           <input
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
             type="search"
             id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2"
+            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2 dark:bg-slate-800 dark:border-grey dark:focus:bg-black"
             placeholder="Kata kunci..."
             required
             style={{ width: width }}

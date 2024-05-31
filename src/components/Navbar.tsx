@@ -25,7 +25,7 @@ const Navbar = () => {
       if (location.pathname == "/") {
         const scrollY = window.scrollY;
 
-        if (scrollY > 100) {
+        if (scrollY > 500) {
           setNavBg("bg-white shadow-lg dark:bg-slate-800");
           setNavBgItem("bg-white dark:bg-slate-800");
         } else {
@@ -57,7 +57,7 @@ const Navbar = () => {
       className={`w-full top-0 left-0 xl:px-8 py-4 ${
         location.pathname == "/"
           ? navBg
-          : "bg-white shadow-lg dark:bg-slate-800"
+          : "bg-white shadow-lg dark:bg-black"
       }`}
     >
       <div className="xl:flex items-center justify-between xl:px-10 px-7">
@@ -88,7 +88,7 @@ const Navbar = () => {
 
         <ul
           className={`${
-            location.pathname == "/" ? navBgItem : "bg-white dark:bg-slate-800"
+            location.pathname == "/" ? navBgItem : "bg-white dark:bg-black"
           } gap-x-7 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9 ${
             open ? "top-20 " : "top-[-490px]"
           }`}
