@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Login from "./assets/screens/Login";
 import "react-toggle/style.css";
+import Test from "./assets/screens/Test";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/data-umkm" element={<DataUmkm />}></Route>
         <Route path="/statistics" element={<Statistics />}></Route>
+        <Route path="/statistics/test" element={<Test />}></Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>
     </BrowserRouter>

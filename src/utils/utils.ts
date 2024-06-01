@@ -98,3 +98,4 @@ export const getBadanUsahaColor = (badanUsaha: string): colorType => {
         bg
     }
 }
+

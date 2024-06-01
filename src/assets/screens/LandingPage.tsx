@@ -35,7 +35,7 @@ const LandingPage: React.FC = () => {
           theme == "light"
             ? "bg-gradient-to-br from-silver via-silver to-greyBlue"
             : "bg-gradient-to-b from-black to-slate-800"
-        } flex flex-row justify-between items-center gap-2 min-h-screen pb-3xl`}
+        } flex flex-row justify-between items-center gap-2 min-h-screen pb-3xl w-screen`}
       >
         <div
           data-aos="fade-right"

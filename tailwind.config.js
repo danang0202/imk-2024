@@ -22,7 +22,7 @@ export default {
         white: '#FFFFFF',
         warning: '#FBC02D', // oren
         error: '#E53835',
-        success: '#2E7D31',
+      success: '#2E7D31',
         accent2: '#5746AF',
         accent2a: '#EDE9FE',
         accent3: '#FA8C16',

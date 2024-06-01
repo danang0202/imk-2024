@@ -1,13 +1,49 @@
 import { TypeData } from "./components/table/Selection";
-export const LANGUAGES = [
-  { label: "Indonesia", code: "id" },
-  { label: "English", code: "en" },
+
+export const EXTENDEDCOLORS = {
+  primary: "#4BAF4F",
+  primaryHover: "#81C784",
+  secondary: "#F59C0B",
+  secondaryHover: "#FBC02D",
+  info: "#2194f3",
+  black: "#263238",
+  greyDark: "#4D4D4D",
+  grey: "#717171",
+  greyLight: "#89939E",
+  greyBlue: "#ABBED1",
+  silver: "#F5F7FA",
+  white: "#FFFFFF",
+  warning: "#FBC02D",
+  error: "#E53835",
+  success: "#2E7D31",
+  accent2: "#5746AF",
+  accent2a: "#EDE9FE",
+  accent3: "#FA8C16",
+  accent3a: "#fff2d5",
+  accent4: "#52C41A",
+  accent4a: "#dffbcc",
+  accent5: "#F5222D",
+  accent5a: "#fecaca",
+  accent6: "#D9D9D9",
+  primaryTint2: "#E8F5E9",
+  inactive: "#BCBDBE",
+};
+
+interface LangType {
+  label: string;
+  code: string;
+  link: string;
+}
+export const LANGUAGES: LangType[] = [
+  { label: "Indonesia", code: "id", link: "/logo/indonesia.png" },
+  { label: "English", code: "en", link: "/logo/uk.png" },
 ];
 
 export const menuItemsData = [
   { label: "Beranda", href: "/" },
   { label: "Data UMKM", href: "/data-umkm" },
   { label: "Statistik", href: "/statistics" },
+  { label: "GIS", href: "/gis" },
   { label: "Galeri Produk", href: "#" },
   { label: "Info Modal", href: "#" },
 ];
@@ -107,16 +143,16 @@ export interface nameSlugType {
 
 export const skalaUsaha = [
   {
-    name: "Usaha Menengah",
-    slug: "menengah",
+    name: "Usaha Mikro",
+    slug: "mikro",
   },
   {
     name: "Usaha Kecil",
-    slug: "kecl",
+    slug: "kecil",
   },
   {
-    name: "Usaha Mikro",
-    slug: "mikro",
+    name: "Usaha Menengah",
+    slug: "menengah",
   },
 ];
 
@@ -240,6 +276,22 @@ export const bidangUsaha = [
     slug: "hukum-konsultasi",
   },
 ];
+
+export const kecamatanKulonProgo = [
+  "Temon",
+  "Wates",
+  "Panjatan",
+  "Galur",
+  "Lendah",
+  "Sentolo",
+  "Pengasih",
+  "Kokap",
+  "Girimulyo",
+  "Nanggulan",
+  "Kalibawang",
+  "Samigaluh",
+];
+
 export interface UMKMProperties {
   index: number;
   avatar: string;

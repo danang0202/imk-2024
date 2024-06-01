@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { useLocation } from "react-router-dom";
 import ButtonPrimary from "./Button/ButtonPrimary";
-import { LANGUAGES, menuItemsData } from "../DataBuilder";
+import { menuItemsData } from "../DataBuilder";
 import ToggleTheme from "./ToggleTheme";
 import { useThemeContext } from "../layout/ThemeContext";
-import i18n from "../language/i18n";
+import DropDownLang from "./commons/DropDownLang";
 
 interface MenuItem {
   label: string;
@@ -20,11 +20,6 @@ const Navbar = () => {
   const [navBgItem, setNavBgItem] = useState("bg-silver dark:bg-black");
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme } = useThemeContext();
-
-  const onChangeLang = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const lang_code = e.target.value;
-    i18n.changeLanguage(lang_code);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,7 +95,7 @@ const Navbar = () => {
           {menuItems.map((link) => (
             <li
               key={link.label}
-              className="xl:ml-8 xl:my-0 my-7 hover:scale-110"
+              className="xl:ml-8 xl:my-0 my-7 hover:scale-110 transition duration-300"
             >
               <a
                 href={link.href}
@@ -110,13 +105,17 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-          <select defaultValue={i18n.language} onChange={onChangeLang}>
+          <div className="hidden xl:inline">
+            <ToggleTheme />
+          </div>
+          {/* <select defaultValue={i18n.language} onChange={onChangeLang}>
             {LANGUAGES.map(({ code, label }) => (
               <option key={code} value={code}>
                 {label}
               </option>
             ))}
-          </select>
+          </select> */}
+          <DropDownLang />
           <div className="">
             <ButtonPrimary text="Log In" size="base" onClick={logInOnClick} />
           </div>
