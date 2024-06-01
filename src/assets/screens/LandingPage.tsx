@@ -19,7 +19,7 @@ interface FaqProps {
 }
 
 const LandingPage: React.FC = () => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const serviceItems: ServiceItem[] = serviceItemsData;
   const Faqs: FaqProps[] = FaqsData;
   const { theme } = useThemeContext();

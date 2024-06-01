@@ -7,7 +7,6 @@ import "@mantine/core/styles.css";
 import "@mantine/charts/styles.css";
 import { MantineProvider } from "@mantine/core";
 import { ThemeProvider } from "./layout/ThemeContext.tsx";
-import i18n from "./language/i18n.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
