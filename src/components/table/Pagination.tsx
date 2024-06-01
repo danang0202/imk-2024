@@ -51,18 +51,17 @@ const Pagination: React.FC<Props> = ({
               setLimit(parseInt(e.target.value));
               setPage(1);
             }}
-            className="bg-gray-50  shadow-sm text-gray-900 text-sm rounded-lg p-2.5 font-semibold"
+            className="bg-gray-50  shadow-sm text-gray-900 text-sm rounded-lg p-2.5 font-semibold dark:bg-slate-800 dark:border dark:border-grey dark:text-white"
           >
-            <option value="2">2</option>
-            <option value="8">8</option>
+            <option value="10">10</option>
             <option value="15">15</option>
             <option value="20">20</option>
           </select>
         </div>
 
-        <ul className="flex flex-row items-center bg-silver rounded-lg px-2 shadow-sm gap-x-1">
+        <ul className="flex flex-row items-center bg-silver rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-grey">
           <li
-            className="text-black py-1 px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer"
+            className="text-black py-1 px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
             onClick={() => onPageChange("&laquo")}
           >
             <button className="page-link" aria-label="Previous">
@@ -70,7 +69,7 @@ const Pagination: React.FC<Props> = ({
             </button>
           </li>
           <li
-            className="text-black py-1 px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer"
+            className="text-black py-1 px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
             onClick={() => onPageChange("&lsaquo")}
           >
             <button className="page-link">&lsaquo;</button>
@@ -86,20 +85,20 @@ const Pagination: React.FC<Props> = ({
                   page === value
                     ? "bg-primary text-white rounded "
                     : "text-black hover:bg-inactive rounded  "
-                }`}
+                } dark:text-white`}
               >
                 {value}
               </button>
             </li>
           ))}
           <li
-            className="text-black py-1 px-3.5 font-semibold hover:bg-inactive rounded hover:cursor-pointer"
+            className="text-black py-1 px-3.5 font-semibold hover:bg-inactive rounded hover:cursor-pointer dark:text-white"
             onClick={() => onPageChange("&rsaquo")}
           >
             <button className="page-link">&rsaquo;</button>
           </li>
           <li
-            className="text-black py-1 px-3.5 font-semibold hover:bg-inactive rounded hover:cursor-pointer"
+            className="text-black py-1 px-3.5 font-semibold hover:bg-inactive rounded hover:cursor-pointer dark:text-white"
             onClick={() => onPageChange("&raquo")}
           >
             <button className="page-link" aria-label="Next">

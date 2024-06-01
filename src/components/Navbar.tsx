@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { useLocation } from "react-router-dom";
 import ButtonPrimary from "./Button/ButtonPrimary";
-import { menuItemsData } from "../DataBuilder";
+import { LANGUAGES, menuItemsData } from "../DataBuilder";
 import ToggleTheme from "./ToggleTheme";
 import { useThemeContext } from "../layout/ThemeContext";
+import i18n from "../language/i18n";
 
 interface MenuItem {
   label: string;
@@ -19,6 +20,11 @@ const Navbar = () => {
   const [navBgItem, setNavBgItem] = useState("bg-silver dark:bg-black");
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme } = useThemeContext();
+
+  const onChangeLang = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const lang_code = e.target.value;
+    i18n.changeLanguage(lang_code);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,9 +61,7 @@ const Navbar = () => {
   return (
     <div
       className={`w-full top-0 left-0 xl:px-8 py-4 ${
-        location.pathname == "/"
-          ? navBg
-          : "bg-white shadow-lg dark:bg-black"
+        location.pathname == "/" ? navBg : "bg-white shadow-lg dark:bg-black"
       }`}
     >
       <div className="xl:flex items-center justify-between xl:px-10 px-7">
@@ -106,7 +110,13 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-          {!open && <ToggleTheme />}
+          <select defaultValue={i18n.language} onChange={onChangeLang}>
+            {LANGUAGES.map(({ code, label }) => (
+              <option key={code} value={code}>
+                {label}
+              </option>
+            ))}
+          </select>
           <div className="">
             <ButtonPrimary text="Log In" size="base" onClick={logInOnClick} />
           </div>

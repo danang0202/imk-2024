@@ -3,8 +3,9 @@ import ServiceCard from "../../components/Card/ServiceCard";
 import Faq from "../../components/FAQ/Faq";
 import FaqForm from "../../components/FAQ/FaqForm";
 import Layout from "../../components/Layout";
-import ButtonWarning from "../../components/Button/ButtonWarning";
 import { useThemeContext } from "../../layout/ThemeContext";
+import ButtonSecondary from "../../components/Button/ButtonSecondary";
+import { useTranslation } from "react-i18next";
 
 interface ServiceItem {
   title: string;
@@ -18,6 +19,7 @@ interface FaqProps {
 }
 
 const LandingPage: React.FC = () => {
+  const { i18n, t } = useTranslation();
   const serviceItems: ServiceItem[] = serviceItemsData;
   const Faqs: FaqProps[] = FaqsData;
   const { theme } = useThemeContext();
@@ -41,7 +43,7 @@ const LandingPage: React.FC = () => {
           className="home-title py-8 md:py-8 xl:py-0 md:w-3/4"
         >
           <h1 className="text-black font-semibold text-xl md:text-2xl lg:text-3xl xl:text-5xl text-center md:text-left dark:text-white">
-            Hai, Selamat datang di e-UMKM
+            {t("title")} di e-UMKM
           </h1>
           <h1 className="text-primary font-semibold text-2xl md:text-2xl  lg:text-3xl xl:text-5xl text-center md:text-left">
             Kabupaten Kulon Progo
@@ -67,7 +69,7 @@ const LandingPage: React.FC = () => {
             </p>
           </div>
           <div className="py-4 text-center md:text-left">
-            <ButtonWarning
+            <ButtonSecondary
               text="Daftar Sekarang"
               size="xl"
               onClick={registerNowOnClick}

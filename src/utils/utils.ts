@@ -1,4 +1,4 @@
-import { UMKMProperties, dataColumnUMKMBuilder } from "../DataBuilder";
+import { UMKMProperties, colorType, dataColumnUMKMBuilder } from "../DataBuilder";
 import { TypeData } from "../components/table/Selection";
 
 export const filterDataUMKM = (
@@ -57,3 +57,44 @@ export const filterDataUMKM = (
     }
     return filteredData;
 };
+
+export const getSkalaUsahaColor = (skalaUsaha: string): colorType => {
+    let text = "";
+    let bg = "";
+    if (skalaUsaha === 'Usaha Menengah') {
+        text = "text-success";
+        bg = "bg-accent4a";
+    } else if (skalaUsaha === 'Usaha Kecil') {
+        text = "text-accent2";
+        bg = "bg-accent2a"
+    } else {
+        text = "text-accent3";
+        bg = "bg-accent3a"
+    }
+    return {
+        text,
+        bg
+    }
+}
+
+export const getBadanUsahaColor = (badanUsaha: string): colorType => {
+    let text = "";
+    let bg = "";
+    if (badanUsaha === 'PT') {
+        text = "text-accent5";
+        bg = "bg-accent5a";
+    } else if (badanUsaha === 'CV') {
+        text = "text-accent2";
+        bg = "bg-accent2a"
+    } else if (badanUsaha == "Firma") {
+        text = "text-success";
+        bg = "bg-accent4a"
+    } else {
+        text = "text-blue-600"
+        bg = "bg-blue-100"
+    }
+    return {
+        text,
+        bg
+    }
+}

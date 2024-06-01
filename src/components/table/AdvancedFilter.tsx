@@ -6,20 +6,12 @@ import {
   skalaUsaha,
 } from "../../DataBuilder";
 import ChexboxGroup from "./ChexboxGroup";
-import {
-  faChevronUp,
-  faFilter,
-  faList,
-} from "@fortawesome/free-solid-svg-icons";
-import SearchBar from "./SearchBar";
+import { faChevronUp, faList } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { TypeData } from "./Selection";
+import { IconFilterSearch } from "@tabler/icons-react";
 
 interface AdvancedFilterProps {
-  searchColumn: string;
-  setSearchColumn: React.Dispatch<React.SetStateAction<string>>;
-  keyword: string;
-  setKeyword: React.Dispatch<React.SetStateAction<string>>;
   skalaUsahaFilter: TypeData[];
   setSkalaUsahaFilter: React.Dispatch<React.SetStateAction<TypeData[]>>;
   dinasPengampuFilter: TypeData[];
@@ -31,10 +23,6 @@ interface AdvancedFilterProps {
 }
 
 const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
-  searchColumn,
-  setSearchColumn,
-  keyword,
-  setKeyword,
   skalaUsahaFilter,
   setSkalaUsahaFilter,
   dinasPengampuFilter,
@@ -48,9 +36,9 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
     useState<boolean>(false);
 
   const [showAdvancedSkalaUsahaFilter, setAdvancedSkalaUsahaFilter] =
-    useState<boolean>(false);
+    useState<boolean>(true);
   const [showAdvancedBadanHukumFilter, setAdvancedBadanHukumFilter] =
-    useState<boolean>(false);
+    useState<boolean>(true);
 
   const [showAdvancedDinasPengampuFilter, setShowAdvancedDinasPengampuFilter] =
     useState<boolean>(false);
@@ -58,32 +46,22 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
   return (
     <>
       <div className="">
-        <div className="w-full border-b-2 border-grey py-4">
-          <h1 className="font-bold text-xl text-center">
+        <div className="border-b-2 border-grey py-4">
+          <h1 className="font-bold text- tlgext-center">
             {" "}
             <FontAwesomeIcon icon={faList} className="pr-3" /> Advanced Filter
           </h1>
         </div>
-        <div className="box flex flex-col gap-4 py-4">
-          <h1 className="font-semibold">Masukkan kata kunci</h1>
-          <SearchBar
-            width="15rem"
-            searchColumn={searchColumn}
-            setSearchColumn={setSearchColumn}
-            keyword={keyword}
-            setKeyword={setKeyword}
-          />
-        </div>
         {/* skala usaha filter */}
-        <div className="box flex flex-col gap-2 py-2">
+        <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4 mt-6">
           <div
-            className="flex flex-row gap-4 items-center  cursor-pointer hover:text-primary"
+            className="flex flex-row gap-4 items-center cursor-pointer hover:text-primary"
             onClick={() => {
               setAdvancedSkalaUsahaFilter(!showAdvancedSkalaUsahaFilter);
             }}
           >
-            <FontAwesomeIcon icon={faFilter} />
-            <h1 className="font-semibold">Skala Usaha</h1>
+            <IconFilterSearch size={20} />
+            <h1 className="font-semibold whitespace-nowrap">Skala Usaha</h1>
             <FontAwesomeIcon
               icon={faChevronUp}
               className={`hover:text-grey transform ${
@@ -93,6 +71,21 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           </div>
           {showAdvancedSkalaUsahaFilter && (
             <div className="box w-full">
+              <div className="flex flex-row justify-between py-1">
+                <p
+                  className="text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                  onClick={() => setSkalaUsahaFilter(skalaUsaha)}
+                >
+                  Pilih semua
+                </p>
+                <p className="text-grey text-sm">|</p>
+                <p
+                  className="text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                  onClick={() => setSkalaUsahaFilter([])}
+                >
+                  Bersihkan
+                </p>
+              </div>
               <ChexboxGroup
                 data={skalaUsaha}
                 selectedData={skalaUsahaFilter}
@@ -104,15 +97,15 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
         {/* skala usaha filter end */}
 
         {/* badan hukum filter */}
-        <div className="box flex flex-col gap-2 py-2">
+        <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
           <div
             className="flex flex-row gap-4 items-center  cursor-pointer hover:text-primary"
             onClick={() => {
               setAdvancedBadanHukumFilter(!showAdvancedBadanHukumFilter);
             }}
           >
-            <FontAwesomeIcon icon={faFilter} />
-            <h1 className="font-semibold">Badan Hukum</h1>
+            <IconFilterSearch size={20} />
+            <h1 className="font-semibold whitespace-nowrap">Badan Hukum</h1>
             <FontAwesomeIcon
               icon={faChevronUp}
               className={`hover:text-grey cursor-pointer transform ${
@@ -122,6 +115,21 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           </div>
           {showAdvancedBadanHukumFilter && (
             <div className="box w-full">
+              <div className="flex flex-row justify-between py-1">
+                <p
+                  className="text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                  onClick={() => setBadanHukumFilter(badanHukumUsaha)}
+                >
+                  Pilih semua
+                </p>
+                <p className="text-grey text-sm">|</p>
+                <p
+                  className="text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                  onClick={() => setBadanHukumFilter([])}
+                >
+                  Bersihkan
+                </p>
+              </div>
               <ChexboxGroup
                 data={badanHukumUsaha}
                 selectedData={badanHukumFilter}
@@ -133,7 +141,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
         {/* badan hukum filter end */}
 
         {/* dinas pangampu filter */}
-        <div className="box flex flex-col gap-2 py-2">
+        <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
           <div
             className="flex flex-row gap-4 items-center  cursor-pointer hover:text-primary"
             onClick={() => {
@@ -142,8 +150,8 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               );
             }}
           >
-            <FontAwesomeIcon icon={faFilter} />
-            <h1 className="font-semibold">Dinas Pengampu</h1>
+            <IconFilterSearch size={20} />
+            <h1 className="font-semibold whitespace-nowrap">Dinas Pengampu</h1>
             <FontAwesomeIcon
               icon={faChevronUp}
               className={`hover:text-grey cursor-pointer transform ${
@@ -153,6 +161,21 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           </div>
           {showAdvancedDinasPengampuFilter ? (
             <div className="box w-full">
+              <div className="flex flex-row justify-between py-1">
+                <p
+                  className="text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                  onClick={() => setDinasPengampuFilter(dinasPengampu)}
+                >
+                  Pilih semua
+                </p>
+                <p className="text-grey text-sm">|</p>
+                <p
+                  className="text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                  onClick={() => setDinasPengampuFilter([])}
+                >
+                  Bersihkan
+                </p>
+              </div>
               <ChexboxGroup
                 data={dinasPengampu}
                 selectedData={dinasPengampuFilter}
@@ -166,15 +189,15 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
         {/* dinas pengampu end */}
 
         {/* bidang usaha filter */}
-        <div className="box flex flex-col gap-2 py-2">
+        <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
           <div
             className="flex flex-row gap-4 items-center  cursor-pointer hover:text-primary"
             onClick={() => {
               setShowAdvancedFilter(!showAdvancedBidangFilter);
             }}
           >
-            <FontAwesomeIcon icon={faFilter} />
-            <h1 className="font-semibold">Bidang Usaha</h1>
+            <IconFilterSearch size={20} />
+            <h1 className="font-semibold whitespace-nowrap">Bidang Usaha</h1>
             <FontAwesomeIcon
               icon={faChevronUp}
               className={`hover:text-grey cursor-pointer transform ${
@@ -184,6 +207,21 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           </div>
           {showAdvancedBidangFilter ? (
             <div className="box w-full">
+              <div className="flex flex-row justify-between py-1">
+                <p
+                  className="text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                  onClick={() => setBidangUsahaFilter(bidangUsaha)}
+                >
+                  Pilih semua
+                </p>
+                <p className="text-grey text-sm">|</p>
+                <p
+                  className="text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                  onClick={() => setBidangUsahaFilter([])}
+                >
+                  Bersihkan
+                </p>
+            </div>
               <ChexboxGroup
                 data={bidangUsaha}
                 selectedData={bidangUsahaFilter}
@@ -194,7 +232,6 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             <div className="box"></div>
           )}
         </div>
-
         {/* bidang usadaha filter end */}
       </div>
     </>

@@ -5,16 +5,16 @@ import {
   dataColumnUMKMBuilder,
   titleSlugType,
 } from "../../DataBuilder";
-import LinkText from "../LinkText";
 import Pagination from "./Pagination";
 import { fetchDataByPagination } from "../../utils";
+import { getBadanUsahaColor, getSkalaUsahaColor } from "../../utils/utils";
+import { IconInfoCircle } from "@tabler/icons-react";
 
 interface Props {
   dataUmkm: UMKMProperties[];
-  showAdvancedFilter: boolean;
 }
 
-const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
+const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
   const headerDataTable: titleSlugType[] = dataColumnUMKMBuilder;
   const [activeColumn, setActiveColumn] = useState<string>("Price");
   const [sortingColumn, setSortingColumn] = useState<string | null>("Price");
@@ -32,10 +32,13 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
   const sortByColumn = (column: string) => {
     const isCurrentlySorted = sortingColumn === column;
     let sortData = [];
-    if (column == "id") {
+    if (column == "index") {
+      console.log("test");
       sortData = dataUmkm
         .slice()
-        .sort((a, b) => (isCurrentlySorted ? b.id - a.id : a.id - b.id));
+        .sort((a, b) =>
+          isCurrentlySorted ? b.index - a.index : a.index - b.index
+        );
     } else {
       sortData = dataUmkm
         .slice()
@@ -64,26 +67,18 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
   }, [sortingData, limit, page]);
 
   return (
-    <div
-      className={`mt-2 w-full ${
-        showAdvancedFilter ? "px-4" : "px-0"
-      } min-h-[40rem] flex flex-col justify-between`}
-    >
-      <div
-        className={`table-container overflow-x-auto ${
-          showAdvancedFilter ? "w-[85rem]" : "w-full"
-        } relative`}
-      >
-        <table className="w-full text-left font-inter border-separate border-spacing-y-0">
-          <thead className="bg-white rounded-lg text-black font-semibold text-sm md:text-base">
+    <div>
+      <div className={`table-container overflow-x-auto w-full relative`}>
+        <table className="w-full text-left border-separate border-spacing-y-3 font-inter transform -translate-y-3">
+          <thead className="rounded-lg text-black font-semibold text-sm md:text-base">
             <tr className="">
               {headerDataTable?.map((item) => (
                 <th
-                  className={`py-3 text-black justify-center font-bold bg-silver ${
-                    item.slug == "index" && "pl-3xl"
-                  } dark:bg-slate-700 dark:text-white`}
+                  className={`bg-white py-6 text-black justify-start font-bold whitespace-nowrap ${
+                    item.slug == "index" && "pl-3xl "
+                  } rounded-bl dark:text-white px-2 dark:bg-black`}
                 >
-                  <div className="flex items-center justify-center">
+                  <div className="bg-white flex items-center justify-start dark:bg-black">
                     <ArrowSorting
                       activeColumn={activeColumn}
                       sortingColumn={sortingColumn}
@@ -99,18 +94,18 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
                   </div>
                 </th>
               ))}
-              <th className="py-3 pr-3xl justify-center text-black sm:text-base font-bold bg-silver dark:bg-slate-700 dark:text-white">
+              <th className="bg-white py-3 pr-3xl justify-center text-black sm:text-base font-bold dark:text-white rounded-br dark:bg-black">
                 Tindakan
               </th>
             </tr>
           </thead>
           <tbody className="text-sm md:text-base">
             {paginatedUMKM?.map((data, index) => (
-              <tr key={index}>
-                <td className="py-6 whitespace-nowrap pl-3xl text-center border-t font-bold dark:border-slate-700">
+              <tr key={index} className="bg-white dark:bg-black">
+                <td className=" py-5 whitespace-nowrap pl-3xl font-bold dark:border-slate-700 rounded-tl rounded-bl">
                   {data?.index}
                 </td>
-                <td className="px-3 whitespace-nowrap font-normal text-center border-t dark:border-slate-700">
+                <td className=" px-3 whitespace-nowrap font-normal  dark:border-slate-700">
                   <div className="flex flex-row items-center w-full gap-3">
                     <img
                       src={data.avatar}
@@ -120,38 +115,50 @@ const TableUMKM: React.FC<Props> = ({ showAdvancedFilter, dataUmkm }) => {
                     {data?.name}
                   </div>
                 </td>
-                <td className="px-4 whitespace-nowrap font-normal text-center  border-t dark:border-slate-700">
-                  <span className="bg-blue-100 text-blue-600 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                <td className=" px-4 whitespace-nowrap font-normal  dark:border-slate-700">
+                  <span
+                    className={`${getSkalaUsahaColor(data?.skala).bg} ${
+                      getSkalaUsahaColor(data?.skala).text
+                    } text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                  >
                     {data?.skala}
                   </span>
                 </td>
-                <td className="px-4  whitespace-nowrap font-normal text-center border-t dark:border-slate-700">
+                <td className=" px-4  whitespace-nowrap font-normal dark:border-slate-700">
                   {data?.bidang}
                 </td>
-                <td className="px-4 whitespace-nowrap font-normal text-center border-t dark:border-slate-700">
-                  <span className="bg-blue-100 text-blue-600 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                <td className=" px-4 whitespace-nowrap font-normal dark:border-slate-700">
+                  <span
+                    className={`${getBadanUsahaColor(data?.badanHukum).bg} ${
+                      getBadanUsahaColor(data?.badanHukum).text
+                    } text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                  >
                     {data?.badanHukum}
                   </span>
                 </td>
-                <td className="px-4 whitespace-nowrap font-normal text-center border-t dark:border-slate-700">
+                <td className=" px-4 whitespace-nowrap font-normal dark:border-slate-700">
                   {data?.pengampu}
                 </td>
-                <td className="py-2 px-4 font-normal text-center border-t min-w-[15rem] dark:border-slate-700">
+                <td className=" py-2 px-4 font-normal min-w-[15rem] dark:border-slate-700">
                   {data?.alamat}
                 </td>
-                <td className="text-center pr-3xl border-t dark:border-slate-700">
-                  <LinkText text="Detail" branding="warning" url="#" />
+                <td className=" pr-3xl  dark:border-slate-700 rounded-tr rounded-br">
+                  <button className="flex flex-row gap-2 items-center text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
+                    Detail
+                    <IconInfoCircle size={17} />
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="px-4 lg:px-3xl py-4 flex flex-col md:flex-row items-end gap-y-4 md:justify-between md:items-center">
+      <div className=" bg-white rounded px-4 lg:px-3xl py-6 flex flex-col md:flex-row items-end gap-y-4 md:justify-between md:items-center dark:bg-black">
         <p className="text-sm md:text-base">
-          Menampilkan <span className="font-semibold">1</span> -
-          <span className="font-semibold"> 10 </span> dari {""}
-          <span className="font-bold"> 100 </span> data
+          Menampilkan{" "}
+          <span className="font-semibold">{page * limit - limit + 1}</span> -
+          <span className="font-semibold"> {page * limit} </span> dari {""}
+          <span className="font-bold"> {dataUmkm.length} </span> data
         </p>
         <div className="pagination w-full md:w-fit">
           <Pagination

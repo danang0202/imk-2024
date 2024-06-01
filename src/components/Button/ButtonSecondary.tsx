@@ -10,7 +10,7 @@ interface ButtonProps {
   hoverStyle?: string;
 }
 
-const ButtonWarning: React.FC<ButtonProps> = ({
+const ButtonSecondary: React.FC<ButtonProps> = ({
   text,
   size,
   onClick,
@@ -19,7 +19,9 @@ const ButtonWarning: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`px-5 py-2 lg:px-5 py-2 rounded bg-warning text-white hover:bg-warningHover text-${size} hover:${hoverStyle ? hoverStyle : ""}`}
+      className={`flex flex-row p items-center x-5 py-2 lg:px-5 py-2 rounded bg-secondary text-white hover:bg-secondaryHover text-${size} hover:${
+        hoverStyle ? hoverStyle : ""
+      } transition duration-300`}
       onClick={onClick}
     >
       {text}
@@ -28,4 +30,4 @@ const ButtonWarning: React.FC<ButtonProps> = ({
   );
 };
 
-export default ButtonWarning;
+export default ButtonSecondary;

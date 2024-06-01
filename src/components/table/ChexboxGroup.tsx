@@ -23,13 +23,13 @@ const ChexboxGroup: React.FC<Props> = ({
 
   return (
     <ul
-      className="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg"
+      className="w-full text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-black"
       data-aos="zoom-in"
       data-aos-duration="300"
     >
       {data.map((item) => (
         <li className="w-full">
-          <div className="flex items-center ps-3">
+          <div className="flex items-center ps-1">
             <input
               id={`${item.name}-checkbox`}
               type="checkbox"
@@ -40,7 +40,7 @@ const ChexboxGroup: React.FC<Props> = ({
             />
             <label
               htmlFor={`${item.name}-checkbox`}
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 whitespace-nowrap"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               {item.name}
             </label>
