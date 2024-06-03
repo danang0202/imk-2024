@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "public/logo-umkm/LandingPage copy.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

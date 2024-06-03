@@ -12,7 +12,7 @@ interface ButtonProps {
 const ButtonPrimary: React.FC<ButtonProps> = ({text, size, onClick,icon,}) => {
   return (
     <button
-      className={`px-5 py-2 lg:px-5 py-2 rounded bg-primary text-white hover:bg-primaryHover text-${size}`}
+      className={`px-4 py-2 rounded-lg bg-primary text-white hover:bg-primaryHover text-${size} transition duration-300`}
       onClick={onClick}
     >
       {text}

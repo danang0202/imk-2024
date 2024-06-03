@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
         <div className="box">
           <Footer />
         </div>
-      </div>
+        </div>
     </>
   );
 };

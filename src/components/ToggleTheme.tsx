@@ -15,7 +15,7 @@ const ToggleTheme: React.FC = () => {
   return (
     <button
       type="button"
-      className="btn btn--icon transform hover:scale-125"
+      className="btn btn--icon transform hover:scale-110 duration-300 transition"
       aria-label="toggle theme"
     >
       {theme === "dark" ? (

@@ -27,27 +27,16 @@ const Faq: React.FC<FaqProps> = ({ items }) => {
 
   return (
     <section className="w-full">
-      {items.map(({ title, content }, index) =>
-        index % 2 == 0 ? (
-          <FaqQuestion
-            index={index}
-            activeIndex={activeIndex}
-            title={title}
-            content={content}
-            toggleFaq={toggleFaq}
-            aos="fade-left"
-          />
-        ) : (
-          <FaqQuestion
-            index={index}
-            activeIndex={activeIndex}
-            title={title}
-            content={content}
-            toggleFaq={toggleFaq}
-            aos="fade-right"
-          />
-        )
-      )}
+      {items.map(({ title, content }, index) => (
+        <FaqQuestion
+          index={index}
+          activeIndex={activeIndex}
+          title={title}
+          content={content}
+          toggleFaq={toggleFaq}
+          aos="fade-up"
+        />
+      ))}
     </section>
   );
 };
