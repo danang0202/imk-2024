@@ -37,13 +37,13 @@ const LandingPage: React.FC = () => {
   return (
     <Layout pageTitle="BERANDA">
       <div
-        className={`flex flex-row justify-between items-center min-h-screen w-screen`}
+        className={`flex flex-row justify-between items-center min-h-screen w-screen pt-4xl xl:pt-0`}
       >
-        <div className="flex flex-col justify-center xl:justify-between items-start h-screen w-full xl:w-1/2 pt-4xl pb-4xl pl-4 pr-4 xl:pl-5xl xl:pr-4xl">
+        <div className="flex flex-col justify-center bg-silver h-screen xl:justify-between items-start h-screen w-full xl:w-1/2 xl:pt-4xl  pb-4xl pl-4 pr-4 xl:pl-5xl xl:pr-4xl">
           <div
             data-aos="fade-up"
             data-aos-duration="800"
-            className="home-title bg-silver w-full flex items-start flex-col justify-center pt-4xl"
+            className="home-title bg-silver w-full flex items-start flex-col justify-start pt-8 xl:pt-4xl"
           >
             <div className="flex flex-row justify-center xl:justify-between gap-4 w-full">
               <h1 className="text-black font-semibold text-2xl md:text-3xl lg:text-5xl xl:text-6xl text-center md:text-left dark:text-white">
@@ -90,7 +90,7 @@ const LandingPage: React.FC = () => {
                 Statistik UMKM serta produk - produk UMKM.
               </p>
             </div>
-            <div className="py-8 md:py-4 flex justify-center w-full xl:justify-start">
+            <div className="py-4 md:py-4 flex justify-center w-full xl:justify-start">
               <ButtonBlack
                 text="Lihat Layanan Kami"
                 size="xs md:text-base lg:text-xl xl:text-xl"
@@ -98,7 +98,7 @@ const LandingPage: React.FC = () => {
               />
             </div>
           </div>
-          <div className="box flex justify-center xl:justify-between gap-4 items-center w-full py-8 xl:py-0 translate-y-5 xl:translate-y-0">
+          <div className="box flex justify-center xl:justify-between gap-4 items-center w-full py-8 xl:py-0 xl:translate-y-0">
             <div className="hidden md:inline bg-black p-2 xl:p-3 rounded-full text-white hover:bg-black/75 hover:scale-110 transition duration-300 cursor-pointer shadow-lg">
               <IconHeadset />
             </div>

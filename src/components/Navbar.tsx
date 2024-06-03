@@ -24,6 +24,24 @@ const Navbar = () => {
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme } = useThemeContext();
+  const [isMobile, setIsMobile] = useState(false);
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth < 800) {
+      setIsMobile(true);
+    }
+  }, [windowWidth]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,9 +52,11 @@ const Navbar = () => {
           setNavBg("bg-white shadow-sm dark:bg-slate-800");
           setNavBgItem("bg-white dark:bg-slate-800");
         } else {
-          setNavBg(`${open ? "bg-silver" : "bg-transparent"} dark:bg-black`);
+          setNavBg(
+            `${open || isMobile ? "bg-silver" : "bg-transparent"} dark:bg-black`
+          );
           setNavBgItem(
-            `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
+            `${open || isMobile ? "bg-silver" : "bg-transparent"} dark:bg-black`
           );
         }
       }
@@ -45,7 +65,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [open]);
+  }, [open, isMobile]);
 
   useEffect(() => {
     if (theme == "dark") {
