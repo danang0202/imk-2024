@@ -1,9 +1,50 @@
+import { LatLngTuple } from "leaflet";
 import { TypeData } from "./components/table/Selection";
 
+export const EXTENDEDCOLORS = {
+  primary: "#4BAF4F",
+  primaryHover: "#81C784",
+  secondary: "#F59C0B",
+  secondaryHover: "#FBC02D",
+  info: "#2194f3",
+  black: "#263238",
+  greyDark: "#4D4D4D",
+  grey: "#717171",
+  greyLight: "#89939E",
+  greyBlue: "#ABBED1",
+  silver: "#F5F7FA",
+  white: "#FFFFFF",
+  warning: "#FBC02D",
+  error: "#E53835",
+  success: "#2E7D31",
+  accent2: "#5746AF",
+  accent2a: "#EDE9FE",
+  accent3: "#FA8C16",
+  accent3a: "#fff2d5",
+  accent4: "#52C41A",
+  accent4a: "#dffbcc",
+  accent5: "#F5222D",
+  accent5a: "#fecaca",
+  accent6: "#D9D9D9",
+  primaryTint2: "#E8F5E9",
+  inactive: "#BCBDBE",
+};
+
+interface LangType {
+  label: string;
+  code: string;
+  link: string;
+}
+export const LANGUAGES: LangType[] = [
+  { label: "Indonesia", code: "id", link: "/logo/indonesia.png" },
+  { label: "English", code: "en", link: "/logo/uk.png" },
+];
+
 export const menuItemsData = [
-  { label: "Beranda", href: "/" },
+  { label: "Beranda", href: "/beranda" },
   { label: "Data UMKM", href: "/data-umkm" },
   { label: "Statistik", href: "/statistics" },
+  { label: "GIS", href: "/gis" },
   { label: "Galeri Produk", href: "#" },
   { label: "Info Modal", href: "#" },
 ];
@@ -12,17 +53,26 @@ export const serviceItemsData = [
   {
     title: "Datfar UMKM Sekarang",
     desc: "Daftarkan UMKM anda untuk meningkatkan promosi",
-    image: "register.png",
+    image: "register-2.png",
+    href: "/register",
   },
   {
     title: "Cari Data UMKM ",
     desc: "Dapatkan data UMKM di seluruh Kabupaten Kulon Progo",
-    image: "search-data.png",
+    image: "data-search-2.png",
+    href: "/data-umkm",
   },
   {
     title: "Lihat Produk",
     desc: "Tingkatkan UMKM dengan 'Bela Beli Kulon Progo' ",
-    image: "shopping.png",
+    image: "shopping-2.png",
+    href: "/galeri-produk",
+  },
+  {
+    title: "Info Modal",
+    desc: "Dapat info modal untuk membantu peningkatan UMKM Anda ",
+    image: "modal-vector.png",
+    href: "/info-modal",
   },
 ];
 
@@ -58,6 +108,11 @@ export const FaqsData = [
 export interface titleSlugType {
   title: string;
   slug: string;
+}
+
+export interface colorType {
+  text: string;
+  bg: string;
 }
 
 export const dataColumnUMKMBuilder: titleSlugType[] = [
@@ -98,16 +153,16 @@ export interface nameSlugType {
 
 export const skalaUsaha = [
   {
-    name: "Usaha Menengah",
-    slug: "menengah",
+    name: "Usaha Mikro",
+    slug: "mikro",
   },
   {
     name: "Usaha Kecil",
-    slug: "kecl",
+    slug: "kecil",
   },
   {
-    name: "Usaha Mikro",
-    slug: "mikro",
+    name: "Usaha Menengah",
+    slug: "menengah",
   },
 ];
 
@@ -123,14 +178,6 @@ export const badanHukumUsaha: TypeData[] = [
   {
     name: "Firma",
     slug: "firma",
-  },
-  {
-    name: "Koperasi",
-    slug: "koperasi",
-  },
-  {
-    name: "Yayasan",
-    slug: "yayasan",
   },
   {
     name: "Perseorangan",
@@ -165,7 +212,7 @@ export const dinasPengampu = [
   },
   {
     name: "Dinas Koperasi dan UKM",
-    slug: "koprasi_ukm",
+    slug: "koperasi_ukm",
   },
   {
     name: "Dinas Pertanian dan Pangan",
@@ -239,6 +286,22 @@ export const bidangUsaha = [
     slug: "hukum-konsultasi",
   },
 ];
+
+export const kecamatanKulonProgo = [
+  "Temon",
+  "Wates",
+  "Panjatan",
+  "Galur",
+  "Lendah",
+  "Sentolo",
+  "Pengasih",
+  "Kokap",
+  "Girimulyo",
+  "Nanggulan",
+  "Kalibawang",
+  "Samigaluh",
+];
+
 export interface UMKMProperties {
   index: number;
   avatar: string;
@@ -250,10 +313,11 @@ export interface UMKMProperties {
   noTelp: string;
   kecamatan: string;
   alamat: string;
+  position?: LatLngTuple;
   [key: string]: any;
 }
 
-export const umkmData = [
+export const umkmData: UMKMProperties[] = [
   {
     index: 1,
     avatar: "/logo-umkm/logo-umkm-1.png",
@@ -265,6 +329,7 @@ export const umkmData = [
     noTelp: "086868130401",
     kecamatan: "Lendah",
     alamat: "RT 10 RW 00, Gentan, Sidorejo, Lendah",
+    position: [-7.91239, 110.22927] as LatLngTuple,
   },
   {
     index: 2,
@@ -277,6 +342,7 @@ export const umkmData = [
     noTelp: "086868130401",
     kecamatan: "Lendah",
     alamat: "RT 12 RW 00, Pulo, Gulurejo, Lendah",
+    position: [-7.900172, 110.207867] as LatLngTuple,
   },
   {
     index: 3,
@@ -289,6 +355,7 @@ export const umkmData = [
     noTelp: "086868130401",
     kecamatan: "Lendah",
     alamat: "RT 05 RW 01, Banaran, Jatirejo, Lendah",
+    position: [-7.903232, 110.203919] as LatLngTuple,
   },
   {
     index: 4,
@@ -301,25 +368,27 @@ export const umkmData = [
     noTelp: "086868130402",
     kecamatan: "Nanggulan",
     alamat: "RT 01 RW 02, Sidoarum, Nanggulan",
+    position: [-7.7861, 110.1748] as LatLngTuple,
   },
   {
     index: 5,
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Laut Segar",
     skala: "Usaha Menengah",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Perikanan",
     pengampu: "Dinas Kelautan dan Perikanan",
     noTelp: "086868130403",
     kecamatan: "Samigaluh",
     alamat: "RT 02 RW 03, Samiran, Samigaluh",
+    position: [-7.6934, 110.17] as LatLngTuple, // Samigaluh
   },
   {
     index: 6,
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Transport Maju",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Transportasi dan Logistik",
     pengampu: "Dinas Perhubungan",
     noTelp: "086868130404",
@@ -337,6 +406,7 @@ export const umkmData = [
     noTelp: "086868130405",
     kecamatan: "Wates",
     alamat: "RT 04 RW 05, Wetan, Wates",
+    position: [-7.911981, 110.096718],
   },
   {
     index: 8,
@@ -379,19 +449,20 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Pendidikan Ceria",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Pendidikan",
     pengampu: "Dinas Koperasi dan UKM",
     noTelp: "086868130409",
     kecamatan: "Lendah",
     alamat: "RT 08 RW 09, Gentan, Sidorejo, Lendah",
+    position: [-7.904763, 110.193105],
   },
   {
     index: 12,
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Kesehatan Prima",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Kesehatan",
     pengampu: "Dinas Pariwisata",
     noTelp: "086868130410",
@@ -433,13 +504,14 @@ export const umkmData = [
     noTelp: "086868130413",
     kecamatan: "Wates",
     alamat: "RT 12 RW 13, Wetan, Wates",
+    position: [-7.911216, 110.109075],
   },
   {
     index: 16,
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Pertanian Maju",
     skala: "Usaha Menengah",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Pertanian",
     pengampu: "Dinas Pertanian dan Pangan",
     noTelp: "086868130414",
@@ -481,13 +553,14 @@ export const umkmData = [
     noTelp: "086868130417",
     kecamatan: "Wates",
     alamat: "RT 16 RW 17, Wetan, Wates",
+    position: [-7.908046, 110.125294],
   },
   {
     index: 20,
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Jasa Kesehatan",
     skala: "Usaha Kecil",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Kesehatan",
     pengampu: "Dinas Sosial",
     noTelp: "086868130418",
@@ -511,7 +584,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Transportasi Sejahtera",
     skala: "Usaha Menengah",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Transportasi dan Logistik",
     pengampu: "Dinas Perhubungan",
     noTelp: "086868130420",
@@ -529,6 +602,7 @@ export const umkmData = [
     noTelp: "086868130421",
     kecamatan: "Wates",
     alamat: "RT 20 RW 21, Wetan, Wates",
+    position: [-7.906516, 110.136217],
   },
   {
     index: 24,
@@ -547,7 +621,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Teknologi dan Pendidikan",
     skala: "Usaha Menengah",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Pendidikan",
     pengampu: "Dinas Koperasi dan UKM",
     noTelp: "086868130423",
@@ -559,7 +633,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Konstruksi Mandiri",
     skala: "Usaha Kecil",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Konstruksi",
     pengampu: "Dinas Pariwisata",
     noTelp: "086868130424",
@@ -595,12 +669,13 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Hukum dan Bisnis",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Hukum dan Konsultasi",
     pengampu: "Dinas PMD Dalduk",
     noTelp: "086868130427",
     kecamatan: "Wates",
     alamat: "RT 26 RW 27, Wetan, Wates",
+    position: [-7.899304, 110.139527],
   },
   {
     index: 30,
@@ -637,13 +712,14 @@ export const umkmData = [
     noTelp: "086868130430",
     kecamatan: "Wates",
     alamat: "RT 29 RW 30, Wetan, Wates",
+    position: [-7.894932, 110.142837],
   },
   {
     index: 33,
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Jasa Angkut",
     skala: "Usaha Mikro",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Transportasi dan Logistik",
     pengampu: "Dinas Perhubungan",
     noTelp: "086868130431",
@@ -673,13 +749,14 @@ export const umkmData = [
     noTelp: "086868130433",
     kecamatan: "Lendah",
     alamat: "RT 32 RW 33, Gentan, Sidorejo, Lendah",
+    position: [-7.922275, 110.201001],
   },
   {
     index: 36,
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Usaha Bersama",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Konstruksi",
     pengampu: "Dinas Lingkungan Hidup",
     noTelp: "086868130434",
@@ -715,12 +792,13 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Teknologi Terkini",
     skala: "Usaha Mikro",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Teknologi Informasi",
     pengampu: "Dinas Perdagangan dan Perindustrian",
     noTelp: "086868130437",
     kecamatan: "Wates",
     alamat: "RT 36 RW 37, Wetan, Wates",
+    position: [-7.897992, 110.119005],
   },
   {
     index: 40,
@@ -751,7 +829,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Konstruksi Jaya",
     skala: "Usaha Mikro",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Konstruksi",
     pengampu: "Dinas Lingkungan Hidup",
     noTelp: "086868130440",
@@ -787,12 +865,13 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Inovasi Teknologi",
     skala: "Usaha Mikro",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Teknologi Informasi",
     pengampu: "Dinas Perdagangan dan Perindustrian",
     noTelp: "086868130443",
     kecamatan: "Wates",
     alamat: "RT 42 RW 43, Wetan, Wates",
+    position: [-7.891326, 110.118564],
   },
   {
     index: 46,
@@ -823,7 +902,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Bangun Bersama",
     skala: "Usaha Mikro",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Konstruksi",
     pengampu: "Dinas Lingkungan Hidup",
     noTelp: "086868130446",
@@ -889,6 +968,7 @@ export const umkmData = [
     noTelp: "086868130453",
     kecamatan: "Wates",
     alamat: "RT 50 RW 51, Wetan, Wates",
+    position: [-7.892528, 110.123418],
   },
   {
     index: 54,
@@ -907,7 +987,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Laut Bersih",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Perikanan",
     pengampu: "Dinas Kelautan dan Perikanan",
     noTelp: "086868130455",
@@ -919,7 +999,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Pariwisata Nusantara",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Pariwisata",
     pengampu: "Dinas Pariwisata",
     noTelp: "086868130456",
@@ -945,7 +1025,7 @@ export const umkmData = [
     skala: "Usaha Kecil",
     badanHukum: "Firma",
     bidang: "Pendidikan",
-    pengampu: "Dinas Pendidikan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130458",
     kecamatan: "Temon",
     alamat: "RT 55 RW 56, Temon Timur, Temon",
@@ -957,10 +1037,11 @@ export const umkmData = [
     skala: "Usaha Mikro",
     badanHukum: "Perseorangan",
     bidang: "Kesehatan",
-    pengampu: "Dinas Kesehatan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130459",
     kecamatan: "Wates",
     alamat: "RT 56 RW 57, Wetan, Wates",
+    position: [-7.887063, 110.129376],
   },
   {
     index: 60,
@@ -979,7 +1060,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Pertanian Maju",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Pertanian",
     pengampu: "Dinas Pertanian dan Pangan",
     noTelp: "086868130461",
@@ -991,7 +1072,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Hukum Aman",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Hukum dan Konsultasi",
     pengampu: "Dinas PMD Dalduk",
     noTelp: "086868130462",
@@ -1033,6 +1114,7 @@ export const umkmData = [
     noTelp: "086868130465",
     kecamatan: "Wates",
     alamat: "RT 62 RW 63, Wetan, Wates",
+    position: [-7.879194, 110.131252],
   },
   {
     index: 66,
@@ -1051,7 +1133,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Pariwisata Bahari",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Pariwisata",
     pengampu: "Dinas Pariwisata",
     noTelp: "086868130467",
@@ -1063,7 +1145,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Industri Kreatif",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Industri Manufaktur",
     pengampu: "Dinas Koperasi dan UKM",
     noTelp: "086868130468",
@@ -1077,7 +1159,7 @@ export const umkmData = [
     skala: "Usaha Menengah",
     badanHukum: "PT",
     bidang: "Pendidikan",
-    pengampu: "Dinas Pendidikan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130469",
     kecamatan: "Samigaluh",
     alamat: "RT 66 RW 67, Samiran, Samigaluh",
@@ -1089,7 +1171,7 @@ export const umkmData = [
     skala: "Usaha Kecil",
     badanHukum: "Firma",
     bidang: "Kesehatan",
-    pengampu: "Dinas Kesehatan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130470",
     kecamatan: "Temon",
     alamat: "RT 67 RW 68, Temon Timur, Temon",
@@ -1105,6 +1187,7 @@ export const umkmData = [
     noTelp: "086868130471",
     kecamatan: "Wates",
     alamat: "RT 68 RW 69, Wetan, Wates",
+    position: [-7.886028, 110.134861],
   },
   {
     index: 72,
@@ -1123,7 +1206,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Hukum Terdepan",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Hukum dan Konsultasi",
     pengampu: "Dinas PMD Dalduk",
     noTelp: "086868130473",
@@ -1135,7 +1218,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Properti Lestari",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Properti dan Real Estat",
     pengampu: "Dinas Pariwisata",
     noTelp: "086868130474",
@@ -1177,6 +1260,7 @@ export const umkmData = [
     noTelp: "086868130477",
     kecamatan: "Wates",
     alamat: "RT 74 RW 75, Wetan, Wates",
+    position: [-7.887698, 110.129417],
   },
   {
     index: 78,
@@ -1195,7 +1279,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Industri Maju",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Industri Manufaktur",
     pengampu: "Dinas Koperasi dan UKM",
     noTelp: "086868130479",
@@ -1207,9 +1291,9 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Pendidikan Sejahtera",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Pendidikan",
-    pengampu: "Dinas Pendidikan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130480",
     kecamatan: "Nanggulan",
     alamat: "RT 77 RW 78, Sidoarum, Nanggulan",
@@ -1221,7 +1305,7 @@ export const umkmData = [
     skala: "Usaha Menengah",
     badanHukum: "PT",
     bidang: "Kesehatan",
-    pengampu: "Dinas Kesehatan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130481",
     kecamatan: "Samigaluh",
     alamat: "RT 78 RW 79, Samiran, Samigaluh",
@@ -1249,6 +1333,7 @@ export const umkmData = [
     noTelp: "086868130483",
     kecamatan: "Wates",
     alamat: "RT 80 RW 81, Wetan, Wates",
+    position: [-7.884467, 110.143665],
   },
   {
     index: 84,
@@ -1267,7 +1352,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Properti Berkah",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Properti dan Real Estat",
     pengampu: "Dinas Pariwisata",
     noTelp: "086868130485",
@@ -1279,7 +1364,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Konsultasi Cepat",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Hukum dan Konsultasi",
     pengampu: "Dinas PMD Dalduk",
     noTelp: "086868130486",
@@ -1317,10 +1402,11 @@ export const umkmData = [
     skala: "Usaha Mikro",
     badanHukum: "Perseorangan",
     bidang: "Pendidikan",
-    pengampu: "Dinas Pendidikan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130489",
     kecamatan: "Wates",
     alamat: "RT 86 RW 87, Wetan, Wates",
+    position: [-7.871374, 110.148815],
   },
   {
     index: 90,
@@ -1329,7 +1415,7 @@ export const umkmData = [
     skala: "Usaha Menengah",
     badanHukum: "CV",
     bidang: "Kesehatan",
-    pengampu: "Dinas Kesehatan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130490",
     kecamatan: "Sentolo",
     alamat: "RT 87 RW 88, Senayan, Sentolo",
@@ -1339,7 +1425,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Transportasi Maju",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Transportasi dan Logistik",
     pengampu: "Dinas Perhubungan",
     noTelp: "086868130491",
@@ -1351,7 +1437,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Pertanian Bahagia",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Pertanian",
     pengampu: "Dinas Pertanian dan Pangan",
     noTelp: "086868130492",
@@ -1393,6 +1479,7 @@ export const umkmData = [
     noTelp: "086868130495",
     kecamatan: "Wates",
     alamat: "RT 92 RW 93, Wetan, Wates",
+    position: [-7.85573, 110.152935],
   },
   {
     index: 96,
@@ -1411,7 +1498,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Laut Mandiri",
     skala: "Usaha Kecil",
-    badanHukum: "Koperasi",
+    badanHukum: "Firma",
     bidang: "Perikanan",
     pengampu: "Dinas Kelautan dan Perikanan",
     noTelp: "086868130497",
@@ -1423,7 +1510,7 @@ export const umkmData = [
     avatar: "/logo-umkm/logo-umkm-1.png",
     name: "Pariwisata Maju",
     skala: "Usaha Mikro",
-    badanHukum: "Yayasan",
+    badanHukum: "Perseorangan",
     bidang: "Pariwisata",
     pengampu: "Dinas Pariwisata",
     noTelp: "086868130498",
@@ -1449,7 +1536,7 @@ export const umkmData = [
     skala: "Usaha Kecil",
     badanHukum: "Firma",
     bidang: "Pendidikan",
-    pengampu: "Dinas Pendidikan",
+    pengampu: "Dinas Sosial",
     noTelp: "086868130500",
     kecamatan: "Temon",
     alamat: "RT 97 RW 98, Temon Barat, Temon",

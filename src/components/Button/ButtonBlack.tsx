@@ -7,19 +7,12 @@ interface ButtonProps {
   size: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>; // Optional click handler
   icon?: string;
-  hoverStyle?: string;
 }
 
-const ButtonWarning: React.FC<ButtonProps> = ({
-  text,
-  size,
-  onClick,
-  icon,
-  hoverStyle,
-}) => {
+const ButtonBlack: React.FC<ButtonProps> = ({ text, size, onClick, icon }) => {
   return (
     <button
-      className={`px-5 py-2 lg:px-5 py-2 rounded bg-warning text-white hover:bg-warningHover text-${size} hover:${hoverStyle ? hoverStyle : ""}`}
+      className={`px-4 py-2 rounded-lg bg-black text-white hover:bg-black/75 text-${size} transition duration-300 shadow-lg`}
       onClick={onClick}
     >
       {text}
@@ -28,4 +21,4 @@ const ButtonWarning: React.FC<ButtonProps> = ({
   );
 };
 
-export default ButtonWarning;
+export default ButtonBlack;

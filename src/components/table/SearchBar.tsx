@@ -1,6 +1,12 @@
-import { useEffect, useState } from "react";
-import { dataColumnUMKMBuilder, titleSlugType } from "../../DataBuilder";
+import { useEffect, useRef, useState } from "react";
+import {
+  UMKMProperties,
+  dataColumnUMKMBuilder,
+  titleSlugType,
+  umkmData,
+} from "../../DataBuilder";
 import { getTitleNameFromSlug } from "../../function";
+import { CSSTransition } from "react-transition-group";
 
 interface Props {
   width: string;
@@ -8,6 +14,7 @@ interface Props {
   setSearchColumn: (column: string) => void;
   keyword: string;
   setKeyword: (column: string) => void;
+  data?: UMKMProperties[];
 }
 
 const SearchBar: React.FC<Props> = ({
@@ -16,15 +23,58 @@ const SearchBar: React.FC<Props> = ({
   setSearchColumn,
   keyword,
   setKeyword,
+  data,
 }) => {
   const [showFilfterColumn, setShowsearchColumn] = useState(false);
   const columns: titleSlugType[] = dataColumnUMKMBuilder;
+  const [recommendations, setRecommendations] = useState<string[]>([]);
+  const ref = useRef<HTMLFormElement>(null);
+
+  const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setKeyword(value);
+    const dataFix = data ? data : umkmData;
+
+    if (value.length > 0) {
+      const filteredRecommendations = dataFix
+        .filter((umkm) =>
+          umkm[searchColumn]?.toLowerCase().includes(value.toLowerCase())
+        )
+        .sort((a, b) => {
+          const aField = a[searchColumn]?.toLowerCase() || "";
+          const bField = b[searchColumn]?.toLowerCase() || "";
+          const aStartsWith = aField.startsWith(value.toLowerCase());
+          const bStartsWith = bField.startsWith(value.toLowerCase());
+          if (aStartsWith && !bStartsWith) return -1;
+          if (!aStartsWith && bStartsWith) return 1;
+          return (
+            aField.indexOf(value.toLowerCase()) -
+            bField.indexOf(value.toLowerCase())
+          );
+        })
+        .slice(0, 10)
+        .map((umkm) => umkm[searchColumn]);
+      setRecommendations(filteredRecommendations);
+    } else {
+      setRecommendations([]);
+    }
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (ref.current && !ref.current.contains(event.target as Node)) {
+      setRecommendations([]);
+    }
+  };
 
   useEffect(() => {
-    console.log(searchColumn);
-  }, [searchColumn]);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <form className="">
+    <form className="" ref={ref}>
       <div className="flex relative">
         <label
           htmlFor="search-dropdown"
@@ -59,7 +109,7 @@ const SearchBar: React.FC<Props> = ({
         {showFilfterColumn && (
           <div
             id="dropdown"
-            className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 transform translate-y-12 dark:bg-slate-800"
+            className="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44 transform translate-y-12 dark:bg-slate-800"
           >
             <ul
               className="py-2 text-sm text-gray-700 "
@@ -98,7 +148,7 @@ const SearchBar: React.FC<Props> = ({
         <div className="relative">
           <input
             value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
+            onChange={(e) => handleKeywordChange(e)}
             type="search"
             id="search-dropdown"
             className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2 dark:bg-slate-800 dark:border-grey dark:focus:bg-black"
@@ -127,6 +177,38 @@ const SearchBar: React.FC<Props> = ({
             </svg>
             <span className="sr-only">Search</span>
           </button>
+          {recommendations.length > 0 && (
+            <CSSTransition
+              in={true}
+              timeout={300}
+              classNames="fade"
+              unmountOnExit
+            >
+              <ul className="absolute z-20 bg-white w-full border rounded shadow-lg mt-1">
+                {recommendations.length > 0 && (
+                  <ul className="absolute z-10 bg-white w-full border rounded shadow-lg mt-1">
+                    {recommendations.map((item, index) => (
+                      <li
+                        key={index}
+                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                        onClick={() => {
+                          setKeyword(item);
+                          setRecommendations([]);
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: item.replace(
+                            new RegExp(`(${keyword})`, "gi"),
+                            (match) =>
+                              `<span class="font-semibold text-secondary">${match}</span>`
+                          ),
+                        }}
+                      />
+                    ))}
+                  </ul>
+                )}
+              </ul>
+            </CSSTransition>
+          )}
         </div>
       </div>
     </form>

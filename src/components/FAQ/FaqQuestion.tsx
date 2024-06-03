@@ -26,7 +26,7 @@ const FaqQuestion: React.FC<Item> = ({
     >
       <button className="flex justify-between w-full items-center focus:outline-none">
         <h4
-          className={`flex-1 text-lg text-left font-semibold hover:text-primary ${
+          className={`flex-1 text-sm md:text-base xl:text-lg text-left font-semibold hover:text-primary ${
             activeIndex.includes(index)
               ? "text-primary"
               : "text-black dark:text-white"
@@ -42,7 +42,7 @@ const FaqQuestion: React.FC<Item> = ({
       </button>
       {activeIndex.includes(index) && (
         <div className="mt-3" data-aos="zoom-in" data-aos-duration="400">
-          <p className="text-base dark:text-white">{content}</p>
+          <p className="text-sm md:text-base dark:text-white">{content}</p>
         </div>
       )}
     </div>

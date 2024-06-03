@@ -1,4 +1,4 @@
-import { UMKMProperties, dataColumnUMKMBuilder } from "../DataBuilder";
+import { UMKMProperties, colorType, dataColumnUMKMBuilder } from "../DataBuilder";
 import { TypeData } from "../components/table/Selection";
 
 export const filterDataUMKM = (
@@ -8,11 +8,9 @@ export const filterDataUMKM = (
     dinasPengampu: TypeData[],
     badanHukum: TypeData[],
     bidangUsaha: TypeData[],
-    data: UMKMProperties[]
-): UMKMProperties[] => {
+    data: UMKMProperties[],): UMKMProperties[] => {
     const keywordLower = keyword.toLowerCase();
     let filteredData = data;
-
     // Helper function to check if the item's property matches any of the selected filters
     const matchesFilter = (itemValue: string, filters: TypeData[]) =>
         filters.some((filter) => itemValue === filter.name);
@@ -55,5 +53,49 @@ export const filterDataUMKM = (
             }
         });
     }
+    
+
     return filteredData;
 };
+
+export const getSkalaUsahaColor = (skalaUsaha: string): colorType => {
+    let text = "";
+    let bg = "";
+    if (skalaUsaha === 'Usaha Menengah') {
+        text = "text-success";
+        bg = "bg-accent4a";
+    } else if (skalaUsaha === 'Usaha Kecil') {
+        text = "text-accent2";
+        bg = "bg-accent2a"
+    } else {
+        text = "text-accent3";
+        bg = "bg-accent3a"
+    }
+    return {
+        text,
+        bg
+    }
+}
+
+export const getBadanUsahaColor = (badanUsaha: string): colorType => {
+    let text = "";
+    let bg = "";
+    if (badanUsaha === 'PT') {
+        text = "text-accent5";
+        bg = "bg-accent5a";
+    } else if (badanUsaha === 'CV') {
+        text = "text-accent2";
+        bg = "bg-accent2a"
+    } else if (badanUsaha == "Firma") {
+        text = "text-success";
+        bg = "bg-accent4a"
+    } else {
+        text = "text-blue-600"
+        bg = "bg-blue-100"
+    }
+    return {
+        text,
+        bg
+    }
+}
+
