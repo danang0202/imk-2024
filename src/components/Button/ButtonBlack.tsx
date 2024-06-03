@@ -9,10 +9,10 @@ interface ButtonProps {
   icon?: string;
 }
 
-const ButtonPrimary: React.FC<ButtonProps> = ({text, size, onClick,icon,}) => {
+const ButtonBlack: React.FC<ButtonProps> = ({ text, size, onClick, icon }) => {
   return (
     <button
-      className={`px-4 py-2 rounded-lg bg-primary text-white hover:bg-primaryHover text-${size} transition duration-300`}
+      className={`px-4 py-2 rounded-lg bg-black text-white hover:bg-black/75 text-${size} transition duration-300 shadow-lg`}
       onClick={onClick}
     >
       {text}
@@ -21,4 +21,4 @@ const ButtonPrimary: React.FC<ButtonProps> = ({text, size, onClick,icon,}) => {
   );
 };
 
-export default ButtonPrimary;
+export default ButtonBlack;

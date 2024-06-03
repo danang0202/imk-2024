@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { IconArrowRight } from "@tabler/icons-react";
 
 interface ButtonProps {
   text: string;
@@ -25,7 +24,7 @@ const ButtonSecondary: React.FC<ButtonProps> = ({
       onClick={onClick}
     >
       {text}
-      {icon && <FontAwesomeIcon icon={faArrowRight} className="ps-2" />}
+      {icon && <IconArrowRight size={30} className="pl-2"/>}
     </button>
   );
 };

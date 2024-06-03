@@ -1,3 +1,4 @@
+import { LatLngTuple } from "leaflet";
 import { TypeData } from "./components/table/Selection";
 
 export const EXTENDEDCOLORS = {
@@ -40,7 +41,7 @@ export const LANGUAGES: LangType[] = [
 ];
 
 export const menuItemsData = [
-  { label: "Beranda", href: "/" },
+  { label: "Beranda", href: "/beranda" },
   { label: "Data UMKM", href: "/data-umkm" },
   { label: "Statistik", href: "/statistics" },
   { label: "GIS", href: "/gis" },
@@ -52,17 +53,26 @@ export const serviceItemsData = [
   {
     title: "Datfar UMKM Sekarang",
     desc: "Daftarkan UMKM anda untuk meningkatkan promosi",
-    image: "register.png",
+    image: "register-2.png",
+    href: "/register",
   },
   {
     title: "Cari Data UMKM ",
     desc: "Dapatkan data UMKM di seluruh Kabupaten Kulon Progo",
-    image: "search-data.png",
+    image: "data-search-2.png",
+    href: "/data-umkm",
   },
   {
     title: "Lihat Produk",
     desc: "Tingkatkan UMKM dengan 'Bela Beli Kulon Progo' ",
-    image: "shopping.png",
+    image: "shopping-2.png",
+    href: "/galeri-produk",
+  },
+  {
+    title: "Info Modal",
+    desc: "Dapat info modal untuk membantu peningkatan UMKM Anda ",
+    image: "modal-vector.png",
+    href: "/info-modal",
   },
 ];
 
@@ -303,10 +313,11 @@ export interface UMKMProperties {
   noTelp: string;
   kecamatan: string;
   alamat: string;
+  position?: LatLngTuple;
   [key: string]: any;
 }
 
-export const umkmData = [
+export const umkmData: UMKMProperties[] = [
   {
     index: 1,
     avatar: "/logo-umkm/logo-umkm-1.png",
@@ -318,6 +329,7 @@ export const umkmData = [
     noTelp: "086868130401",
     kecamatan: "Lendah",
     alamat: "RT 10 RW 00, Gentan, Sidorejo, Lendah",
+    position: [-7.91239, 110.22927] as LatLngTuple,
   },
   {
     index: 2,
@@ -330,6 +342,7 @@ export const umkmData = [
     noTelp: "086868130401",
     kecamatan: "Lendah",
     alamat: "RT 12 RW 00, Pulo, Gulurejo, Lendah",
+    position: [-7.900172, 110.207867] as LatLngTuple,
   },
   {
     index: 3,
@@ -342,6 +355,7 @@ export const umkmData = [
     noTelp: "086868130401",
     kecamatan: "Lendah",
     alamat: "RT 05 RW 01, Banaran, Jatirejo, Lendah",
+    position: [-7.903232, 110.203919] as LatLngTuple,
   },
   {
     index: 4,
@@ -354,6 +368,7 @@ export const umkmData = [
     noTelp: "086868130402",
     kecamatan: "Nanggulan",
     alamat: "RT 01 RW 02, Sidoarum, Nanggulan",
+    position: [-7.7861, 110.1748] as LatLngTuple,
   },
   {
     index: 5,
@@ -366,6 +381,7 @@ export const umkmData = [
     noTelp: "086868130403",
     kecamatan: "Samigaluh",
     alamat: "RT 02 RW 03, Samiran, Samigaluh",
+    position: [-7.6934, 110.17] as LatLngTuple, // Samigaluh
   },
   {
     index: 6,
@@ -390,6 +406,7 @@ export const umkmData = [
     noTelp: "086868130405",
     kecamatan: "Wates",
     alamat: "RT 04 RW 05, Wetan, Wates",
+    position: [-7.911981, 110.096718],
   },
   {
     index: 8,
@@ -438,6 +455,7 @@ export const umkmData = [
     noTelp: "086868130409",
     kecamatan: "Lendah",
     alamat: "RT 08 RW 09, Gentan, Sidorejo, Lendah",
+    position: [-7.904763, 110.193105],
   },
   {
     index: 12,
@@ -486,6 +504,7 @@ export const umkmData = [
     noTelp: "086868130413",
     kecamatan: "Wates",
     alamat: "RT 12 RW 13, Wetan, Wates",
+    position: [-7.911216, 110.109075],
   },
   {
     index: 16,
@@ -534,6 +553,7 @@ export const umkmData = [
     noTelp: "086868130417",
     kecamatan: "Wates",
     alamat: "RT 16 RW 17, Wetan, Wates",
+    position: [-7.908046, 110.125294],
   },
   {
     index: 20,
@@ -582,6 +602,7 @@ export const umkmData = [
     noTelp: "086868130421",
     kecamatan: "Wates",
     alamat: "RT 20 RW 21, Wetan, Wates",
+    position: [-7.906516, 110.136217],
   },
   {
     index: 24,
@@ -654,6 +675,7 @@ export const umkmData = [
     noTelp: "086868130427",
     kecamatan: "Wates",
     alamat: "RT 26 RW 27, Wetan, Wates",
+    position: [-7.899304, 110.139527],
   },
   {
     index: 30,
@@ -690,6 +712,7 @@ export const umkmData = [
     noTelp: "086868130430",
     kecamatan: "Wates",
     alamat: "RT 29 RW 30, Wetan, Wates",
+    position: [-7.894932, 110.142837],
   },
   {
     index: 33,
@@ -726,6 +749,7 @@ export const umkmData = [
     noTelp: "086868130433",
     kecamatan: "Lendah",
     alamat: "RT 32 RW 33, Gentan, Sidorejo, Lendah",
+    position: [-7.922275, 110.201001],
   },
   {
     index: 36,
@@ -774,6 +798,7 @@ export const umkmData = [
     noTelp: "086868130437",
     kecamatan: "Wates",
     alamat: "RT 36 RW 37, Wetan, Wates",
+    position: [-7.897992, 110.119005],
   },
   {
     index: 40,
@@ -846,6 +871,7 @@ export const umkmData = [
     noTelp: "086868130443",
     kecamatan: "Wates",
     alamat: "RT 42 RW 43, Wetan, Wates",
+    position: [-7.891326, 110.118564],
   },
   {
     index: 46,
@@ -942,6 +968,7 @@ export const umkmData = [
     noTelp: "086868130453",
     kecamatan: "Wates",
     alamat: "RT 50 RW 51, Wetan, Wates",
+    position: [-7.892528, 110.123418],
   },
   {
     index: 54,
@@ -1014,6 +1041,7 @@ export const umkmData = [
     noTelp: "086868130459",
     kecamatan: "Wates",
     alamat: "RT 56 RW 57, Wetan, Wates",
+    position: [-7.887063, 110.129376],
   },
   {
     index: 60,
@@ -1086,6 +1114,7 @@ export const umkmData = [
     noTelp: "086868130465",
     kecamatan: "Wates",
     alamat: "RT 62 RW 63, Wetan, Wates",
+    position: [-7.879194, 110.131252],
   },
   {
     index: 66,
@@ -1158,6 +1187,7 @@ export const umkmData = [
     noTelp: "086868130471",
     kecamatan: "Wates",
     alamat: "RT 68 RW 69, Wetan, Wates",
+    position: [-7.886028, 110.134861],
   },
   {
     index: 72,
@@ -1230,6 +1260,7 @@ export const umkmData = [
     noTelp: "086868130477",
     kecamatan: "Wates",
     alamat: "RT 74 RW 75, Wetan, Wates",
+    position: [-7.887698, 110.129417],
   },
   {
     index: 78,
@@ -1302,6 +1333,7 @@ export const umkmData = [
     noTelp: "086868130483",
     kecamatan: "Wates",
     alamat: "RT 80 RW 81, Wetan, Wates",
+    position: [-7.884467, 110.143665],
   },
   {
     index: 84,
@@ -1374,6 +1406,7 @@ export const umkmData = [
     noTelp: "086868130489",
     kecamatan: "Wates",
     alamat: "RT 86 RW 87, Wetan, Wates",
+    position: [-7.871374, 110.148815],
   },
   {
     index: 90,
@@ -1446,6 +1479,7 @@ export const umkmData = [
     noTelp: "086868130495",
     kecamatan: "Wates",
     alamat: "RT 92 RW 93, Wetan, Wates",
+    position: [-7.85573, 110.152935],
   },
   {
     index: 96,

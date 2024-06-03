@@ -9,6 +9,7 @@ const DropDownLang = () => {
 
   const onChangeLang = (e: string) => {
     i18n.changeLanguage(e);
+    localStorage.setItem("lang", e);
   };
 
   return (

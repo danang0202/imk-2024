@@ -33,7 +33,6 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
     const isCurrentlySorted = sortingColumn === column;
     let sortData = [];
     if (column == "index") {
-      console.log("test");
       sortData = dataUmkm
         .slice()
         .sort((a, b) =>

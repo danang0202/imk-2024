@@ -46,8 +46,12 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
   return (
     <>
       <div className="">
-        <div className="border-b-2 border-grey py-4">
-          <h1 className="font-bold text- tlgext-center">
+        <div
+          className={`border-b-2 border-grey py-4 ${
+            location.pathname == "/gis" && "hidden"
+          }`}
+        >
+          <h1 className="font-bold text- text-center">
             {" "}
             <FontAwesomeIcon icon={faList} className="pr-3" /> Advanced Filter
           </h1>
@@ -221,7 +225,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 >
                   Bersihkan
                 </p>
-            </div>
+              </div>
               <ChexboxGroup
                 data={bidangUsaha}
                 selectedData={bidangUsahaFilter}

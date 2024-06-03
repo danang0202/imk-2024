@@ -18,10 +18,7 @@ import { faCircleDown, faList } from "@fortawesome/free-solid-svg-icons";
 import AdvancedFilter from "../../components/table/AdvancedFilter";
 import { filterDataUMKM } from "../../utils/utils";
 import BadgeFilter from "../../components/commons/BadgeFilter";
-import {
-  IconFilterSearch,
-  IconX,
-} from "@tabler/icons-react";
+import { IconFilterSearch, IconX } from "@tabler/icons-react";
 
 const DataUmkm = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true);
@@ -128,7 +125,7 @@ const DataUmkm = () => {
 
   return (
     <Layout pageTitle="DATA UMKM">
-      <div className="flex items-stretch flex-row w-full pt-6xl pb-3xl xl:gap-4 xl:px-8 items-start dark:bg-slate-800 dark:text-white">
+      <div className="flex items-stretch flex-row w-full pt-5.5xl pb-3xl xl:gap-4 xl:px-8 bg-silver items-start dark:bg-slate-800 dark:text-white">
         <CSSTransition
           in={showAdvancedFilter}
           timeout={300}
@@ -316,7 +313,10 @@ const DataUmkm = () => {
               <p className="text-grey text-sm">
                 Mendapatkan {filteredData.length} data
               </p>
-              <div className="flex flex-row  items-center text-accent5 hover:text-accent5a cursor-pointer transition duration-300" onClick={()=>handleDeleteAllFilter()}>
+              <div
+                className="flex flex-row  items-center text-accent5 hover:text-accent5a cursor-pointer transition duration-300"
+                onClick={() => handleDeleteAllFilter()}
+              >
                 <IconX size={18} />
                 <p className="">Bersihkan</p>
               </div>

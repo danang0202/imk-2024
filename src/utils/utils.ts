@@ -8,11 +8,9 @@ export const filterDataUMKM = (
     dinasPengampu: TypeData[],
     badanHukum: TypeData[],
     bidangUsaha: TypeData[],
-    data: UMKMProperties[]
-): UMKMProperties[] => {
+    data: UMKMProperties[],): UMKMProperties[] => {
     const keywordLower = keyword.toLowerCase();
     let filteredData = data;
-
     // Helper function to check if the item's property matches any of the selected filters
     const matchesFilter = (itemValue: string, filters: TypeData[]) =>
         filters.some((filter) => itemValue === filter.name);
@@ -55,6 +53,8 @@ export const filterDataUMKM = (
             }
         });
     }
+    
+
     return filteredData;
 };
 

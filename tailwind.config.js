@@ -22,7 +22,7 @@ export default {
         white: '#FFFFFF',
         warning: '#FBC02D', // oren
         error: '#E53835',
-      success: '#2E7D31',
+        success: '#2E7D31',
         accent2: '#5746AF',
         accent2a: '#EDE9FE',
         accent3: '#FA8C16',
@@ -33,6 +33,7 @@ export default {
         accent5a: "#fecaca",
         primaryTint2: '#E8F5E9',
         inactive: '#BCBDBE',
+        purpleBlue: '#342B6E'
       },
       fontSize: {
         'xs': '.75rem',     // ukuran ekstra kecil
@@ -50,8 +51,11 @@ export default {
         '9xl': '8rem',      // ukuran sangat besar
       },
       padding: {
+        '2xl': '2rem',
         '3xl': '3rem',
+        '4xl': '4rem',
         '5xl': '5rem',
+        '5.5xl': '6rem',
         '6xl': '7rem', // Add a new padding size with a custom value
       },
     },

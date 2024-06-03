@@ -16,22 +16,28 @@ const Navbar = () => {
   const menuItems: MenuItem[] = menuItemsData;
   const location = useLocation();
   const [open, setOpen] = useState(false);
-  const [navBg, setNavBg] = useState("bg-silver dark:bg-black");
-  const [navBgItem, setNavBgItem] = useState("bg-silver dark:bg-black");
+  const [navBg, setNavBg] = useState(
+    `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
+  );
+  const [navBgItem, setNavBgItem] = useState(
+    `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
+  );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme } = useThemeContext();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (location.pathname == "/") {
+      if (location.pathname == "/beranda") {
         const scrollY = window.scrollY;
 
-        if (scrollY > 500) {
-          setNavBg("bg-white shadow-lg dark:bg-slate-800");
+        if (scrollY > 200) {
+          setNavBg("bg-white shadow-sm dark:bg-slate-800");
           setNavBgItem("bg-white dark:bg-slate-800");
         } else {
-          setNavBg("bg-silver dark:bg-black");
-          setNavBgItem("bg-silver dark:bg-black");
+          setNavBg(`${open ? "bg-silver" : "bg-transparent"} dark:bg-black`);
+          setNavBgItem(
+            `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
+          );
         }
       }
     };
@@ -39,7 +45,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     if (theme == "dark") {
@@ -53,10 +59,16 @@ const Navbar = () => {
     console.log("test");
   };
 
+  useEffect(() => {
+    console.log(open);
+  }, [open]);
+
   return (
     <div
-      className={`w-full top-0 left-0 xl:px-8 py-4 ${
-        location.pathname == "/" ? navBg : "bg-white shadow-lg dark:bg-black"
+      className={`w-full top-0 left-0 xl:px-8 py-3 ${
+        location.pathname == "/beranda"
+          ? navBg
+          : "bg-white shadow-sm dark:bg-black border-b"
       }`}
     >
       <div className="xl:flex items-center justify-between xl:px-10 px-7">
@@ -87,9 +99,11 @@ const Navbar = () => {
 
         <ul
           className={`${
-            location.pathname == "/" ? navBgItem : "bg-white dark:bg-black"
-          } gap-x-7 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9 ${
-            open ? "top-20 " : "top-[-490px]"
+            location.pathname == "/beranda"
+              ? navBgItem
+              : "bg-white dark:bg-black"
+          } gap-x-6 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9 ${
+            open ? "top-15 " : "top-[-490px]"
           }`}
         >
           {menuItems.map((link) => (
@@ -99,7 +113,11 @@ const Navbar = () => {
             >
               <a
                 href={link.href}
-                className="text-black hover:text-primary font-semibold dark:text-white"
+                className={`hover:text-black/75 font-semibold ${
+                  location.pathname.includes(link.href)
+                    ? "text-black border-b-2 pb-1 border-black dark:border-white"
+                    : "text-[#000] dark:text-white"
+                }`}
               >
                 {link.label}
               </a>
@@ -108,13 +126,6 @@ const Navbar = () => {
           <div className="hidden xl:inline">
             <ToggleTheme />
           </div>
-          {/* <select defaultValue={i18n.language} onChange={onChangeLang}>
-            {LANGUAGES.map(({ code, label }) => (
-              <option key={code} value={code}>
-                {label}
-              </option>
-            ))}
-          </select> */}
           <DropDownLang />
           <div className="">
             <ButtonPrimary text="Log In" size="base" onClick={logInOnClick} />

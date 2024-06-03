@@ -146,7 +146,6 @@ export const getDataCountPerCategory = (data: UMKMProperties[], criteria: TypeDa
         return {
             name: item.name,
             value: count,
-            color: EXTENDEDCOLORS.greyDark
         };
     });
     return result;

@@ -12,7 +12,7 @@ i18n.use(initReactI18next).init({
     resources: {
         id: {
             translation: {
-                title: 'Hai, Selamat Datang',
+                title: 'Selamat Datang',
             }
         },
         en: {

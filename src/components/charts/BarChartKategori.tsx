@@ -10,7 +10,9 @@ import {
   umkmData,
 } from "../../DataBuilder";
 import { getDataCountPerCategory } from "../../utils/chart-utils";
-
+import { ColorInput } from "@mantine/core";
+import DownloadChartButton from "../commons/DownloadChartButton";
+import FilterChartSelection from "./FilterChartSelection";
 const BarChartKategori = () => {
   const getCartHeight = () => {
     const result = data.length * 50;
@@ -51,10 +53,11 @@ const BarChartKategori = () => {
     },
   ];
   const [show, setShow] = useState<boolean>(false);
+  const [colorChart, setColorChart] = useState<string>(EXTENDEDCOLORS.accent3);
   const [showIsVertical, setShowIsVertical] = useState<boolean>(false);
-  const [selectedFilter, setSelectedFilter] = useState<TypeData | undefined>({
-    name: "Skala Usaha",
-    slug: "skala",
+  const [selectedFilter, setSelectedFilter] = useState<TypeData>({
+    name: "Badan Hukum",
+    slug: "badanHukum",
   });
   const [isVertical, setIsVertical] = useState<TypeData>({
     name: "Vertikal",
@@ -77,113 +80,48 @@ const BarChartKategori = () => {
     }
     setShow(false);
   }, [selectedFilter]);
+
   return (
     <div className="w-full px-6">
-      <div className="flex flex-row justify-between pb-6 gap-4">
+      <div className="flex flex-row justify-between pb-6 gap-4 items-center">
         <p className="font-semibold text-lg text-wrap pl-4">
           Grafik Batang Jumlah UMKM Berdasarkan {selectedFilter?.name}
         </p>
-        <div className="box flex flex-row gap-4">
-          <div className="relative inline-block text-left">
-            <div>
-              <button
-                type="button"
-                className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 whitespace-nowrap"
-                aria-expanded="true"
-                aria-haspopup="true"
-                onClick={() => setShow(!show)}
-              >
-                {selectedFilter?.name}
-                <svg
-                  className="-mr-1 h-5 w-5 text-gray-400"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div
-              className={`${
-                !show && "hidden"
-              } absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="menu-button"
-            >
-              <div className="" role="none">
-                {filter.map((item, index) => (
-                  <p
-                    key={index}
-                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-silver cursor-pointer transition duration-300  hover:text-black"
-                    role="menuitem"
-                    onClick={() => {
-                      setSelectedFilter(item);
-                      setShow(false);
-                    }}
-                  >
-                    {item.name}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </div>
+        <div className="box flex flex-row gap-4 curosr-pointer items-center">
+          <ColorInput
+            pointer={true}
+            value={colorChart}
+            onChange={setColorChart}
+            format="hex"
+            w={"10rem"}
+            swatches={[
+              EXTENDEDCOLORS.accent2,
+              EXTENDEDCOLORS.accent3,
+              EXTENDEDCOLORS.accent4,
+              EXTENDEDCOLORS.accent5,
+              EXTENDEDCOLORS.accent6,
+              EXTENDEDCOLORS.info,
+            ]}
+          />
+          <FilterChartSelection
+            show={show}
+            setShow={setShow}
+            filterList={filter}
+            selectedFilter={selectedFilter}
+            setSelectedFilter={setSelectedFilter}
+          />
 
           {/* filter vertikal */}
-          <div className="relative inline-block text-left">
-            <div>
-              <button
-                type="button"
-                className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                aria-expanded="true"
-                aria-haspopup="true"
-                onClick={() => setShowIsVertical(!showIsVertical)}
-              >
-                {isVertical?.name}
-                <svg
-                  className="-mr-1 h-5 w-5 text-gray-400"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div
-              className={`${
-                !showIsVertical && "hidden"
-              } absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="menu-button"
-            >
-              <div className="" role="none">
-                {isVerticalData.map((item: TypeData, index: number) => (
-                  <p
-                    key={index}
-                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-silver cursor-pointer transition duration-300  hover:text-black"
-                    role="menuitem"
-                    onClick={() => {
-                      setIsVertical(item);
-                      setShowIsVertical(false);
-                    }}
-                  >
-                    {item.name}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </div>
+          <FilterChartSelection
+            show={showIsVertical}
+            setShow={setShowIsVertical}
+            filterList={isVerticalData}
+            selectedFilter={isVertical}
+            setSelectedFilter={setIsVertical}
+          />
+          <DownloadChartButton
+            chartTitle={`Grafik Batang Jumlah UMKM Berdasarkan ${selectedFilter?.name}`}
+          />
         </div>
       </div>
       <BarChart
@@ -198,26 +136,8 @@ const BarChartKategori = () => {
         withBarValueLabel
         withXAxis={true}
         yAxisProps={{ width: isVertical.slug == "vertical" ? 100 : 15 }}
-        series={[{ name: "value", color: EXTENDEDCOLORS.accent2 }]}
+        series={[{ name: "value", color: colorChart }]}
       />
-      {/* <div className="flex flex flex-wrap gap-8 w-full justify-center items-center pt-4">
-        {series?.map((item) => (
-          <div className="box flex flex-row gap-2 items-center">
-            <IconSquareFilled size={16} color={item.color} />
-            <Text
-              size="xs"
-              c={
-                item.color == EXTENDEDCOLORS.accent6
-                  ? EXTENDEDCOLORS.grey
-                  : item.color
-              }
-              fw={500}
-            >
-              {item.label.toUpperCase()}
-            </Text>
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };
