@@ -23,7 +23,7 @@ const ChexboxGroup: React.FC<Props> = ({
 
   return (
     <ul
-      className="w-full text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-black"
+      className="w-full text-xs md:text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-black"
       data-aos="zoom-in"
       data-aos-duration="300"
     >
@@ -40,7 +40,7 @@ const ChexboxGroup: React.FC<Props> = ({
             />
             <label
               htmlFor={`${item.name}-checkbox`}
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="w-full py-3 ms-2 font-medium text-gray-900 dark:text-white"
             >
               {item.name}
             </label>

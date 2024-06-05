@@ -85,7 +85,7 @@ const SearchBar: React.FC<Props> = ({
         <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
-          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 w-[10rem] dark:bg-slate-800 dark:border-grey  dark:text-white dark:hover:bg-black"
+          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-xs lg:text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 w-[8rem] lg:w-[10rem] dark:bg-slate-800 dark:border-grey  dark:text-white dark:hover:bg-black"
           type="button"
           onClick={() => setShowsearchColumn(!showFilfterColumn)}
         >
@@ -122,7 +122,7 @@ const SearchBar: React.FC<Props> = ({
                     setShowsearchColumn(false);
                   }}
                   type="button"
-                  className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-black dark:text-white"
+                  className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-black dark:text-white text-xs md:text-sm"
                 >
                   Semua
                 </button>
@@ -135,7 +135,7 @@ const SearchBar: React.FC<Props> = ({
                       setShowsearchColumn(false);
                     }}
                     type="button"
-                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100  dark:hover:bg-black dark:text-white "
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100  dark:hover:bg-black dark:text-white text-xs md:text-sm"
                   >
                     {item.title}
                   </button>
@@ -151,10 +151,10 @@ const SearchBar: React.FC<Props> = ({
             onChange={(e) => handleKeywordChange(e)}
             type="search"
             id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2 dark:bg-slate-800 dark:border-grey dark:focus:bg-black"
+            className="block p-2.5 w-full z-20 text-xs lg:text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2 dark:bg-slate-800 dark:border-grey dark:focus:bg-black"
             placeholder="Kata kunci..."
-            required
             style={{ width: width }}
+            required
           />
           <button
             type="submit"

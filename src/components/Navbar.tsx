@@ -24,31 +24,17 @@ const Navbar = () => {
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme } = useThemeContext();
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (windowWidth < 800) {
-      setIsMobile(true);
-    }
-  }, [windowWidth]);
+  const { isMobile } =
+    useThemeContext();
 
   useEffect(() => {
     const handleScroll = () => {
       if (location.pathname == "/beranda") {
         const scrollY = window.scrollY;
 
-        if (scrollY > 200) {
+        if (scrollY > 100) {
           setNavBg("bg-white shadow-sm dark:bg-slate-800");
           setNavBgItem("bg-white dark:bg-slate-800");
         } else {
