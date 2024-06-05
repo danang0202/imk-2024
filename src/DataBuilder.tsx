@@ -49,12 +49,12 @@ export const LANGUAGES: LangType[] = [
 ];
 
 export const menuItemsData = [
-  { label: "Beranda", href: "/beranda" },
-  { label: "Data UMKM", href: "/data-umkm" },
-  { label: "Statistik", href: "/statistics" },
-  { label: "GIS", href: "/gis" },
-  { label: "Galeri Produk", href: "#" },
-  { label: "Info Modal", href: "#" },
+  { label: "Beranda", href: "/beranda", slug: "beranda" },
+  { label: "Data UMKM", href: "/data-umkm", slug: "data" },
+  { label: "Statistik", href: "/statistics", slug: "statistik" },
+  { label: "GIS", href: "/gis", slug: "beranda" },
+  { label: "Galeri Produk", href: "#", slug: "gis" },
+  { label: "Info Modal", href: "#", slug: "modal" },
 ];
 
 export const serviceItemsData = [

@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 import { IconDotsVertical, IconHeadset } from "@tabler/icons-react";
 import LogoSocialMedia from "../../components/Social/LogoSocialMedia";
 import ButtonBlack from "../../components/Button/ButtonBlack";
+import { useEffect, useState } from "react";
+import loadNamespaces from "../../language/load-lang";
 
 export interface ServiceItem {
   title: string;
@@ -22,7 +24,6 @@ interface FaqProps {
 }
 
 const LandingPage: React.FC = () => {
-  const { t } = useTranslation();
   const serviceItems: ServiceItem[] = serviceItemsData;
   const Faqs: FaqProps[] = FaqsData;
   const { theme } = useThemeContext();
@@ -33,13 +34,28 @@ const LandingPage: React.FC = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const { t, i18n } = useTranslation("landing-page");
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const load = async () => {
+      await loadNamespaces("landing-page");
+      i18n.reloadResources();
+      setIsLoaded(true);
+    };
+    load();
+  }, []);
+
+  if (!isLoaded) {
+    return <div>Loading...</div>; // or any loading indicator
+  }
 
   return (
     <Layout pageTitle="BERANDA">
       <div
         className={`flex flex-row justify-between items-center min-h-screen w-screen pt-4xl xl:pt-0`}
       >
-        <div className="flex flex-col justify-center bg-silver xl:bg-white h-screen xl:justify-between items-start h-screen w-full xl:w-1/2 xl:pt-4xl  pb-4xl pl-4 pr-4 xl:pl-5xl xl:pr-4xl">
+        <div className="flex flex-col justify-center bg-silver xl:bg-white h-screen xl:justify-between items-start w-full xl:w-1/2 xl:pt-4xl  pb-4xl pl-4 pr-4 xl:pl-5xl xl:pr-4xl">
           <div
             data-aos="fade-up"
             data-aos-duration="800"
@@ -47,14 +63,14 @@ const LandingPage: React.FC = () => {
           >
             <div className="flex flex-row justify-center xl:justify-between gap-4 w-full">
               <h1 className="text-black font-semibold text-2xl md:text-3xl lg:text-5xl xl:text-6xl text-center md:text-left dark:text-white">
-                {t("title")}
+                {t("welcome")}
               </h1>
               <IconDotsVertical
                 size={100}
                 className="hidden xl:block translate-x-20"
               />
             </div>
-            <h1 className="text-black font-semibold text-3xl md:text-4xl lg:text-3xl lg:text-6xl text-center xl:text-left dark:text-white w-full">
+            <h1 className="text-black font-semibold text-3xl md:text-4xl lg:text-6xl text-center xl:text-left dark:text-white w-full">
               <span className="font-bold text-primary drop-shadow-lg">
                 e-UMKM
               </span>{" "}
@@ -225,7 +241,7 @@ const LandingPage: React.FC = () => {
           Didukung oleh:
         </h1>
         <div
-          className="border dark:bg-white shadow-lg  border-2 border-gray-200 px-4  md:px-8 xl:px-3xl py-4 rounded-3xl flex flex-row gap-4 md:gap-8 xl:gap-8 mt-6"
+          className="dark:bg-white shadow-lg  border-2 border-gray-200 px-4  md:px-8 xl:px-3xl py-4 rounded-3xl flex flex-row gap-4 md:gap-8 xl:gap-8 mt-6"
           data-aos="fade-up"
           data-aos-duration="800"
         >

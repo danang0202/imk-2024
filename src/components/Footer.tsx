@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="flex flex-row hidden lg:block">
+        <div className="flex-row hidden lg:flex">
           <div className="flex flex-col gap-y-3">
             <h1 className="font-bold pb-4 text-xl">Tautan</h1>
             {menuItems.map((item) => (

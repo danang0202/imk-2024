@@ -6,10 +6,12 @@ import ToggleTheme from "./ToggleTheme";
 import { useThemeContext } from "../layout/ThemeContext";
 import DropDownLang from "./commons/DropDownLang";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
-interface MenuItem {
+export interface MenuItem {
   label: string;
   href: string;
+  slug: string;
 }
 
 const Navbar = () => {
@@ -24,9 +26,9 @@ const Navbar = () => {
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme } = useThemeContext();
-  // const [isMobile, setIsMobile] = useState(false);
 
   const { isMobile } = useThemeContext();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -129,7 +131,7 @@ const Navbar = () => {
                     : "text-[#000] dark:text-white"
                 }`}
               >
-                {link.label}
+                {t(link.slug)}
               </a>
             </li>
           ))}

@@ -14,7 +14,7 @@ const Breadcrumb: React.FC = () => {
         <li className="inline-flex items-center">
           <Link
             to="/"
-            className="inline-flex items-center text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+            className="inline-flex items-center text-xs md:text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-400 dark:hover:text-white"
           >
             <svg
               className="w-3 h-3 me-2.5"
@@ -74,7 +74,7 @@ const Breadcrumb: React.FC = () => {
                 </svg>
                 <Link
                   to={to}
-                  className="ms-1 text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
+                  className="ms-1 text-xs md:text-sm font-medium text-gray-700 hover:text-primary md:ms-2 dark:text-gray-400 dark:hover:text-white"
                 >
                   {capitalizeWords(value)}
                 </Link>

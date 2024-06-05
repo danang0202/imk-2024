@@ -316,7 +316,7 @@ const Gis: React.FC = () => {
               <div className=" px-1 pb-4">
                 <p className="text-grey text-xs lg:text-sm">
                   Hasil:
-                  <span className="font-medium"> {filterDataUMKM.length} </span>
+                  <span className="font-medium"> {filteredDataUMKM.length} </span>
                   UMKM ditemukan{" "}
                 </p>
               </div>

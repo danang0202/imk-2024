@@ -5,9 +5,10 @@ import i18n from "../../language/i18n";
 
 const DropDownLang = () => {
   const [show, setShow] = useState(false);
-  const { lang, setLang } = useThemeContext();
+  const { lang } = useThemeContext();
 
   const onChangeLang = (e: string) => {
+    window.location.reload();
     i18n.changeLanguage(e);
     localStorage.setItem("lang", e);
   };
@@ -46,7 +47,6 @@ const DropDownLang = () => {
               <li
                 onClick={() => {
                   onChangeLang(item.code);
-                  setLang(item.code);
                   setShow(false);
                 }}
                 className="dark:hover:bg-slate-800"

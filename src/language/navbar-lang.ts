@@ -1,15 +1,26 @@
-import i18n from "i18next";
+import NavbarLang from "i18next";
 import { initReactI18next } from "react-i18next";
 
 const storedLang = localStorage.getItem('lang') || 'id';
 
-i18n.use(initReactI18next).init({
+NavbarLang.use(initReactI18next).init({
     lng: storedLang,
     fallbackLng: "id",
     interpolation: {
         escapeValue: false,
     },
-    resources: {},
+    resources: {
+        id: {
+            translation: {
+                beranda: 'Beranda',
+            }
+        },
+        en: {
+            translation: {
+                beranda: 'Home',
+            }
+        },
+    },
     initImmediate: false,
 }, () => {
     if (!localStorage.getItem('lang')) {
@@ -17,4 +28,4 @@ i18n.use(initReactI18next).init({
     }
 });
 
-export default i18n;
+export default NavbarLang;
