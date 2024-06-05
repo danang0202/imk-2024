@@ -26,7 +26,7 @@ const Navbar = () => {
   const { theme } = useThemeContext();
   // const [isMobile, setIsMobile] = useState(false);
 
-  const { isMobile, setIsMobile, windowWidth, setWindowWidth } =
+  const { isMobile } =
     useThemeContext();
 
   useEffect(() => {
