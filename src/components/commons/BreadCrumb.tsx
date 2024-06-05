@@ -14,7 +14,7 @@ const Breadcrumb: React.FC = () => {
         <li className="inline-flex items-center">
           <Link
             to="/"
-            className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+            className="inline-flex items-center text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
           >
             <svg
               className="w-3 h-3 me-2.5"
@@ -35,7 +35,7 @@ const Breadcrumb: React.FC = () => {
             <li key={to} aria-current="page">
               <div className="flex items-center">
                 <svg
-                  className="rtl:rotate-180 w-3 h-3 mx-1 text-gray-400"
+                  className="rtl:rotate-180 w-2 h-2 mx-1 text-gray-400"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -49,8 +49,8 @@ const Breadcrumb: React.FC = () => {
                     d="m1 9 4-4-4-4"
                   />
                 </svg>
-                <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                  {value}
+                <span className="ms-1 text-xs md:text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                  {capitalizeWords(value)}
                 </span>
               </div>
             </li>
@@ -74,9 +74,9 @@ const Breadcrumb: React.FC = () => {
                 </svg>
                 <Link
                   to={to}
-                  className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
+                  className="ms-1 text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
                 >
-                  {value}
+                  {capitalizeWords(value)}
                 </Link>
               </div>
             </li>
@@ -88,3 +88,16 @@ const Breadcrumb: React.FC = () => {
 };
 
 export default Breadcrumb;
+
+function capitalizeWords(str: string) {
+  let result = str
+    .replace(/-/g, " ") // Replace hyphens with spaces
+    .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize each word
+
+  if (result.toUpperCase() == "GIS") {
+    result = result.toUpperCase();
+  } else if (result == "Data Umkm") {
+    result = "Data UMKM";
+  }
+  return result;
+}

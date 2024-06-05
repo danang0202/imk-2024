@@ -4,11 +4,15 @@ import { Tabs } from "@mantine/core";
 import { IconBuildingStore, IconBusinessplan } from "@tabler/icons-react";
 import { EXTENDEDCOLORS } from "../../DataBuilder";
 import StatisticsUMKM from "./StatisticsUMKM";
+import Breadcrumb from "../../components/commons/BreadCrumb";
 
 const Statistics = () => {
   return (
     <Layout pageTitle="STATISTIK">
-      <div className="pt-5.5xl px-4 lg:px-8 xl:px-6xl bg-white dark:bg-slate-800 overflow-x-hidden">
+      <div className="pt-5xl xl:hidden w-full bg-white">
+        <Breadcrumb />
+      </div>
+      <div className="pt-0 xl:pt-5.5xl px-4 lg:px-8 xl:px-6xl bg-white dark:bg-slate-800 overflow-x-hidden">
         <div className="summary-container flex justify-center xl:justify-between flex-wrap items-center gap-2 md:gap-4">
           <CardSummary />
           <CardSummary />

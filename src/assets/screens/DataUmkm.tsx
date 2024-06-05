@@ -21,6 +21,7 @@ import { filterDataUMKM } from "../../utils/utils";
 import BadgeFilter from "../../components/commons/BadgeFilter";
 import { IconDownload, IconFilterSearch } from "@tabler/icons-react";
 import ClearBadge from "../../components/commons/ClearBadge";
+import Breadcrumb from "../../components/commons/BreadCrumb";
 const DataUmkm = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true);
   const [showAdvancedFilter, setShowAdvancedFilter] = useState<boolean>(false);
@@ -49,7 +50,7 @@ const DataUmkm = () => {
   }, []);
 
   useEffect(() => {
-    if (windowWidth < 800) {
+    if (windowWidth < EXTENDED_WINDOW.xl) {
       setShowFilter(false);
     }
   }, [windowWidth]);
@@ -126,17 +127,20 @@ const DataUmkm = () => {
 
   return (
     <Layout pageTitle="DATA UMKM">
-      <div className="flex items-stretch flex-row w-full pt-5.5xl pb-8  xl:pb-3xl xl:gap-4 xl:px-8 bg-silver items-start dark:bg-slate-800 dark:text-white">
+      <div className="w-full pt-5xl xl:hidden ">
+        <Breadcrumb />
+      </div>
+      <div className="flex items-stretch flex-row w-full pb-8 xl:pt-5.5xl  xl:pb-3xl xl:gap-4 xl:px-8 bg-silver dark:bg-slate-800 dark:text-white">
         <CSSTransition
           in={showAdvancedFilter}
           timeout={300}
           classNames="fade"
           unmountOnExit
         >
-          <div className="fixed xl:relative z-20 flex flex-col bg-white rounded px-8 py-4 shadow xl:shadow-sm dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden min-w-[22rem] xl:min-w-[18rem]">
+          <div className="fixed xl:relative z-20 flex flex-col bg-white rounded px-8 py-4 shadow-lg xl:shadow-sm dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden min-w-[22rem] xl:min-w-[18rem]">
             <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
               <ChevronDown
-                className={`w-8 h-8 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer ${
+                className={`w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer ${
                   showAdvancedFilter ? "transform rotate-90" : ""
                 }`}
                 onClick={() => setShowAdvancedFilter(false)}
@@ -162,17 +166,17 @@ const DataUmkm = () => {
           classNames="fade"
           unmountOnExit
         >
-          <div className="fixed xl:relative box-filter bg-white flex flex-col shadow xl:shadow-sm py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black z-30">
+          <div className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-sm py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black z-30">
             <div className="relative">
               <ChevronDown
-                className={`xl:hidden absolute w-8 h-8 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer top-0 right-0 ${
+                className={`xl:hidden absolute w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer top-0 right-0 ${
                   showFilter ? "transform rotate-90" : ""
                 }`}
                 onClick={() => setShowFilter(false)}
               />
               <div className="flex flex-col justify-start gap-8">
                 <div className="border-b border-grey pt-2 pb-4">
-                  <h1 className="font-bold text- tlgext-center">
+                  <h1 className="font-bold text-center">
                     {" "}
                     <FontAwesomeIcon icon={faList} className="pr-3" />
                     Penyaringan Data
@@ -227,7 +231,7 @@ const DataUmkm = () => {
         </CSSTransition>
 
         <div className="table-container rounded-lg shadow-sm w-full grow px-4 xl:px-0">
-          <div className="pt-8 bg-white box flex flex-col gap-4 xl:flex-row xl:gap-0 justify-between px-4 lg:px-8 py-4 items-center rounded-t dark:bg-black">
+          <div className="pt-4 xl:pt-8 bg-white box flex flex-col gap-4 xl:flex-row xl:gap-0 justify-between px-4 lg:px-8 py-4 items-center rounded-t dark:bg-black">
             <h1 className="font-semibold d text-base text-center border-b border-grey pb-2 lg:text-lg xl:font-bol xl:text-left  xl:border-0 xl:pb-0 text-black dark:text-white">
               Data UMKM Kabupaten Kulon Progo Tahun 2024
             </h1>

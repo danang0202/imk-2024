@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { IonIcon } from "@ionic/react";
 import { useLocation } from "react-router-dom";
 import ButtonPrimary from "./Button/ButtonPrimary";
 import { menuItemsData } from "../DataBuilder";
 import ToggleTheme from "./ToggleTheme";
 import { useThemeContext } from "../layout/ThemeContext";
 import DropDownLang from "./commons/DropDownLang";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 
 interface MenuItem {
   label: string;
@@ -26,8 +26,7 @@ const Navbar = () => {
   const { theme } = useThemeContext();
   // const [isMobile, setIsMobile] = useState(false);
 
-  const { isMobile } =
-    useThemeContext();
+  const { isMobile } = useThemeContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,21 +85,26 @@ const Navbar = () => {
             className="pr-3"
             style={{ height: "50px" }}
           />
-          <div className="flex flex-col dark:text-white">
+          <div className="flex flex-col dark:text-white text-sm md:text-base">
             <h1>PEMKAB</h1>
             <h1>KULON PROGO</h1>
           </div>
         </div>
 
         {/* logo */}
-
         <div className="text-3xl absolute right-8 top-6 cursor-pointer xl:hidden flex align-center gap-4">
           <ToggleTheme />
-          <IonIcon
-            onClick={() => setOpen(!open)}
-            name={open ? "close" : "menu"}
-            className="text-black dark:text-white"
-          ></IonIcon>
+          {!open ? (
+            <IconMenu2
+              onClick={() => setOpen(!open)}
+              className="text-black dark:text-white"
+            />
+          ) : (
+            <IconX
+              onClick={() => setOpen(!open)}
+              className="text-black dark:text-white"
+            />
+          )}
         </div>
 
         <ul
@@ -115,7 +119,7 @@ const Navbar = () => {
           {menuItems.map((link) => (
             <li
               key={link.label}
-              className="xl:ml-8 xl:my-0 my-7 hover:scale-110 transition duration-300"
+              className="xl:ml-8 xl:my-0 my-7 hover:scale-110 transition duration-300 text-sm md:text-base"
             >
               <a
                 href={link.href}
@@ -134,7 +138,11 @@ const Navbar = () => {
           </div>
           <DropDownLang />
           <div className="">
-            <ButtonPrimary text="Log In" size="base" onClick={logInOnClick} />
+            <ButtonPrimary
+              text="Log In"
+              size="sm md:base"
+              onClick={logInOnClick}
+            />
           </div>
         </ul>
       </div>
