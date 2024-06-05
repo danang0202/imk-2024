@@ -69,11 +69,11 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
     <div>
       <div className={`table-container overflow-x-auto w-full relative`}>
         <table className="w-full text-left border-separate border-spacing-y-2 lg:border-spacing-y-3 font-inter transform -translate-y-3">
-          <thead className="rounded-lg text-black font-semibold text-sm lg:text-base">
+          <thead className="rounded-lg text-black text-xs md:text-sm lg:text-base">
             <tr className="">
               {headerDataTable?.map((item) => (
                 <th
-                  className={`bg-white py-3 lg:py-6 text-black justify-start font-bold whitespace-nowrap ${
+                  className={`bg-white py-3 lg:py-6 text-black  justify-start whitespace-nowrap ${
                     item.slug == "index" && "px-4 lg:px-8 xl:pl-3xl "
                   } rounded-bl dark:text-white px-2 dark:bg-black`}
                 >
@@ -93,7 +93,7 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                   </div>
                 </th>
               ))}
-              <th className="bg-white py-3 pr-4x lg:pr-8x xl:pr-3xl justify-center text-black sm:text-base font-bold dark:text-white rounded-br dark:bg-black">
+              <th className="bg-white py-3 pr-4x lg:pr-8x xl:pr-3xl justify-center text-black sm:text-base  dark:text-white rounded-br dark:bg-black">
                 Tindakan
               </th>
             </tr>

@@ -254,7 +254,7 @@ const DataUmkm = () => {
               </p>
             </div>
           </div>
-          <div className="bg-white badge-filter px-4 lg:px-8 xl:px-3xl pb-4 flex flex-grow flex-wrap gap-2 lg:gap-4 dark:bg-black">
+          <div className="bg-white badge-filter px-4 lg:px-8 xl:px-3xl pb-2 flex flex-grow flex-wrap gap-2 lg:gap-4 dark:bg-black">
             {keyword && (
               <CSSTransition
                 in={true}
@@ -327,7 +327,7 @@ const DataUmkm = () => {
               ))}
           </div>
           {filteredData.length != data.length && (
-            <div className="px-4 lg:px-8 xl:px-3xl bg-white flex justify-between items-center">
+            <div className="px-4 lg:px-8 xl:px-3xl bg-white flex justify-between items-center pb-3 xl:pb-0">
               <p className="text-grey text-xs lg:text-sm">
                 Mendapatkan {filteredData.length} data
               </p>

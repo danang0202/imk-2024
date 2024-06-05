@@ -68,7 +68,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
         <div className="relative p-4 w-full max-w-md max-h-full">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white">
                 Download Grafik
               </h3>
               <button
@@ -96,7 +96,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
               </button>
             </div>
             <div className="p-4 md:p-5">
-              <time className="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-400 pb-2">
+              <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400 pb-2">
                 {chartTitle}
               </time>
               <ol className="relative border-s border-gray-200 dark:border-gray-600 ms-3.5 mb-4 md:mb-5">
@@ -112,10 +112,10 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                       <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
                     </svg>
                   </span>
-                  <h3 className="flex items-start mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="flex items-start mb-1 text-sm md:text-base xl:text-lg font-semibold text-gray-900 dark:text-white">
                     Pilih Jenis File{" "}
                   </h3>
-                  <time className="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
+                  <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
                     Pilihan : PNG, JPG, CSV (Data), dan Excel (Data)
                   </time>
 
@@ -153,10 +153,10 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                       <path d="M18 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM6.5 3a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.014 13.021l.157-.625A3.427 3.427 0 0 1 6.5 9.571a3.426 3.426 0 0 1 3.322 2.805l.159.622-6.967.023ZM16 12h-3a1 1 0 0 1 0-2h3a1 1 0 0 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Z" />
                     </svg>
                   </span>
-                  <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="mb-1 text-sm md:text-base xl:text-lg font-semibold text-gray-900 dark:text-white">
                     Masukkan Email Anda
                   </h3>
-                  <time className="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
+                  <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
                     Tuliskan email anda pada formulir di bawah ini
                   </time>
                   {/*  inputan email */}
@@ -165,7 +165,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                       type="email"
                       name="email"
                       id="email"
-                      className={`g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${
+                      className={`g-gray-50 border border-gray-300 text-gray-900 text-xs  md:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${
                         step < 2 && "cursor-not-allowed"
                       }`}
                       placeholder="Tuliskan alamat email anda"
@@ -193,16 +193,16 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                       <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2ZM7 2h4v3H7V2Zm5.7 8.289-3.975 3.857a1 1 0 0 1-1.393 0L5.3 12.182a1.002 1.002 0 1 1 1.4-1.436l1.328 1.289 3.28-3.181a1 1 0 1 1 1.392 1.435Z" />
                     </svg>
                   </span>
-                  <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="mb-1 text-sm md:text-base xl:text-lg font-semibold text-gray-900 dark:text-white">
                     Tekan Tombol Downlaod
                   </h3>
-                  <time className="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
+                  <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
                     Apabila mengalami kegagalan, ulangi proses atau hubungi Kami
                   </time>
                 </li>
               </ol>
               <button
-                className={`text-white flex items-center gap-2 w-full justify-center bg-primary py-2 rounded  transition duration-300 ${
+                className={`text-sm md:text-base text-white flex items-center gap-2 w-full justify-center bg-primary py-2 rounded  transition duration-300 ${
                   step < 3
                     ? "bg-primary/50 cursor-not-allowed"
                     : "hover:bg-primary/75 cursor-pointer"
