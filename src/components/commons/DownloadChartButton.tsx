@@ -14,10 +14,13 @@ const DownloadChartButton: React.FC<Props> = ({ chartTitle }) => {
         className="box bg-silver p-1 rounded text-black  hover:bg-inactive cursor-pointer transition duration-300"
         onClick={() => setShowModalDownlaod(true)}
       >
-        <IconDownload />
+        <IconDownload className="w-6 h-5 md:w-8 md:h-7" />
       </div>
       {showModalDownlaod && (
-        <DownloadConfirmationModal setShow={setShowModalDownlaod} chartTitle={chartTitle} />
+        <DownloadConfirmationModal
+          setShow={setShowModalDownlaod}
+          chartTitle={chartTitle}
+        />
       )}
     </>
   );

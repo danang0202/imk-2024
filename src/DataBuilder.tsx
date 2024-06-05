@@ -30,6 +30,14 @@ export const EXTENDEDCOLORS = {
   inactive: "#BCBDBE",
 };
 
+export const EXTENDED_WINDOW = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  xxl: 1536,
+};
+
 interface LangType {
   label: string;
   code: string;

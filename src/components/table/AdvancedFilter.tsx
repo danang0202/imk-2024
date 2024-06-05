@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  EXTENDED_WINDOW,
   badanHukumUsaha,
   bidangUsaha,
   dinasPengampu,
@@ -10,6 +11,7 @@ import { faChevronUp, faList } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { TypeData } from "./Selection";
 import { IconFilterSearch } from "@tabler/icons-react";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface AdvancedFilterProps {
   skalaUsahaFilter: TypeData[];
@@ -43,15 +45,17 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
   const [showAdvancedDinasPengampuFilter, setShowAdvancedDinasPengampuFilter] =
     useState<boolean>(false);
 
+  const { windowWidth } = useThemeContext();
+
   return (
     <>
-      <div className="">
+      <div className="text-xs md:text-sm lg:text-base ">
         <div
           className={`border-b-2 border-grey py-4 ${
             location.pathname == "/gis" && "hidden"
           }`}
         >
-          <h1 className="font-bold text- text-center">
+          <h1 className="font-bold text-sm lg:text-base text-center">
             {" "}
             <FontAwesomeIcon icon={faList} className="pr-3" /> Advanced Filter
           </h1>
@@ -64,7 +68,9 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               setAdvancedSkalaUsahaFilter(!showAdvancedSkalaUsahaFilter);
             }}
           >
-            <IconFilterSearch size={20} />
+            <IconFilterSearch
+              size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+            />
             <h1 className="font-semibold whitespace-nowrap">Skala Usaha</h1>
             <FontAwesomeIcon
               icon={faChevronUp}
@@ -77,14 +83,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             <div className="box w-full">
               <div className="flex flex-row justify-between py-1">
                 <p
-                  className="text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                  className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                   onClick={() => setSkalaUsahaFilter(skalaUsaha)}
                 >
                   Pilih semua
                 </p>
-                <p className="text-grey text-sm">|</p>
+                <p className="text-grey text-xs lg:text-sm">|</p>
                 <p
-                  className="text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                  className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                   onClick={() => setSkalaUsahaFilter([])}
                 >
                   Bersihkan
@@ -108,7 +114,9 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               setAdvancedBadanHukumFilter(!showAdvancedBadanHukumFilter);
             }}
           >
-            <IconFilterSearch size={20} />
+            <IconFilterSearch
+              size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+            />{" "}
             <h1 className="font-semibold whitespace-nowrap">Badan Hukum</h1>
             <FontAwesomeIcon
               icon={faChevronUp}
@@ -121,14 +129,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             <div className="box w-full">
               <div className="flex flex-row justify-between py-1">
                 <p
-                  className="text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                  className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                   onClick={() => setBadanHukumFilter(badanHukumUsaha)}
                 >
                   Pilih semua
                 </p>
-                <p className="text-grey text-sm">|</p>
+                <p className="text-grey text-xs lg:text-sm">|</p>
                 <p
-                  className="text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                  className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                   onClick={() => setBadanHukumFilter([])}
                 >
                   Bersihkan
@@ -154,7 +162,9 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               );
             }}
           >
-            <IconFilterSearch size={20} />
+            <IconFilterSearch
+              size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+            />{" "}
             <h1 className="font-semibold whitespace-nowrap">Dinas Pengampu</h1>
             <FontAwesomeIcon
               icon={faChevronUp}
@@ -167,14 +177,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             <div className="box w-full">
               <div className="flex flex-row justify-between py-1">
                 <p
-                  className="text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                  className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                   onClick={() => setDinasPengampuFilter(dinasPengampu)}
                 >
                   Pilih semua
                 </p>
-                <p className="text-grey text-sm">|</p>
+                <p className="text-grey text-xs lg:text-sm">|</p>
                 <p
-                  className="text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                  className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                   onClick={() => setDinasPengampuFilter([])}
                 >
                   Bersihkan
@@ -200,7 +210,9 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               setShowAdvancedFilter(!showAdvancedBidangFilter);
             }}
           >
-            <IconFilterSearch size={20} />
+            <IconFilterSearch
+              size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+            />{" "}
             <h1 className="font-semibold whitespace-nowrap">Bidang Usaha</h1>
             <FontAwesomeIcon
               icon={faChevronUp}
@@ -213,14 +225,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             <div className="box w-full">
               <div className="flex flex-row justify-between py-1">
                 <p
-                  className="text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                  className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                   onClick={() => setBidangUsahaFilter(bidangUsaha)}
                 >
                   Pilih semua
                 </p>
-                <p className="text-grey text-sm">|</p>
+                <p className="text-grey text-xs lg:text-sm">|</p>
                 <p
-                  className="text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                  className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                   onClick={() => setBidangUsahaFilter([])}
                 >
                   Bersihkan
