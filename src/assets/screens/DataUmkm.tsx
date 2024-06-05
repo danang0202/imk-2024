@@ -161,7 +161,7 @@ const DataUmkm = () => {
           classNames="fade"
           unmountOnExit
         >
-          <div className="relative box-filter bg-white flex flex-col shadow-sm py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black">
+          <div className="hidden xl:block relative box-filter bg-white flex flex-col shadow-sm py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black">
             <div className="flex flex-col justify-start gap-8">
               <div className="border-b border-grey pt-2 pb-4">
                 <h1 className="font-bold text- tlgext-center">
@@ -217,12 +217,12 @@ const DataUmkm = () => {
           </div>
         </CSSTransition>
 
-        <div className="table-container rounded-lg shadow-sm w-full grow">
-          <div className="pt-8 bg-white box flex flex-row justify-between px-4 lg:px-8 py-4 items-center rounded-t dark:bg-black">
-            <h1 className="font-bold lg:text-lg text-black dark:text-white">
+        <div className="table-container rounded-lg shadow-sm w-full grow px-4 xl:px-0">
+          <div className="pt-8 bg-white box flex flex-col gap-4 xl:flex-row xl:gap-0 justify-between px-4 lg:px-8 py-4 items-center rounded-t dark:bg-black">
+            <h1 className="font-semibold d text-base text-center border-b border-grey pb-2 lg:text-lg xl:font-bol xl:text-left  xl:border-0 xl:pb-0 text-black dark:text-white">
               Data UMKM Kabupaten Kulon Progo Tahun 2024
             </h1>
-            <div className="flex flex-row gap-8">
+            <div className="hidden xl:flex flex-row gap-8">
               <SearchBar
                 width="20rem"
                 searchColumn={searchColumn}
@@ -230,13 +230,13 @@ const DataUmkm = () => {
                 keyword={keyword}
                 setKeyword={setKeyword}
               />
-              <div className="bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded hover:bg-secondaryHover cursor-pointer text-white transition duration-300">
+              {/* <div className="bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded hover:bg-secondaryHover cursor-pointer text-white transition duration-300">
                 <p>Unduh Data</p>
                 <FontAwesomeIcon icon={faCircleDown} />
-              </div>
+              </div> */}
             </div>
           </div>
-          <div className="bg-white badge-filter px-3xl pb-4 flex flex-grow flex-wrap gap-4 dark:bg-black">
+          {/* <div className="bg-white badge-filter px-3xl pb-4 flex flex-grow flex-wrap gap-4 dark:bg-black">
             {keyword && (
               <CSSTransition
                 in={true}
@@ -321,8 +321,8 @@ const DataUmkm = () => {
                 <p className="">Bersihkan</p>
               </div>
             </div>
-          )}
-          <TableUMKM dataUmkm={filteredData} />
+          )} */}
+          {/* <TableUMKM dataUmkm={filteredData} /> */}
         </div>
       </div>
     </Layout>

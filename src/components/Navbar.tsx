@@ -36,7 +36,6 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   useEffect(() => {
     if (windowWidth < 800) {
       setIsMobile(true);
