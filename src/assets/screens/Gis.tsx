@@ -392,18 +392,15 @@ const Gis: React.FC = () => {
                       <p className="font-semibold">{item.name}</p>
                       <div className="flex flex-row gap-2">
                         <span
-                          className={`${
-                            getBadanUsahaColor(item?.badanHukum).bg
-                          } ${
-                            getBadanUsahaColor(item?.badanHukum).text
-                          } text-xs px-1  rounded-sm`}
+                          className={`${getBadanUsahaColor(item?.badanHukum).bg
+                            } ${getBadanUsahaColor(item?.badanHukum).text
+                            } text-xs px-1  rounded-sm`}
                         >
                           {item?.badanHukum}
                         </span>
                         <span
-                          className={`${getSkalaUsahaColor(item?.skala).bg} ${
-                            getSkalaUsahaColor(item?.skala).text
-                          } text-xs px-1  rounded-sm`}
+                          className={`${getSkalaUsahaColor(item?.skala).bg} ${getSkalaUsahaColor(item?.skala).text
+                            } text-xs px-1  rounded-sm`}
                         >
                           {item?.skala}
                         </span>

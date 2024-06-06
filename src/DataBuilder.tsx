@@ -45,7 +45,7 @@ export const menuItemsData = [
   { label: "Data UMKM", href: "/data-umkm" },
   { label: "Statistik", href: "/statistics" },
   { label: "GIS", href: "/gis" },
-  { label: "Galeri Produk", href: "#" },
+  { label: "Galeri Produk", href: "/galeri-produk" },
   { label: "Info Modal", href: "#" },
 ];
 

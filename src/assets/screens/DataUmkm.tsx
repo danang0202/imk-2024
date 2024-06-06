@@ -135,9 +135,8 @@ const DataUmkm = () => {
           <div className="z-10 flex flex-col bg-white rounded px-8 py-4 relative shadow-sm dark:bg-black">
             <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
               <ChevronDown
-                className={`w-8 h-8 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer ${
-                  showAdvancedFilter ? "transform rotate-90" : ""
-                }`}
+                className={`w-8 h-8 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer ${showAdvancedFilter ? "transform rotate-90" : ""
+                  }`}
                 onClick={() => setShowAdvancedFilter(false)}
               />
             </div>
