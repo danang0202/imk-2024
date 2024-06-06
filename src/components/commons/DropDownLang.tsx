@@ -5,9 +5,10 @@ import i18n from "../../language/i18n";
 
 const DropDownLang = () => {
   const [show, setShow] = useState(false);
-  const { lang } = useThemeContext();
+  const { lang, setIsLoaded } = useThemeContext();
 
   const onChangeLang = (e: string) => {
+    setIsLoaded(false);
     window.location.reload();
     i18n.changeLanguage(e);
     localStorage.setItem("lang", e);

@@ -1,3 +1,7 @@
 {
-    "welcome": "Selamat Datang"
+    "welcome": "Selamat Datang",
+    "descHeroTop": "Aplikasi ini merupakan aplikasi pengelolaan UMKM di KabupatenKulon Progo.",
+    "descHeroBottom": "Dapatkan informasi data UMKM seluruh Kulon Progo, GIS UMKM, Statistik UMKM serta produk - produk UMKM.",
+    "serviceBtnText": "Lihat Layanan Kami"
+
 }

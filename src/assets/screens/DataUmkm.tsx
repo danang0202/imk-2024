@@ -22,6 +22,8 @@ import BadgeFilter from "../../components/commons/BadgeFilter";
 import { IconDownload, IconFilterSearch } from "@tabler/icons-react";
 import ClearBadge from "../../components/commons/ClearBadge";
 import Breadcrumb from "../../components/commons/BreadCrumb";
+import { useThemeContext } from "../../layout/ThemeContext";
+
 const DataUmkm = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true);
   const [showAdvancedFilter, setShowAdvancedFilter] = useState<boolean>(false);
@@ -37,6 +39,7 @@ const DataUmkm = () => {
     useState<TypeData[]>(bidangUsaha);
   const data = umkmData;
   const [filteredData, setFilteredData] = useState<UMKMProperties[]>([]);
+  const { dataLang } = useThemeContext();
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -179,7 +182,7 @@ const DataUmkm = () => {
                   <h1 className="font-bold text-center">
                     {" "}
                     <FontAwesomeIcon icon={faList} className="pr-3" />
-                    Penyaringan Data
+                    {dataLang("filterTitle")}
                   </h1>
                 </div>
                 <div className="flex flex-col gap-4 xl:gap-8 ">

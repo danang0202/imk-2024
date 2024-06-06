@@ -1,3 +1,6 @@
 {
-    "welcome": "Hello, Welcome"
+    "welcome": "Hello, Welcome",
+    "descHeroTop": "This application is an UMKM management application in Kulon Progo Regency.",
+    "descHeroBottom": "Get information on UMKM data in Kulon Progo, UMKM GIS, UMKM Statistics and UMKM products.",
+    "serviceBtnText": "Let See Our Services"
 }

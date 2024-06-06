@@ -4,12 +4,9 @@ import Faq from "../../components/FAQ/Faq";
 import FaqForm from "../../components/FAQ/FaqForm";
 import Layout from "../../components/Layout";
 import { useThemeContext } from "../../layout/ThemeContext";
-import { useTranslation } from "react-i18next";
 import { IconDotsVertical, IconHeadset } from "@tabler/icons-react";
 import LogoSocialMedia from "../../components/Social/LogoSocialMedia";
 import ButtonBlack from "../../components/Button/ButtonBlack";
-import { useEffect, useState } from "react";
-import loadNamespaces from "../../language/load-lang";
 
 export interface ServiceItem {
   title: string;
@@ -34,22 +31,7 @@ const LandingPage: React.FC = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const { t, i18n } = useTranslation("landing-page");
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const load = async () => {
-      await loadNamespaces("landing-page");
-      i18n.reloadResources();
-      setIsLoaded(true);
-    };
-    load();
-  }, []);
-
-  if (!isLoaded) {
-    return <div>Loading...</div>; // or any loading indicator
-  }
-
+  const { landingLang } = useThemeContext();
   return (
     <Layout pageTitle="BERANDA">
       <div
@@ -63,7 +45,7 @@ const LandingPage: React.FC = () => {
           >
             <div className="flex flex-row justify-center xl:justify-between gap-4 w-full">
               <h1 className="text-black font-semibold text-2xl md:text-3xl lg:text-5xl xl:text-6xl text-center md:text-left dark:text-white">
-                {t("welcome")}
+                {landingLang("welcome")}
               </h1>
               <IconDotsVertical
                 size={100}
@@ -97,18 +79,12 @@ const LandingPage: React.FC = () => {
             </div>
 
             <div className="desc py-4 text-sm md:text-base lg:text-xl md:py-8 text-center xl:text-left dark:text-white px-2 md:px-4 lg:px-8 xl:px-0">
-              <p>
-                Aplikasi ini merupakan aplikasi pengelolaan UMKM di Kabupaten
-                Kulon Progo.
-              </p>
-              <p>
-                Dapatkan informasi data UMKM seluruh Kulon Progo, GIS UMKM,
-                Statistik UMKM serta produk - produk UMKM.
-              </p>
+              <p>{landingLang("descHeroTop")}</p>
+              <p>{landingLang("descHeroBottom")}</p>
             </div>
             <div className="py-4 md:py-4 flex justify-center w-full xl:justify-start">
               <ButtonBlack
-                text="Lihat Layanan Kami"
+                text={landingLang("serviceBtnText")}
                 size="xs md:text-base lg:text-xl xl:text-xl"
                 onClick={ButtonHeroOnclick}
               />

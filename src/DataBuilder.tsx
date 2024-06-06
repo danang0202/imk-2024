@@ -51,9 +51,9 @@ export const LANGUAGES: LangType[] = [
 export const menuItemsData = [
   { label: "Beranda", href: "/beranda", slug: "beranda" },
   { label: "Data UMKM", href: "/data-umkm", slug: "data" },
-  { label: "Statistik", href: "/statistics", slug: "statistik" },
-  { label: "GIS", href: "/gis", slug: "beranda" },
-  { label: "Galeri Produk", href: "#", slug: "gis" },
+  { label: "Statistik", href: "/statistics", slug: "statistics" },
+  { label: "GIS", href: "/gis", slug: "gis" },
+  { label: "Galeri Produk", href: "#", slug: "product" },
   { label: "Info Modal", href: "#", slug: "modal" },
 ];
 

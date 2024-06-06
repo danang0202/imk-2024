@@ -6,6 +6,7 @@ import {
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import { useThemeContext } from "../layout/ThemeContext";
 
 interface socialsMedia {
   path: string;
@@ -15,10 +16,11 @@ interface socialsMedia {
 const Footer: React.FC = () => {
   const socials: socialsMedia[] = socialMediaData;
   const menuItems = menuItemsData;
+  const { common } = useThemeContext();
 
   return (
     <>
-      <div className="bg-black py-8 px-8 xl:p-3xl xl:px-6xl text-white flex flex-col md:flex-row justify-between gap-8">
+      <div className="bg-black py-8 px-8 xl:p-3xl xl:px-6xl text-white flex flex-col md:flex-row justify-between gap-8 pb-8">
         <div className="flex flex-col gap-y-8">
           {/* logo */}
           <div className="flex flex-row gap-3 justify-center xl:justify-start">
@@ -28,14 +30,14 @@ const Footer: React.FC = () => {
               className="pr-3 h-[50px] lg:h-[100px]"
             />
             <div className="flex flex-col text-white font-bold justify-center gap-4 text-sm md:text-base lg:text-xl">
-              <h1>PEMERINTAH KABUPATEN</h1>
+              <h1>{common("pemkab")}</h1>
               <h1>KULON PROGO</h1>
             </div>
           </div>
           {/* logo end */}
           <div className="copyright text-center text-xs md:text-sm lg:text-base md:text-left">
             <p>Copyright @ 2024 | Kelompok 4 IMK 3SI2.</p>
-            <p>Ilustrasi oleh Freepik</p>
+            <p>{common("ilustrasi")}</p>
             <p>All rights reserved</p>
           </div>
           {/* Social Media */}
@@ -47,11 +49,11 @@ const Footer: React.FC = () => {
         </div>
         <div className="flex-row hidden lg:flex">
           <div className="flex flex-col gap-y-3">
-            <h1 className="font-bold pb-4 text-xl">Tautan</h1>
+            <h1 className="font-bold pb-4 text-xl">{common("linksTitle")}</h1>
             {menuItems.map((item) => (
               <>
                 <a href={item.href} className="hover:text-warning">
-                  {item.label}
+                  {common(item.slug)}
                 </a>
               </>
             ))}
@@ -70,7 +72,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex flex-col gap-y-5 items-center md:items-start w-full">
             <h1 className="font-bold pb-4 text-sm md:text-base xl:text-xl text-center md:text-left">
-              Hubungi Kami
+              {common("contact")}
             </h1>
             <p className="max-w-[18rem] text-center md:text-left text-xs md:text-sm lg:text-base">
               <FontAwesomeIcon icon={faLocationDot} className="pr-3" />

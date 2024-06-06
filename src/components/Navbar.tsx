@@ -6,7 +6,6 @@ import ToggleTheme from "./ToggleTheme";
 import { useThemeContext } from "../layout/ThemeContext";
 import DropDownLang from "./commons/DropDownLang";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import { useTranslation } from "react-i18next";
 
 export interface MenuItem {
   label: string;
@@ -25,11 +24,9 @@ const Navbar = () => {
     `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
-  const { theme } = useThemeContext();
+  const { theme, common } = useThemeContext();
 
   const { isMobile } = useThemeContext();
-  const { t } = useTranslation();
-
   useEffect(() => {
     const handleScroll = () => {
       if (location.pathname == "/beranda") {
@@ -65,11 +62,6 @@ const Navbar = () => {
   const logInOnClick = () => {
     console.log("test");
   };
-
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
-
   return (
     <div
       className={`w-full top-0 left-0 xl:px-8 py-3 ${
@@ -131,7 +123,7 @@ const Navbar = () => {
                     : "text-[#000] dark:text-white"
                 }`}
               >
-                {t(link.slug)}
+                {common(link.slug)}
               </a>
             </li>
           ))}
