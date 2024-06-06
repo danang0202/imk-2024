@@ -3,6 +3,7 @@ import { TypeData } from "../table/Selection";
 import { BarChart } from "@mantine/charts";
 import {
   EXTENDEDCOLORS,
+  EXTENDED_WINDOW,
   badanHukumUsaha,
   bidangUsaha,
   dinasPengampu,
@@ -13,6 +14,7 @@ import { getDataCountPerCategory } from "../../utils/chart-utils";
 import { ColorInput } from "@mantine/core";
 import DownloadChartButton from "../commons/DownloadChartButton";
 import FilterChartSelection from "./FilterChartSelection";
+import { useThemeContext } from "../../layout/ThemeContext";
 const BarChartKategori = () => {
   const getCartHeight = () => {
     const result = data.length * 50;
@@ -68,6 +70,8 @@ const BarChartKategori = () => {
     getDataCountPerCategory(umkmData, skalaUsaha)
   );
 
+  const { windowWidth } = useThemeContext();
+
   useEffect(() => {
     if (selectedFilter?.slug == "skala") {
       setData(getDataCountPerCategory(umkmData, skalaUsaha));
@@ -82,12 +86,12 @@ const BarChartKategori = () => {
   }, [selectedFilter]);
 
   return (
-    <div className="w-full px-6">
-      <div className="flex flex-row justify-between pb-6 gap-4 items-center">
-        <p className="font-semibold text-lg text-wrap pl-4">
+    <div className="w-full xl:px-6">
+      <div className="flex flex-col xl:flex-row justify-center md:justify-between pb-6 gap-4 items-center">
+        <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-center md:text-start">
           Grafik Batang Jumlah UMKM Berdasarkan {selectedFilter?.name}
         </p>
-        <div className="box flex flex-row gap-4 curosr-pointer items-center">
+        <div className="box flex flex-wrap justify-between gap-2 md:gap-8 curosr-pointer items-center">
           <ColorInput
             pointer={true}
             value={colorChart}
@@ -135,7 +139,14 @@ const BarChartKategori = () => {
         gridAxis={isVertical.slug == "vertical" ? "y" : "x"}
         withBarValueLabel
         withXAxis={true}
-        yAxisProps={{ width: isVertical.slug == "vertical" ? 100 : 15 }}
+        yAxisProps={{
+          width:
+            isVertical.slug == "vertical"
+              ? windowWidth < EXTENDED_WINDOW.md
+                ? 75
+                : 100
+              : 15,
+        }}
         series={[{ name: "value", color: colorChart }]}
       />
     </div>

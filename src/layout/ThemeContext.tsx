@@ -10,6 +10,10 @@ interface ThemeContextType {
   setTheme: (column: string) => void;
   lang: string;
   setLang: (column: string) => void;
+  windowWidth: number;
+  setWindowWidth: (column: number) => void;
+  isMobile: boolean;
+  setIsMobile: (column: boolean) => void;
 }
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
@@ -24,8 +28,36 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     setLang(lang);
   }, []);
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  useEffect(() => {
+    if (windowWidth < 800) {
+      setIsMobile(true);
+    }
+  }, [windowWidth]);
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, lang, setLang }}>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        setTheme,
+        lang,
+        setLang,
+        windowWidth,
+        setWindowWidth,
+        isMobile,
+        setIsMobile,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

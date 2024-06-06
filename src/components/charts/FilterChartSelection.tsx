@@ -20,7 +20,7 @@ const FilterChartSelection: React.FC<Props> = ({
       <div>
         <button
           type="button"
-          className="whitespace-nowrap inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white dark:bg-slate-800 dark:text-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:hover:bg-black"
+          className="whitespace-nowrap inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white dark:bg-slate-800 dark:text-white px-3 py-2 text-xs md:text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:hover:bg-black"
           aria-expanded="true"
           aria-haspopup="true"
           onClick={() => setShow(!show)}
@@ -43,7 +43,7 @@ const FilterChartSelection: React.FC<Props> = ({
       <div
         className={`${
           !show && "hidden"
-        } absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800`}
+        } absolute left-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800`}
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="menu-button"
@@ -52,7 +52,7 @@ const FilterChartSelection: React.FC<Props> = ({
           {filterList.map((item: TypeData, index: number) => (
             <p
               key={index}
-              className="text-gray-700 block px-4 py-2 text-sm hover:bg-silver cursor-pointer transition duration-300  hover:text-black dark:text-white"
+              className="text-gray-700 block px-4 py-2 text-xs md:text-sm hover:bg-silver cursor-pointer transition duration-300  hover:text-black dark:text-white"
               role="menuitem"
               onClick={() => {
                 setSelectedFilter(item);

@@ -39,11 +39,11 @@ const LandingPage: React.FC = () => {
       <div
         className={`flex flex-row justify-between items-center min-h-screen w-screen pt-4xl xl:pt-0`}
       >
-        <div className="flex flex-col justify-center bg-silver h-screen xl:justify-between items-start h-screen w-full xl:w-1/2 xl:pt-4xl  pb-4xl pl-4 pr-4 xl:pl-5xl xl:pr-4xl">
+        <div className="flex flex-col justify-center bg-silver xl:bg-white h-screen xl:justify-between items-start h-screen w-full xl:w-1/2 xl:pt-4xl  pb-4xl pl-4 pr-4 xl:pl-5xl xl:pr-4xl">
           <div
             data-aos="fade-up"
             data-aos-duration="800"
-            className="home-title bg-silver w-full flex items-start flex-col justify-start pt-8 xl:pt-4xl"
+            className="home-title bg-silver xl:bg-white w-full flex items-start flex-col justify-start pt-8 xl:pt-4xl"
           >
             <div className="flex flex-row justify-center xl:justify-between gap-4 w-full">
               <h1 className="text-black font-semibold text-2xl md:text-3xl lg:text-5xl xl:text-6xl text-center md:text-left dark:text-white">
@@ -110,9 +110,9 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
         {/* Gambar hanya tampil di layar besar */}
-        <div className="hidden xl:block img-home-container bg-silver w-1/2 h-screen pr-3xl">
+        <div className="hidden xl:block img-home-container bg-silver xl:bg-white w-1/2 h-screen pr-3xl">
           <div
-            className="box-hero-img-container bg-gray-200 h-[92vh] flex justify-center items-center"
+            className="box-hero-img-container bg-silver h-[92vh] flex justify-center items-center"
             style={{ borderRadius: "0rem 0rem 5.5rem 5.5rem" }}
           >
             <img
@@ -229,7 +229,11 @@ const LandingPage: React.FC = () => {
           data-aos="fade-up"
           data-aos-duration="800"
         >
-          <img src="/logo/logo.png" alt="" className="h-[40px] md:h-[60px] xl:h-[80px]" />
+          <img
+            src="/logo/logo.png"
+            alt=""
+            className="h-[40px] md:h-[60px] xl:h-[80px]"
+          />
           <div className="kp flex flex-row items-center">
             <img
               src="/logo/logo_kp.png"

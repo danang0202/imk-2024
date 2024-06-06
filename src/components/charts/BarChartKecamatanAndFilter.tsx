@@ -9,6 +9,7 @@ import {
 } from "../../utils/chart-utils";
 import {
   EXTENDEDCOLORS,
+  EXTENDED_WINDOW,
   badanHukumUsaha,
   dinasPengampu,
   kecamatanKulonProgo,
@@ -20,6 +21,7 @@ import { Text } from "@mantine/core";
 import { TypeData } from "../table/Selection";
 import DownloadChartButton from "../commons/DownloadChartButton";
 import FilterChartSelection from "./FilterChartSelection";
+import { useThemeContext } from "../../layout/ThemeContext";
 const BarChartKecamatanAndFilter = () => {
   const filter: TypeData[] = [
     {
@@ -57,6 +59,7 @@ const BarChartKecamatanAndFilter = () => {
       slug: "normal",
     },
   ];
+  const { windowWidth } = useThemeContext();
 
   const [show, setShow] = useState<boolean>(false);
   const [showIsVertical, setShowIsVertical] = useState<boolean>(false);
@@ -66,12 +69,12 @@ const BarChartKecamatanAndFilter = () => {
     slug: "badanHukum",
   });
   const [isVertical, setIsVertical] = useState<TypeData>({
-    name: "Horizontal",
-    slug: "horizontal",
+    name: `${windowWidth < EXTENDED_WINDOW.md ? "Vertikal" : "Horizontal"}`,
+    slug: `${windowWidth < EXTENDED_WINDOW.md ? "vertical" : "horizontal"}`,
   });
   const [stackedFilter, setStackedFilter] = useState<TypeData>({
-    name: "Normal",
-    slug: "normal",
+    name: `${windowWidth < EXTENDED_WINDOW.md ? "Stacked" : "Normal"}`,
+    slug: `${windowWidth < EXTENDED_WINDOW.md ? "stacked" : "normal"}`,
   });
   const [series, setSeries] = useState<seriesType[]>(
     chartKecamatanAndSkalaUsahaSeries
@@ -98,13 +101,13 @@ const BarChartKecamatanAndFilter = () => {
   }, [selectedFilter]);
   return (
     <>
-      <div className="w-full px-6">
-        <div className="flex flex-row justify-between pb-6 gap-4 items-center">
-          <p className="font-semibold text-lg text-wrap pl-4">
+      <div className="w-full xl:px-6">
+        <div className="flex flex-col xl:flex-row justify-center md:justify-between pb-6 gap-4 items-center">
+          <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-center md:text-start">
             Grafik Batang Jumlah UMKM Berdasarkan Kecamatan dan{" "}
             {selectedFilter?.name}
           </p>
-          <div className="box flex flex-row gap-4">
+          <div className="box flex flex-wrap justify-end gap-2 md:gap-8 curosr-pointer items-center">
             <FilterChartSelection
               show={show}
               setShow={setShow}
@@ -149,7 +152,7 @@ const BarChartKecamatanAndFilter = () => {
           gridAxis={isVertical.slug == "vertical" ? "y" : "x"}
           series={series}
         />
-        <div className="flex flex flex-wrap gap-8 w-full justify-center items-center pt-4">
+        <div className="flex flex-wrap gap-4 lg:gap-8 w-full justify-center items-center pt-4">
           {series?.map((item) => (
             <div className="box flex flex-row gap-2 items-center">
               <IconSquareFilled size={16} color={item.color} />
