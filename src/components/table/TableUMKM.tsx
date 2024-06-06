@@ -116,7 +116,7 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                         <img
                           src={data.avatar}
                           alt={data.name}
-                          className="rounded-full max-w-10 "
+                          className="rounded-full max-w-10 dark:bg-white"
                         />
                         {data?.name}
                       </div>

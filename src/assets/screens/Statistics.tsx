@@ -9,10 +9,10 @@ import Breadcrumb from "../../components/commons/BreadCrumb";
 const Statistics = () => {
   return (
     <Layout pageTitle="STATISTIK">
-      <div className="pt-5xl xl:hidden w-full bg-white">
+      <div className="pt-5xl xl:hidden w-full bg-white dark:bg-black">
         <Breadcrumb />
       </div>
-      <div className="pt-0 xl:pt-5.5xl px-4 lg:px-8 xl:px-6xl bg-white dark:bg-slate-800 overflow-x-hidden">
+      <div className="pt-0 xl:pt-5.5xl px-4 lg:px-8 xl:px-6xl bg-white dark:bg-black overflow-x-hidden">
         <div className="summary-container flex justify-center xl:justify-between flex-wrap items-center gap-2 md:gap-4">
           <CardSummary />
           <CardSummary />
@@ -28,7 +28,7 @@ const Statistics = () => {
                 leftSection={
                   <IconBuildingStore className="dark:text-white w-5 h-5 md:w-6 md:h6 lg:w-7 lg:h7" />
                 }
-                className="dark:hover:bg-slate-800 hover:bg-white"
+                className="dark:hover:bg-black hover:bg-white"
               >
                 <p className="font-semibold hover:text-grey transition duration-300 dark:text-white text-xs md:text-sm lg:text-base">
                   Statatistik UMKM
@@ -39,7 +39,7 @@ const Statistics = () => {
                 leftSection={
                   <IconBusinessplan className="dark:text-white w-5 h-5 md:w-6 md:h6 lg:w-7 lg:h7" />
                 }
-                className="dark:hover:bg-slate-800 hover:bg-white"
+                className="dark:hover:bg-black hover:bg-white"
               >
                 <p className="font-semibold hover:text-grey transition duration-300 dark:text-white text-xs md:text-sm lg:text-base">
                   Statistik Info Modal

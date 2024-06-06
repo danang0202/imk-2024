@@ -132,7 +132,7 @@ const DataUmkm = () => {
 
   return (
     <Layout pageTitle="DATA UMKM">
-      <div className="w-full pt-5xl xl:hidden ">
+      <div className="w-full pt-5xl xl:hidden bg-silver dark:bg-slate-800">
         <Breadcrumb />
       </div>
       {showModal && (
@@ -152,7 +152,7 @@ const DataUmkm = () => {
           <div className="fixed xl:relative z-20 flex flex-col bg-white rounded px-8 py-4 shadow-lg xl:shadow-sm dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden min-w-[22rem] xl:min-w-[18rem]">
             <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
               <ChevronDown
-                className={`w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer ${
+                className={`w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer transition duration-300 ${
                   showAdvancedFilter ? "transform rotate-90" : ""
                 }`}
                 onClick={() => setShowAdvancedFilter(false)}
@@ -178,10 +178,10 @@ const DataUmkm = () => {
           classNames="fade"
           unmountOnExit
         >
-          <div className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-sm py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black z-30">
+          <div className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-sm py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black z-30 min-w-[17rem]">
             <div className="relative">
               <ChevronDown
-                className={`xl:hidden absolute w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer top-0 right-0 ${
+                className={`xl:hidden absolute w-7 h-7 xl:w-8 xl:h-8 p-1 bbg-silver text-black dark:bg-black dark:border dark:text-white transition-transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer top-0 right-0 ${
                   showFilter ? "transform rotate-90" : ""
                 }`}
                 onClick={() => setShowFilter(false)}
@@ -229,11 +229,11 @@ const DataUmkm = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-row gap-2 text-grey hover:text-black justify-end lg:justify-end pt-6 cursor-pointer">
+              <div className="flex flex-row gap-2 text-grey hover:text-black dark:text-white dark:hover:text-grey justify-end lg:justify-end pt-6 cursor-pointer">
                 <IconFilterSearch size={17} />
                 <p
                   onClick={() => setShowAdvancedFilter(true)}
-                  className="text-xs md:text-sm dark:text-white dark:hover:text-grey"
+                  className="text-xs md:text-sm "
                 >
                   Buka Filter Lanjutan
                 </p>
@@ -256,18 +256,18 @@ const DataUmkm = () => {
                 setKeyword={setKeyword}
               />
               <div
-                className="hidden md:flex text-xs lg:text-sm  bg-secondary flex-row gap-2 items-center px-2 lg:px-4 py-2 rounded hover:bg-secondaryHover cursor-pointer text-white transition duration-300"
+                className="hidden md:flex text-xs lg:text-sm bg-secondary flex-row gap-2 items-center px-2 lg:px-4 py-2 rounded hover:bg-secondaryHover cursor-pointer text-white transition duration-300"
                 onClick={() => setShowModal(true)}
               >
                 <p>Unduh Data</p>
                 <IconDownload />
               </div>
             </div>
-            <div className="xl:hidden w-full flex flex-row gap-2 text-grey hover:text-black justify-start cursor-pointer">
+            <div className="xl:hidden w-full flex flex-row gap-2 text-grey hover:text-black justify-start cursor-pointer dark:text-white dark:hover:text-grey">
               <IconFilterSearch size={17} />
               <p
                 onClick={() => setShowFilter(true)}
-                className="text-xs md:text-sm dark:text-white dark:hover:text-grey"
+                className="text-xs md:text-sm"
               >
                 Buka Filter
               </p>

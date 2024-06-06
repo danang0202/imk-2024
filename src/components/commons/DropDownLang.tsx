@@ -41,7 +41,9 @@ const DropDownLang = () => {
         </button>
         <div
           className={`z-50 absolute my-4 text-base list-none bg-white px-4 min-w-[7rem] divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
-        id="language-dropdown-menu ${!show && "hidden"} dark:bg-black shadow`}
+        id="language-dropdown-menu ${
+          !show && "hidden"
+        } dark:bg-slate-800 shadow`}
         >
           <ul className="py-2 font-medium" role="none">
             {LANGUAGES.map((item) => (
@@ -55,7 +57,7 @@ const DropDownLang = () => {
               >
                 <a
                   href="#"
-                  className="block py-2 text-sm text-gray-700  dark:text-gray-400 dark:hover:text-white"
+                  className="block py-2 text-sm text-gray-700  dark:text-white dark:hover:text-white/75"
                   role="menuitem"
                 >
                   <div className="inline-flex items-center">

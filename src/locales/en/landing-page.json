@@ -2,5 +2,21 @@
     "welcome": "Hello, Welcome",
     "descHeroTop": "This application is an UMKM management application in Kulon Progo Regency.",
     "descHeroBottom": "Get information on UMKM data in Kulon Progo, UMKM GIS, UMKM Statistics and UMKM products.",
-    "serviceBtnText": "Let See Our Services"
+    "serviceBtnText": "Let See Our Services",
+    "serviceTitle": "Our Main",
+    "serviceTitleSpan": "Services",
+    "registerTitle": "Register UMKM Now",
+    "registerDesc": "Register your UMKM to increase promotion",
+    "searchTitle": "Search UMKM Data",
+    "searchDesc": "Get UMKM data throughout Kulon Progo Regency",
+    "seeProductTitle": "View Products",
+    "seeProductDesc": "Improve UMKM with 'Bela Beli Kulon Progo'",
+    "modalTitle": "Capital Info",
+    "modalDesc": "Get capital info to help improve your UMKM",
+    "faqNotFound": "Didn't find the answer? Contact us",
+    "faqTitle1": "What is e-UMKM Kulon Progo?",
+    "faqTitle2": "Is this the official website of the Kulon Progo government?",
+    "faqTitle3": "How do I register a new UMKM?",
+    "faqTitle4": "Can I sell my products on this site?",
+    "supportedTitle":"Supported By: "
 }

@@ -87,11 +87,13 @@ const DownloadConfirmationModal: React.FC<Props> = ({
         id="timeline-modal"
         aria-hidden="true"
         className="overflow-y-auto overflow-x-hidden flex bg-black/25 fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-        data-aos="fade-up"
-        data-aos-duration="300"
       >
         <div className="relative p-4 w-full max-w-md max-h-full">
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div
+            className="relative bg-white rounded-lg shadow dark:bg-gray-800"
+            data-aos="fade-up"
+            data-aos-duration="300"
+          >
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
               <h3 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white">
                 Download {isData ? "Data" : "Grafik"}
@@ -127,7 +129,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
               </time>
               <ol className="relative border-s border-gray-200 dark:border-gray-600 ms-3.5 mb-4 md:mb-5">
                 <li className="mb-10 ms-8">
-                  <span className="absolute flex items-center justify-center w-6 h-6 bg-primary rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700 dark:bg-gray-600">
+                  <span className="absolute flex items-center justify-center w-6 h-6 bg-primary rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700 dark:bg-primary">
                     <svg
                       className="w-2.5 h-2.5 text-white"
                       aria-hidden="true"
@@ -154,7 +156,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                             className={`box p-1 rounded-sm ${
                               selectedType === file.type
                                 ? "bg-primary text-white"
-                                : "bg-silver hover:bg-grey hover:text-white"
+                                : "text-black bg-silver hover:bg-grey hover:text-white"
                             } cursor-pointer transition duration-300`}
                             onClick={() => setSelectedType(file.type)}
                           >
@@ -171,7 +173,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                               className={`box p-1 rounded-sm ${
                                 selectedType === file.type
                                   ? "bg-primary text-white"
-                                  : "bg-silver hover:bg-grey hover:text-white"
+                                  : "text-black bg-silver hover:bg-grey hover:text-white"
                               } cursor-pointer transition duration-300`}
                               onClick={() => setSelectedType(file.type)}
                             >
@@ -183,13 +185,15 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                 <li className="mb-10 ms-8">
                   <span
                     className={`absolute flex items-center justify-center w-6 h-6 ${
-                      step >= 2 ? "bg-primary" : "bg-gray-100"
-                    } rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700 dark:bg-gray-600`}
+                      step >= 2
+                        ? "bg-primary dark:bg-primary"
+                        : "bg-gray-100  dark:bg-gray-600"
+                    } rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700`}
                   >
                     <svg
                       className={`w-2.5 h-2.5 ${
                         step >= 2 ? "text-white" : "text-gray-500"
-                      } dark:text-gray-400`}
+                      } `}
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -224,13 +228,15 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                 <li className="ms-8">
                   <span
                     className={`absolute flex items-center justify-center w-6 h-6 ${
-                      step >= 3 ? "bg-primary" : "bg-gray-100"
-                    } rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700 dark:bg-gray-600`}
+                      step >= 3
+                        ? "bg-primary dark:bg-primary"
+                        : "bg-gray-100  dark:bg-gray-600"
+                    } rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700 `}
                   >
                     <svg
                       className={`w-2.5 h-2.5 ${
                         step >= 3 ? "text-white" : "text-gray-500"
-                      } dark:text-gray-400`}
+                      }`}
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
                       viewBox="0 0 18 20"

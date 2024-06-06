@@ -13,12 +13,12 @@ const BadgeFilter: React.FC<Props> = ({ item, handleClick }) => {
         id="badge-dismiss-default"
         data-aos="zoom-in"
         data-aos-duration="300"
-        className="inline-flex items-center px-2 py-1 me-2 text-xs lg:text-sm font-base md:font-medium text-grey bg-silver rounded-sm"
+        className="inline-flex items-center px-2 py-1 me-2 text-xs lg:text-sm font-base md:font-medium text-grey bg-silver rounded-sm hover:bg-gray hover:text-white transition duration-300"
       >
         {item.name}
         <button
           type="button"
-          className="inline-flex items-center p-1 ms-2 bg-transparent rounded-sm hover:text-white hover:bg-grey transition duration-300 "
+          className="inline-flex items-center p-1 ms-2 bg-transparent rounded-sm"
           data-dismiss-target="#badge-dismiss-default"
           aria-label="Remove"
           onClick={() => handleClick(item)}

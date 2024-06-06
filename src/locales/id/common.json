@@ -8,5 +8,9 @@
     "pemkab": "PEMERINTAH KABUPATEN",
     "ilustrasi": "Ilustrasi oleh Freepik",
     "linksTitle": "Tautan",
-    "contact": "Hubungi Kami"
+    "contact": "Hubungi Kami",
+    "emailPlaceholder": "Alamat Email",
+    "namePlaceholder": "Nama",
+    "questionPlaceholder": "Pertanyaan"
+
 }

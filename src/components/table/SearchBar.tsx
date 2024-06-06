@@ -85,7 +85,7 @@ const SearchBar: React.FC<Props> = ({
         <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
-          className="flex flex-row-0 z-10 items-center py-2.5 px-1 pl-2  md:px-4 text-xs lg:text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 w-[7rem] md:w-[8rem] lg:w-[10rem] dark:bg-slate-800 dark:border-grey  dark:text-white dark:hover:bg-black"
+          className="translate-x-1 flex flex-row-0 z-10 items-center py-2.5 px-1 pl-2  md:px-4 text-xs lg:text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 w-[7rem] md:w-[8rem] lg:w-[10rem] dark:bg-slate-800 dark:border-gray-600  dark:text-white dark:hover:bg-slate-800"
           type="button"
           onClick={() => setShowsearchColumn(!showFilfterColumn)}
         >
@@ -151,14 +151,14 @@ const SearchBar: React.FC<Props> = ({
             onChange={(e) => handleKeywordChange(e)}
             type="search"
             id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-xs lg:text-sm text-gray-900 bg-gray-50 ruonded-s-none rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2 dark:bg-slate-800 dark:border-grey dark:focus:bg-black"
+            className="block p-2.5 w-full z-20 text-xs lg:text-sm text-gray-900 bg-gray-50 rounded-s-none rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2 dark:bg-slate-800 dark:text-white dark:border-gray-600 dark:focus:bg-slate-800"
             placeholder="Kata kunci..."
             style={{ width: width }}
             required
           />
           <button
             type="submit"
-            className="absolute top-0 end-0 py-2.5 px-3 md:px-4 text-sm font-medium h-full text-white bg-primary rounded-e-lg hover:bg-primaryHover"
+            className="absolute top-0 end-0 py-2.5 px-3 md:px-4 text-sm font-medium h-full text-white bg-primary rounded-e-lg hover:bg-primaryHover "
           >
             <svg
               className="w-3 h-3 md:w-4 md:h-4"
@@ -184,13 +184,13 @@ const SearchBar: React.FC<Props> = ({
               classNames="fade"
               unmountOnExit
             >
-              <ul className="absolute z-20 bg-white w-full border rounded shadow-lg mt-1">
+              <ul className="absolute z-20 bg-white dark:bg-gray-800 w-full border dark:border-gray-700 rounded shadow-lg mt-1">
                 {recommendations.length > 0 && (
-                  <ul className="absolute z-10 bg-white w-full border rounded shadow-lg mt-1 text-xs md:text-sm">
+                  <ul className="absolute z-10 bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs md:text-sm">
                     {recommendations.map((item, index) => (
                       <li
                         key={index}
-                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black"
                         onClick={() => {
                           setKeyword(item);
                           setRecommendations([]);

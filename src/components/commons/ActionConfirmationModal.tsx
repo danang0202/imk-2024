@@ -30,12 +30,14 @@ const ActionConfirmationModal: React.FC<ActionConfirmationModalProps> = ({
         <div
           id="popup-modal"
           tabIndex={-1}
-          data-aos="fade-up"
-          data-aos-duration="300"
           className="fixed top-0 left-0 right-0 w-screen h-screen z-50 flex justify-center items-center bg-black/25"
         >
           <div className="relative p-4 w-full max-w-md max-h-full">
-            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div
+              className="relative bg-white rounded-lg shadow dark:bg-gray-700"
+              data-aos="fade-up"
+              data-aos-duration="300"
+            >
               <button
                 type="button"
                 className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"

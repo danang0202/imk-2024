@@ -38,7 +38,7 @@ const Pagination: React.FC<Props> = ({
     }
   };
   return (
-    <div className="pagination md:text-base w-full md:w-fit text-xs md:text-sm">
+    <div className="pagination w-full md:w-fit text-xs md:text-sm">
       <div className="flex flex-col md:flex-row justify-between i items-center gap-4 md:gap-8 w-full md:w-auto">
         <div className="box flex flex-col md:flex-row items-center gap-4">
           <label htmlFor="show-number" className="hidden lg:inline">
@@ -61,7 +61,7 @@ const Pagination: React.FC<Props> = ({
 
         <ul className="flex flex-row items-center bg-silver rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-grey">
           <li
-            className="text-black py-1 px-2 md:px-3 lg:px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
+            className="text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
             onClick={() => onPageChange("&laquo")}
           >
             <button className="page-link" aria-label="Previous">
@@ -69,7 +69,7 @@ const Pagination: React.FC<Props> = ({
             </button>
           </li>
           <li
-            className="hidden md:block text-black py-1 px-2 md:px-3 lg:px-3.5  font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
+            className="hidden md:block text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5  font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
             onClick={() => onPageChange("&lsaquo")}
           >
             <button className="page-link">&lsaquo;</button>
@@ -81,7 +81,7 @@ const Pagination: React.FC<Props> = ({
               onClick={() => onPageChange(value)}
             >
               <button
-                className={` text-black py-1 px-2 md:px-3 lg:px-3.5  font-semibold ${
+                className={` text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5  font-semibold ${
                   page === value
                     ? "bg-primary text-white rounded "
                     : "text-black hover:bg-inactive rounded  "
@@ -92,13 +92,13 @@ const Pagination: React.FC<Props> = ({
             </li>
           ))}
           <li
-            className="hidden md:block text-black py-1 px-2 md:px-3 lg:px-3.5  font-semibold hover:bg-inactive ronded-sm md:rounded hover:cursor-pointer dark:text-white"
+            className="hidden md:block text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5  font-semibold hover:bg-inactive ronded-sm md:rounded hover:cursor-pointer dark:text-white"
             onClick={() => onPageChange("&rsaquo")}
           >
             <button className="page-link">&rsaquo;</button>
           </li>
           <li
-            className="text-black py-1 px-2 md:px-3 lg:px-3.5  font-semibold hover:bg-inactive rounded hover:cursor-pointer dark:text-white"
+            className="text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5  font-semibold hover:bg-inactive rounded hover:cursor-pointer dark:text-white"
             onClick={() => onPageChange("&raquo")}
           >
             <button className="page-link" aria-label="Next">

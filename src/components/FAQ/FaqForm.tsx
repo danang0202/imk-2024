@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import ButtonBlack from "../Button/ButtonBlack";
 import { faqSchema } from "../../schema/FaqFormSchema";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 export interface formDataType {
   email: string;
@@ -19,6 +20,7 @@ const FaqForm: React.FC<Props> = ({
   setFormData,
 }) => {
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const { common } = useThemeContext();
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -64,7 +66,7 @@ const FaqForm: React.FC<Props> = ({
             htmlFor="floating_email"
             className="peer-focus:font-medium absolute text-sm md:text-base text-grey duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 z-10"
           >
-            Alamat Email
+            {common("emailPlaceholder")}
           </label>
           {errors.email && (
             <p className="text-red-500 text-xs mt-1">{errors.email}</p>
@@ -88,7 +90,7 @@ const FaqForm: React.FC<Props> = ({
             htmlFor="floating_password"
             className="peer-focus:font-medium absolute text-sm md:text-base text-grey duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 z-10"
           >
-            Nama
+            {common("namePlaceholder")}
           </label>
           {errors.name && (
             <p className="text-red-500 text-xs mt-1">{errors.name}</p>
@@ -111,7 +113,7 @@ const FaqForm: React.FC<Props> = ({
             htmlFor="floating_area"
             className="peer-focus:font-medium absolute text-sm md:text-base text-grey duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 z-10"
           >
-            Pertanyaan
+            {common("questionPlaceholder")}
           </label>
           {errors.question && (
             <p className="text-red-500 text-xs mt-1">{errors.question}</p>

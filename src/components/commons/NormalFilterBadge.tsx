@@ -10,15 +10,15 @@ const NormalFilterBadge: React.FC<Props> = ({ text, handleClick }) => {
         id="badge-dismiss-default"
         data-aos="zoom-in"
         data-aos-duration="300"
-        className="inline-flex items-center px-1 md:px-2 py-1 me-2 text-xs lg:text-sm font-base md:font-medium text-grey bg-silver rounded-sm"
+        className="inline-flex items-center px-1 md:px-2 py-1 me-2 text-xs lg:text-sm font-base md:font-medium text-grey bg-silver rounded-sm hover:bg-grey hover:text-white transition duration-300 cursor-pointer"
+        onClick={handleClick}
       >
         {text}
         <button
           type="button"
-          className="inline-flex items-center p-1 ms-1 md:ms-2 text-grey bg-transparent rounded-sm hover:text-white hover:bg-grey transition duration-300 "
+          className="inline-flex items-center p-1 ms-1 md:ms-2 bg-transparent rounded-sm"
           data-dismiss-target="#badge-dismiss-default"
           aria-label="Remove"
-          onClick={handleClick}
         >
           <svg
             className="w-2 h-2"

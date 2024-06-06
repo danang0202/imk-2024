@@ -17,34 +17,43 @@ const Navbar = () => {
   const menuItems: MenuItem[] = menuItemsData;
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const { isMobile } = useThemeContext();
   const [navBg, setNavBg] = useState(
-    `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
+    `${open || isMobile ? "bg-silver dark:bg-slate-800" : "bg-transparent"}`
   );
   const [navBgItem, setNavBgItem] = useState(
-    `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
+    `${open || isMobile ? "bg-silver dark:bg-slate-800" : "bg-transparent"}`
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme, common } = useThemeContext();
 
-  const { isMobile } = useThemeContext();
   useEffect(() => {
     const handleScroll = () => {
       if (location.pathname == "/beranda") {
         const scrollY = window.scrollY;
 
         if (scrollY > 100) {
-          setNavBg("bg-white shadow-sm dark:bg-slate-800");
-          setNavBgItem("bg-white dark:bg-slate-800");
+          setNavBg("bg-white shadow-sm dark:bg-black");
+          setNavBgItem("bg-white dark:bg-black");
         } else {
           setNavBg(
-            `${open || isMobile ? "bg-silver" : "bg-transparent"} dark:bg-black`
+            `${
+              open || isMobile
+                ? "bg-silver dark:bg-slate-800"
+                : "bg-transparent"
+            }`
           );
           setNavBgItem(
-            `${open || isMobile ? "bg-silver" : "bg-transparent"} dark:bg-black`
+            `${
+              open || isMobile
+                ? "bg-silver dark:bg-slate-800"
+                : "bg-transparent"
+            }`
           );
         }
       }
     };
+    console.log(isMobile);
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -67,7 +76,7 @@ const Navbar = () => {
       className={`w-full top-0 left-0 xl:px-8 py-3 ${
         location.pathname == "/beranda"
           ? navBg
-          : "bg-white shadow-sm dark:bg-black border-b"
+          : "bg-white shadow-sm dark:bg-black border-b dark:border-b-gray-700"
       }`}
     >
       <div className="xl:flex items-center justify-between xl:px-10 px-7">
@@ -117,9 +126,9 @@ const Navbar = () => {
             >
               <a
                 href={link.href}
-                className={`hover:text-black/75 font-semibold ${
+                className={`hover:text-black/75 dark:hover:text-white/75 font-semibold ${
                   location.pathname.includes(link.href)
-                    ? "text-black border-b-2 pb-1 border-black dark:border-white"
+                    ? "text-black border-b-2 pb-1 border-blac  dark:border-white dark:text-white"
                     : "text-[#000] dark:text-white"
                 }`}
               >

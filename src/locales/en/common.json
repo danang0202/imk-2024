@@ -8,5 +8,8 @@
     "pemkab": "DISTRICT GOVERNMENT OF",
     "ilustrasi": "Ilustrasi by Freepik",
     "linksTitle": "Links",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "emailPlaceholder": "Email Address",
+    "namePlaceholder": "Name",
+    "questionPlaceholder": "Question"
 }

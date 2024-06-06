@@ -179,10 +179,10 @@ const Gis: React.FC = () => {
   // };
   return (
     <Layout pageTitle="GIS">
-      <div className="xl:hidden pt-5xl w-full bg-white">
+      <div className="xl:hidden pt-5xl w-full bg-white dark:bg-black">
         <Breadcrumb />
       </div>
-      <div className="w-screen px-4 xl:p-8 pt-2 xl:pt-6xl pb-0 xl:pb-8 bg-white min-h-[85vh] flex ">
+      <div className="w-screen px-4 xl:p-8 pt-2 xl:pt-6xl pb-0 xl:pb-8 bg-white dark:bg-black min-h-[85vh] flex ">
         <div className="box px-0 xl:px-8  py-1 flex flex-row items-start gap-4 w-full">
           <CSSTransition
             in={showFilter}
@@ -191,19 +191,19 @@ const Gis: React.FC = () => {
             unmountOnExit
           >
             <>
-              <div className="fixed top-28 xl:top-0 max-h-[85vh] xl:max-h-fit overflow-y-scroll xl:overflow-y-auto xl:relative z-30 min-w-[22rem] rounded p-8 shadow-sm bg-white border border-gray-300">
+              <div className="fixed top-28 xl:top-0 max-h-[85vh] xl:max-h-fit overflow-y-scroll xl:overflow-y-auto xl:relative z-30 min-w-[22rem] rounded p-8 shadow-sm bg-white dark:bg-black border border-gray-300 dark:border-gray-700">
                 <div className="relative text-xs md:text-sm lg:text-base">
                   <ChevronDown
-                    className={`xl:hidden absolute w-7 h-7 p-1 bg-silver text-black transition-transform hover:bg-inactive rounded-full cursor-pointer top-0 right-0 translate-x-5 -translate-y-5 ${
+                    className={`xl:hidden absolute w-7 h-7 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transition-transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer top-0 right-0 translate-x-5 -translate-y-5 ${
                       showFilter ? "transform rotate-90" : ""
                     }`}
                     onClick={() => setShowFilter(false)}
                   />
-                  <h2 className="text-base font-bold text-center pb-2 xl:pb-4 border-b-2 mb-4 border-grey">
+                  <h2 className="text-base font-bold text-center pb-2 xl:pb-4 border-b-2 mb-4 border-grey dark:text-white">
                     Penyaringan Data
                   </h2>
                   <div className="box flex flex-col gap-4">
-                    <div className="flex flex-row gap-2 items-center">
+                    <div className="flex flex-row gap-2 items-center dark:text-white">
                       <IconFilterSearch
                         size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
                       />
@@ -226,7 +226,7 @@ const Gis: React.FC = () => {
                       </select>
                     </form>
                   </div>
-                  <div className="">
+                  <div className="dark:text-white">
                     <AdvancedFilter
                       skalaUsahaFilter={skalaUsahaFilter}
                       setSkalaUsahaFilter={setSkalaUsahaFilter}
@@ -243,7 +243,7 @@ const Gis: React.FC = () => {
             </>
           </CSSTransition>
 
-          <div className="w-full rounded px-0 xl:px-8 pb-8 bg-white h-full transform -translate-y-4 relative">
+          <div className="w-full rounded px-0 xl:px-8 pb-8 bg-white dark:bg-black h-full transform -translate-y-4 relative">
             <div className="flex flex-col xl:flex-row justify-between items-center pb-2 gap-4 xl:gap-0">
               <p className="text-sm md:text-base  lg:text-lg font-bold text-black">
                 Sistem Informasi Geografis UMKM Kulon Progo
@@ -257,11 +257,11 @@ const Gis: React.FC = () => {
                 data={filteredDataByKec}
               />
             </div>
-            <div className="xl:hidden w-full flex flex-row gap-2 text-grey hover:text-black justify-start cursor-pointer py-2">
+            <div className="xl:hidden w-full flex flex-row gap-2 text-grey hover:text-black dark:text-white dark:hover:text-grey justify-start cursor-pointer py-2">
               <IconFilterSearch size={17} />
               <p
                 onClick={() => setShowFilter(true)}
-                className="text-xs md:text-sm dark:text-white dark:hover:text-grey"
+                className="text-xs md:text-sm "
               >
                 Buka Filter
               </p>
@@ -318,7 +318,7 @@ const Gis: React.FC = () => {
             </div>
             {filteredDataUMKM.length != filteredDataByKec.length && (
               <div className=" px-1 pb-4">
-                <p className="text-grey text-xs lg:text-sm">
+                <p className="text-grey text-xs lg:text-sm dark:text-white">
                   Hasil:
                   <span className="font-medium">
                     {" "}
@@ -411,7 +411,7 @@ const Gis: React.FC = () => {
                 filteredDataUMKM.length != 1 &&
                 filteredDataUMKM.map((item) => (
                   <div
-                    className="box p-2 xl:p-4 flex flex-row gap-2 items-center bg-white border border-gray-300 hover:bg-silver cursor-pointer transition duration-300"
+                    className="box p-2 xl:p-4 flex flex-row gap-2 items-center bg-white dark:bg-black border border-gray-300 hover:bg-silver  dark:hover:bg-gray-700 cursor-pointer transition duration-300"
                     onClick={() => {
                       handleDeleteAllFilter();
                       setKeyword(item.name);
@@ -420,9 +420,9 @@ const Gis: React.FC = () => {
                     <img
                       src={item.avatar}
                       alt={item.name}
-                      className="rounded-full max-w-6 xl:max-w-10 "
+                      className="rounded-full max-w-6 xl:max-w-10 dark:bg-white"
                     />
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 dark:text-white">
                       <p className="font-semibold text-xs md:text-sm xl:text-base">
                         {item.name}
                       </p>

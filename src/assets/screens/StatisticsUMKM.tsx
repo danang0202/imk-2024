@@ -29,33 +29,33 @@ const StatisticsUMKM = () => {
   return (
     <>
       <div className="flex flex-col xl:flex-row gap-4 w-full">
-        <div className="w-full xl:w-[35%] box-bar-chart bg-white  border border-gray-300 py-8  px-4 md:px-6 mt-4 rounded relative dark:bg-black dark:text-white">
+        <div className="w-full xl:w-[35%] box-bar-chart bg-white  border border-gray-300 dark:border-gray-700 py-8  px-4 md:px-6 mt-4 rounded relative dark:bg-black dark:text-white">
           <DonutChartKategori />
           <div
             className="box absolute bottom-8 right-6 cursor-pointer text-grey hover:text-black bg-silver rounded p-1"
             onClick={() => setShowModal("donut")}
           >
-            <IconBook className="dark:text-white" />
+            <IconBook />
           </div>
         </div>
-        <div className="w-full xl:w-[75%] box-bar-chart bg-white border border-gray-300 p-4 md:p-8 mt-4 rounded relative dark:bg-black dark:text-white pb-10">
+        <div className="w-full xl:w-[75%] box-bar-chart bg-white border border-gray-300 dark:border-gray-700 p-4 md:p-8 mt-4 rounded relative dark:bg-black dark:text-white pb-10">
           <BarChartKategori />
           <div
             className="box absolute bottom-8 right-6 cursor-pointer text-grey hover:text-black translate-y-6 bg-silver rounded p-1"
             onClick={() => setShowModal("bar-kategori")}
           >
-            <IconBook className="dark:text-white  bg-silver" />
+            <IconBook />
           </div>
         </div>
       </div>
       <div className="flex gap-4">
-        <div className="p-4 md:p-8 bg-white rounded mt-4 border border-gray-300 relative w-full dark:bg-black dark:text-white">
+        <div className="p-4 md:p-8 bg-white rounded mt-4 border border-gray-300 dark:border-gray-700 relative w-full dark:bg-black dark:text-white">
           <BarChartKecamatanAndFilter />
           <div
             className="box absolute bottom-8 right-6 cursor-pointer text-grey hover:text-black bg-silver rounded p-1 "
             onClick={() => setShowModal("bar-kecamatan")}
           >
-            <IconBook className="dark:text-white" />
+            <IconBook />
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FaqQuestion from "./FaqQuestion";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface Item {
   title: string;
@@ -12,6 +13,7 @@ interface FaqProps {
 
 const Faq: React.FC<FaqProps> = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState<number[]>([]);
+  const { landingLang } = useThemeContext();
 
   const toggleFaq = (index: number) => {
     setActiveIndex((prevActiveIndex) => {
@@ -31,7 +33,7 @@ const Faq: React.FC<FaqProps> = ({ items }) => {
         <FaqQuestion
           index={index}
           activeIndex={activeIndex}
-          title={title}
+          title={landingLang(title)}
           content={content}
           toggleFaq={toggleFaq}
           aos="fade-up"
