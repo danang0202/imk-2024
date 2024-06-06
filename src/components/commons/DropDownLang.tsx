@@ -51,6 +51,7 @@ const DropDownLang = () => {
                   setShow(false);
                 }}
                 className="dark:hover:bg-slate-800"
+                key={item.code}
               >
                 <a
                   href="#"

@@ -35,6 +35,7 @@ const Faq: React.FC<FaqProps> = ({ items }) => {
           content={content}
           toggleFaq={toggleFaq}
           aos="fade-up"
+          key={index}
         />
       ))}
     </section>

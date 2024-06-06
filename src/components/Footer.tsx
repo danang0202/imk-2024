@@ -42,8 +42,12 @@ const Footer: React.FC = () => {
           </div>
           {/* Social Media */}
           <div className="flex flex-row gap-4 items-center justify-center md:justify-start transform">
-            {socials.map((social) => (
-              <LogoSocialMedia path={social.path} url={social.url} />
+            {socials.map((social, index) => (
+              <LogoSocialMedia
+                path={social.path}
+                url={social.url}
+                key={index}
+              />
             ))}
           </div>
         </div>
@@ -51,11 +55,11 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-y-3">
             <h1 className="font-bold pb-4 text-xl">{common("linksTitle")}</h1>
             {menuItems.map((item) => (
-              <>
+              <div key={item.slug}>
                 <a href={item.href} className="hover:text-warning">
                   {common(item.slug)}
                 </a>
-              </>
+              </div>
             ))}
           </div>
           <div className="flex flex-col"></div>

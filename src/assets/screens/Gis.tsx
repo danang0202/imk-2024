@@ -280,32 +280,36 @@ const Gis: React.FC = () => {
                 />
               )}
               {skalaUsahaFilter.length != skalaUsaha.length &&
-                skalaUsahaFilter.map((item) => (
+                skalaUsahaFilter.map((item, index) => (
                   <BadgeFilter
                     item={item}
                     handleClick={handleDeleteSkalaUsahaFilter}
+                    key={index}
                   />
                 ))}
               {badanHukumFilter &&
                 badanHukumFilter.length != badanHukumUsaha.length &&
-                badanHukumFilter.map((item) => (
+                badanHukumFilter.map((item, index) => (
                   <BadgeFilter
                     item={item}
                     handleClick={handleDeleteBadanHukumFilter}
+                    key={index}
                   />
                 ))}
               {dinasPengampuFilter.length != dinasPengampu.length &&
-                dinasPengampuFilter.map((item) => (
+                dinasPengampuFilter.map((item, index) => (
                   <BadgeFilter
                     item={item}
                     handleClick={handleDinasPengampuFilter}
+                    key={index}
                   />
                 ))}
               {bidangUsahaFilter.length != bidangUsaha.length &&
-                bidangUsahaFilter.map((item) => (
+                bidangUsahaFilter.map((item, index) => (
                   <BadgeFilter
                     item={item}
                     handleClick={handleDeleteBidangUsahaFilter}
+                    key={index}
                   />
                 ))}
               {filteredDataUMKM.length != data.length && (
@@ -316,7 +320,10 @@ const Gis: React.FC = () => {
               <div className=" px-1 pb-4">
                 <p className="text-grey text-xs lg:text-sm">
                   Hasil:
-                  <span className="font-medium"> {filteredDataUMKM.length} </span>
+                  <span className="font-medium">
+                    {" "}
+                    {filteredDataUMKM.length}{" "}
+                  </span>
                   UMKM ditemukan{" "}
                 </p>
               </div>

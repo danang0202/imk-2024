@@ -5,11 +5,14 @@ import {
   IconFileTypePng,
 } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
+import ButtonSpinner from "./ButtonSpinner";
+import { handleNotifSuccess } from "../../utils/natif";
 
 export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 interface Props {
   chartTitle: string;
   setShow: (column: boolean) => void;
+  isData?: boolean;
 }
 
 type FileType = {
@@ -26,10 +29,13 @@ const fileTypes: FileType[] = [
 const DownloadConfirmationModal: React.FC<Props> = ({
   setShow,
   chartTitle,
+  isData,
 }) => {
   const [step, setStep] = useState<number>(1);
   const [selectedType, setSelectedType] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
 
   useEffect(() => {
     if (selectedType != "") {
@@ -53,7 +59,26 @@ const DownloadConfirmationModal: React.FC<Props> = ({
   }, [email]);
 
   const handleDownloadButton = () => {
-    setShow(false);
+    setLoading(true);
+    setProgress(0); // Reset progress
+    const interval = setInterval(() => {
+      setProgress((oldProgress) => {
+        const newProgress = oldProgress + 1;
+        if (newProgress === 100) {
+          clearInterval(interval);
+        }
+        return newProgress;
+      });
+    }, 30);
+
+    setTimeout(() => {
+      setLoading(false);
+      setShow(false);
+      handleNotifSuccess(
+        "Download Berhasil",
+        "Jika tidak berhasil, ulangi langkah !"
+      );
+    }, 3000);
   };
 
   return (
@@ -61,7 +86,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
       <div
         id="timeline-modal"
         aria-hidden="true"
-        className="overflow-y-auto overflow-x-hidden flex bg-silver/75 fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+        className="overflow-y-auto overflow-x-hidden flex bg-black/25 fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
         data-aos="fade-up"
         data-aos-duration="300"
       >
@@ -69,12 +94,13 @@ const DownloadConfirmationModal: React.FC<Props> = ({
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
               <h3 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white">
-                Download Grafik
+                Download {isData ? "Data" : "Grafik"}
               </h3>
               <button
                 type="button"
                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                 data-modal-toggle="timeline-modal"
+                disabled={loading}
                 onClick={() => setShow(false)}
               >
                 <svg
@@ -116,23 +142,42 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                     Pilih Jenis File{" "}
                   </h3>
                   <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
-                    Pilihan : PNG, JPG, CSV (Data), dan Excel (Data)
+                    Pilihan : {!isData && "PNG, JPG,"} CSV (Data), dan Excel
+                    (Data)
                   </time>
 
                   <div className="flex flex-row gap-4">
-                    {fileTypes.map((file) => (
-                      <div
-                        key={file.type}
-                        className={`box p-1 rounded-sm ${
-                          selectedType === file.type
-                            ? "bg-primary text-white"
-                            : "bg-silver hover:bg-grey hover:text-white"
-                        } cursor-pointer transition duration-300`}
-                        onClick={() => setSelectedType(file.type)}
-                      >
-                        {file.icon}
-                      </div>
-                    ))}
+                    {!isData
+                      ? fileTypes.map((file) => (
+                          <div
+                            key={file.type}
+                            className={`box p-1 rounded-sm ${
+                              selectedType === file.type
+                                ? "bg-primary text-white"
+                                : "bg-silver hover:bg-grey hover:text-white"
+                            } cursor-pointer transition duration-300`}
+                            onClick={() => setSelectedType(file.type)}
+                          >
+                            {file.icon}
+                          </div>
+                        ))
+                      : fileTypes
+                          .filter(
+                            (file) => file.type != "jpg" && file.type != "png"
+                          )
+                          .map((file) => (
+                            <div
+                              key={file.type}
+                              className={`box p-1 rounded-sm ${
+                                selectedType === file.type
+                                  ? "bg-primary text-white"
+                                  : "bg-silver hover:bg-grey hover:text-white"
+                              } cursor-pointer transition duration-300`}
+                              onClick={() => setSelectedType(file.type)}
+                            >
+                              {file.icon}
+                            </div>
+                          ))}
                   </div>
                 </li>
                 <li className="mb-10 ms-8">
@@ -201,25 +246,38 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                   </time>
                 </li>
               </ol>
+              {loading && (
+                <div className="w-ful rounded-full mb-4">
+                  <p className="text-xs md:text-sm">Mempersiapkan data</p>
+                  <div
+                    className="bg-info h-1.5 rounded-full dark:bg-blue-500"
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                </div>
+              )}
               <button
                 className={`text-sm md:text-base text-white flex items-center gap-2 w-full justify-center bg-primary py-2 rounded  transition duration-300 ${
-                  step < 3
+                  step < 3 || loading
                     ? "bg-primary/50 cursor-not-allowed"
                     : "hover:bg-primary/75 cursor-pointer"
                 }`}
                 disabled={step < 3}
                 onClick={() => handleDownloadButton()}
               >
-                <svg
-                  className="w-3 h-3 me-1.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
-                  <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
-                </svg>{" "}
+                {loading ? (
+                  <ButtonSpinner />
+                ) : (
+                  <svg
+                    className="w-3 h-3 me-1.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
+                    <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
+                  </svg>
+                )}
                 Download Data
               </button>
             </div>

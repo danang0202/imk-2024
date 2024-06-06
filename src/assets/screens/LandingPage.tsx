@@ -7,6 +7,9 @@ import { useThemeContext } from "../../layout/ThemeContext";
 import { IconDotsVertical, IconHeadset } from "@tabler/icons-react";
 import LogoSocialMedia from "../../components/Social/LogoSocialMedia";
 import ButtonBlack from "../../components/Button/ButtonBlack";
+import ActionConfirmationModal from "../../components/commons/ActionConfirmationModal";
+import { useState } from "react";
+import { handleNotifSuccess } from "../../utils/natif";
 
 export interface ServiceItem {
   title: string;
@@ -32,6 +35,35 @@ const LandingPage: React.FC = () => {
     }
   };
   const { landingLang } = useThemeContext();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    name: "",
+    question: "",
+  });
+  const clearFormData = () => {
+    setFormData({
+      email: "",
+      name: "",
+      question: "",
+    });
+  };
+
+  const handleSubmitFaqForm = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setIsModalOpen(false);
+      clearFormData();
+      handleNotifSuccess(
+        "Upload pertanyaan berhasil",
+        "Selamat pertanyaan anda telah berhasil di kirim"
+      );
+    }, 2000);
+  };
+
   return (
     <Layout pageTitle="BERANDA">
       <div
@@ -95,8 +127,12 @@ const LandingPage: React.FC = () => {
               <IconHeadset />
             </div>
             <div className="flex flex-row gap-4">
-              {socialMediaData.map((social) => (
-                <LogoSocialMedia path={social.path} url={social.url} />
+              {socialMediaData.map((social, index) => (
+                <LogoSocialMedia
+                  path={social.path}
+                  url={social.url}
+                  key={index}
+                />
               ))}
             </div>
           </div>
@@ -187,9 +223,20 @@ const LandingPage: React.FC = () => {
               </p>
             </div>
             <div className="form-container hidden xl:block">
-              <FaqForm />
+              <FaqForm
+                setIsModalOpen={setIsModalOpen}
+                formData={formData}
+                setFormData={setFormData}
+              />
             </div>
           </div>
+          <ActionConfirmationModal
+            text="Apakah anda yakin untuk mengirimkan pertanyaan ini ? "
+            handleYes={handleSubmitFaqForm}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            loading={loading}
+          />
           <div
             className="faq-container w-full xl:w-1/2 px-6 md:px-8 lg:px-6xl"
             style={{ minWidth: "50%" }}
@@ -197,7 +244,11 @@ const LandingPage: React.FC = () => {
             <Faq items={Faqs} />
           </div>
           <div className="block xl:hidden w-full px-6 md:px-8 lg:px-6xl">
-            <FaqForm />
+            <FaqForm
+              setIsModalOpen={setIsModalOpen}
+              formData={formData}
+              setFormData={setFormData}
+            />
           </div>
         </div>
       </div>

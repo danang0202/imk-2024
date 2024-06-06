@@ -2,19 +2,12 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LandingPage from "./assets/screens/LandingPage";
 import DataUmkm from "./assets/screens/DataUmkm";
 import Statistics from "./assets/screens/Statistics";
-import { useEffect } from "react";
-import AOS from "aos";
 import "aos/dist/aos.css";
 import Login from "./assets/screens/Login";
 import "react-toggle/style.css";
 import Test from "./assets/screens/Test";
 import Gis from "./assets/screens/Gis";
 function App() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1200, // Durasi animasi dalam milidetik
-    });
-  }, []);
   return (
     <BrowserRouter>
       <Routes>

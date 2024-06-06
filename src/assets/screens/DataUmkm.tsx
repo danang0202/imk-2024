@@ -23,6 +23,7 @@ import { IconDownload, IconFilterSearch } from "@tabler/icons-react";
 import ClearBadge from "../../components/commons/ClearBadge";
 import Breadcrumb from "../../components/commons/BreadCrumb";
 import { useThemeContext } from "../../layout/ThemeContext";
+import DownloadConfirmationModal from "../../components/commons/DownloadConfirmationModal";
 
 const DataUmkm = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true);
@@ -40,6 +41,7 @@ const DataUmkm = () => {
   const data = umkmData;
   const [filteredData, setFilteredData] = useState<UMKMProperties[]>([]);
   const { dataLang } = useThemeContext();
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -133,6 +135,13 @@ const DataUmkm = () => {
       <div className="w-full pt-5xl xl:hidden ">
         <Breadcrumb />
       </div>
+      {showModal && (
+        <DownloadConfirmationModal
+          setShow={setShowModal}
+          chartTitle="Data UMKM Kabupaten Kulon Progo Tahun 2024"
+          isData={true}
+        />
+      )}
       <div className="flex items-stretch flex-row w-full pb-8 xl:pt-5.5xl  xl:pb-3xl xl:gap-4 xl:px-8 bg-silver dark:bg-slate-800 dark:text-white">
         <CSSTransition
           in={showAdvancedFilter}
@@ -246,7 +255,10 @@ const DataUmkm = () => {
                 keyword={keyword}
                 setKeyword={setKeyword}
               />
-              <div className="hidden md:flex text-xs md:text-sm lg:text-base bg-secondary flex-row gap-2 items-center px-2 lg:px-4 py-2 rounded hover:bg-secondaryHover cursor-pointer text-white transition duration-300">
+              <div
+                className="hidden md:flex text-xs lg:text-sm  bg-secondary flex-row gap-2 items-center px-2 lg:px-4 py-2 rounded hover:bg-secondaryHover cursor-pointer text-white transition duration-300"
+                onClick={() => setShowModal(true)}
+              >
                 <p>Unduh Data</p>
                 <IconDownload />
               </div>
@@ -292,7 +304,7 @@ const DataUmkm = () => {
                     >
                       <path
                         stroke="currentColor"
-                        stroke-linecap="round"
+                        strokeLinecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
                         d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
@@ -304,32 +316,36 @@ const DataUmkm = () => {
               </CSSTransition>
             )}
             {skalaUsahaFilter.length != skalaUsaha.length &&
-              skalaUsahaFilter.map((item) => (
+              skalaUsahaFilter.map((item, index) => (
                 <BadgeFilter
                   item={item}
                   handleClick={handleDeleteSkalaUsahaFilter}
+                  key={index}
                 />
               ))}
             {badanHukumFilter &&
               badanHukumFilter.length != badanHukumUsaha.length &&
-              badanHukumFilter.map((item) => (
+              badanHukumFilter.map((item, index) => (
                 <BadgeFilter
                   item={item}
                   handleClick={handleDeleteBadanHukumFilter}
+                  key={index}
                 />
               ))}
             {dinasPengampuFilter.length != dinasPengampu.length &&
-              dinasPengampuFilter.map((item) => (
+              dinasPengampuFilter.map((item, index) => (
                 <BadgeFilter
                   item={item}
                   handleClick={handleDinasPengampuFilter}
+                  key={index}
                 />
               ))}
             {bidangUsahaFilter.length != bidangUsaha.length &&
-              bidangUsahaFilter.map((item) => (
+              bidangUsahaFilter.map((item, index) => (
                 <BadgeFilter
                   item={item}
                   handleClick={handleDeleteBidangUsahaFilter}
+                  key={index}
                 />
               ))}
           </div>

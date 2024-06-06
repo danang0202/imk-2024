@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import AOS from "aos";
 import { useThemeContext } from "../layout/ThemeContext";
 
 interface LayoutProps {
   children: React.ReactNode;
-  pageTitle: string;}
+  pageTitle: string;
+}
 
 const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+    });
+  }, []);
   const { isLoaded } = useThemeContext();
   if (!isLoaded) {
     return (

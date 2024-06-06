@@ -27,8 +27,8 @@ const ChexboxGroup: React.FC<Props> = ({
       data-aos="zoom-in"
       data-aos-duration="300"
     >
-      {data.map((item) => (
-        <li className="w-full">
+      {data.map((item, index) => (
+        <li className="w-full" key={index}>
           <div className="flex items-center ps-1">
             <input
               id={`${item.name}-checkbox`}
