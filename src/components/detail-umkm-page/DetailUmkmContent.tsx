@@ -1,4 +1,9 @@
-import { IconBuildingStore, IconHeart, IconMapPin } from "@tabler/icons-react";
+import {
+  IconArrowDown,
+  IconBuildingStore,
+  IconHeart,
+  IconMapPin,
+} from "@tabler/icons-react";
 import { getBadanUsahaColor, getSkalaUsahaColor } from "../../utils/utils";
 import { useEffect, useState } from "react";
 import { fetchDataSafiiraByPagination } from "../../utils";
@@ -21,16 +26,16 @@ const umkmData = [
   { label: "No Ijin Usaha", value: "7891011" },
   { label: "Merk", value: "Safiira" },
   { label: "Website", value: "http://www.umkmsafiira.com" },
-  { label: "Jumlah tenaga kerja", value: "L : 5 orang, P : 3 orang" },
+  { label: "Tenaga kerja", value: "L : 5 orang, P : 3 orang" },
   { label: "Aset", value: "Rp. 50.000.000,00" },
   { label: "Omzet", value: "Rp. 100.000.000,00" },
   { label: "No NPWP", value: "01.234.567.8-901.000" },
   { label: "Bahan Baku", value: "Kayu, Bambu" },
-  { label: "Sumber Bahan Baku", value: "Lokal" },
-  { label: "Negara Tujuan Ekspor", value: "Jepang, Amerika" },
-  { label: "Produksi per bulan", value: "1000 unit" },
+  { label: "Sumber Bahan", value: "Lokal" },
+  { label: "Negara Ekspor", value: "Jepang, Amerika" },
+  { label: "Produksi", value: "1000 unit / bulan" },
   { label: "Luas Lahan", value: "500 m2" },
-  { label: "Status Kepemilikan Tanah", value: "Milik Pribadi" },
+  { label: "Kepemilikan Tanah", value: "Milik Pribadi" },
   { label: "Kepemilikan KMS", value: "Ya" },
   {
     value: "RT 10, RW 00, Gentan, Sidorejo, Lendah, Kulon Progo",
@@ -76,6 +81,12 @@ const DetailUmkmContent = () => {
     }
   }, [page]);
 
+  const ButtonLihatProductOnClick = () => {
+    const element = document.getElementById("list-product");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-8 dark:text-white">
       <div className="w-full xl:w-1/2 flex flex-col items-center">
@@ -99,7 +110,7 @@ const DetailUmkmContent = () => {
                   <tr key={index}>
                     <th
                       scope="row"
-                      className="px-4 py-2 font-medium text-gray-900 dark:text-white"
+                      className="w-40 px-4 py-2 font-medium text-gray-900 dark:text-white"
                     >
                       {item.label}
                     </th>
@@ -126,7 +137,7 @@ const DetailUmkmContent = () => {
                   <tr key={index}>
                     <th
                       scope="row"
-                      className="px-4 py-2 font-medium text-gray-900  dark:text-white"
+                      className="w-40 px-4 py-2 font-medium text-gray-900  dark:text-white"
                     >
                       {item.label}
                     </th>
@@ -149,55 +160,84 @@ const DetailUmkmContent = () => {
             </table>
           </div>
         </div>
+        <div className="flex xl:hidden justify-center w-full pt-4">
+          <div className="bg-primary px-2 py-1 text-xs md:text-sm rounded flex flex-row gap-2 items-center" onClick={()=>ButtonLihatProductOnClick()}>
+            <p>Lihat Produk</p>
+            <IconArrowDown size={16} />
+          </div>
+        </div>
         <div className="title w-full py-2 my-4 flex justify-between border-b-2 border-gray-300 dark:border-gray-500">
           <p className="text-base lg:text-lg  font-semibold">
             Informasi Lanjutan UMKM
           </p>{" "}
         </div>
-        <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white dark:bg-black p-4 xl:p-8 rounded">
-          <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
-            <tbody>
-              {umkmData.slice(8, 17).map((item, index) => (
-                <tr key={index}>
-                  <th
-                    scope="row"
-                    className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
-                  >
-                    {item.label}
-                  </th>{" "}
-                  <td className="whitespace-nowrap dark:text-white">
-                    {item.value}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <table className="w-full text-left rtl:text-right text-gray-500 dark:text-white text-sm lg:text-base">
-            <tbody>
-              {umkmData.slice(17).map((item, index) => (
-                <tr key={index}>
-                  <th
-                    scope="row"
-                    className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
-                  >
-                    {item.label}
-                  </th>
-                  <td
-                    className={`${
-                      item.label == "Alamat"
-                        ? "whitespace-normal"
-                        : "whitespace-nowrap"
-                    }`}
-                  >
-                    {item.value}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {windowWidth < EXTENDED_WINDOW.md ? (
+          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white dark:bg-black p-4 xl:p-8 rounded">
+            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
+              <tbody>
+                {umkmData.map((item, index) => (
+                  <tr key={index}>
+                    <th
+                      scope="row"
+                      className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
+                    >
+                      {item.label}
+                    </th>{" "}
+                    <td className="dark:text-white">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white dark:bg-black p-4 xl:p-8 rounded">
+            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
+              <tbody>
+                {umkmData.slice(8, 17).map((item, index) => (
+                  <tr key={index}>
+                    <th
+                      scope="row"
+                      className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
+                    >
+                      {item.label}
+                    </th>{" "}
+                    <td className="whitespace-nowrap dark:text-white">
+                      {item.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-white text-sm lg:text-base">
+              <tbody>
+                {umkmData.slice(17).map((item, index) => (
+                  <tr key={index}>
+                    <th
+                      scope="row"
+                      className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
+                    >
+                      {item.label}
+                    </th>
+                    <td
+                      className={`${
+                        item.label == "Alamat"
+                          ? "whitespace-normal"
+                          : "whitespace-nowrap"
+                      }`}
+                    >
+                      {item.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
-      <div className="w-full xl:w-1/2 flex flex-col items-center justify-between">
+      <div
+        className="w-full xl:w-1/2 flex flex-col items-center justify-between"
+        id="list-product"
+      >
         <div className="box w-full flex flex-col items-center">
           <div className="title w-full my-4 pb-2 flex justify-between border-b-2 border-gray-300 dark:border-gray-500">
             <p className="text-base lg:text-lg  font-semibold">Galeri Produk</p>
