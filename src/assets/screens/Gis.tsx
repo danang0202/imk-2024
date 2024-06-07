@@ -179,7 +179,7 @@ const Gis: React.FC = () => {
   // };
   return (
     <Layout pageTitle="GIS">
-      <div className="xl:hidden pt-5xl w-full bg-white dark:bg-black">
+      <div className="px-4 xl:hidden pt-5xl w-full bg-white dark:bg-black">
         <Breadcrumb />
       </div>
       <div className="w-screen px-4 xl:p-8 pt-2 xl:pt-6xl pb-0 xl:pb-8 bg-white dark:bg-black min-h-[85vh] flex ">

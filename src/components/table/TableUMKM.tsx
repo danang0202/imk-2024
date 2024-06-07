@@ -10,6 +10,7 @@ import { fetchDataByPagination } from "../../utils";
 import { getBadanUsahaColor, getSkalaUsahaColor } from "../../utils/utils";
 import { IconInfoCircle } from "@tabler/icons-react";
 import DataEmpty from "../commons/DataEmpty";
+import { Link } from "react-router-dom";
 
 interface Props {
   dataUmkm: UMKMProperties[];
@@ -151,10 +152,12 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                       {data?.alamat}
                     </td>
                     <td className="pr-4x lg:pr-8x xl:pr-3xl dark:border-slate-700 rounded-tr rounded-br">
-                      <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
-                        Detail
-                        <IconInfoCircle size={17} />
-                      </button>
+                      <Link to={"/data-umkm/detail"}>
+                        <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
+                          Detail
+                          <IconInfoCircle size={17} />
+                        </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

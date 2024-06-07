@@ -11,6 +11,18 @@
     "contact": "Hubungi Kami",
     "emailPlaceholder": "Alamat Email",
     "namePlaceholder": "Nama",
-    "questionPlaceholder": "Pertanyaan"
-
+    "questionPlaceholder": "Pertanyaan",
+    "all": "Semua",
+    "thead_umkm_index": "ID",
+    "thead_umkm_name": "Name UMKM",
+    "thead_umkm_skala": "Skala Usaha",
+    "thead_umkm_bidang": "Bidang Usaha",
+    "thead_umkm_badanHukum": "Badan Hukum",
+    "thead_umkm_pengampu": "Dinas Pengampu",
+    "thead_umkm_alamat": "Alamat",
+    "thead_umkm_action": "Tindakan",
+    "keyword": "Kata kunci",
+    "filterTitle": "Penyaringan Data",
+    "openFilter": "Buka Filter",
+    "openAdvFilter": "Buka Filter Lanjutan"
 }

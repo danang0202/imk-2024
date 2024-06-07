@@ -128,7 +128,7 @@ const Navbar = () => {
                 href={link.href}
                 className={`hover:text-black/75 dark:hover:text-white/75 font-semibold ${
                   location.pathname.includes(link.href)
-                    ? "text-black border-b-2 pb-1 border-blac  dark:border-white dark:text-white"
+                    ? "text-black border-b-2 pb-1 border-black  dark:border-white dark:text-white"
                     : "text-[#000] dark:text-white"
                 }`}
               >

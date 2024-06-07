@@ -7,6 +7,7 @@ import Login from "./assets/screens/Login";
 import "react-toggle/style.css";
 import Test from "./assets/screens/Test";
 import Gis from "./assets/screens/Gis";
+import DetailUmkm from "./assets/screens/DetailUmkm";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/beranda" element={<LandingPage />}></Route>
         <Route path="/data-umkm" element={<DataUmkm />}></Route>
         <Route path="/statistics" element={<Statistics />}></Route>
+        <Route path="/data-umkm/detail" element={<DetailUmkm />}></Route>
         <Route path="/gis" element={<Gis />}></Route>
         <Route path="/statistics/test" element={<Test />}></Route>
       </Routes>
