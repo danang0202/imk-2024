@@ -183,7 +183,7 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
           </div>
         </>
       ) : (
-        <div className="w-full bg-white rounded pb-8">
+        <div className="w-full bg-white dark:bg-black rounded pb-8">
           <DataEmpty />
         </div>
       )}

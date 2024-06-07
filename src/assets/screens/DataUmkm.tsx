@@ -324,8 +324,8 @@ const DataUmkm = () => {
               ))}
           </div>
           {filteredData.length != data.length && (
-            <div className="px-4 lg:px-8 xl:px-3xl bg-white flex justify-between items-center pb-3 xl:pb-0">
-              <p className="text-grey text-xs lg:text-sm">
+            <div className="px-4 lg:px-8 xl:px-3xl bg-white dark:bg-black flex justify-between items-center pb-3 xl:pb-0">
+              <p className="text-grey dark:text-white text-xs lg:text-sm">
                 Mendapatkan {filteredData.length} data
               </p>
               <div className="flex flex-row items-center text-accent5 hover:text-accent5a cursor-pointer transition duration-300">

@@ -245,7 +245,7 @@ const Gis: React.FC = () => {
 
           <div className="w-full rounded px-0 xl:px-8 pb-8 bg-white dark:bg-black h-full transform -translate-y-4 relative">
             <div className="flex flex-col xl:flex-row justify-between items-center pb-2 gap-4 xl:gap-0">
-              <p className="text-sm md:text-base  lg:text-lg font-bold text-black">
+              <p className="text-sm md:text-base lg:text-lg font-bold text-black dark:text-white">
                 Sistem Informasi Geografis UMKM Kulon Progo
               </p>
               <SearchBar

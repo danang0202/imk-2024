@@ -3,7 +3,7 @@ const DataEmpty = () => {
     <div
       data-aos="fade-up"
       duration-data-aos="300"
-      className="w-full flex justify-center items-center p-4 lg:p-8"
+      className="w-full flex justify-center items-center p-4 lg:p-8 "
     >
       <div className="box flex flex-col items-center">
         <img
