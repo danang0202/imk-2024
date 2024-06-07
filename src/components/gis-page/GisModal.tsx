@@ -10,11 +10,13 @@ const GisModal: React.FC<Props> = ({ item }) => {
   return (
     <div className="flex flex-col gap">
       <div className="flex flex-row items-center gap-2 border-b border-gray-300">
-        <img src={item.avatar} alt={item.name} className="w-12 rounded-full" />
-        <p className="text-lg font-semibold">{item.name}</p>
+        <img src={item.avatar} alt={item.name} className="w-8 md:w-10 lg:w-12 rounded-full" />
+        <p className="text-sm md:text-base lg:text-lg font-semibold">
+          {item.name}
+        </p>
       </div>
       <div className="pt-4">
-        <div className="flex flex row gap-4 items-center">
+        <div className="flex row gap-4 items-center">
           <span
             className={`${getBadanUsahaColor(item?.badanHukum).bg} ${
               getBadanUsahaColor(item?.badanHukum).text
@@ -30,16 +32,16 @@ const GisModal: React.FC<Props> = ({ item }) => {
             {item?.skala}
           </span>
         </div>
-        <div className="flex flex-row gap-2 items-center">
-          <IconClick size={18} />
+        <div className="flex flex-row gap-2 items-center text-xs md:text-sm">
+          <IconClick size={16} />
           <p className="mb-0 p-0">{item.bidang}</p>
         </div>
-        <div className="flex flex-row gap-2 items-center">
-          <IconBuildingBank size={18} />
+        <div className="flex flex-row gap-2 items-center text-xs md:text-sm">
+          <IconBuildingBank size={16} />
           <p className="mb-0 p-0">{item.pengampu}</p>
         </div>
-        <div className="flex flex-row gap-2 items-center">
-          <IconMapPin size={18} />
+        <div className="flex flex-row gap-2 items-center text-xs md:text-sm">
+          <IconMapPin size={16} />
           <p className="mb-0 p-0">{item.alamat}</p>
         </div>
       </div>

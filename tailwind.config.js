@@ -33,7 +33,7 @@ export default {
         accent5a: "#fecaca",
         primaryTint2: '#E8F5E9',
         inactive: '#BCBDBE',
-        purpleBlue: '#342B6E'
+        purpleBlue: '#342B6E',
       },
       fontSize: {
         'xs': '.75rem',     // ukuran ekstra kecil
@@ -65,3 +65,9 @@ export default {
 
 
 // dark : bg-grey-600 / 700
+
+// sm	640px	@media (min-width: 640px) { ... }
+// md	768px	@media (min-width: 768px) { ... }
+// lg	1024px	@media (min-width: 1024px) { ... }
+// xl	1280px	@media (min-width: 1280px) { ... }
+// 2xl	1536px	@media (min-width: 1536px) { ... }

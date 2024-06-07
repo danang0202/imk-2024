@@ -12,7 +12,7 @@ interface ButtonProps {
 const ButtonBlack: React.FC<ButtonProps> = ({ text, size, onClick, icon }) => {
   return (
     <button
-      className={`px-4 py-2 rounded-lg bg-black text-white hover:bg-black/75 text-${size} transition duration-300 shadow-lg`}
+      className={`px-4 py-2 rounded-lg bg-black text-white hover:bg-black/75 text-${size} transition duration-300 shadow-lg dark:bg-primary`}
       onClick={onClick}
     >
       {text}

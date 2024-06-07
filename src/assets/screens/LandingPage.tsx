@@ -4,10 +4,12 @@ import Faq from "../../components/FAQ/Faq";
 import FaqForm from "../../components/FAQ/FaqForm";
 import Layout from "../../components/Layout";
 import { useThemeContext } from "../../layout/ThemeContext";
-import { useTranslation } from "react-i18next";
 import { IconDotsVertical, IconHeadset } from "@tabler/icons-react";
 import LogoSocialMedia from "../../components/Social/LogoSocialMedia";
 import ButtonBlack from "../../components/Button/ButtonBlack";
+import ActionConfirmationModal from "../../components/commons/ActionConfirmationModal";
+import { useState } from "react";
+import { handleNotifSuccess } from "../../utils/natif";
 
 export interface ServiceItem {
   title: string;
@@ -22,7 +24,6 @@ interface FaqProps {
 }
 
 const LandingPage: React.FC = () => {
-  const { t } = useTranslation();
   const serviceItems: ServiceItem[] = serviceItemsData;
   const Faqs: FaqProps[] = FaqsData;
   const { theme } = useThemeContext();
@@ -33,40 +34,69 @@ const LandingPage: React.FC = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const { landingLang } = useThemeContext();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    name: "",
+    question: "",
+  });
+  const clearFormData = () => {
+    setFormData({
+      email: "",
+      name: "",
+      question: "",
+    });
+  };
+
+  const handleSubmitFaqForm = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setIsModalOpen(false);
+      clearFormData();
+      handleNotifSuccess(
+        "Upload pertanyaan berhasil",
+        "Selamat pertanyaan anda telah berhasil di kirim"
+      );
+    }, 2000);
+  };
 
   return (
     <Layout pageTitle="BERANDA">
       <div
         className={`flex flex-row justify-between items-center min-h-screen w-screen pt-4xl xl:pt-0`}
       >
-        <div className="flex flex-col justify-center bg-silver h-screen xl:justify-between items-start h-screen w-full xl:w-1/2 xl:pt-4xl  pb-4xl pl-4 pr-4 xl:pl-5xl xl:pr-4xl">
+        <div className="flex flex-col justify-center bg-silver xl:bg-white h-screen xl:justify-between items-start w-full xl:w-1/2 xl:pt-4xl  pb-4xl pl-4 pr-4 xl:pl-5xl xl:pr-4xl dark:bg-slate-800">
           <div
             data-aos="fade-up"
             data-aos-duration="800"
-            className="home-title bg-silver w-full flex items-start flex-col justify-start pt-8 xl:pt-4xl"
+            className="home-title bg-silver xl:bg-white w-full flex items-start flex-col justify-start pt-8 xl:pt-4xl dark:bg-slate-800"
           >
             <div className="flex flex-row justify-center xl:justify-between gap-4 w-full">
               <h1 className="text-black font-semibold text-2xl md:text-3xl lg:text-5xl xl:text-6xl text-center md:text-left dark:text-white">
-                {t("title")}
+                {landingLang("welcome")}
               </h1>
               <IconDotsVertical
                 size={100}
-                className="hidden xl:block translate-x-20"
+                className="hidden xl:block translate-x-20 dark:text-white"
               />
             </div>
-            <h1 className="text-black font-semibold text-3xl md:text-4xl lg:text-3xl lg:text-6xl text-center xl:text-left dark:text-white w-full">
+            <h1 className="text-black font-semibold text-3xl md:text-4xl lg:text-6xl text-center xl:text-left dark:text-white w-full">
               <span className="font-bold text-primary drop-shadow-lg">
                 e-UMKM
               </span>{" "}
               Kabupaten
             </h1>
             <div className="flex flex-col xl:flex-row justify-center xl:justify-between items-center w-full">
-              <h1 className="text-black font-bold text-2xl md:text-3xl lg:text-6xl">
+              <h1 className="text-black font-bold text-2xl md:text-3xl lg:text-6xl dark:text-white">
                 Kulon Progo
               </h1>
             </div>
 
-            <div className="xl:hidden img-home-container bg-silver flex flex-col justify-center w-full">
+            <div className="xl:hidden img-home-container bg-silver flex flex-col justify-center w-full dark:bg-slate-800">
               <img
                 src={`/logo/hero-4.png`}
                 alt="Your image description"
@@ -74,45 +104,43 @@ const LandingPage: React.FC = () => {
                 data-aos-duration="800"
                 className="h-[200px] md:h-[350px] lg:h-[500px] object-contain drop-shadow-lg"
               />
-              <div className="flex flex-row justify-center gap-4">
+              <div className="flex flex-row justify-center gap-4 dark:text-white">
                 <IconDotsVertical className="transform rotate-90" size={30} />
                 <IconDotsVertical className="transform rotate-90" size={30} />
               </div>
             </div>
 
             <div className="desc py-4 text-sm md:text-base lg:text-xl md:py-8 text-center xl:text-left dark:text-white px-2 md:px-4 lg:px-8 xl:px-0">
-              <p>
-                Aplikasi ini merupakan aplikasi pengelolaan UMKM di Kabupaten
-                Kulon Progo.
-              </p>
-              <p>
-                Dapatkan informasi data UMKM seluruh Kulon Progo, GIS UMKM,
-                Statistik UMKM serta produk - produk UMKM.
-              </p>
+              <p>{landingLang("descHeroTop")}</p>
+              <p>{landingLang("descHeroBottom")}</p>
             </div>
             <div className="py-4 md:py-4 flex justify-center w-full xl:justify-start">
               <ButtonBlack
-                text="Lihat Layanan Kami"
+                text={landingLang("serviceBtnText")}
                 size="xs md:text-base lg:text-xl xl:text-xl"
                 onClick={ButtonHeroOnclick}
               />
             </div>
           </div>
           <div className="box flex justify-center xl:justify-between gap-4 items-center w-full py-8 xl:py-0 xl:translate-y-0">
-            <div className="hidden md:inline bg-black p-2 xl:p-3 rounded-full text-white hover:bg-black/75 hover:scale-110 transition duration-300 cursor-pointer shadow-lg">
+            <div className="hidden md:inline bg-black p-2 xl:p-3 rounded-full text-white hover:bg-black/75 hover:scale-110 transition duration-300 cursor-pointer shadow-lg dark:text-black dark:bg-white">
               <IconHeadset />
             </div>
             <div className="flex flex-row gap-4">
-              {socialMediaData.map((social) => (
-                <LogoSocialMedia path={social.path} url={social.url} />
+              {socialMediaData.map((social, index) => (
+                <LogoSocialMedia
+                  path={social.path}
+                  url={social.url}
+                  key={index}
+                />
               ))}
             </div>
           </div>
         </div>
         {/* Gambar hanya tampil di layar besar */}
-        <div className="hidden xl:block img-home-container bg-silver w-1/2 h-screen pr-3xl">
+        <div className="hidden xl:block img-home-container bg-silver xl:bg-white w-1/2 h-screen pr-3xl dark:bg-slate-800">
           <div
-            className="box-hero-img-container bg-gray-200 h-[92vh] flex justify-center items-center"
+            className="box-hero-img-container bg-silver h-[92vh] flex justify-center items-center dark:bg-slate-800"
             style={{ borderRadius: "0rem 0rem 5.5rem 5.5rem" }}
           >
             <img
@@ -123,7 +151,7 @@ const LandingPage: React.FC = () => {
               className="h-[750px] object-contain drop-shadow-lg"
             />
           </div>
-          <div className="flex justify-end -translate-y-4 pr-3xl">
+          <div className="flex justify-end -translate-y-4 pr-3xl dark:text-white">
             <IconDotsVertical className="transform rotate-90" size={100} />
           </div>
         </div>
@@ -145,7 +173,11 @@ const LandingPage: React.FC = () => {
             data-aos="fade-up"
             data-aos-duration="800"
           >
-            Layanan Utama <span className="text-primary">Kami</span>
+            {landingLang("serviceTitle")}{" "}
+            <span className="text-primary">
+              {" "}
+              {landingLang("serviceTitleSpan")}
+            </span>
           </h1>
         </div>
 
@@ -153,9 +185,9 @@ const LandingPage: React.FC = () => {
           {serviceItems.map((serviceItem, index) => (
             <ServiceCard
               key={index}
-              title={serviceItem.title}
+              title={landingLang(serviceItem.title)}
               image={serviceItem.image}
-              desc={serviceItem.desc}
+              desc={landingLang(serviceItem.desc)}
               href={serviceItem.href}
             />
           ))}
@@ -191,13 +223,24 @@ const LandingPage: React.FC = () => {
                 data-aos="fade-up"
                 data-aos-duration="800"
               >
-                Tidak menemukan jawaban? Hubungi kami.
+                {landingLang("faqNotFound")}
               </p>
             </div>
             <div className="form-container hidden xl:block">
-              <FaqForm />
+              <FaqForm
+                setIsModalOpen={setIsModalOpen}
+                formData={formData}
+                setFormData={setFormData}
+              />
             </div>
           </div>
+          <ActionConfirmationModal
+            text="Apakah anda yakin untuk mengirimkan pertanyaan ini ? "
+            handleYes={handleSubmitFaqForm}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            loading={loading}
+          />
           <div
             className="faq-container w-full xl:w-1/2 px-6 md:px-8 lg:px-6xl"
             style={{ minWidth: "50%" }}
@@ -205,7 +248,11 @@ const LandingPage: React.FC = () => {
             <Faq items={Faqs} />
           </div>
           <div className="block xl:hidden w-full px-6 md:px-8 lg:px-6xl">
-            <FaqForm />
+            <FaqForm
+              setIsModalOpen={setIsModalOpen}
+              formData={formData}
+              setFormData={setFormData}
+            />
           </div>
         </div>
       </div>
@@ -222,14 +269,18 @@ const LandingPage: React.FC = () => {
           data-aos="fade-up"
           data-aos-duration="800"
         >
-          Didukung oleh:
+          {landingLang("supportedTitle")}
         </h1>
         <div
-          className="border dark:bg-white shadow-lg  border-2 border-gray-200 px-4  md:px-8 xl:px-3xl py-4 rounded-3xl flex flex-row gap-4 md:gap-8 xl:gap-8 mt-6"
+          className="dark:bg-white shadow-lg  border-2 border-gray-200 px-4  md:px-8 xl:px-3xl py-4 rounded-3xl flex flex-row gap-4 md:gap-8 xl:gap-8 mt-6"
           data-aos="fade-up"
           data-aos-duration="800"
         >
-          <img src="/logo/logo.png" alt="" className="h-[40px] md:h-[60px] xl:h-[80px]" />
+          <img
+            src="/logo/logo.png"
+            alt=""
+            className="h-[40px] md:h-[60px] xl:h-[80px]"
+          />
           <div className="kp flex flex-row items-center">
             <img
               src="/logo/logo_kp.png"

@@ -30,6 +30,14 @@ export const EXTENDEDCOLORS = {
   inactive: "#BCBDBE",
 };
 
+export const EXTENDED_WINDOW = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  xxl: 1536,
+};
+
 interface LangType {
   label: string;
   code: string;
@@ -41,36 +49,36 @@ export const LANGUAGES: LangType[] = [
 ];
 
 export const menuItemsData = [
-  { label: "Beranda", href: "/beranda" },
-  { label: "Data UMKM", href: "/data-umkm" },
-  { label: "Statistik", href: "/statistics" },
-  { label: "GIS", href: "/gis" },
-  { label: "Galeri Produk", href: "#" },
-  { label: "Info Modal", href: "#" },
+  { label: "Beranda", href: "/beranda", slug: "beranda" },
+  { label: "Data UMKM", href: "/data-umkm", slug: "data" },
+  { label: "Statistik", href: "/statistics", slug: "statistics" },
+  { label: "GIS", href: "/gis", slug: "gis" },
+  { label: "Galeri Produk", href: "#", slug: "product" },
+  { label: "Info Modal", href: "#", slug: "modal" },
 ];
 
 export const serviceItemsData = [
   {
-    title: "Datfar UMKM Sekarang",
-    desc: "Daftarkan UMKM anda untuk meningkatkan promosi",
+    title: "registerTitle",
+    desc: "registerDesc",
     image: "register-2.png",
     href: "/register",
   },
   {
-    title: "Cari Data UMKM ",
-    desc: "Dapatkan data UMKM di seluruh Kabupaten Kulon Progo",
+    title: "searchTitle",
+    desc: "searchDesc",
     image: "data-search-2.png",
     href: "/data-umkm",
   },
   {
-    title: "Lihat Produk",
-    desc: "Tingkatkan UMKM dengan 'Bela Beli Kulon Progo' ",
+    title: "seeProductTitle",
+    desc: "seeProductDesc",
     image: "shopping-2.png",
     href: "/galeri-produk",
   },
   {
-    title: "Info Modal",
-    desc: "Dapat info modal untuk membantu peningkatan UMKM Anda ",
+    title: "modalTitle",
+    desc: "modalDesc",
     image: "modal-vector.png",
     href: "/info-modal",
   },
@@ -85,22 +93,22 @@ export const socialMediaData = [
 
 export const FaqsData = [
   {
-    title: "Apa itu e-UMKM Kulon Progo?",
+    title: "faqTitle1",
     content:
       "LearnNow is a platform where you can find a variety of online and offline courses suitable for learners of all levels.",
   },
   {
-    title: "Apakah ini situs resmi pemerintah Kulon Progo?",
+    title: "faqTitle2",
     content:
       "LearnNow is a user-friendly platform designed to help individuals in discovering courses that align with their interests and goals. Simply browse through the available courses and enroll in those that you find interesting.",
   },
   {
-    title: "Bagaiamana cara mendaftarkan UMKM baru?",
+    title: "faqTitle3",
     content:
       "To list your courses on LearnNow, you can fill out a submission form on our website or contact us via email at info@email.com.",
   },
   {
-    title: "Apakah saya bisa menjual produk saya di situs ini?",
+    title: "faqTitle4",
     content:
       "LearnNow serves as a platform for course discovery and does not take responsibility for the quality or content of the courses listed. Users are advised to conduct their own research before enrolling.",
   },

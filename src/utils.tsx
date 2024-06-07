@@ -1,7 +1,12 @@
-import _ from 'lodash';
-import { UMKMProperties } from './DataBuilder';
+import _ from "lodash";
+import { UMKMProperties } from "./DataBuilder";
+import { productType } from "./components/detail-umkm-page/DetailUmkmContent";
 
-export const paginationUtils = (totalPage:number, page:number, siblings:number) => {
+export const paginationUtils = (
+  totalPage: number,
+  page: number,
+  siblings: number
+) => {
   const totalPgeNoInArray = 7 + siblings;
   if (totalPgeNoInArray >= totalPage) {
     return _.range(1, totalPage + 1);
@@ -26,7 +31,11 @@ export const paginationUtils = (totalPage:number, page:number, siblings:number) 
   }
 };
 
-export function fetchDataByPagination(data: UMKMProperties[], page: number, limit: number) {
+export function fetchDataByPagination(
+  data: UMKMProperties[],
+  page: number,
+  limit: number
+) {
   const array: UMKMProperties[] = [];
   for (let i = (page - 1) * limit; i < page * limit && i < data.length; i++) {
     array.push(data[i]);
@@ -34,11 +43,27 @@ export function fetchDataByPagination(data: UMKMProperties[], page: number, limi
   return array;
 }
 
-export function getStartIndexData(page:number, limit:number) {
+export function fetchDataSafiiraByPagination(
+  data: productType[],
+  page: number,
+  limit: number
+) {
+  const array: productType[] = [];
+  for (let i = (page - 1) * limit; i < page * limit && i < data.length; i++) {
+    array.push(data[i]);
+  }
+  return array;
+}
+
+export function getStartIndexData(page: number, limit: number) {
   return (page - 1) * limit + 1;
 }
 
-export function getEndIndexData(page:number, limit:number, lengthData:number) {
+export function getEndIndexData(
+  page: number,
+  limit: number,
+  lengthData: number
+) {
   const akhir = (page - 1) * limit + limit;
   return akhir <= lengthData ? akhir : lengthData;
 }

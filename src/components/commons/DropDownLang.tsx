@@ -5,9 +5,11 @@ import i18n from "../../language/i18n";
 
 const DropDownLang = () => {
   const [show, setShow] = useState(false);
-  const { lang, setLang } = useThemeContext();
+  const { lang, setIsLoaded } = useThemeContext();
 
   const onChangeLang = (e: string) => {
+    setIsLoaded(false);
+    window.location.reload();
     i18n.changeLanguage(e);
     localStorage.setItem("lang", e);
   };
@@ -39,21 +41,23 @@ const DropDownLang = () => {
         </button>
         <div
           className={`z-50 absolute my-4 text-base list-none bg-white px-4 min-w-[7rem] divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
-        id="language-dropdown-menu ${!show && "hidden"} dark:bg-black shadow`}
+        id="language-dropdown-menu ${
+          !show && "hidden"
+        } dark:bg-slate-800 shadow`}
         >
           <ul className="py-2 font-medium" role="none">
             {LANGUAGES.map((item) => (
               <li
                 onClick={() => {
                   onChangeLang(item.code);
-                  setLang(item.code);
                   setShow(false);
                 }}
                 className="dark:hover:bg-slate-800"
+                key={item.code}
               >
                 <a
                   href="#"
-                  className="block py-2 text-sm text-gray-700  dark:text-gray-400 dark:hover:text-white"
+                  className="block py-2 text-sm text-gray-700  dark:text-white dark:hover:text-white/75"
                   role="menuitem"
                 >
                   <div className="inline-flex items-center">

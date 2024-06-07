@@ -9,18 +9,7 @@ i18n.use(initReactI18next).init({
     interpolation: {
         escapeValue: false,
     },
-    resources: {
-        id: {
-            translation: {
-                title: 'Selamat Datang',
-            }
-        },
-        en: {
-            translation: {
-                title: 'Hello, Welcome',
-            }
-        },
-    },
+    resources: {},
     initImmediate: false,
 }, () => {
     if (!localStorage.getItem('lang')) {

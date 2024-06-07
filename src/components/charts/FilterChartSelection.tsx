@@ -20,7 +20,7 @@ const FilterChartSelection: React.FC<Props> = ({
       <div>
         <button
           type="button"
-          className="whitespace-nowrap inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white dark:bg-slate-800 dark:text-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:hover:bg-black"
+          className="whitespace-nowrap inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white dark:bg-slate-800 dark:text-white px-3 py-2 text-xs md:text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-slate-800"
           aria-expanded="true"
           aria-haspopup="true"
           onClick={() => setShow(!show)}
@@ -33,9 +33,9 @@ const FilterChartSelection: React.FC<Props> = ({
             aria-hidden="true"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
         </button>
@@ -43,7 +43,7 @@ const FilterChartSelection: React.FC<Props> = ({
       <div
         className={`${
           !show && "hidden"
-        } absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800`}
+        } absolute left-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800`}
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="menu-button"
@@ -52,7 +52,7 @@ const FilterChartSelection: React.FC<Props> = ({
           {filterList.map((item: TypeData, index: number) => (
             <p
               key={index}
-              className="text-gray-700 block px-4 py-2 text-sm hover:bg-silver cursor-pointer transition duration-300  hover:text-black dark:text-white"
+              className="text-gray-700 block px-4 py-2 text-xs md:text-sm hover:bg-silver cursor-pointer transition duration-300  hover:text-black dark:text-white"
               role="menuitem"
               onClick={() => {
                 setSelectedFilter(item);

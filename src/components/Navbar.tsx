@@ -1,66 +1,59 @@
 import { useEffect, useState } from "react";
-import { IonIcon } from "@ionic/react";
 import { useLocation } from "react-router-dom";
 import ButtonPrimary from "./Button/ButtonPrimary";
 import { menuItemsData } from "../DataBuilder";
 import ToggleTheme from "./ToggleTheme";
 import { useThemeContext } from "../layout/ThemeContext";
 import DropDownLang from "./commons/DropDownLang";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 
-interface MenuItem {
+export interface MenuItem {
   label: string;
   href: string;
+  slug: string;
 }
 
 const Navbar = () => {
   const menuItems: MenuItem[] = menuItemsData;
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const { isMobile } = useThemeContext();
   const [navBg, setNavBg] = useState(
-    `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
+    `${open || isMobile ? "bg-silver dark:bg-slate-800" : "bg-transparent"}`
   );
   const [navBgItem, setNavBgItem] = useState(
-    `${open ? "bg-silver" : "bg-transparent"} dark:bg-black`
+    `${open || isMobile ? "bg-silver dark:bg-slate-800" : "bg-transparent"}`
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
-  const { theme } = useThemeContext();
-  const [isMobile, setIsMobile] = useState(false);
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (windowWidth < 800) {
-      setIsMobile(true);
-    }
-  }, [windowWidth]);
+  const { theme, common } = useThemeContext();
 
   useEffect(() => {
     const handleScroll = () => {
       if (location.pathname == "/beranda") {
         const scrollY = window.scrollY;
 
-        if (scrollY > 200) {
-          setNavBg("bg-white shadow-sm dark:bg-slate-800");
-          setNavBgItem("bg-white dark:bg-slate-800");
+        if (scrollY > 100) {
+          setNavBg("bg-white shadow-sm dark:bg-black");
+          setNavBgItem("bg-white dark:bg-black");
         } else {
           setNavBg(
-            `${open || isMobile ? "bg-silver" : "bg-transparent"} dark:bg-black`
+            `${
+              open || isMobile
+                ? "bg-silver dark:bg-slate-800"
+                : "bg-transparent"
+            }`
           );
           setNavBgItem(
-            `${open || isMobile ? "bg-silver" : "bg-transparent"} dark:bg-black`
+            `${
+              open || isMobile
+                ? "bg-silver dark:bg-slate-800"
+                : "bg-transparent"
+            }`
           );
         }
       }
     };
+    console.log(isMobile);
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -78,17 +71,12 @@ const Navbar = () => {
   const logInOnClick = () => {
     console.log("test");
   };
-
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
-
   return (
     <div
       className={`w-full top-0 left-0 xl:px-8 py-3 ${
         location.pathname == "/beranda"
           ? navBg
-          : "bg-white shadow-sm dark:bg-black border-b"
+          : "bg-white shadow-sm dark:bg-black border-b dark:border-b-gray-700"
       }`}
     >
       <div className="xl:flex items-center justify-between xl:px-10 px-7">
@@ -100,21 +88,26 @@ const Navbar = () => {
             className="pr-3"
             style={{ height: "50px" }}
           />
-          <div className="flex flex-col dark:text-white">
+          <div className="flex flex-col dark:text-white text-sm md:text-base">
             <h1>PEMKAB</h1>
             <h1>KULON PROGO</h1>
           </div>
         </div>
 
         {/* logo */}
-
         <div className="text-3xl absolute right-8 top-6 cursor-pointer xl:hidden flex align-center gap-4">
           <ToggleTheme />
-          <IonIcon
-            onClick={() => setOpen(!open)}
-            name={open ? "close" : "menu"}
-            className="text-black dark:text-white"
-          ></IonIcon>
+          {!open ? (
+            <IconMenu2
+              onClick={() => setOpen(!open)}
+              className="text-black dark:text-white"
+            />
+          ) : (
+            <IconX
+              onClick={() => setOpen(!open)}
+              className="text-black dark:text-white"
+            />
+          )}
         </div>
 
         <ul
@@ -129,17 +122,17 @@ const Navbar = () => {
           {menuItems.map((link) => (
             <li
               key={link.label}
-              className="xl:ml-8 xl:my-0 my-7 hover:scale-110 transition duration-300"
+              className="xl:ml-8 xl:my-0 my-7 hover:scale-110 transition duration-300 text-sm md:text-base"
             >
               <a
                 href={link.href}
-                className={`hover:text-black/75 font-semibold ${
+                className={`hover:text-black/75 dark:hover:text-white/75 font-semibold ${
                   location.pathname.includes(link.href)
-                    ? "text-black border-b-2 pb-1 border-black dark:border-white"
+                    ? "text-black border-b-2 pb-1 border-black  dark:border-white dark:text-white"
                     : "text-[#000] dark:text-white"
                 }`}
               >
-                {link.label}
+                {common(link.slug)}
               </a>
             </li>
           ))}
@@ -148,7 +141,11 @@ const Navbar = () => {
           </div>
           <DropDownLang />
           <div className="">
-            <ButtonPrimary text="Log In" size="base" onClick={logInOnClick} />
+            <ButtonPrimary
+              text="Log In"
+              size="sm md:base"
+              onClick={logInOnClick}
+            />
           </div>
         </ul>
       </div>

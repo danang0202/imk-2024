@@ -5,13 +5,13 @@ const ClearBadge: React.FC<Props> = ({ handleClick }) => {
   return (
     <span
       id="badge-dismiss-red"
-      className="inline-flex cursor-pointer hover items-center px-2 py-1 me-2 text-sm text-accent5 bg-silver hover:border hover:border-accent5 rounded-sm dark:bg-red-900 dark:text-red-300 transition duration-300"
+      className="inline-flex cursor-pointer hover items-center px-2 py-1 me-2 text-xs lg:text-sm text-accent5 bg-silver font-base md:font-medium hover:bg-accent5 rounded-sm hover:text-white transition duration-300"
       onClick={() => handleClick()}
     >
       Bersihkan
       <button
         type="button"
-        className="inline-flex items-center p-1  ms-2 text-sm text-red-400 bg-transparent rounded-sm hover:bg-red-200 hover:text-red-900 dark:hover:bg-red-800 dark:hover:text-red-300"
+        className="inline-flex items-center p-1  ms-2"
         data-dismiss-target="#badge-dismiss-red"
         aria-label="Remove"
       >

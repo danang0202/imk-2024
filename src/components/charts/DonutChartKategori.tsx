@@ -3,6 +3,7 @@ import { TypeData } from "../table/Selection";
 import { DonutChart } from "@mantine/charts";
 import {
   EXTENDEDCOLORS,
+  EXTENDED_WINDOW,
   badanHukumUsaha,
   bidangUsaha,
   dinasPengampu,
@@ -14,6 +15,7 @@ import { IconSquareFilled } from "@tabler/icons-react";
 import { Text } from "@mantine/core";
 import DownloadChartButton from "../commons/DownloadChartButton";
 import FilterChartSelection from "./FilterChartSelection";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 const DonutChartKategori = () => {
   const filter: TypeData[] = [
@@ -53,38 +55,42 @@ const DonutChartKategori = () => {
     }
     setShow(false);
   }, [selectedFilter]);
+
+  const { windowWidth } = useThemeContext();
   return (
     <div className="w-full">
-      <div className="flex flex-row justify-between pb-6 gap-4 items-center">
-        <p className="font-semibold text-lg text-wrap">
+      <div className="flex flex-col md:flex-row justify-center md:justify-between pb-6 gap-4 items-center">
+        <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-center md:text-start">
           Grafik Lingkaran Jumlah UMKM Berdasarkan {selectedFilter?.name}
         </p>
-        <div className="box flex flex-row gap-4">
-          <FilterChartSelection
-            show={show}
-            setShow={setShow}
-            filterList={filter}
-            selectedFilter={selectedFilter}
-            setSelectedFilter={setSelectedFilter}
+        <div className="flex flex-row justify-between  gap-2 md:gap-4 w-full md:w-fit">
+          <div className="box flex flex-row gap-4">
+            <FilterChartSelection
+              show={show}
+              setShow={setShow}
+              filterList={filter}
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+            />
+          </div>
+          <DownloadChartButton
+            chartTitle={`Grafik Lingkaran Jumlah UMKM Berdasarkan ${selectedFilter?.name}`}
           />
         </div>
-        <DownloadChartButton
-          chartTitle={`Grafik Lingkaran Jumlah UMKM Berdasarkan ${selectedFilter?.name}`}
-        />
       </div>
       <div className="flex justify-center w-full">
         <DonutChart
           withLabelsLine
           withLabels
           data={data || []}
-          size={250}
+          size={windowWidth < EXTENDED_WINDOW.md ? 200 : 250}
           tooltipDataSource="segment"
           thickness={30}
         />
       </div>
-      <div className="flex flex flex-wrap gap-4 w-full justify-center items-center pt-4">
-        {data?.map((item) => (
-          <div className="box flex flex-row gap-2 items-center">
+      <div className="flex  flex-wrap gap-4 w-full justify-center items-center pt-4">
+        {data?.map((item, index) => (
+          <div className="box flex flex-row gap-2 items-center" key={index}>
             <IconSquareFilled size={16} color={item.color} />
             <Text
               size="xs"
