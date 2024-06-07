@@ -6,6 +6,7 @@ import MinimalisPagination from "./MinimalisPagination";
 import MinimalisSearch from "./MinimalisSearch";
 import { useThemeContext } from "../../layout/ThemeContext";
 import { EXTENDED_WINDOW } from "../../DataBuilder";
+import SortingSelection from "./SortingSelection";
 
 const umkmData = [
   { label: "Nama UMKM", value: "Safiira Hampers" },
@@ -76,14 +77,14 @@ const DetailUmkmContent = () => {
   }, [page]);
 
   return (
-    <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-8">
+    <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-8 dark:text-white">
       <div className="w-full xl:w-1/2 flex flex-col items-center">
-        <div className="title w-full pb-2 my-4 flex justify-between border-b-2 border-gray-300">
+        <div className="title w-full pb-2 my-4 flex justify-between border-b-2 border-gray-300 dark:border-gray-500">
           <p className=" text-base lg:text-lg font-semibold">
             Informasi Dasar UMKM
           </p>{" "}
         </div>
-        <div className="main-content flex flex-col  md:flex-row gap-4 bg-white p-4 xl:p-8 rounded items-center justify-between w-full">
+        <div className="main-content flex flex-col  md:flex-row gap-4 bg-white dark:bg-black p-4 xl:p-8 rounded items-center justify-between w-full">
           <div className="logo">
             <img
               src="/logo-umkm/logo-umkm-1.png"
@@ -95,7 +96,7 @@ const DetailUmkmContent = () => {
             <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(0, 4).map((item, index) => (
-                  <tr key={index} className="bg-white dark:bg-gray-800">
+                  <tr key={index}>
                     <th
                       scope="row"
                       className="px-4 py-2 font-medium text-gray-900 dark:text-white"
@@ -103,9 +104,9 @@ const DetailUmkmContent = () => {
                       {item.label}
                     </th>
                     {item.label != "Skala Usaha" ? (
-                      <td className="">{item.value}</td>
+                      <td className="dark:text-white">{item.value}</td>
                     ) : (
-                      <td className="whitespace-nowrap font-normal  dark:border-slate-700">
+                      <td className="whitespace-nowrap font-normal">
                         <span
                           className={`${getSkalaUsahaColor(item?.label).bg} ${
                             getSkalaUsahaColor(item?.label).text
@@ -122,7 +123,7 @@ const DetailUmkmContent = () => {
             <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(4, 8).map((item, index) => (
-                  <tr key={index} className="bg-white dark:bg-gray-800">
+                  <tr key={index}>
                     <th
                       scope="row"
                       className="px-4 py-2 font-medium text-gray-900  dark:text-white"
@@ -130,7 +131,7 @@ const DetailUmkmContent = () => {
                       {item.label}
                     </th>
                     {item.label != "Badan Hukum" ? (
-                      <td className={``}>{item.value}</td>
+                      <td className={`dark:text-white`}>{item.value}</td>
                     ) : (
                       <td className="whitespace-nowrap font-normal  dark:border-slate-700">
                         <span
@@ -148,43 +149,33 @@ const DetailUmkmContent = () => {
             </table>
           </div>
         </div>
-        <div className="title w-full py-2 my-4 flex justify-between border-b-2 border-gray-300">
+        <div className="title w-full py-2 my-4 flex justify-between border-b-2 border-gray-300 dark:border-gray-500">
           <p className="text-base lg:text-lg  font-semibold">
             Informasi Lanjutan UMKM
           </p>{" "}
         </div>
-        <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white p-4 xl:p-8 rounded">
+        <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white dark:bg-black p-4 xl:p-8 rounded">
           <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
             <tbody>
               {umkmData.slice(8, 17).map((item, index) => (
-                <tr key={index} className="bg-white dark:bg-gray-800">
+                <tr key={index}>
                   <th
                     scope="row"
                     className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
                   >
                     {item.label}
-                  </th>
-                  {item.label != "Skala Usaha" ? (
-                    <td className="whitespace-nowrap">{item.value}</td>
-                  ) : (
-                    <td className="whitespace-nowrap font-normal  dark:border-slate-700">
-                      <span
-                        className={`${getSkalaUsahaColor(item?.label).bg} ${
-                          getSkalaUsahaColor(item?.label).text
-                        } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
-                      >
-                        {item.value}
-                      </span>
-                    </td>
-                  )}
+                  </th>{" "}
+                  <td className="whitespace-nowrap dark:text-white">
+                    {item.value}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
+          <table className="w-full text-left rtl:text-right text-gray-500 dark:text-white text-sm lg:text-base">
             <tbody>
               {umkmData.slice(17).map((item, index) => (
-                <tr key={index} className="bg-white dark:bg-gray-800">
+                <tr key={index}>
                   <th
                     scope="row"
                     className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
@@ -208,16 +199,17 @@ const DetailUmkmContent = () => {
       </div>
       <div className="w-full xl:w-1/2 flex flex-col items-center justify-between">
         <div className="box w-full flex flex-col items-center">
-          <div className="title w-full my-4 pb-2 flex justify-between border-b-2 border-gray-300">
+          <div className="title w-full my-4 pb-2 flex justify-between border-b-2 border-gray-300 dark:border-gray-500">
             <p className="text-base lg:text-lg  font-semibold">Galeri Produk</p>
           </div>
           <div className="">
-            <div className="box pb-3 flex justify-between w-full">
+            <div className="box pb-4 flex justify-between w-full">
+              <SortingSelection />
               <MinimalisSearch />
             </div>
             <div className="galeri-container w-fit grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-row gap-4 lg:gap-6">
               {paginatedData.map((item) => (
-                <div className="pt-4 px-2 md:px-3 pb-3 bg-white rounded-xs flex flex-col gap-1 w-40 md:w-48 xl:w-52">
+                <div className="pt-4 px-2 md:px-3 pb-3 bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 hover:shadow-lg transition duration-300 cursor-pointer hover:scale-105">
                   <div className="w-full flex justify-center">
                     <img
                       src={`/logo-umkm/${item.gambar}`}
@@ -255,7 +247,13 @@ const DetailUmkmContent = () => {
             </div>
           </div>
         </div>
-        <div className="py-6">
+        <div className="py-6 flex flex-col md:flex-row justify-between items-center w-full gap-4">
+          <p className="text-xs md:text-sm ">
+            Menampilkan{" "}
+            <span className="font-semibold">{page * limit - limit + 1}</span> -
+            <span className="font-semibold"> {page * limit} </span> dari {""}
+            <span className="font-bold"> {produkSafiira.length} </span> produk
+          </p>
           <MinimalisPagination
             page={page}
             setPage={setPage}

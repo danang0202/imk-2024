@@ -51,7 +51,7 @@ const Pagination: React.FC<Props> = ({
               setLimit(parseInt(e.target.value));
               setPage(1);
             }}
-            className="bg-gray-50  shadow-sm text-gray-900 rounded-lg p-2.5 font-semibold dark:bg-slate-800 dark:border dark:border-grey dark:text-white"
+            className="bg-gray-50  shadow-sm text-gray-900 rounded-lg p-2.5 font-semibold dark:bg-slate-800 dark:border dark:border-gray-600 dark:text-white"
           >
             <option value="10">10</option>
             <option value="15">15</option>
@@ -59,7 +59,7 @@ const Pagination: React.FC<Props> = ({
           </select>
         </div>
 
-        <ul className="flex flex-row items-center bg-silver rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-grey">
+        <ul className="flex flex-row items-center bg-silver rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-gray-600">
           <li
             className="text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
             onClick={() => onPageChange("&laquo")}
