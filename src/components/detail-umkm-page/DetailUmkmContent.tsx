@@ -221,7 +221,7 @@ const DetailUmkmContent = () => {
                   <div className="w-full flex justify-center">
                     <img
                       src={`/logo-umkm/${item.gambar}`}
-                      className="w-16 md:w-24 lg:w-32"
+                      className="w-28 md:w-32 lg:w-36"
                       alt={item.nama}
                     />
                   </div>
@@ -237,11 +237,11 @@ const DetailUmkmContent = () => {
                       <p>{item.kategori.toLowerCase()}</p>
                     </div>
                   </div>
-                  <div className="flex flex-row gap-1 items-center">
+                  <div className="hidden xl:flex flex-row gap-1 items-center">
                     <IconMapPin size={15} />
                     <p className="text-xs lg:text-sm">{item.lokasi}</p>
                   </div>
-                  <div className="flex flex-row gap-1 items-center">
+                  <div className="hidden xl:flex  flex-row gap-1 items-center">
                     <IconBuildingStore size={14} />
                     <p className="text-xs lg:text-sm">{item.umkm}</p>
                   </div>
