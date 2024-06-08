@@ -25,6 +25,7 @@ import Breadcrumb from "../../components/commons/BreadCrumb";
 import { useThemeContext } from "../../layout/ThemeContext";
 import DownloadConfirmationModal from "../../components/commons/DownloadConfirmationModal";
 import NormalFilterBadge from "../../components/commons/NormalFilterBadge";
+import MinimalisTableUMKM from "../../components/table/MinimalisTableUMKM";
 
 const DataUmkm = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true);
@@ -154,7 +155,7 @@ const DataUmkm = () => {
           classNames="fade"
           unmountOnExit
         >
-          <div className="fixed xl:relative z-20 flex flex-col bg-white rounded px-8 py-4 shadow-lg xl:shadow-sm dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden min-w-[22rem] xl:min-w-[18rem]">
+          <div className="fixed xl:relative z-20 flex flex-col bg-white rounded px-8 py-4 shadow-lg xl:shadow-sm dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden min-w-[19rem] xl:min-w-[18rem]">
             <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
               <ChevronDown
                 className={`w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer transition duration-300 ${
@@ -333,7 +334,11 @@ const DataUmkm = () => {
               </div>
             </div>
           )}
-          <TableUMKM dataUmkm={filteredData} />
+          {windowWidth < EXTENDED_WINDOW.md ? (
+            <MinimalisTableUMKM dataUmkm={filteredData} />
+          ) : (
+            <TableUMKM dataUmkm={filteredData} />
+          )}
         </div>
       </div>
     </Layout>

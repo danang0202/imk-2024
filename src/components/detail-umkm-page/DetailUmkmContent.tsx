@@ -51,6 +51,7 @@ export type productType = {
   harga: number;
   umkm: string;
   like: number;
+  isLiked: boolean;
 };
 
 const DetailUmkmContent = () => {
@@ -161,7 +162,10 @@ const DetailUmkmContent = () => {
           </div>
         </div>
         <div className="flex xl:hidden justify-center w-full pt-4">
-          <div className="bg-primary px-2 py-1 text-xs md:text-sm rounded flex flex-row gap-2 items-center" onClick={()=>ButtonLihatProductOnClick()}>
+          <div
+            className="bg-primary px-2 py-1 text-xs md:text-sm rounded flex flex-row gap-2 items-center text-white"
+            onClick={() => ButtonLihatProductOnClick()}
+          >
             <p>Lihat Produk</p>
             <IconArrowDown size={16} />
           </div>
@@ -175,7 +179,7 @@ const DetailUmkmContent = () => {
           <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white dark:bg-black p-4 xl:p-8 rounded">
             <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
               <tbody>
-                {umkmData.map((item, index) => (
+                {umkmData.slice(8).map((item, index) => (
                   <tr key={index}>
                     <th
                       scope="row"
@@ -316,6 +320,7 @@ const produkSafiira = [
     harga: 150000,
     umkm: "Safiira Hampers",
     like: 120,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -325,6 +330,7 @@ const produkSafiira = [
     harga: 180000,
     umkm: "Safiira Hampers",
     like: 95,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -334,6 +340,7 @@ const produkSafiira = [
     harga: 130000,
     umkm: "Safiira Hampers",
     like: 110,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -343,6 +350,7 @@ const produkSafiira = [
     harga: 200000,
     umkm: "Safiira Hampers",
     like: 150,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -352,6 +360,7 @@ const produkSafiira = [
     harga: 160000,
     umkm: "Safiira Hampers",
     like: 130,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -361,6 +370,7 @@ const produkSafiira = [
     harga: 170000,
     umkm: "Safiira Hampers",
     like: 140,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -370,6 +380,7 @@ const produkSafiira = [
     harga: 190000,
     umkm: "Safiira Hampers",
     like: 115,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -379,6 +390,7 @@ const produkSafiira = [
     harga: 210000,
     umkm: "Safiira Hampers",
     like: 125,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -388,6 +400,7 @@ const produkSafiira = [
     harga: 180000,
     umkm: "Safiira Hampers",
     like: 135,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -397,6 +410,7 @@ const produkSafiira = [
     harga: 160000,
     umkm: "Safiira Hampers",
     like: 145,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -406,6 +420,7 @@ const produkSafiira = [
     harga: 150000,
     umkm: "Safiira Hampers",
     like: 155,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -415,6 +430,7 @@ const produkSafiira = [
     harga: 170000,
     umkm: "Safiira Hampers",
     like: 165,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -424,6 +440,7 @@ const produkSafiira = [
     harga: 140000,
     umkm: "Safiira Hampers",
     like: 175,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -433,6 +450,7 @@ const produkSafiira = [
     harga: 180000,
     umkm: "Safiira Hampers",
     like: 185,
+    isLiked: false,
   },
   {
     gambar: "product-1-safiira.png",
@@ -442,5 +460,6 @@ const produkSafiira = [
     harga: 200000,
     umkm: "Safiira Hampers",
     like: 195,
+    isLiked: false,
   },
 ];
