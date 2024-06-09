@@ -33,7 +33,7 @@ export default {
         accent5a: "#fecaca",
         primaryTint2: '#E8F5E9',
         inactive: '#BCBDBE',
-        purpleBlue: '#342B6E'
+        purpleBlue: '#342B6E',
       },
       fontSize: {
         'xs': '.75rem',     // ukuran ekstra kecil

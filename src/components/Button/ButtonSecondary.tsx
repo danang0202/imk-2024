@@ -18,7 +18,7 @@ const ButtonSecondary: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`flex flex-row p items-center x-5 py-2 lg:px-5 py-2 rounded bg-secondary text-white hover:bg-secondaryHover text-${size} hover:${
+      className={`flex flex-row p items-center x-5 py-2 lg:px-5 rounded bg-secondary text-white hover:bg-secondaryHover text-${size} hover:${
         hoverStyle ? hoverStyle : ""
       } transition duration-300`}
       onClick={onClick}

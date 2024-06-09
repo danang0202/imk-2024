@@ -89,8 +89,8 @@ const DonutChartKategori = () => {
         />
       </div>
       <div className="flex  flex-wrap gap-4 w-full justify-center items-center pt-4">
-        {data?.map((item) => (
-          <div className="box flex flex-row gap-2 items-center">
+        {data?.map((item, index) => (
+          <div className="box flex flex-row gap-2 items-center" key={index}>
             <IconSquareFilled size={16} color={item.color} />
             <Text
               size="xs"

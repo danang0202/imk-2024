@@ -10,6 +10,7 @@ import { boundaries } from "../../components/statistik-page/GeoJson";
 import { KecamatanGisType, kecamatanList } from "../../utils/gis-utils";
 import { IconFilterSearch } from "@tabler/icons-react";
 import {
+  EXTENDED_WINDOW,
   UMKMProperties,
   badanHukumUsaha,
   bidangUsaha,
@@ -29,6 +30,10 @@ import SearchBar from "../../components/table/SearchBar";
 import ClearBadge from "../../components/commons/ClearBadge";
 import { CSSTransition } from "react-transition-group";
 import GisModal from "../../components/gis-page/GisModal";
+import Breadcrumb from "../../components/commons/BreadCrumb";
+import { useThemeContext } from "../../layout/ThemeContext";
+import { ChevronDown } from "lucide-react";
+import NormalFilterBadge from "../../components/commons/NormalFilterBadge";
 
 const Gis: React.FC = () => {
   // const [selectedUMKM, setSelectedUMKM] = useState<UMKMLocation | null>(null);
@@ -53,6 +58,15 @@ const Gis: React.FC = () => {
   const [filteredDataUMKM, setFilteredDataUMKM] = useState<UMKMProperties[]>(
     umkmData.filter((item) => item.position)
   );
+
+  const { windowWidth } = useThemeContext();
+  const [showFilter, setShowFilter] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (windowWidth < EXTENDED_WINDOW.xl) {
+      setShowFilter(false);
+    }
+  }, [windowWidth]);
 
   const handleKecamatanChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -146,6 +160,14 @@ const Gis: React.FC = () => {
     setBidangUsahaFilter(bidangUsaha);
   };
 
+  const handleDeleteSelectedKecamatan = () => {
+    setSelectedKecamatan(null);
+  };
+
+  const handleDeleteKeyword = () => {
+    setKeyword("");
+  };
+
   // const createCustomIcon = (avatarUrl: string) => {
   //   return L.icon({
   //     iconUrl: avatarUrl,
@@ -157,52 +179,77 @@ const Gis: React.FC = () => {
   // };
   return (
     <Layout pageTitle="GIS">
-      <div className="w-screen p-8 pt-6xl pb-8 bg-white min-h-[85vh] flex flex ">
-        <div className="box px-8  py-1 flex flex-row items-start gap-4 w-full">
-          <div className="min-w-[22rem] rounded p-8 shadow-sm bg-white border border-gray-300">
-            <h2 className="font-bold text-lg text-center pb-4 border-b-2 mb-4  border-grey">
-              Penyaringan Data
-            </h2>
-            <div className="box flex flex-col gap-4">
-              <div className="flex flex-row gap-2 items-center">
-                <IconFilterSearch size={20} />
-                <h1 className="font-semibold whitespace-nowrap">Kecamatan</h1>
+      <div className="px-4 xl:hidden pt-5xl w-full bg-white dark:bg-black">
+        <Breadcrumb />
+      </div>
+      <div className="w-screen px-4 xl:p-8 pt-2 xl:pt-6xl pb-0 xl:pb-8 bg-white dark:bg-black min-h-[85vh] flex ">
+        <div className="box px-0 xl:px-8  py-1 flex flex-row items-start gap-4 w-full">
+          <CSSTransition
+            in={showFilter}
+            timeout={300}
+            classNames="fade"
+            unmountOnExit
+          >
+            <>
+              <div className="fixed top-28 xl:top-0 max-h-[85vh] xl:max-h-fit overflow-y-scroll xl:overflow-y-auto xl:relative z-30 min-w-[22rem] rounded p-8 shadow-sm bg-white dark:bg-black border border-gray-300 dark:border-gray-700">
+                <div className="relative text-xs md:text-sm lg:text-base">
+                  <ChevronDown
+                    className={`xl:hidden absolute w-7 h-7 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transition-transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer top-0 right-0 translate-x-5 -translate-y-5 ${
+                      showFilter ? "transform rotate-90" : ""
+                    }`}
+                    onClick={() => setShowFilter(false)}
+                  />
+                  <h2 className="text-base font-bold text-center pb-2 xl:pb-4 border-b-2 mb-4 border-grey dark:text-white">
+                    Penyaringan Data
+                  </h2>
+                  <div className="box flex flex-col gap-4">
+                    <div className="flex flex-row gap-2 items-center dark:text-white">
+                      <IconFilterSearch
+                        size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                      />
+                      <h1 className="font-semibold whitespace-nowrap">
+                        Kecamatan
+                      </h1>
+                    </div>
+                    <form className="">
+                      <select
+                        value={selectedKecamatan ? selectedKecamatan.name : ""}
+                        onChange={handleKecamatanChange}
+                        className="whitespace-nowrap bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 cursor-pointer dark:bg-slate-800 dark:border-grey dark:text-white"
+                      >
+                        <option value="">Semua</option>
+                        {kecamatanList.map((item, index) => (
+                          <option key={index} value={item.name}>
+                            {item.name}
+                          </option>
+                        ))}
+                      </select>
+                    </form>
+                  </div>
+                  <div className="dark:text-white">
+                    <AdvancedFilter
+                      skalaUsahaFilter={skalaUsahaFilter}
+                      setSkalaUsahaFilter={setSkalaUsahaFilter}
+                      dinasPengampuFilter={dinasPengampuFilter}
+                      setDinasPengampuFilter={setDinasPengampuFilter}
+                      badanHukumFilter={badanHukumFilter}
+                      setBadanHukumFilter={setBadanHukumFilter}
+                      bidangUsahaFilter={bidangUsahaFilter}
+                      setBidangUsahaFilter={setBidangUsahaFilter}
+                    />
+                  </div>
+                </div>
               </div>
-              <form className="">
-                <select
-                  value={selectedKecamatan ? selectedKecamatan.name : ""}
-                  onChange={handleKecamatanChange}
-                  className="whitespace-nowrap bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 cursor-pointer dark:bg-slate-800 dark:border-grey dark:text-white"
-                >
-                  <option value="">Semua</option>
-                  {kecamatanList.map((item, index) => (
-                    <option key={index} value={item.name}>
-                      {item.name}
-                    </option>
-                  ))}
-                </select>
-              </form>
-            </div>
-            <div className="">
-              <AdvancedFilter
-                skalaUsahaFilter={skalaUsahaFilter}
-                setSkalaUsahaFilter={setSkalaUsahaFilter}
-                dinasPengampuFilter={dinasPengampuFilter}
-                setDinasPengampuFilter={setDinasPengampuFilter}
-                badanHukumFilter={badanHukumFilter}
-                setBadanHukumFilter={setBadanHukumFilter}
-                bidangUsahaFilter={bidangUsahaFilter}
-                setBidangUsahaFilter={setBidangUsahaFilter}
-              />
-            </div>
-          </div>
-          <div className="w-full rounded px-8 pb-8 bg-white h-full rounded transform -translate-y-4 relative">
-            <div className="flex flex-row justify-between items-center pb-2">
-              <p className="text-lg font-bold text-black">
+            </>
+          </CSSTransition>
+
+          <div className="w-full rounded px-0 xl:px-8 pb-8 bg-white dark:bg-black h-full transform -translate-y-4 relative">
+            <div className="flex flex-col xl:flex-row justify-between items-center pb-2 gap-4 xl:gap-0">
+              <p className="text-sm md:text-base lg:text-lg font-bold text-black dark:text-white">
                 Sistem Informasi Geografis UMKM Kulon Progo
               </p>
               <SearchBar
-                width="20rem"
+                width={windowWidth < EXTENDED_WINDOW.md ? "12.5rem" : "20rem"}
                 searchColumn={searchColumn}
                 setSearchColumn={setSearchColumn}
                 keyword={keyword}
@@ -210,90 +257,77 @@ const Gis: React.FC = () => {
                 data={filteredDataByKec}
               />
             </div>
-            {filteredDataUMKM.length != filteredDataByKec.length && (
-              <div className="pb-4">
-                <p className="text-grey text-sm">
-                  Hasil:
-                  <span className="font-medium"> {filterDataUMKM.length} </span>
-                  UMKM ditemukan{" "}
-                </p>
-              </div>
-            )}
-            <div className="filter-box  flex flex-wrap pb-5">
+            <div className="xl:hidden w-full flex flex-row gap-2 text-grey hover:text-black dark:text-white dark:hover:text-grey justify-start cursor-pointer py-2">
+              <IconFilterSearch size={17} />
+              <p
+                onClick={() => setShowFilter(true)}
+                className="text-xs md:text-sm "
+              >
+                Buka Filter
+              </p>
+            </div>
+            <div className="filter-box flex flex-wrap py-2 gap-2 lg:gap-4">
               {keyword && (
-                <CSSTransition
-                  in={true}
-                  timeout={300}
-                  classNames="fade"
-                  unmountOnExit
-                >
-                  <span
-                    id="badge-dismiss-default"
-                    data-aos="zoom-in"
-                    data-aos-duration="300"
-                    className="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-grey bg-silver rounded-sm"
-                  >
-                    Kata kunci: {keyword}
-                    <button
-                      type="button"
-                      className="inline-flex items-center p-1 ms-2 text-sm text-grey bg-transparent rounded-sm hover:text-white hover:bg-grey transition duration-300 "
-                      data-dismiss-target="#badge-dismiss-default"
-                      aria-label="Remove"
-                      onClick={() => setKeyword("")}
-                    >
-                      <svg
-                        className="w-2 h-2"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 14 14"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                        />
-                      </svg>
-                      <span className="sr-only">Remove badge</span>
-                    </button>
-                  </span>
-                </CSSTransition>
+                <NormalFilterBadge
+                  text={`Kata kunci: ${keyword}`}
+                  handleClick={handleDeleteKeyword}
+                />
+              )}
+              {selectedKecamatan && (
+                <NormalFilterBadge
+                  text={selectedKecamatan.name}
+                  handleClick={handleDeleteSelectedKecamatan}
+                />
               )}
               {skalaUsahaFilter.length != skalaUsaha.length &&
-                skalaUsahaFilter.map((item) => (
+                skalaUsahaFilter.map((item, index) => (
                   <BadgeFilter
                     item={item}
                     handleClick={handleDeleteSkalaUsahaFilter}
+                    key={index}
                   />
                 ))}
               {badanHukumFilter &&
                 badanHukumFilter.length != badanHukumUsaha.length &&
-                badanHukumFilter.map((item) => (
+                badanHukumFilter.map((item, index) => (
                   <BadgeFilter
                     item={item}
                     handleClick={handleDeleteBadanHukumFilter}
+                    key={index}
                   />
                 ))}
               {dinasPengampuFilter.length != dinasPengampu.length &&
-                dinasPengampuFilter.map((item) => (
+                dinasPengampuFilter.map((item, index) => (
                   <BadgeFilter
                     item={item}
                     handleClick={handleDinasPengampuFilter}
+                    key={index}
                   />
                 ))}
               {bidangUsahaFilter.length != bidangUsaha.length &&
-                bidangUsahaFilter.map((item) => (
+                bidangUsahaFilter.map((item, index) => (
                   <BadgeFilter
                     item={item}
                     handleClick={handleDeleteBidangUsahaFilter}
+                    key={index}
                   />
                 ))}
               {filteredDataUMKM.length != data.length && (
                 <ClearBadge handleClick={handleDeleteAllFilter} />
               )}
             </div>
+            {filteredDataUMKM.length != filteredDataByKec.length && (
+              <div className=" px-1 pb-4">
+                <p className="text-grey text-xs lg:text-sm dark:text-white">
+                  Hasil:
+                  <span className="font-medium">
+                    {" "}
+                    {filteredDataUMKM.length}{" "}
+                  </span>
+                  UMKM ditemukan{" "}
+                </p>
+              </div>
+            )}
             <MapContainer
               center={[-7.8503, 110.1598] as LatLngTuple} // Koordinat default Kulon Progo, DIY, Indonesia
               zoom={11.25}
@@ -370,14 +404,14 @@ const Gis: React.FC = () => {
               })}
             </MapContainer>
             <div
-              className="absolute top-40 right-10 z-10 flex flex-col gap-2 max-h-[40rem] overflow-y-scroll  p-4"
+              className="absolute top-56 md:top-56 xl:top-44 right-0 xl:right-10 z-10 flex flex-col gap-2 max-h-[38rem] lg:max-h-[60rem] xl:max-h-[38rem] overflow-y-scroll "
               data-aos="fade-up"
             >
               {filteredDataUMKM?.length != data.length &&
                 filteredDataUMKM.length != 1 &&
                 filteredDataUMKM.map((item) => (
                   <div
-                    className="box p-4 flex flex-row gap-2 items-center bg-white border border-gray-300 hover:bg-silver cursor-pointer transition duration-300"
+                    className="box p-2 xl:p-4 flex flex-row gap-2 items-center bg-white dark:bg-black border border-gray-300 hover:bg-silver  dark:hover:bg-gray-700 cursor-pointer transition duration-300"
                     onClick={() => {
                       handleDeleteAllFilter();
                       setKeyword(item.name);
@@ -386,15 +420,19 @@ const Gis: React.FC = () => {
                     <img
                       src={item.avatar}
                       alt={item.name}
-                      className="rounded-full max-w-10 "
+                      className="rounded-full max-w-6 xl:max-w-10 dark:bg-white"
                     />
-                    <div className="flex flex-col gap-2">
-                      <p className="font-semibold">{item.name}</p>
+                    <div className="flex flex-col gap-2 dark:text-white">
+                      <p className="font-semibold text-xs md:text-sm xl:text-base">
+                        {item.name}
+                      </p>
                       <div className="flex flex-row gap-2">
                         <span
-                          className={`${getBadanUsahaColor(item?.badanHukum).bg
-                            } ${getBadanUsahaColor(item?.badanHukum).text
-                            } text-xs px-1  rounded-sm`}
+                          className={`${
+                            getBadanUsahaColor(item?.badanHukum).bg
+                          } ${
+                            getBadanUsahaColor(item?.badanHukum).text
+                          } text-xs px-1  rounded-sm`}
                         >
                           {item?.badanHukum}
                         </span>
