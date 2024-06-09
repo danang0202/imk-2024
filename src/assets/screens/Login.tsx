@@ -1,5 +1,117 @@
+import React from 'react';
+
 const Login = () => {
-  return <div>Login</div>;
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-silver">
+      <div className="flex bg-white rounded-md shadow-lg overflow-hidden w-11/12 md:w-2/3 md:h-2/3">
+        <div className="hidden md:flex md:w-1/2">
+          <img src={`/logo/login.png`} alt="Ilustrasi Login" className="w-full h-full" />
+        </div>
+
+        <div className="w-full md:w-1/2 p-8 flex flex-col md:px-20">
+          <div className="flex justify-center m-6">
+            <img src={`/logo/logo.png`} alt="Logo" className="w-24" />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-black text-center">Login</h2>
+          <p className="font-extralight text-lg md:text-xl text-center mb-4">e-UMKM</p>
+          
+          <form className="w-full">
+            
+          <div className="relative w-full mb-5 group">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-user opacity-55">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              name="floating_username"
+              id="floating_username"
+              className="block mt-4 py-2 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="floating_username"
+              className="left-10 peer-focus:left-10 peer-focus:font-medium absolute text-sm md:text-base text-grey duration-300 transform -translate-y-7 scale-90 top-2 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-7 z-10"
+            >
+              Username
+            </label>
+          </div>
+
+
+          <div className="relative w-full mb-5 group">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-lock">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
+              <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+            </svg>
+            </div>
+            <input
+              type="password"
+              name="floating_password"
+              id="floating_password"
+              className="block mt-4 py-2 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+              placeholder=" "
+              required
+            />
+             <label
+              htmlFor="floating_password"
+              className="left-10 peer-focus:left-10 peer-focus:font-medium absolute text-sm md:text-base text-grey duration-300 transform -translate-y-7 scale-90 top-2 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-7 z-10"
+            >
+              Password
+            </label>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className=" opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+            </div>
+          </div>
+
+          </form>
+           
+            <div className="flex mb-4 w-full">
+              <div className="flex items-center w-1/2">
+                <input
+                  type="checkbox"
+                  id="remember"
+                  className="bg-silver border border-silver w-12"
+                />
+                <label htmlFor="remember" className="text-sm text-greyDark">Ingat Saya</label>
+              </div>
+              
+              <div className="flex justify-end items-center text-sm w-1/2">
+                <a href="#" className="text-greyDark">Lupa password?</a>
+              </div>
+            </div>
+
+            <div className="flex justify-center w-full mb-2">
+              <button className="text-lg lg:text-xl font-semibold md:font-bold bg-primary text-white py-1 rounded-md hover:bg-primaryHover w-1/3 text-center ">
+                Login
+              </button>
+            </div>
+            
+            <div className="mt-4 text-sm flex justify-center">
+              <span className="mr-2">Belum punya akun?</span>
+              <a href="#" className="text-primary hover:underline">Daftar</a>
+            </div>
+
+            <div className="mt-4 text-sm flex justify-start items-center ">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left opacity-70">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M5 12l14 0" />
+                <path d="M5 12l4 4" />
+                <path d="M5 12l4 -4" />
+              </svg>
+              <p className="text-black">Kembali ke Home</p>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
