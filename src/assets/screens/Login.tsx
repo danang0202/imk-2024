@@ -18,29 +18,30 @@ const Login = () => {
           <form className="w-full">
             
           <div className="relative w-full mb-5 group">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-user opacity-55">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-              </svg>
-            </div>
-            <input
-              type="text"
-              name="floating_username"
-              id="floating_username"
-              className="block mt-4 py-2 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
-              placeholder=" "
-              required
-            />
-            <label
-              htmlFor="floating_username"
-              className="left-10 peer-focus:left-10 peer-focus:font-medium absolute text-sm md:text-base text-grey duration-300 transform -translate-y-7 scale-90 top-2 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-7 z-10"
-            >
-              Username
-            </label>
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
+                  <svg
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-user opacity-55">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                  </svg>
+              </div>
+              <input
+                  type="text"
+                  name="floating_username"
+                  id="floating_username"
+                  className="block mt-4 py-2 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                  placeholder=" "
+                  required
+              />
+              <label
+                  htmlFor="floating_username"
+                  className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-7 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-7 peer-focus:left-0 peer-focus:text-green-500 peer-valid:left-0 peer-valid:-translate-y-7 peer-valid:scale-90"
+              >
+                  Username
+              </label>
           </div>
+
 
 
           <div className="relative w-full mb-5 group">
@@ -61,8 +62,8 @@ const Login = () => {
             />
              <label
               htmlFor="floating_password"
-              className="left-10 peer-focus:left-10 peer-focus:font-medium absolute text-sm md:text-base text-grey duration-300 transform -translate-y-7 scale-90 top-2 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-7 z-10"
-            >
+              className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-7 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-7 peer-focus:left-0 peer-focus:text-green-500 peer-valid:left-0 peer-valid:-translate-y-7 peer-valid:scale-90"
+              >
               Password
             </label>
             <div className="absolute inset-y-0 right-0 flex items-center pr-3">
@@ -105,7 +106,7 @@ const Login = () => {
                 <path d="M5 12l4 4" />
                 <path d="M5 12l4 -4" />
               </svg>
-              <p className="text-black">Kembali ke Home</p>
+              <a href="/beranda" className="text-black">Kembali ke Home</a>
             </div>
           
         </div>
