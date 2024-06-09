@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Login = () => {
   return (
@@ -36,7 +35,7 @@ const Login = () => {
               />
               <label
                   htmlFor="floating_username"
-                  className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-7 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-7 peer-focus:left-0 peer-focus:text-green-500 peer-valid:left-0 peer-valid:-translate-y-7 peer-valid:scale-90"
+                  className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-7 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-7 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-7 peer-valid:scale-90"
               >
                   Username
               </label>
@@ -62,7 +61,7 @@ const Login = () => {
             />
              <label
               htmlFor="floating_password"
-              className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-7 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-7 peer-focus:left-0 peer-focus:text-green-500 peer-valid:left-0 peer-valid:-translate-y-7 peer-valid:scale-90"
+              className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-7 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-7 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-7 peer-valid:scale-90"
               >
               Password
             </label>
@@ -75,11 +74,9 @@ const Login = () => {
            
             <div className="flex mb-4 w-full">
               <div className="flex items-center w-1/2">
-                <input
-                  type="checkbox"
-                  id="remember"
-                  className="bg-silver border border-silver w-12"
-                />
+                <div className="h-5 mr-2">
+                  <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-silver rounded bg-silver focus:ring-3" required />
+                </div>
                 <label htmlFor="remember" className="text-sm text-greyDark">Ingat Saya</label>
               </div>
               
