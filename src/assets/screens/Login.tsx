@@ -88,13 +88,13 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="flex justify-center w-full mb-2">
+            <div className="flex justify-center w-full mb-0">
               <button className="text-lg lg:text-xl font-semibold md:font-bold bg-primary text-white py-1 rounded-md hover:bg-primaryHover w-1/3 text-center ">
                 Login
               </button>
             </div>
             
-            <div className="mt-4 text-sm flex justify-center">
+            <div className="mt-4 text-base flex justify-center">
               <span className="mr-2">Belum punya akun?</span>
               <a href="#" className="text-primary hover:underline">Daftar</a>
             </div>
