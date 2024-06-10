@@ -36,13 +36,13 @@ const Login = () => {
                   type="text"
                   name="floating_username"
                   id="floating_username"
-                  className="block mt-4 py-2 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                  className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                   placeholder=" "
                   required
               />
               <label
                   htmlFor="floating_username"
-                  className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-7 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-7 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-7 peer-valid:scale-90"
+                  className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
               >
                   Username
               </label>
@@ -61,13 +61,13 @@ const Login = () => {
                 type={showPassword ? "text" : "password"}
                 name="floating_password"
                 id="floating_password"
-                className="block mt-4 py-2 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                 placeholder=" "
                 required
               />
               <label
                 htmlFor="floating_password"
-                className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-7 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-7 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-7 peer-valid:scale-90"
+                className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
               >
                 Password
               </label>
