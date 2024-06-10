@@ -2,21 +2,21 @@
 const Login = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-silver">
-      <div className="flex bg-white rounded-md shadow-lg overflow-hidden w-11/12 md:w-2/3 md:h-2/3">
-        <div className="hidden md:flex md:w-1/2">
-          <img src={`/logo/login.png`} alt="Ilustrasi Login" className="w-full h-full" />
+      <div className="flex bg-white rounded-md shadow-lg overflow-hidden w-11/12 lg:w-2/3 lg:h-3/5">
+        <div className="hidden xl:flex xl:w-1/2">
+          <img src={`/logo/login (5).png`} alt="Ilustrasi Login" className="w-full h-full" />
         </div>
 
-        <div className="w-full md:w-1/2 p-8 flex flex-col md:px-20">
+        <div className="w-full xl:w-1/2 p-8 flex flex-col xl:px-10">
           <div className="flex justify-center m-6">
             <img src={`/logo/logo.png`} alt="Logo" className="w-24" />
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-black text-center">Login</h2>
-          <p className="font-extralight text-lg md:text-xl text-center mb-4">e-UMKM</p>
+          <h2 className="text-2xl xl:text-3xl font-bold text-black text-center">Login</h2>
+          <p className="font-extralight text-lg xl:text-xl text-center mb-4">e-UMKM</p>
           
           <form className="w-full">
             
-          <div className="relative w-full mb-5 group">
+          <div className="relative w-full mb-8 group">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                   <svg
                       xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-user opacity-55">
@@ -43,7 +43,7 @@ const Login = () => {
 
 
 
-          <div className="relative w-full mb-5 group">
+          <div className="relative w-full mb-8 group">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
             <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-lock">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -73,11 +73,11 @@ const Login = () => {
           </form>
            
             <div className="flex mb-4 w-full">
-              <div className="flex items-center w-1/2">
-                <div className="h-5 mr-2">
-                  <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-silver rounded bg-silver focus:ring-3" required />
+              <div className="flex items-center w-1/2 ">
+                <div className="h-5 mr-2 ">
+                  <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-silver rounded bg-silver focus:ring-3 cursor-pointer" required />
                 </div>
-                <label htmlFor="remember" className="text-sm text-greyDark">Ingat Saya</label>
+                <label htmlFor="remember" className="text-sm text-greyDark cursor-pointer">Ingat Saya</label>
               </div>
               
               <div className="flex justify-end items-center text-sm w-1/2">
@@ -96,14 +96,14 @@ const Login = () => {
               <a href="#" className="text-primary hover:underline">Daftar</a>
             </div>
 
-            <div className="mt-4 text-sm flex justify-start items-center ">
+            <div className="mt-4 text-sm flex justify-start items-center mb-0 py-1 ">
               <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left opacity-70">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M5 12l14 0" />
                 <path d="M5 12l4 4" />
                 <path d="M5 12l4 -4" />
               </svg>
-              <a href="/beranda" className="text-black">Kembali ke Home</a>
+              <a href="/beranda" className="text-black py-1">Kembali ke Home</a>
             </div>
           
         </div>
