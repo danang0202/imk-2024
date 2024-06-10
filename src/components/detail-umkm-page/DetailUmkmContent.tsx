@@ -91,12 +91,12 @@ const DetailUmkmContent = () => {
   return (
     <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-8 dark:text-white">
       <div className="w-full xl:w-1/2 flex flex-col items-center">
-        <div className="title w-full pb-2 my-4 flex justify-between border-b-2 border-gray-300 dark:border-gray-500">
-          <p className=" text-base lg:text-lg font-semibold">
+        <div className="title w-full pb-2 my-4 flex justify-between  dark:border-gray-500">
+          <p className=" text-base lg:text-lg font-bold">
             Informasi Dasar UMKM
           </p>{" "}
         </div>
-        <div className="main-content flex flex-col  md:flex-row gap-4 bg-white dark:bg-black p-4 xl:p-8 rounded items-center justify-between w-full">
+        <div className="main-content flex flex-col  md:flex-row gap-4 bg-white border border-gray-300 dark:bg-black p-4 xl:p-8 rounded items-center justify-between w-full">
           <div className="logo">
             <img
               src="/logo-umkm/logo-umkm-1.png"
@@ -170,13 +170,13 @@ const DetailUmkmContent = () => {
             <IconArrowDown size={16} />
           </div>
         </div>
-        <div className="title w-full py-2 my-4 flex justify-between border-b-2 border-gray-300 dark:border-gray-500">
-          <p className="text-base lg:text-lg  font-semibold">
+        <div className="title w-full py-2 my-4 flex justify-between  dark:border-gray-500">
+          <p className="text-base lg:text-lg  font-bold">
             Informasi Lanjutan UMKM
           </p>{" "}
         </div>
         {windowWidth < EXTENDED_WINDOW.md ? (
-          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white dark:bg-black p-4 xl:p-8 rounded">
+          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:bg-black p-4 xl:p-8 rounded">
             <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(8).map((item, index) => (
@@ -194,7 +194,7 @@ const DetailUmkmContent = () => {
             </table>
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white dark:bg-black p-4 xl:p-8 rounded">
+          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:bg-black p-4 xl:p-8 rounded">
             <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(8, 17).map((item, index) => (
@@ -242,18 +242,18 @@ const DetailUmkmContent = () => {
         className="w-full xl:w-1/2 flex flex-col items-center justify-between"
         id="list-product"
       >
-        <div className="box w-full flex flex-col items-center">
-          <div className="title w-full my-4 pb-2 flex justify-between border-b-2 border-gray-300 dark:border-gray-500">
-            <p className="text-base lg:text-lg  font-semibold">Galeri Produk</p>
-          </div>
-          <div className="">
-            <div className="box pb-4 flex justify-between w-full">
+        <div className="box w-full flex flex-col items-center xl:-translate-y-3">
+          <div className="title w-full my-4 pb-2 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
+            <p className="text-base lg:text-lg  font-bold">Galeri Produk</p>
+            <div className="box flex w-full md:w-fit justify-between md:justify-normalgap-4">
               <SortingSelection />
               <MinimalisSearch />
             </div>
+          </div>
+          <div className="">
             <div className="galeri-container w-fit grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-row gap-4 lg:gap-6">
               {paginatedData.map((item) => (
-                <div className="pt-4 px-2 md:px-3 pb-3 bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 hover:shadow-lg transition duration-300 cursor-pointer hover:scale-105">
+                <div className="pt-4 px-2 md:px-3 pb-3 border border-gray-300 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 hover:shadow-lg transition duration-300 cursor-pointer hover:scale-105">
                   <div className="w-full flex justify-center">
                     <img
                       src={`/logo-umkm/${item.gambar}`}

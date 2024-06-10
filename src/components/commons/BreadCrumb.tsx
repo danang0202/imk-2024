@@ -7,7 +7,7 @@ const Breadcrumb: React.FC = () => {
 
   return (
     <nav
-      className="flex py-3 text-gray-700  dark:text-white"
+      className="flex  py-3 xl:pt-3 xl:pb-0 text-gray-700  dark:text-white"
       aria-label="Breadcrumb"
     >
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">

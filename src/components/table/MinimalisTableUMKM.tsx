@@ -70,7 +70,7 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
               <thead className="rounded-lg text-black text-xs md:text-sm lg:text-base">
                 <tr className="">
                   <th
-                    className={`bg-white py-3 lg:py-6 text-black  justify-start whitespace-nowraprounded-bl dark:text-white px-2 dark:bg-black`}
+                    className={`bg-white py-3 lg:py-6 text-black  justify-start whitespace-nowraprounded-bl dark:text-white px-2 pl-4  dark:bg-black`}
                   >
                     <div className="bg-white flex items-center justify-start dark:bg-black">
                       <ArrowSorting
@@ -87,7 +87,7 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                       </span>
                     </div>
                   </th>
-                  <th className="bg-white py-3 pr-4x lg:pr-8x xl:pr-3xl justify-center text-black sm:text-base  dark:text-white rounded-br dark:bg-black">
+                  <th className="bg-white py-3 pr-2 justify-center text-black sm:text-base  dark:text-white rounded-br dark:bg-black">
                     Tindakan
                   </th>
                 </tr>
@@ -96,9 +96,9 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                 {paginatedUMKM.map((data, index) => (
                   <tr
                     key={index}
-                    className="bg-white dark:bg-black text-sm lg:text-base px-4"
+                    className="bg-white dark:bg-black text-sm lg:text-base"
                   >
-                    <td className="py-4 lg:py-5 whitespace-nowrap px-2 lg:px-8 xl:pl-3xl dark:border-slate-700 rounded-tl rounded-bl text-center">
+                    <td className="py-4 whitespace-nowrap px-2 pl-4 dark:border-slate-700 rounded-tl rounded-bl text-center">
                       <div className="flex w-full flex-col items-start gap-1 font-normal">
                         <p className="font-semibold text-sm">{data.name}</p>
                         <div className="flex flex-row gap-2">
@@ -124,7 +124,7 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                         <p className="whitespace-normal">{data.alamat}</p>
                       </div>
                     </td>
-                    <td className="pr-4x dark:border-slate-700 rounded-tr rounded-br">
+                    <td className="dark:border-slate-700 rounded-tr rounded-br">
                       <Link to={"/data-umkm/detail"}>
                         <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
                           Detail

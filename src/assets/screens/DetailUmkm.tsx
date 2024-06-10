@@ -5,8 +5,8 @@ import DetailUmkmContent from "../../components/detail-umkm-page/DetailUmkmConte
 const DetailUmkm = () => {
   return (
     <Layout pageTitle="DETAIL UMKM">
-      <div className="box w-full pt-5xl bg-silver dark:bg-slate-800 pb-8">
-        <div className="px-4 lg:px-8 xl:px-3xl">
+      <div className="box w-full pt-5xl bg-white dark:bg-slate-800 pb-8">
+        <div className="px-4 md:px-8 xl:px-3xl">
           <Breadcrumb />
         </div>
         <DetailUmkmContent />

@@ -32,7 +32,7 @@ const MinimalisPagination: React.FC<Props> = ({ page, setPage, totalPage }) => {
   return (
     <div className="pagination w-full md:w-fit text-xs md:text-sm">
       <div className="flex flex-col md:flex-row justify-between i items-center gap-4 md:gap-8 w-full md:w-auto">
-        <ul className="flex flex-row items-center bg-white rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-gray-600">
+        <ul className="flex flex-row items-center bg-silver rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-gray-600">
           <li
             className="text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
             onClick={() => onPageChange("&laquo")}

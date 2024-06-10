@@ -269,7 +269,6 @@ const DataUmkm = () => {
                 className="hidden md:flex text-xs lg:text-sm bg-secondary flex-row gap-2 items-center px-2 lg:px-3 py-2 rounded hover:bg-secondaryHover cursor-pointer text-white transition duration-300"
                 onClick={() => setShowModal(true)}
               >
-                <p>{t("downloadBtnText")}</p>
                 <IconDownload />
               </div>
             </div>

@@ -19,7 +19,7 @@ export default {
         greyLight: '#89939E',
         greyBlue: '#ABBED1',
         silver: '#F5F7FA', // bg silver
-        white: '#FFFFFF',
+        white: '#FFF',
         warning: '#FBC02D', // oren
         error: '#E53835',
         success: '#2E7D31',
