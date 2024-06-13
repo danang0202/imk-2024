@@ -10,7 +10,6 @@ import { fetchDataByPagination } from "../../utils";
 import { getBadanUsahaColor, getSkalaUsahaColor } from "../../utils/utils";
 import { IconInfoCircle } from "@tabler/icons-react";
 import DataEmpty from "../commons/DataEmpty";
-import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { rowVariants } from "../../helper/motion.helper";
 
@@ -68,7 +67,6 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
       setTotalpage(Math.ceil(sortingData.length / limit));
     }
   }, [sortingData, limit, page]);
-
 
   return (
     <div className="">
@@ -161,12 +159,12 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                         {data?.alamat}
                       </td>
                       <td className="pr-4x lg:pr-8x xl:pr-8 dark:border-slate-700 rounded-tr rounded-br">
-                        <Link to={"/data-umkm/detail"}>
+                        <a href="/data-umkm/detail">
                           <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
                             Detail
                             <IconInfoCircle size={17} />
                           </button>
-                        </Link>
+                        </a>
                       </td>
                     </motion.tr>
                   ))}

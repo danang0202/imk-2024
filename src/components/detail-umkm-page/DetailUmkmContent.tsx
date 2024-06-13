@@ -74,7 +74,7 @@ const DetailUmkmContent = () => {
         limit
       );
       setPaginatedData(paginatedData);
-      setTotalpage(Math.ceil(produkSafiira.length / limit));
+      setTotalpage(Math.ceil(product.length / limit));
     }
   }, [page, product]);
 
