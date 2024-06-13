@@ -5,7 +5,6 @@ import Pagination from "./Pagination";
 import { fetchDataByPagination } from "../../utils";
 import { getBadanUsahaColor, getSkalaUsahaColor } from "../../utils/utils";
 import DataEmpty from "../commons/DataEmpty";
-import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { rowVariants } from "../../helper/motion.helper";
 
@@ -131,15 +130,17 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                           </div>
                           <p>{data.bidang}</p>
                           <p>{data.pengampu}</p>
-                          <p className="whitespace-normal text-left">{data.alamat}</p>
+                          <p className="whitespace-normal text-left">
+                            {data.alamat}
+                          </p>
                         </div>
                       </td>
                       <td className="dark:border-slate-700 rounded-tr rounded-br">
-                        <Link to={"/data-umkm/detail"}>
+                        <a href="/data-umkm/detail">
                           <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
                             Detail
                           </button>
-                        </Link>
+                        </a>
                       </td>
                     </motion.tr>
                   ))}
