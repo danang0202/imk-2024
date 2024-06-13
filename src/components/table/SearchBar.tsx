@@ -81,7 +81,7 @@ const SearchBar: React.FC<Props> = ({
 
   return (
     <form className="" ref={ref}>
-      <div className="flex relative translate-x-2 justify-center">
+      <div className="flex relative">
         <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
