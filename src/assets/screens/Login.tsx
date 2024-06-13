@@ -11,7 +11,7 @@ const Login = () => {
     <div className="flex justify-center items-center min-h-screen bg-silver">
       <div className="flex bg-white rounded-md shadow-lg overflow-hidden w-11/12 lg:w-2/3 lg:h-3/5">
         <div className="hidden xl:flex xl:w-1/2">
-          <img src={`/logo/login (5).png`} alt="Ilustrasi Login" className="w-full h-full" />
+          <img src={`/logo/ilulogin.png`} alt="Ilustrasi Login" className="w-full h-full" />
         </div>
 
         <div className="w-full xl:w-1/2 p-8 flex flex-col xl:px-10">
