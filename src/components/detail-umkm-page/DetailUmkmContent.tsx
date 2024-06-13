@@ -245,7 +245,7 @@ const DetailUmkmContent = () => {
         <div className="box w-full flex flex-col items-center xl:-translate-y-3">
           <div className="title w-full my-4 pb-2 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
             <p className="text-base lg:text-lg  font-bold">Galeri Produk</p>
-            <div className="box flex w-full md:w-fit justify-between md:justify-normalgap-4">
+            <div className="box flex w-full md:w-fit justify-between md:justify-normal md:gap-4">
               <SortingSelection />
               <MinimalisSearch />
             </div>

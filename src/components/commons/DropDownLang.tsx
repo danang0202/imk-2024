@@ -2,6 +2,11 @@ import { useState } from "react";
 import { LANGUAGES } from "../../DataBuilder";
 import { useThemeContext } from "../../layout/ThemeContext";
 import i18n from "../../language/i18n";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  dropdownItemVariants,
+  dropdownVariants,
+} from "../../helper/motion.helper";
 
 const DropDownLang = () => {
   const [show, setShow] = useState(false);
@@ -17,10 +22,12 @@ const DropDownLang = () => {
   return (
     <>
       <div className="relative">
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           type="button"
           data-dropdown-toggle="language-dropdown-menu"
-          className="inline-flex items-center font-medium justify-center px-1 pb-8 xl:py-0 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:scale-110 dark:hover:bg-gray-700 dark:hover:text-white transition duration-300"
+          className="inline-flex items-center font-medium justify-center px-1 pb-8 xl:py-0 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer  dark:hover:bg-gray-700 dark:hover:text-white"
           onClick={() => setShow(!show)}
         >
           {lang == "id" ? (
@@ -38,41 +45,50 @@ const DropDownLang = () => {
               English (UK)
             </>
           )}
-        </button>
-        <div
-          className={`z-50 absolute my-4 text-base list-none bg-white px-4 min-w-[7rem] divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
-        id="language-dropdown-menu ${
-          !show && "hidden"
-        } dark:bg-slate-800 shadow`}
-        >
-          <ul className="py-2 font-medium" role="none">
-            {LANGUAGES.map((item) => (
-              <li
-                onClick={() => {
-                  onChangeLang(item.code);
-                  setShow(false);
-                }}
-                className="dark:hover:bg-slate-800"
-                key={item.code}
-              >
-                <a
-                  href="#"
-                  className="block py-2 text-sm text-gray-700  dark:text-white dark:hover:text-white/75"
-                  role="menuitem"
-                >
-                  <div className="inline-flex items-center">
-                    <img
-                      src={item.link}
-                      alt={item.label}
-                      className="pr-2 h-4"
-                    />
-                    {item.label}
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        </motion.button>
+        <AnimatePresence>
+          {show && (
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={dropdownVariants}
+              className="z-50 absolute my-4 text-base list-none bg-white px-4 min-w-[7rem] divide-y divide-gray-100 rounded-lg  dark:bg-slate-800 shadow border"
+            >
+              <ul className="py-2 font-medium" role="none">
+                <AnimatePresence>
+                  {LANGUAGES.map((item) => (
+                    <motion.li
+                      onClick={() => {
+                        onChangeLang(item.code);
+                        setShow(false);
+                      }}
+                      className="dark:hover:bg-slate-800"
+                      key={item.code}
+                      variants={dropdownItemVariants}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <a
+                        href="#"
+                        className="block py-2 text-sm text-gray-700  dark:text-white dark:hover:text-white/75"
+                        role="menuitem"
+                      >
+                        <div className="inline-flex items-center">
+                          <img
+                            src={item.link}
+                            alt={item.label}
+                            className="pr-2 h-4"
+                          />
+                          {item.label}
+                        </div>
+                      </a>
+                    </motion.li>
+                  ))}
+                </AnimatePresence>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
