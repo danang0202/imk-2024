@@ -1,18 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useThemeContext } from "../layout/ThemeContext";
 import { motion } from "framer-motion";
 
 const ToggleTheme: React.FC = () => {
   const { theme, setTheme } = useThemeContext();
-
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
-
   return (
     <motion.button
       whileHover={{ scale: 1.1 }}

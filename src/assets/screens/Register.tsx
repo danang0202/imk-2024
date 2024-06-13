@@ -7,16 +7,15 @@ const Register = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
   return (
     <Layout pageTitle="REGISTER">
-      <div className="flex justify-center items-center min-h-screen bg-silver">
-        <div className="bg-white rounded-md shadow-sm overflow-hidden w-11/12 lg:w-2/3">
+      <div className="flex justify-center items-center min-h-screen bg-silver dark:bg-slate-800">
+        <div className="bg-white dark:bg-black rounded-md shadow-sm overflow-hidden w-11/12 lg:w-2/3">
           <div className="p-5 flex flex-col xl:px-10">
-            <h2 className="text-2xl xl:text-3xl font-semibold text-black text-center">
+            <h2 className="text-2xl xl:text-3xl font-semibold text-black dark:text-white text-center">
               Pendaftaran
             </h2>
-            <p className="font-extralight text-lg xl:text-xl text-center mb-8">
+            <p className="font-extralight text-lg xl:text-xl text-center mb-8 text-black dark:text-white">
               e-UMKM
             </p>
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">

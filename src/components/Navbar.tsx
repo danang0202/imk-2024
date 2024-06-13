@@ -20,10 +20,18 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { isMobile } = useThemeContext();
   const [navBg, setNavBg] = useState(
-    `${open || isMobile ? "bg-silver dark:bg-slate-800" : "bg-transparent"}`
+    `${
+      open || isMobile
+        ? "bg-silver dark:bg-slate-800"
+        : "bg-transparent dark:bg-slate-800"
+    }`
   );
   const [navBgItem, setNavBgItem] = useState(
-    `${open || isMobile ? "bg-silver dark:bg-slate-800" : "bg-transparent"}`
+    `${
+      open || isMobile
+        ? "bg-silver dark:bg-slate-800"
+        : "bg-transparent dark:bg-slate-800"
+    }`
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme, common } = useThemeContext();
@@ -42,14 +50,14 @@ const Navbar = () => {
             `${
               open || isMobile
                 ? "bg-silver dark:bg-slate-800"
-                : "bg-transparent"
+                : "bg-transparent dark:bg-slate-800"
             }`
           );
           setNavBgItem(
             `${
               open || isMobile
                 ? "bg-silver dark:bg-slate-800"
-                : "bg-transparent"
+                : "bg-transparent dark:bg-slate-800"
             }`
           );
         }

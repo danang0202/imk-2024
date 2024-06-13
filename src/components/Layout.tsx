@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import AOS from "aos";
 import { useLocation } from "react-router-dom";
 import TopBarProgress from "react-topbar-progress-indicator";
+import { useThemeContext } from "../layout/ThemeContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
   const [progress, setProgress] = useState(true);
   const [prevLoc, setPrevLoc] = useState("");
   const location = useLocation();
+  const { theme } = useThemeContext();
 
   useEffect(() => {
     setPrevLoc(location.pathname);
@@ -36,6 +38,14 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
   TopBarProgress.config({
     barThickness: 4,
   });
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
   return (
     <>
       <Helmet>
