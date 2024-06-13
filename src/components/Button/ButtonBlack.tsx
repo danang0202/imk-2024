@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 interface ButtonProps {
   text: string;
@@ -10,14 +11,22 @@ interface ButtonProps {
 }
 
 const ButtonBlack: React.FC<ButtonProps> = ({ text, size, onClick, icon }) => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <button
-      className={`px-4 py-2 rounded-lg bg-black text-white hover:bg-black/75 text-${size} transition duration-300 shadow-lg dark:bg-primary`}
+    <motion.button
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      animate={isHovered ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+      transition={
+        isHovered ? { duration: 0.6, repeat: Infinity } : { duration: 0.2 }
+      }
+      whileTap={{ scale: 0.9 }}
+      className={`px-4 py-2 rounded-lg bg-black text-white text-${size} hover:bg-black/90`}
       onClick={onClick}
     >
       {text}
       {icon && <FontAwesomeIcon icon={faArrowRight} className="ps-2" />}
-    </button>
+    </motion.button>
   );
 };
 
