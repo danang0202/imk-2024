@@ -1,5 +1,7 @@
-import { CSSTransition } from "react-transition-group";
+import { AnimatePresence, motion } from "framer-motion";
 import { TypeData } from "../table/Selection";
+import { EXTENDEDCOLORS } from "../../DataBuilder";
+import { variantsBadgeFilter } from "../../helper/motion.helper";
 
 interface Props {
   item: TypeData;
@@ -8,12 +10,17 @@ interface Props {
 
 const BadgeFilter: React.FC<Props> = ({ item, handleClick }) => {
   return (
-    <CSSTransition in={true} timeout={300} classNames="fade" unmountOnExit>
-      <span
+    <AnimatePresence>
+      <motion.span
         id="badge-dismiss-default"
-        data-aos="zoom-in"
-        data-aos-duration="300"
-        className="inline-flex items-center px-2 py-1 me-2 text-xs lg:text-sm font-base md:font-medium text-grey bg-silver rounded-sm hover:bg-gray hover:text-white transition duration-300"
+        className="inline-flex items-center px-2 py-1 me-2 text-xs lg:text-sm font-base md:font-medium text-grey bg-silver rounded-sm cursor-pointer"
+        onClick={() => handleClick(item)}
+        whileHover={{ backgroundColor: EXTENDEDCOLORS.inactive, scale: 1.05 }}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={variantsBadgeFilter}
+        transition={{ duration: 0.3 }}
       >
         {item.name}
         <button
@@ -21,7 +28,6 @@ const BadgeFilter: React.FC<Props> = ({ item, handleClick }) => {
           className="inline-flex items-center p-1 ms-2 bg-transparent rounded-sm"
           data-dismiss-target="#badge-dismiss-default"
           aria-label="Remove"
-          onClick={() => handleClick(item)}
         >
           <svg
             className="w-2 h-2"
@@ -40,8 +46,8 @@ const BadgeFilter: React.FC<Props> = ({ item, handleClick }) => {
           </svg>
           <span className="sr-only">Remove badge</span>
         </button>
-      </span>
-    </CSSTransition>
+      </motion.span>
+    </AnimatePresence>
   );
 };
 

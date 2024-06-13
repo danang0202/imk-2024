@@ -5,8 +5,13 @@ import {
   titleSlugType,
   umkmData,
 } from "../../DataBuilder";
-import { CSSTransition } from "react-transition-group";
 import { useThemeContext } from "../../layout/ThemeContext";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  dropdownItemVariants,
+  dropdownVariants,
+  rowVariants,
+} from "../../helper/motion.helper";
 
 interface Props {
   width: string;
@@ -80,7 +85,7 @@ const SearchBar: React.FC<Props> = ({
         <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
-          className="translate-x-1 flex flex-row-0 z-10 items-center py-2.5 px-1 pl-2  md:px-4 text-xs lg:text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 w-[7rem] md:w-[8rem] lg:w-[10rem] dark:bg-slate-800 dark:border-gray-600  dark:text-white dark:hover:bg-slate-800 whitespace-nowrap"
+          className="translate-x-1 flex flex-row-0 z-10 items-center py-2.5 px-1 pl-2  md:px-4 text-xs lg:text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 w-[7rem] md:w-[8rem] lg:w-[10rem] dark:bg-slate-800 dark:border-gray-600  dark:text-white dark:hover:bg-slate-800 whitespace-nowrap transition duration-300"
           type="button"
           onClick={() => setShowsearchColumn(!showFilfterColumn)}
         >
@@ -101,52 +106,61 @@ const SearchBar: React.FC<Props> = ({
             />
           </svg>
         </button>
-        {showFilfterColumn && (
-          <div
-            id="dropdown"
-            className="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44 transform translate-y-12 dark:bg-slate-800"
-          >
-            <ul
-              className="py-2 text-sm text-gray-700 "
-              aria-labelledby="dropdown-button"
+        <AnimatePresence>
+          {showFilfterColumn && (
+            <motion.div
+              id="dropdown"
+              className="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44 transform translate-y-12 dark:bg-slate-800"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={dropdownVariants}
             >
-              <li>
-                <button
-                  onClick={() => {
-                    setSearchColumn("all");
-                    setShowsearchColumn(false);
-                  }}
-                  type="button"
-                  className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-black dark:text-white text-xs md:text-sm"
-                >
-                  {c("all")}
-                </button>
-              </li>
-              {columns.map((item) => (
+              <ul
+                className="py-2 text-sm text-gray-700 "
+                aria-labelledby="dropdown-button"
+              >
                 <li>
                   <button
                     onClick={() => {
-                      setSearchColumn(item.slug);
+                      setSearchColumn("all");
                       setShowsearchColumn(false);
                     }}
                     type="button"
-                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100  dark:hover:bg-black dark:text-white text-xs md:text-sm"
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-black dark:text-white text-xs md:text-sm"
                   >
-                    {c(`thead_umkm_${item.slug}`)}
+                    {c("all")}
                   </button>
                 </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="relative">
+                {columns.map((item) => (
+                  <motion.li
+                    key={item.slug}
+                    variants={dropdownItemVariants}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <button
+                      onClick={() => {
+                        setSearchColumn(item.slug);
+                        setShowsearchColumn(false);
+                      }}
+                      type="button"
+                      className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:text-white text-xs md:text-sm"
+                    >
+                      {c(`thead_umkm_${item.slug}`)}
+                    </button>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <div className="relative transform -translate-x-5">
           <input
             value={keyword}
             onChange={(e) => handleKeywordChange(e)}
             type="search"
             id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-xs lg:text-sm text-gray-900 bg-gray-50 rounded-s-none rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:bg-primaryTint2 dark:bg-slate-800 dark:text-white dark:border-gray-600 dark:focus:bg-slate-800"
+            className="block p-2.5 pl-7 md:pl-7 w-full z-20 text-xs lg:text-sm text-gray-900 bg-gray-50 rounded-s-none rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 dark:bg-slate-800 dark:text-white dark:border-gray-600 dark:focus:bg-slate-800"
             placeholder="Kata kunci..."
             style={{ width: width }}
             required
@@ -172,19 +186,27 @@ const SearchBar: React.FC<Props> = ({
             </svg>
             <span className="sr-only">Search</span>
           </button>
-          {recommendations.length > 0 && (
-            <CSSTransition
-              in={true}
-              timeout={300}
-              classNames="fade"
-              unmountOnExit
-            >
-              <ul className="absolute z-20 bg-white dark:bg-gray-800 w-full border dark:border-gray-700 rounded shadow-lg mt-1">
-                {recommendations.length > 0 && (
-                  <ul className="absolute z-10 bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs md:text-sm">
+
+          <AnimatePresence>
+            {recommendations.length > 0 && (
+              <motion.ul
+                id="dropdown"
+                className="absolute z-20 bg-white dark:bg-gray-800 w-full border dark:border-gray-700 rounded shadow-lg mt-1"
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={dropdownVariants}
+              >
+                <ul className="absolute z-10 bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs md:text-sm">
+                  <AnimatePresence>
                     {recommendations.map((item, index) => (
-                      <li
+                      <motion.li
                         key={index}
+                        variants={rowVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        transition={{ duration: 0.3 }}
                         className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black"
                         onClick={() => {
                           setKeyword(item);
@@ -199,11 +221,11 @@ const SearchBar: React.FC<Props> = ({
                         }}
                       />
                     ))}
-                  </ul>
-                )}
-              </ul>
-            </CSSTransition>
-          )}
+                  </AnimatePresence>
+                </ul>
+              </motion.ul>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </form>

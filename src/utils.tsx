@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { UMKMProperties } from "./DataBuilder";
-import { productType } from "./components/detail-umkm-page/DetailUmkmContent";
+import { productType } from "./types/common.types";
 
 export const paginationUtils = (
   totalPage: number,

@@ -5,7 +5,7 @@ import { IconBuildingStore, IconBusinessplan } from "@tabler/icons-react";
 import { EXTENDEDCOLORS } from "../../DataBuilder";
 import StatisticsUMKM from "./StatisticsUMKM";
 import Breadcrumb from "../../components/commons/BreadCrumb";
-
+   
 const Statistics = () => {
   return (
     <Layout pageTitle="STATISTIK">
