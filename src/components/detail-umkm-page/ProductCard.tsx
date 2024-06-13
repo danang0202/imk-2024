@@ -5,9 +5,10 @@ import {
   IconHeart,
   IconHeartFilled,
 } from "@tabler/icons-react";
-import { productType } from "./DetailUmkmContent";
 import { motion } from "framer-motion";
 import { EXTENDEDCOLORS } from "../../DataBuilder";
+import { productType } from "../../types/common.types";
+import { dropdownItemVariants } from "../../helper/motion.helper";
 
 interface ProductCardProps {
   item: productType;
@@ -16,7 +17,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
   return (
-    <div className="pt-4 px-2 md:px-3 pb-3 border border-gray-300 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 xl:hover:shadow-lg transition duration-300">
+    <div className="pt-4 px-2 md:px-3 pb-3 border border-gray-300 dark:border-gray-600 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 xl:hover:shadow-lg transition duration-300">
       <div className="w-full flex justify-center">
         <img
           src={`/logo-umkm/${item.gambar}`}
@@ -49,9 +50,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
         <motion.div
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
+          variants={dropdownItemVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          transition={{ duration: 0.3 }}
           className="cursor-pointer"
           onClick={() => handleLike(item.id)}
         >

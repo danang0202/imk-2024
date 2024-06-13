@@ -58,7 +58,7 @@ const LandingPage: React.FC = () => {
       setIsModalOpen(false);
       clearFormData();
       handleNotifSuccess(
-        "Upload pertanyaan berhasil",
+        "Pertanyaan berhasil dikirim",
         "Selamat pertanyaan anda telah berhasil di kirim"
       );
     }, 2000);

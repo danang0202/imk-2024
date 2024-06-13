@@ -89,7 +89,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
       <div
         id="timeline-modal"
         aria-hidden="true"
-        className="overflow-y-auto overflow-x-hidden flex bg-black/25 fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full transition duration-500"
+        className="overflow-y-auto overflow-x-hidden flex bg-black/25 fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen transition duration-500"
       >
         <div className="relative p-4 w-full max-w-md max-h-full">
           <AnimatePresence>
@@ -99,7 +99,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                 animate="visible"
                 exit="exit"
                 variants={variantsFadeInOutFormBottom}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
                 className="relative bg-white rounded-lg shadow dark:bg-gray-800"
               >
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">

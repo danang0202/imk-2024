@@ -8,6 +8,14 @@ import { useThemeContext } from "../../layout/ThemeContext";
 import { EXTENDED_WINDOW } from "../../DataBuilder";
 import SortingSelection from "./SortingSelection";
 import ProductCard from "./ProductCard";
+import {
+  filterAndSortProducts,
+  handleToggleLike,
+} from "../../helper/detail-product.helper";
+import { FilterDetailUMKM } from "../../types/detail-umkm.types";
+import { productType } from "../../types/common.types";
+import { AnimatePresence, motion } from "framer-motion";
+import { dropdownItemVariants } from "../../helper/motion.helper";
 
 const umkmData = [
   { label: "Nama UMKM", value: "Safiira Hampers" },
@@ -39,18 +47,6 @@ const umkmData = [
   },
 ];
 
-export type productType = {
-  id: number;
-  gambar: string;
-  nama: string;
-  kategori: string;
-  lokasi: string;
-  harga: number;
-  umkm: string;
-  like: number;
-  isLiked: boolean;
-};
-
 const DetailUmkmContent = () => {
   const [product, setProduct] = useState<productType[]>(produkSafiira);
   const [paginatedData, setPaginatedData] = useState<productType[]>([]);
@@ -64,9 +60,14 @@ const DetailUmkmContent = () => {
   const [totalPage, setTotalpage] = useState(1);
   const [page, setPage] = useState(1);
 
+  const [filter, setFilter] = useState<FilterDetailUMKM>({
+    keyword: "",
+    sortedColumn: "nama",
+    sortOrder: "asc",
+  });
+
   useEffect(() => {
     if (product) {
-      console.log(product);
       const paginatedData: productType[] = fetchDataSafiiraByPagination(
         product,
         page,
@@ -84,19 +85,13 @@ const DetailUmkmContent = () => {
     }
   };
 
-  const handleToggleLike = (id: number) => {
-    setProduct((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === id
-          ? {
-              ...product,
-              isLiked: !product.isLiked,
-              like: product.isLiked ? product.like - 1 : product.like + 1,
-            }
-          : product
-      )
-    );
+  const handleLike = (id: number) => {
+    handleToggleLike(product, id, setProduct);
   };
+
+  useEffect(() => {
+    setProduct(filterAndSortProducts(produkSafiira, filter));
+  }, [filter]);
 
   return (
     <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-8 dark:text-white">
@@ -106,7 +101,7 @@ const DetailUmkmContent = () => {
             Informasi Dasar UMKM
           </p>{" "}
         </div>
-        <div className="main-content flex flex-col  md:flex-row gap-4 bg-white border border-gray-300 dark:bg-black p-4 xl:p-8 rounded items-center justify-between w-full">
+        <div className="main-content flex flex-col  md:flex-row gap-4 bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 xl:p-8 rounded items-center justify-between w-full">
           <div className="logo">
             <img
               src="/logo-umkm/logo-umkm-1.png"
@@ -186,7 +181,7 @@ const DetailUmkmContent = () => {
           </p>{" "}
         </div>
         {windowWidth < EXTENDED_WINDOW.md ? (
-          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:bg-black p-4 xl:p-8 rounded">
+          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 xl:p-8 rounded">
             <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(8).map((item, index) => (
@@ -204,7 +199,7 @@ const DetailUmkmContent = () => {
             </table>
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:bg-black p-4 xl:p-8 rounded">
+          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 xl:p-8 rounded">
             <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(8, 17).map((item, index) => (
@@ -252,22 +247,34 @@ const DetailUmkmContent = () => {
         className="w-full xl:w-1/2 flex flex-col items-center justify-between"
         id="list-product"
       >
-        <div className="box w-full flex flex-col items-center xl:-translate-y-3">
-          <div className="title w-full my-4 pb-2 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
+        <div className="box w-full flex flex-col items-center xl:-translate-y-1">
+          <div className="title w-full my-4 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
             <p className="text-base lg:text-lg  font-bold">Galeri Produk</p>
             <div className="box flex w-full md:w-fit justify-between md:justify-normal gap-4">
-              <SortingSelection />
-              <MinimalisSearch />
+              <SortingSelection filter={filter} setFilter={setFilter} />
+              <MinimalisSearch filter={filter} setFilter={setFilter} />
             </div>
           </div>
+          <AnimatePresence>
+            {filter.keyword !== "" && (
+              <motion.div
+                variants={dropdownItemVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.3 }}
+                className="search-result w-full text-left pb-2 md:pb-4"
+              >
+                <p className="text-xs md:text-sm text-grey dark:text-white">
+                  {`Mendapatkan ${product.length} hasil untuk kata kunci '${filter.keyword}'`}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
           <div className="">
             <div className="galeri-container w-fit grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-row gap-4 lg:gap-6">
               {paginatedData.map((item, index) => (
-                <ProductCard
-                  item={item}
-                  handleLike={handleToggleLike}
-                  key={index}
-                />
+                <ProductCard item={item} handleLike={handleLike} key={index} />
               ))}
             </div>
           </div>

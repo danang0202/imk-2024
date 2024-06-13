@@ -131,7 +131,7 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                           </div>
                           <p>{data.bidang}</p>
                           <p>{data.pengampu}</p>
-                          <p className="whitespace-normal">{data.alamat}</p>
+                          <p className="whitespace-normal text-left">{data.alamat}</p>
                         </div>
                       </td>
                       <td className="dark:border-slate-700 rounded-tr rounded-br">
