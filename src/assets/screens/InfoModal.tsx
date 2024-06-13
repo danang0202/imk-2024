@@ -288,7 +288,7 @@ const InfoModal = () => {
                   </td>
                   <td className="pr-4x lg:pr-8x xl:pr-8 dark:border-slate-700 rounded-tr rounded-br">
                     <div className="flex justify-center">
-                      <a href="/detail-info-modal" className="button-link">
+                      <a href="/info-modal/detail" className="button-link">
                         <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
                           Detail
                           <IconInfoCircle size={17} />

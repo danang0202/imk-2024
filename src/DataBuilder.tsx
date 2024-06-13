@@ -54,7 +54,7 @@ export const menuItemsData = [
   { label: "Statistik", href: "/statistics", slug: "statistics" },
   { label: "GIS", href: "/gis", slug: "gis" },
   { label: "Galeri Produk", href: "#", slug: "product" },
-  { label: "Info Modal", href: "#", slug: "modal" },
+  { label: "Info Modal", href: "/info-modal", slug: "modal" },
 ];
 
 export const serviceItemsData = [
