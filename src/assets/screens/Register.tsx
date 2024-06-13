@@ -40,23 +40,24 @@ const Register = () => {
 
                     <div className="relative w-full mb-4 group">
                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-arrows-maximize"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 4l4 0l0 4" /><path d="M14 10l6 -6" /><path d="M8 20l-4 0l0 -4" /><path d="M4 20l6 -6" /><path d="M16 20l4 0l0 -4" /><path d="M14 14l6 6" /><path d="M8 4l-4 0l0 4" /><path d="M4 4l6 6" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-arrows-maximize"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 4l4 0l0 4" /><path d="M14 10l6 -6" /><path d="M8 20l-4 0l0 -4" /><path d="M4 20l6 -6" /><path d="M16 20l4 0l0 -4" /><path d="M14 14l6 6" /><path d="M8 4l-4 0l0 4" /><path d="M4 4l6 6" /></svg>
                         </div>
                         <select
                             name="skalaUsaha"
                             id="skalaUsaha"
                             className="block py-2 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                             required
+                            defaultValue=""
                         >
-                            <option value="" disabled selected>Pilih Skala Usaha</option>
+                            <option value="" disabled>Pilih Skala Usaha</option>
                             <option value="mikro">Usaha Mikro</option>
                             <option value="kecil">Usaha Kecil</option>
                             <option value="menengah">Usaha Menengah</option>
                         </select>
                         <label
                             htmlFor="skalaUsaha"
-                            className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-not-empty:opacity-100 peer-not-empty:scale-90 peer-not-empty:-translate-y-8 peer-not-empty:left-0"
-                            >
+                            className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                        >
                             Skala Usaha
                         </label>
                     </div>
@@ -89,6 +90,12 @@ const Register = () => {
                             <option value="Pertambangan">Pertambangan</option>
                             <option value="Hukum dan Konsultasi">Hukum dan Konsultasi</option>
                         </select>
+                        <label
+                            htmlFor="skalaUsaha"
+                            className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                        >
+                            Bidang Usaha
+                        </label>
                     </div>
 
                     <div className="relative w-full mb-4 group">
@@ -107,6 +114,12 @@ const Register = () => {
                             <option value="firm">Firma</option>
                             <option value="perseorangan">Perseorangan</option>
                         </select>
+                        <label
+                            htmlFor="skalaUsaha"
+                            className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                        >
+                            Badan Hukum
+                        </label>
                     </div>
 
                     <div className="relative w-full mb-4 group">
@@ -130,6 +143,31 @@ const Register = () => {
                             <option value="Dinas Pertanian dan Pangan">Dinas Pertanian dan Pangan</option>
                             <option value="Dinas Perdagangan dan Perindustrian">Dinas Perdagangan dan Perindustrian</option>
                         </select>
+                        <label
+                            htmlFor="skalaUsaha"
+                            className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                        >
+                            Dinas Pengampu
+                        </label>
+                    </div>
+
+                    <div className="relative w-full mb-4 group">
+                    <div className="absolute inset-y-0 left-0 flex pt-3 pl-3 pointer-events-none z-10">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-map-pin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" /></svg>
+                        </div>
+                        <textarea
+                            name="alamat"
+                            id="alamat"
+                            className="block py-2.5 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                            placeholder=" "
+                            required
+                        ></textarea>
+                        <label
+                            htmlFor="alamat"
+                            className="absolute top-2 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                        >
+                            Alamat
+                        </label>
                     </div>
                     
                     <div className="relative w-full mb-4 group">
@@ -260,9 +298,18 @@ const Register = () => {
                             </svg>
                         </div>
                     </div>
+
+                    <div className="flex items-center">
+                        <div className="h-5 mr-2 ">
+                            <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-silver rounded bg-silver focus:ring-3 cursor-pointer" required />
+                        </div>
+                        <label htmlFor="remember" className="text-sm text-greyDark cursor-pointer">Saya menerima syarat dan ketentuan yang berlaku</label>
+                    </div>
+
                     <button className="w-full py-2 bg-primary text-white rounded-md font-bold mt-4">
-                    Daftar
+                        Daftar
                     </button>
+
                 </form>
 
                 
