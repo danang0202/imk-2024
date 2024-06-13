@@ -4,6 +4,7 @@ import DataUmkm from "./assets/screens/DataUmkm";
 import Statistics from "./assets/screens/Statistics";
 import "aos/dist/aos.css";
 import Login from "./assets/screens/Login";
+import Register from "./assets/screens/Register";
 import "react-toggle/style.css";
 import Test from "./assets/screens/Test";
 import Gis from "./assets/screens/Gis";
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/beranda" />} />
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
         <Route path="/beranda" element={<LandingPage />}></Route>
         <Route path="/data-umkm" element={<DataUmkm />}></Route>
         <Route path="/statistics" element={<Statistics />}></Route>
