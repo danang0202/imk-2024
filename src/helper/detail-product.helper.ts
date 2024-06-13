@@ -2,7 +2,6 @@ import { productType } from "../types/common.types";
 import { FilterDetailUMKM } from "../types/detail-umkm.types";
 
 export const handleToggleLike = (
-    products: productType[],
     id: number,
     setProduct: React.Dispatch<React.SetStateAction<productType[]>>
 ) => {

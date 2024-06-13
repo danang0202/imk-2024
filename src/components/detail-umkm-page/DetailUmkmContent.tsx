@@ -86,7 +86,7 @@ const DetailUmkmContent = () => {
   };
 
   const handleLike = (id: number) => {
-    handleToggleLike(product, id, setProduct);
+    handleToggleLike(id, setProduct);
   };
 
   useEffect(() => {
