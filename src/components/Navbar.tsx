@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ButtonPrimary from "./Button/ButtonPrimary";
 import { menuItemsData } from "../DataBuilder";
 import ToggleTheme from "./ToggleTheme";
@@ -27,6 +27,7 @@ const Navbar = () => {
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme, common } = useThemeContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,7 +71,7 @@ const Navbar = () => {
   }, [theme]);
 
   const logInOnClick = () => {
-    console.log("test");
+    navigate("/login");
   };
   return (
     <div
