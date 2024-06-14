@@ -1,29 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../components/Layout";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { theme } = useThemeContext(); // Menggunakan tema dari konteks
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      setLogoUrl("/logo/logo_white.png");
+    } else {
+      setLogoUrl("/logo/logo.png");
+    }
+  }, [theme]);
+
   return (
     <Layout pageTitle="LOGIN">
       <div className="flex justify-center items-center min-h-screen bg-silver dark:bg-slate-800">
         <div className="flex shadow-sm bg-white rounded-lg overflow-hidden w-11/12 md:w-2/3 lg:h-3/5 dark:bg-black">
-          <div className="hidden xl:flex xl:w-1/2">
-            <img
-              src={`/logo/ilulogin.png`}
-              alt="Ilustrasi Login"
-              className="w-full h-full"
-            />
-          </div>
-
+        <div className="hidden xl:flex xl:w-1/2 dark:bg-black relative">
+          <img
+            src={`/logo/ombak.png`}
+            alt="ombak"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <img
+            src={`/logo/orang.png`}
+            alt="Ilustrasi Login"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
           <div className="w-full xl:w-1/2 p-8  flex flex-col xl:pl-0 xl:pr-10">
             <div className="flex justify-center m-6">
               <img
-                src={`/logo/logo.png`}
+                src={logoUrl}
                 alt="Logo"
                 className="w-24 transform translate-x-3"
               />
@@ -185,14 +201,14 @@ const Login = () => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left opacity-70"
+                className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left opacity-70 dark:text-white"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 12l14 0" />
                 <path d="M5 12l4 4" />
                 <path d="M5 12l4 -4" />
               </svg>
-              <a href="/beranda" className="py-1">
+              <a href="/beranda" className="py-1 dark:text-white">
                 Kembali ke Home
               </a>
             </div>
