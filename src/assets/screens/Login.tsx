@@ -4,10 +4,15 @@ import { useThemeContext } from "../../layout/ThemeContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const { theme } = useThemeContext(); // Menggunakan tema dari konteks
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const toggleForgotPassword = () => {
+    setShowForgotPassword(!showForgotPassword);
   };
 
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
@@ -24,19 +29,19 @@ const Login = () => {
     <Layout pageTitle="LOGIN">
       <div className="flex justify-center items-center min-h-screen bg-silver dark:bg-slate-800">
         <div className="flex shadow-sm bg-white rounded-lg overflow-hidden w-11/12 md:w-2/3 lg:h-3/5 dark:bg-black">
-        <div className="hidden xl:flex xl:w-1/2 dark:bg-black relative">
-          <img
-            src={`/logo/ombak.png`}
-            alt="ombak"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <img
-            src={`/logo/orang.png`}
-            alt="Ilustrasi Login"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-          <div className="w-full xl:w-1/2 p-8  flex flex-col xl:pl-0 xl:pr-10">
+          <div className="hidden xl:flex xl:w-1/2 dark:bg-black relative">
+            <img
+              src={`/logo/ombak.png`}
+              alt="ombak"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <img
+              src={`/logo/orang.png`}
+              alt="Ilustrasi Login"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-full xl:w-1/2 p-8 flex flex-col xl:pl-0 xl:pr-10">
             <div className="flex justify-center m-6">
               <img
                 src={logoUrl}
@@ -75,7 +80,7 @@ const Login = () => {
                   type="text"
                   name="floating_username"
                   id="floating_username"
-                  className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                  className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                   placeholder=" "
                   required
                 />
@@ -167,6 +172,7 @@ const Login = () => {
               <div className="flex justify-end items-center text-sm w-1/2">
                 <a
                   href="#"
+                  onClick={toggleForgotPassword}
                   className="text-greyDark hover:text-greyDark/50 transition duration-300 dark:text-white"
                 >
                   Lupa password?
@@ -215,6 +221,33 @@ const Login = () => {
           </div>
         </div>
       </div>
+
+      {showForgotPassword && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-md shadow-md w-11/12 md:w-1/3 dark:bg-black">
+            <h3 className="text-xl font-bold mb-4 dark:text-white">
+              Lupa Password
+            </h3>
+            <p className="mb-4 dark:text-white">Masukkan alamat email anda:</p>
+            <input
+              type="email"
+              className="w-full p-2 mb-4 text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0"
+              placeholder="Email"
+            />
+            <div className="flex justify-end">
+              <button
+                onClick={toggleForgotPassword}
+                className="mr-4 text-gray-500 hover:text-gray-700 bg-silver px-4 py-2 rounded-md dark:bg-slate-800  dark:text-white"
+              >
+                Batal
+              </button>
+              <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primaryHover">
+                Kirim
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };
