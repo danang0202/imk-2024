@@ -22,11 +22,7 @@ const ChexboxGroup: React.FC<Props> = ({
   };
 
   return (
-    <ul
-      className="w-full text-xs md:text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-black"
-      data-aos="zoom-in"
-      data-aos-duration="300"
-    >
+    <ul className="w-full text-xs md:text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-black">
       {data.map((item, index) => (
         <li className="w-full" key={index}>
           <div className="flex items-center ps-1">

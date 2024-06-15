@@ -9,6 +9,7 @@ import "react-toggle/style.css";
 import Gis from "./assets/screens/Gis";
 import DetailUmkm from "./assets/screens/DetailUmkm";
 import DetailInfoModal from "./assets/screens/DetailInfoModal";
+import InfoModal from "./assets/screens/InfoModal";
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +22,7 @@ function App() {
         <Route path="/statistics" element={<Statistics />}></Route>
         <Route path="/data-umkm/detail" element={<DetailUmkm />}></Route>
         <Route path="/gis" element={<Gis />}></Route>
-        {/* <Route path="/info-modal" element={<InfoModal />}></Route> */}
+        <Route path="/info-modal" element={<InfoModal />}></Route>
         <Route path="/info-modal/detail" element={<DetailInfoModal />}></Route>
       </Routes>
     </BrowserRouter>

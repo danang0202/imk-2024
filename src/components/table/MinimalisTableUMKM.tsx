@@ -7,6 +7,7 @@ import { getBadanUsahaColor, getSkalaUsahaColor } from "../../utils/utils";
 import DataEmpty from "../commons/DataEmpty";
 import { AnimatePresence, motion } from "framer-motion";
 import { rowVariants } from "../../helper/motion.helper";
+import { IconBuilding, IconBuildingStore, IconMapPins } from "@tabler/icons-react";
 
 interface Props {
   dataUmkm: UMKMProperties[];
@@ -110,34 +111,37 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                           <p className="font-semibold text-sm">{data.name}</p>
                           <div className="flex flex-row gap-2">
                             <span
-                              className={`${
-                                getSkalaUsahaColor(data?.skala).bg
-                              } ${
-                                getSkalaUsahaColor(data?.skala).text
-                              } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
+                              className={`${getSkalaUsahaColor(data?.skala).bg
+                                } ${getSkalaUsahaColor(data?.skala).text
+                                } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
                             >
                               {data?.skala}
                             </span>
                             <span
-                              className={`${
-                                getBadanUsahaColor(data?.badanHukum).bg
-                              } ${
-                                getBadanUsahaColor(data?.badanHukum).text
-                              } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
+                              className={`${getBadanUsahaColor(data?.badanHukum).bg
+                                } ${getBadanUsahaColor(data?.badanHukum).text
+                                } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
                             >
                               {data?.badanHukum}
                             </span>
                           </div>
-                          <p>{data.bidang}</p>
-                          <p>{data.pengampu}</p>
-                          <p className="whitespace-normal text-left">
-                            {data.alamat}
-                          </p>
+                          <div className="flex flex-row gap-1 items-center">
+                            <IconBuildingStore size={12} />
+                            <p>{data.bidang}</p>
+                          </div>
+                          <div className="flex flex-row gap-1 items-center">
+                            <IconBuilding size={12} />
+                            <p>{data.pengampu}</p>
+                          </div>
+                          <div className="flex flex-row gap-1 items-center">
+                            <IconMapPins size={12} />
+                            <p className="whitespace-normal">{data.alamat}</p>
+                          </div>
                         </div>
                       </td>
                       <td className="dark:border-slate-700 rounded-tr rounded-br">
                         <a href="/data-umkm/detail">
-                          <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
+                          <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-primary/75 px-2 py-1 rounded text-white transition duration-300">
                             Detail
                           </button>
                         </a>

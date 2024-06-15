@@ -31,6 +31,7 @@ export default {
         accent4a: "#dffbcc",
         accent5: "#F5222D",
         accent5a: "#fecaca",
+        accent6: "#D9D9D9",
         primaryTint2: '#E8F5E9',
         inactive: '#BCBDBE',
         purpleBlue: '#342B6E',

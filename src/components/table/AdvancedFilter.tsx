@@ -12,9 +12,9 @@ import { useState } from "react";
 import { TypeData } from "./Selection";
 import { IconFilterSearch } from "@tabler/icons-react";
 import { useThemeContext } from "../../layout/ThemeContext";
-import { variantsFadeInOutFormLeft } from "../../helper/motion.helper";
+import { dropdownVariants, variantsFilterDataUMKM } from "../../helper/motion.helper";
 import { ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface AdvancedFilterProps {
   skalaUsahaFilter: TypeData[];
@@ -60,23 +60,21 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
         initial="hidden"
         animate="visible"
         exit="exit"
-        variants={variantsFadeInOutFormLeft}
+        variants={variantsFilterDataUMKM}
         transition={{ duration: 0.3 }}
-        className="fixed xl:relative z-40 flex flex-col bg-white rounded px-8 py-4 shadow-lg xl:shadow-none dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden w-[19rem] xl:w-[18rem] border border-gray-300 xl:border-none "
+        className="fixed xl:relative z-40 flex flex-col bg-white rounded px-8 py-4 shadow-lg xl:shadow-none dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border border-gray-300 xl:border-none "
       >
         <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
           <ChevronDown
-            className={`w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer transition duration-300 ${
-              showAdvancedFilter ? "transform rotate-90" : ""
-            }`}
+            className={`w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer transition duration-300 ${showAdvancedFilter ? "transform rotate-90" : ""
+              }`}
             onClick={() => setShowAdvancedFilter(false)}
           />
         </div>
         <div className="text-xs md:text-sm lg:text-base ">
           <div
-            className={`border-b-2 border-grey py-4 ${
-              location.pathname == "/gis" && "hidden"
-            }`}
+            className={`border-b-2 border-grey py-4 ${location.pathname == "/gis" && "hidden"
+              }`}
           >
             <h1 className="font-bold text-sm lg:text-base text-center">
               {" "}
@@ -97,35 +95,36 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               <h1 className="font-semibold whitespace-nowrap">Skala Usaha</h1>
               <FontAwesomeIcon
                 icon={faChevronUp}
-                className={`hover:text-grey transform ${
-                  !showAdvancedSkalaUsahaFilter && "rotate-180"
-                }`}
+                className={`hover:text-grey transform ${!showAdvancedSkalaUsahaFilter && "rotate-180"
+                  }`}
               />
             </div>
-            {showAdvancedSkalaUsahaFilter && (
-              <div className="box w-full">
-                <div className="flex flex-row justify-between py-1">
-                  <p
-                    className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
-                    onClick={() => setSkalaUsahaFilter(skalaUsaha)}
-                  >
-                    Pilih semua
-                  </p>
-                  <p className="text-grey text-xs lg:text-sm">|</p>
-                  <p
-                    className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
-                    onClick={() => setSkalaUsahaFilter([])}
-                  >
-                    Bersihkan
-                  </p>
-                </div>
-                <ChexboxGroup
-                  data={skalaUsaha}
-                  selectedData={skalaUsahaFilter}
-                  setSelectedData={setSkalaUsahaFilter}
-                />
-              </div>
-            )}
+            <AnimatePresence>
+              {showAdvancedSkalaUsahaFilter && (
+                <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} className="box w-full">
+                  <div className="flex flex-row justify-between py-1">
+                    <p
+                      className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                      onClick={() => setSkalaUsahaFilter(skalaUsaha)}
+                    >
+                      Pilih semua
+                    </p>
+                    <p className="text-grey text-xs lg:text-sm">|</p>
+                    <p
+                      className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                      onClick={() => setSkalaUsahaFilter([])}
+                    >
+                      Bersihkan
+                    </p>
+                  </div>
+                  <ChexboxGroup
+                    data={skalaUsaha}
+                    selectedData={skalaUsahaFilter}
+                    setSelectedData={setSkalaUsahaFilter}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           {/* skala usaha filter end */}
 
@@ -143,35 +142,36 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               <h1 className="font-semibold whitespace-nowrap">Badan Hukum</h1>
               <FontAwesomeIcon
                 icon={faChevronUp}
-                className={`hover:text-grey cursor-pointer transform ${
-                  !showAdvancedBadanHukumFilter && "rotate-180"
-                }`}
+                className={`hover:text-grey cursor-pointer transform ${!showAdvancedBadanHukumFilter && "rotate-180"
+                  }`}
               />
             </div>
-            {showAdvancedBadanHukumFilter && (
-              <div className="box w-full">
-                <div className="flex flex-row justify-between py-1">
-                  <p
-                    className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
-                    onClick={() => setBadanHukumFilter(badanHukumUsaha)}
-                  >
-                    Pilih semua
-                  </p>
-                  <p className="text-grey text-xs lg:text-sm">|</p>
-                  <p
-                    className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
-                    onClick={() => setBadanHukumFilter([])}
-                  >
-                    Bersihkan
-                  </p>
-                </div>
-                <ChexboxGroup
-                  data={badanHukumUsaha}
-                  selectedData={badanHukumFilter}
-                  setSelectedData={setBadanHukumFilter}
-                />
-              </div>
-            )}
+            <AnimatePresence>
+              {showAdvancedBadanHukumFilter && (
+                <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} className="box w-full">
+                  <div className="flex flex-row justify-between py-1">
+                    <p
+                      className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                      onClick={() => setBadanHukumFilter(badanHukumUsaha)}
+                    >
+                      Pilih semua
+                    </p>
+                    <p className="text-grey text-xs lg:text-sm">|</p>
+                    <p
+                      className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                      onClick={() => setBadanHukumFilter([])}
+                    >
+                      Bersihkan
+                    </p>
+                  </div>
+                  <ChexboxGroup
+                    data={badanHukumUsaha}
+                    selectedData={badanHukumFilter}
+                    setSelectedData={setBadanHukumFilter}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           {/* badan hukum filter end */}
 
@@ -193,37 +193,36 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               </h1>
               <FontAwesomeIcon
                 icon={faChevronUp}
-                className={`hover:text-grey cursor-pointer transform ${
-                  !showAdvancedDinasPengampuFilter && "rotate-180"
-                }`}
+                className={`hover:text-grey cursor-pointer transform ${!showAdvancedDinasPengampuFilter && "rotate-180"
+                  }`}
               />
             </div>
-            {showAdvancedDinasPengampuFilter ? (
-              <div className="box w-full">
-                <div className="flex flex-row justify-between py-1">
-                  <p
-                    className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
-                    onClick={() => setDinasPengampuFilter(dinasPengampu)}
-                  >
-                    Pilih semua
-                  </p>
-                  <p className="text-grey text-xs lg:text-sm">|</p>
-                  <p
-                    className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
-                    onClick={() => setDinasPengampuFilter([])}
-                  >
-                    Bersihkan
-                  </p>
-                </div>
-                <ChexboxGroup
-                  data={dinasPengampu}
-                  selectedData={dinasPengampuFilter}
-                  setSelectedData={setDinasPengampuFilter}
-                />
-              </div>
-            ) : (
-              <div className="box"></div>
-            )}
+            <AnimatePresence>
+              {showAdvancedDinasPengampuFilter && (
+                <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} className="box w-full">
+                  <div className="flex flex-row justify-between py-1">
+                    <p
+                      className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                      onClick={() => setDinasPengampuFilter(dinasPengampu)}
+                    >
+                      Pilih semua
+                    </p>
+                    <p className="text-grey text-xs lg:text-sm">|</p>
+                    <p
+                      className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                      onClick={() => setDinasPengampuFilter([])}
+                    >
+                      Bersihkan
+                    </p>
+                  </div>
+                  <ChexboxGroup
+                    data={dinasPengampu}
+                    selectedData={dinasPengampuFilter}
+                    setSelectedData={setDinasPengampuFilter}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           {/* dinas pengampu end */}
 
@@ -241,37 +240,36 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
               <h1 className="font-semibold whitespace-nowrap">Bidang Usaha</h1>
               <FontAwesomeIcon
                 icon={faChevronUp}
-                className={`hover:text-grey cursor-pointer transform ${
-                  !showAdvancedBidangFilter && "rotate-180"
-                }`}
+                className={`hover:text-grey cursor-pointer transform ${!showAdvancedBidangFilter && "rotate-180"
+                  }`}
               />
             </div>
-            {showAdvancedBidangFilter ? (
-              <div className="box w-full">
-                <div className="flex flex-row justify-between py-1">
-                  <p
-                    className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
-                    onClick={() => setBidangUsahaFilter(bidangUsaha)}
-                  >
-                    Pilih semua
-                  </p>
-                  <p className="text-grey text-xs lg:text-sm">|</p>
-                  <p
-                    className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
-                    onClick={() => setBidangUsahaFilter([])}
-                  >
-                    Bersihkan
-                  </p>
-                </div>
-                <ChexboxGroup
-                  data={bidangUsaha}
-                  selectedData={bidangUsahaFilter}
-                  setSelectedData={setBidangUsahaFilter}
-                />
-              </div>
-            ) : (
-              <div className="box"></div>
-            )}
+            <AnimatePresence>
+              {showAdvancedBidangFilter && (
+                <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} className="box w-full">
+                  <div className="flex flex-row justify-between py-1">
+                    <p
+                      className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                      onClick={() => setBidangUsahaFilter(bidangUsaha)}
+                    >
+                      Pilih semua
+                    </p>
+                    <p className="text-grey text-xs lg:text-sm">|</p>
+                    <p
+                      className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                      onClick={() => setBidangUsahaFilter([])}
+                    >
+                      Bersihkan
+                    </p>
+                  </div>
+                  <ChexboxGroup
+                    data={bidangUsaha}
+                    selectedData={bidangUsahaFilter}
+                    setSelectedData={setBidangUsahaFilter}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           {/* bidang usadaha filter end */}
         </div>

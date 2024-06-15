@@ -175,7 +175,6 @@ const Gis: React.FC = () => {
               setSearchColumn={setSearchColumn}
               keyword={keyword}
               setKeyword={setKeyword}
-              data={filteredDataByKec}
               hiddenReccommendation={true}
             />
           </div>
@@ -332,18 +331,15 @@ const Gis: React.FC = () => {
                         </p>
                         <div className="flex flex-row gap-2">
                           <span
-                            className={`${
-                              getBadanUsahaColor(item?.badanHukum).bg
-                            } ${
-                              getBadanUsahaColor(item?.badanHukum).text
-                            } text-xs px-1 rounded-sm`}
+                            className={`${getBadanUsahaColor(item?.badanHukum).bg
+                              } ${getBadanUsahaColor(item?.badanHukum).text
+                              } text-xs px-1 rounded-sm`}
                           >
                             {item?.badanHukum}
                           </span>
                           <span
-                            className={`${getSkalaUsahaColor(item?.skala).bg} ${
-                              getSkalaUsahaColor(item?.skala).text
-                            } text-xs px-1  rounded-sm`}
+                            className={`${getSkalaUsahaColor(item?.skala).bg} ${getSkalaUsahaColor(item?.skala).text
+                              } text-xs px-1  rounded-sm`}
                           >
                             {item?.skala}
                           </span>

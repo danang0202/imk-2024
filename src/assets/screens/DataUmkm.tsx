@@ -22,6 +22,7 @@ import MinimalisTableUMKM from "../../components/table/MinimalisTableUMKM";
 import { AnimatePresence, motion } from "framer-motion";
 import NormalFilter from "../../components/table/NormalFilter";
 import AllFilterBadge from "../../components/table/AllFilterBadge";
+import { variantsOpacity } from "../../helper/motion.helper";
 
 const DataUmkm = () => {
   const data = umkmData;
@@ -135,6 +136,13 @@ const DataUmkm = () => {
             )}
           </AnimatePresence>
         </div>
+        <AnimatePresence>
+          {!showFilter && !showAdvancedFilter && (
+            <motion.div variants={variantsOpacity} transition={{ duration: .3 }} initial="hidden" animate="visible" exit={"exit"} className="hidden xl:inline box bg-white dark:bg-black h-fit p-4 rounded hover:bg-inactive cursor-pointer transition-colors duration-300" onClick={() => { setShowFilter(true); setDelayFilter(true) }}>
+              <IconFilterSearch size={20} />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <motion.div
           className="table-container rounded-lg w-full grow px-4 xl:px-0"

@@ -1,10 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  UMKMProperties,
-  dataColumnUMKMBuilder,
-  titleSlugType,
-  umkmData,
-} from "../../DataBuilder";
+import { dataColumnUMKMBuilder, titleSlugType, umkmData } from "../../DataBuilder";
 import { useThemeContext } from "../../layout/ThemeContext";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -12,6 +7,10 @@ import {
   dropdownVariants,
   rowVariants,
 } from "../../helper/motion.helper";
+import {
+  columnTabelInfoModal,
+  infoModalData,
+} from "../../static/InfoModalDataBuilder";
 
 interface Props {
   width: string;
@@ -19,8 +18,8 @@ interface Props {
   setSearchColumn: (column: string) => void;
   keyword: string;
   setKeyword: (column: string) => void;
-  data?: UMKMProperties[];
   hiddenReccommendation?: boolean;
+  isInfoModal?: boolean;
 }
 
 const SearchBar: React.FC<Props> = ({
@@ -29,11 +28,14 @@ const SearchBar: React.FC<Props> = ({
   setSearchColumn,
   keyword,
   setKeyword,
-  data,
   hiddenReccommendation,
+  isInfoModal,
 }) => {
   const [showFilfterColumn, setShowsearchColumn] = useState(false);
-  const columns: titleSlugType[] = dataColumnUMKMBuilder;
+  const columns: titleSlugType[] = isInfoModal
+    ? columnTabelInfoModal
+    : dataColumnUMKMBuilder;
+
   const [recommendations, setRecommendations] = useState<string[]>([]);
   const { common: c } = useThemeContext();
   const ref = useRef<HTMLFormElement>(null);
@@ -41,13 +43,13 @@ const SearchBar: React.FC<Props> = ({
   const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setKeyword(value);
-    const dataFix = data ? data : umkmData;
+    const dataFix = isInfoModal ? infoModalData : umkmData;
 
     if (!hiddenReccommendation) {
       if (value.length > 0) {
         const filteredRecommendations = dataFix
-          .filter((umkm) =>
-            umkm[searchColumn]?.toLowerCase().includes(value.toLowerCase())
+          .filter((data) =>
+            data[searchColumn]?.toLowerCase().includes(value.toLowerCase())
           )
           .sort((a, b) => {
             const aField = a[searchColumn]?.toLowerCase() || "";
@@ -69,10 +71,6 @@ const SearchBar: React.FC<Props> = ({
       }
     }
   };
-
-  useEffect(() => {
-    console.log(recommendations.length);
-  }, [recommendations]);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -97,7 +95,14 @@ const SearchBar: React.FC<Props> = ({
           type="button"
           onClick={() => setShowsearchColumn(!showFilfterColumn)}
         >
-          {searchColumn == "all" ? c("all") : c(`thead_umkm_${searchColumn}`)}
+          {!isInfoModal
+            ? searchColumn == "all"
+              ? c("all")
+              : c(`thead_umkm_${searchColumn}`)
+            : searchColumn == "all"
+            ? c("all")
+            : columns.find((item) => item.slug == searchColumn)?.title}
+
           <svg
             className="w-2 h-2  md:w-2.5 md:h-2.5 ms-2"
             aria-hidden="true"
@@ -154,7 +159,7 @@ const SearchBar: React.FC<Props> = ({
                       type="button"
                       className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:text-white text-xs md:text-sm"
                     >
-                      {c(`thead_umkm_${item.slug}`)}
+                      {isInfoModal ? item.title : c(`thead_umkm_${item.slug}`)}
                     </button>
                   </motion.li>
                 ))}

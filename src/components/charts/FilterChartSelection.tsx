@@ -63,7 +63,7 @@ const FilterChartSelection: React.FC<Props> = ({
       <AnimatePresence>
         {show && (
           <motion.div
-            className={`absolute left-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800`}
+            className={`absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800`}
             role="menu"
             initial="hidden"
             animate="visible"

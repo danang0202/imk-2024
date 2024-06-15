@@ -6,6 +6,15 @@ export const handleNotifSuccess = (title: string, message: string) => {
         color: EXTENDEDCOLORS.primary,
         title: title,
         message: message,
-        autoClose: 6000,
+        autoClose: 5000,
+    })
+}
+
+export const handleErrorNotif = (title: string, message: string) => {
+    notifications.show({
+        color: EXTENDEDCOLORS.accent5,
+        title: title,
+        message: message,
+        autoClose: 5000,
     })
 }

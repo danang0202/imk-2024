@@ -43,6 +43,7 @@ export function fetchDataByPagination(
   return array;
 }
 
+
 export function fetchDataSafiiraByPagination(
   data: productType[],
   page: number,
