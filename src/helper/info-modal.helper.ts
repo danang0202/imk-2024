@@ -16,7 +16,7 @@ export const getInstitusionColorInfoModal = (institusionType: string): colorType
         text = "text-success";
         bg = "bg-accent4a"
     } else if (institusionType == "Pemerintah") {
-        text = "text-grey"
+        text = "text-gray-600"
         bg = "bg-gray-200"
     } else {
         text = "text-blue-600"
@@ -26,6 +26,28 @@ export const getInstitusionColorInfoModal = (institusionType: string): colorType
         text,
         bg
     }
+}
+
+export const getNominalModalColor = (nominal: number) => {
+    let text = "";
+    let bg = "";
+
+    if ((nominal / 1000000) > 1000) {
+        text = "text-success";
+        bg = "bg-accent4a"
+
+    } else if ((nominal / 1000000) > 500) {
+        text = "text-secondary";
+        bg = "bg-accent3a"
+    } else {
+        text = "text-gray-600";
+        bg = "bg-gray-200"
+    }
+    return {
+        text,
+        bg
+    }
+
 }
 
 export const formatRupiah = (value: number): string => {

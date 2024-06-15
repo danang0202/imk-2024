@@ -8,6 +8,7 @@ import {
     fetchDataInfoModalPagination,
     formatRupiah,
     getInstitusionColorInfoModal,
+    getNominalModalColor,
 } from "../../helper/info-modal.helper";
 import Pagination from "../table/Pagination";
 import DataEmpty from "../commons/DataEmpty";
@@ -94,7 +95,7 @@ const MinimalisTableModal: FC<TableModalProps> = ({ dataModal }) => {
                                                 className="cursor-pointer pl-1"
                                                 onClick={() => sortByColumn("name")}
                                             >
-                                                Info
+                                                Info Modal
                                             </span>
                                         </div>
                                     </th>
@@ -121,14 +122,21 @@ const MinimalisTableModal: FC<TableModalProps> = ({ dataModal }) => {
                                                     >
                                                         {data?.lembaga}
                                                     </span>
+                                                    <span
+                                                        className={`${getNominalModalColor(data?.nominal).bg
+                                                            } ${getNominalModalColor(data?.nominal).text
+                                                            } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                                                    >
+                                                        <div className="flex gap-1 items-center">
+                                                            <IconMoneybag size={12} />
+                                                            <span className="text-xs md:text-sm font-semibold">Rp </span>
+                                                            {formatRupiah(data?.nominal)}
+                                                        </div>
+                                                    </span>
                                                 </div>
                                                 <div className="flex flex-row gap-1 items-center">
                                                     <IconMail size={12} />
                                                     <p>{data.email}</p>
-                                                </div>
-                                                <div className="flex flex-row gap-1 items-center">
-                                                    <IconMoneybag size={12} />
-                                                    <p><span className="text-xs font-semibold">Rp </span>{formatRupiah(data.nominal)}</p>
                                                 </div>
                                                 <div className="flex flex-row gap-1 items-center">
                                                     <IconMapPins size={12} />

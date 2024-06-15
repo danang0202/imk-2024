@@ -56,7 +56,7 @@ const DonutChartKategori = () => {
     setShow(false);
   }, [selectedFilter]);
 
-  const { windowWidth } = useThemeContext();
+  const { windowWidth, theme } = useThemeContext();
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row justify-center md:justify-between pb-6 gap-4 items-center">
@@ -80,6 +80,7 @@ const DonutChartKategori = () => {
       </div>
       <div className="flex justify-center w-full">
         <DonutChart
+          labelColor={theme == "dark" ? "white" : "black"}
           withLabelsLine
           withLabels
           data={data || []}

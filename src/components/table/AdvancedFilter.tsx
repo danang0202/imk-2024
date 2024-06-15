@@ -84,18 +84,20 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           {/* skala usaha filter */}
           <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4 mt-6">
             <div
-              className="flex flex-row gap-4 items-center cursor-pointer hover:text-primary"
+              className="flex flex-row gap-4 items-center justify-between cursor-pointer hover:text-primary"
               onClick={() => {
                 setAdvancedSkalaUsahaFilter(!showAdvancedSkalaUsahaFilter);
               }}
             >
-              <IconFilterSearch
-                size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
-              />
-              <h1 className="font-semibold whitespace-nowrap">Skala Usaha</h1>
+              <div className="flex gap-4">
+                <IconFilterSearch
+                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                />
+                <h1 className="font-semibold whitespace-nowrap">Skala Usaha</h1>
+              </div>
               <FontAwesomeIcon
                 icon={faChevronUp}
-                className={`hover:text-grey transform ${!showAdvancedSkalaUsahaFilter && "rotate-180"
+                className={`hover:text-grey transform transition-transform duration-300 ${!showAdvancedSkalaUsahaFilter && "rotate-180"
                   }`}
               />
             </div>
@@ -131,18 +133,20 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           {/* badan hukum filter */}
           <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
             <div
-              className="flex flex-row gap-4 items-center  cursor-pointer hover:text-primary"
+              className="flex flex-row gap-4 items-center justify-between  cursor-pointer hover:text-primary"
               onClick={() => {
                 setAdvancedBadanHukumFilter(!showAdvancedBadanHukumFilter);
               }}
             >
-              <IconFilterSearch
-                size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
-              />{" "}
-              <h1 className="font-semibold whitespace-nowrap">Badan Hukum</h1>
+              <div className="flex gap-4">
+                <IconFilterSearch
+                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                />{" "}
+                <h1 className="font-semibold whitespace-nowrap">Badan Hukum</h1>
+              </div>
               <FontAwesomeIcon
                 icon={faChevronUp}
-                className={`hover:text-grey cursor-pointer transform ${!showAdvancedBadanHukumFilter && "rotate-180"
+                className={`hover:text-grey cursor-pointer transform transition-transform duration-300 ${!showAdvancedBadanHukumFilter && "rotate-180"
                   }`}
               />
             </div>
@@ -178,22 +182,24 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           {/* dinas pangampu filter */}
           <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
             <div
-              className="flex flex-row gap-4 items-center  cursor-pointer hover:text-primary"
+              className="flex flex-row gap-4 items-center justify-between cursor-pointer hover:text-primary"
               onClick={() => {
                 setShowAdvancedDinasPengampuFilter(
                   !showAdvancedDinasPengampuFilter
                 );
               }}
             >
-              <IconFilterSearch
-                size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
-              />{" "}
-              <h1 className="font-semibold whitespace-nowrap">
-                Dinas Pengampu
-              </h1>
+              <div className="flex gap-4">
+                <IconFilterSearch
+                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                />{" "}
+                <h1 className="font-semibold whitespace-nowrap">
+                  Dinas Pengampu
+                </h1>
+              </div>
               <FontAwesomeIcon
                 icon={faChevronUp}
-                className={`hover:text-grey cursor-pointer transform ${!showAdvancedDinasPengampuFilter && "rotate-180"
+                className={`hover:text-grey cursor-pointer transform transition-transform duration-300 ${!showAdvancedDinasPengampuFilter && "rotate-180"
                   }`}
               />
             </div>
@@ -229,18 +235,20 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           {/* bidang usaha filter */}
           <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
             <div
-              className="flex flex-row gap-4 items-center  cursor-pointer hover:text-primary"
+              className="flex flex-row gap-4 items-center  justify-between cursor-pointer hover:text-primary"
               onClick={() => {
                 setShowAdvancedBidangFilter(!showAdvancedBidangFilter);
               }}
             >
-              <IconFilterSearch
-                size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
-              />{" "}
-              <h1 className="font-semibold whitespace-nowrap">Bidang Usaha</h1>
+              <div className="flex gap-4">
+                <IconFilterSearch
+                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                />{" "}
+                <h1 className="font-semibold whitespace-nowrap">Bidang Usaha</h1>
+              </div>
               <FontAwesomeIcon
                 icon={faChevronUp}
-                className={`hover:text-grey cursor-pointer transform ${!showAdvancedBidangFilter && "rotate-180"
+                className={`hover:text-grey cursor-pointer transform transition-transform duration-300 ${!showAdvancedBidangFilter && "rotate-180"
                   }`}
               />
             </div>

@@ -71,7 +71,7 @@ const BarChartKategori = () => {
     getDataCountPerCategory(umkmData, skalaUsaha)
   );
 
-  const { windowWidth } = useThemeContext();
+  const { windowWidth, theme } = useThemeContext();
 
   useEffect(() => {
     if (selectedFilter?.slug == "skala") {
@@ -144,7 +144,15 @@ const BarChartKategori = () => {
             h={getCartHeight()}
             data={data}
             dataKey="name"
-            barProps={{ barSize: 25 }}
+            barProps={{
+              barSize: isVertical.slug == "vertical" ? 25 : 35, label: {
+                position: isVertical.slug == 'vertical' ? "insideRight" : "top",
+                fill: theme == "dark" ? "#fff" : "#000",
+                fontSize: 12,
+                textAnchor: "middle",
+                dx: isVertical.slug == "vertical" ? 20 : 0,
+              },
+            }}
             withTooltip
             tooltipAnimationDuration={200}
             orientation={
@@ -160,6 +168,16 @@ const BarChartKategori = () => {
                     ? 75
                     : 100
                   : 15,
+              tick: {
+                fill: theme == "dark" ? "#fff" : "#000",
+                fontSize: 12,
+              },
+            }}
+            xAxisProps={{
+              tick: {
+                fill: theme == "dark" ? "#fff" : "#000",
+                fontSize: 12,
+              },
             }}
             series={[{ name: "value", color: colorChart }]}
           />

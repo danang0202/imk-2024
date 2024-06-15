@@ -10,6 +10,7 @@ import {
   fetchDataInfoModalPagination,
   formatRupiah,
   getInstitusionColorInfoModal,
+  getNominalModalColor,
 } from "../../helper/info-modal.helper";
 import Pagination from "../table/Pagination";
 import DataEmpty from "../commons/DataEmpty";
@@ -85,9 +86,8 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                 <tr>
                   {headerDataTable?.map((item, index) => (
                     <th
-                      className={`bg-white py-3 lg:py-6 text-black  justify-start whitespace-nowrap ${
-                        item.slug == "index" && "px-4 lg:px-8 xl:pl-8 "
-                      } rounded-bl dark:text-white px-2 dark:bg-black`}
+                      className={`bg-white py-3 lg:py-6 text-black  justify-start whitespace-nowrap ${item.slug == "index" && "px-4 lg:px-8 xl:pl-8 "
+                        } rounded-bl dark:text-white px-2 dark:bg-black`}
                       key={index}
                     >
                       <div className="bg-white flex items-center justify-start dark:bg-black">
@@ -127,32 +127,37 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                         <img
                           src={data.avatar}
                           alt={data.name}
-                          className="rounded-full max-w-10 dark:bg-white"
+                          className="rounded-full max-w-9 dark:bg-white"
                         />
                         {data?.name}
                       </div>
                     </td>
 
-                    <td className="px-2 lg:px-3 whitespace-normal font-normal dark:border-slate-700">
-                      {data?.email}
-                    </td>
 
                     <td className="px-2 lg:px-3 whitespace-nowrap font-normal dark:border-slate-700">
                       <span
-                        className={`${
-                          getInstitusionColorInfoModal(data?.lembaga).bg
-                        } ${
-                          getInstitusionColorInfoModal(data?.lembaga).text
-                        } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                        className={`${getInstitusionColorInfoModal(data?.lembaga).bg
+                          } ${getInstitusionColorInfoModal(data?.lembaga).text
+                          } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
                       >
                         {data?.lembaga}
                       </span>
                     </td>
                     <td className="px-2 lg:px-3 whitespace-normal font-normal dark:border-slate-700">
-                      <span className="text-xs md:text-sm font-semibold">
-                        Rp{" "}
+                      {data?.email}
+                    </td>
+                    <td className="px-2 lg:px-3 whitespace-normal font-normal dark:border-slate-700">
+
+                      <span
+                        className={`${getNominalModalColor(data?.nominal).bg
+                          } ${getNominalModalColor(data?.nominal).text
+                          } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                      >
+                        <span className="text-xs md:text-sm font-semibold">
+                          Rp{" "}
+                        </span>
+                        {formatRupiah(data?.nominal)}
                       </span>
-                      {formatRupiah(data?.nominal)}
                     </td>
                     <td className="py-2 px-3  font-normal min-w-[15rem]  dark:border-slate-700">
                       {data?.alamat}

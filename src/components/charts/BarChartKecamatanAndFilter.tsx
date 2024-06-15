@@ -59,7 +59,7 @@ const BarChartKecamatanAndFilter = () => {
       slug: "normal",
     },
   ];
-  const { windowWidth } = useThemeContext();
+  const { windowWidth, theme } = useThemeContext();
 
   const [show, setShow] = useState<boolean>(false);
   const [showIsVertical, setShowIsVertical] = useState<boolean>(false);
@@ -155,7 +155,16 @@ const BarChartKecamatanAndFilter = () => {
           data={data ? data : []}
           dataKey="kecamatan"
           type={stackedFilter.slug === "stacked" ? "stacked" : "default"}
-          barProps={{ barSize: stackedFilter.slug === "stacked" ? 30 : 25 }}
+          barProps={{
+            barSize: stackedFilter.slug === "stacked" ? 30 : 25,
+            label: {
+              position: isVertical.slug == 'vertical' ? "insideRight" : "top",
+              fill: theme == "dark" ? "#fff" : "#000",
+              fontSize: 12,
+              textAnchor: "middle",
+              dx: isVertical.slug == "vertical" ? 20 : 0,
+            },
+          }}
           withTooltip
           yAxisLabel={isVertical.slug === "vertical" ? "" : "Jumlah"}
           xAxisLabel={isVertical.slug === "vertical" ? "Jumlah" : ""}
@@ -163,6 +172,19 @@ const BarChartKecamatanAndFilter = () => {
           orientation={
             isVertical.slug === "vertical" ? "vertical" : "horizontal"
           }
+          yAxisProps={{
+            width: 70,
+            tick: {
+              fill: theme == "dark" ? "#fff" : "#000",
+              fontSize: 12,
+            },
+          }}
+          xAxisProps={{
+            tick: {
+              fill: theme == "dark" ? "#fff" : "#000",
+              fontSize: 12,
+            },
+          }}
           gridAxis={isVertical.slug === "vertical" ? "y" : "x"}
           series={series}
         />

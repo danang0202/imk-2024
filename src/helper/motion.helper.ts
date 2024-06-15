@@ -6,7 +6,7 @@ export const variantsFadeInOutFormLeft = {
 
 export const variantsFilterDataUMKM = {
     hidden: { x: "-100%", opacity: 0, width: 0 },
-    visible: { x: 0, opacity: 1, width: '20rem' },
+    visible: { x: 0, opacity: 1, width: '19rem' },
     exit: { x: "-100%", opacity: 0, width: 0 },
 };
 
@@ -46,13 +46,25 @@ export const dropdownVariants = {
 };
 
 export const dropdownItemVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-    exit: { opacity: 0 }
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
 };
 
 export const variantsOpacity = {
     hidden: { opacity: 0, },
     visible: { opacity: 1, },
     exit: { opacity: 0, },
+};
+
+export const menuItemVariants = {
+    hidden: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.3,
+        },
+    },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
 };

@@ -75,6 +75,7 @@ const SearchBar: React.FC<Props> = ({
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
       setRecommendations([]);
+      setShowsearchColumn(false)
     }
   };
 
@@ -100,8 +101,8 @@ const SearchBar: React.FC<Props> = ({
               ? c("all")
               : c(`thead_umkm_${searchColumn}`)
             : searchColumn == "all"
-            ? c("all")
-            : columns.find((item) => item.slug == searchColumn)?.title}
+              ? c("all")
+              : columns.find((item) => item.slug == searchColumn)?.title}
 
           <svg
             className="w-2 h-2  md:w-2.5 md:h-2.5 ms-2"

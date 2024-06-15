@@ -187,7 +187,7 @@ const Gis: React.FC = () => {
               Buka Filter
             </p>
           </div>
-          <div className="px-4 lg:px-0  filter-box flex flex-wrap py-2 gap-2 lg:gap-4">p
+          <div className="px-4 lg:px-0  filter-box flex flex-wrap py-2 gap-2 lg:gap-4">
             <AllFilterBadge
               keyword={keyword}
               setKeyword={setKeyword}

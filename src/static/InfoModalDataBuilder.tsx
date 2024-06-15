@@ -11,12 +11,12 @@ export const columnTabelInfoModal: titleSlugType[] = [
     slug: "name",
   },
   {
-    title: "Email",
-    slug: "email",
-  },
-  {
     title: "Jenis Lembaga",
     slug: "lembaga",
+  },
+  {
+    title: "Email",
+    slug: "email",
   },
   {
     title: "Nominal Modal",
@@ -78,7 +78,7 @@ export const infoModalData: InfoModalType[] = [
     name: "Bank BRI",
     email: "bri@gmail.com",
     lembaga: "Pemerintah",
-    nominal: 200000000,
+    nominal: 600000000,
     alamat: "RT 10, RW 00, Gentan, Sidorejo, Lendah",
     kecamatan: "Lendah",
   },
@@ -108,7 +108,7 @@ export const infoModalData: InfoModalType[] = [
     name: "Koperasi Simpan Pinjam Makmur",
     email: "makmur@gmail.com",
     lembaga: "Koperasi",
-    nominal: 50000000,
+    nominal: 550000000,
     alamat: "RT 2, RW 1, Ngentak, Galur",
     kecamatan: "Galur",
   },
@@ -168,7 +168,7 @@ export const infoModalData: InfoModalType[] = [
     name: "Koperasi Makmur Bersama",
     email: "makmur@gmail.com",
     lembaga: "Koperasi",
-    nominal: 65000000,
+    nominal: 650000000,
     alamat: "RT 4, RW 3, Demen, Kalibawang",
     kecamatan: "Kalibawang",
   },

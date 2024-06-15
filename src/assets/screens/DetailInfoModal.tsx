@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import Breadcrumb from "../../components/commons/BreadCrumb";
 import { IconMail, IconPhone, IconBuildingBank, IconAt, IconPhoneCall } from "@tabler/icons-react";
-import { getInstitusionColorInfoModal } from "../../helper/info-modal.helper";
+import { formatRupiah, getInstitusionColorInfoModal, getNominalModalColor } from "../../helper/info-modal.helper";
 import { useThemeContext } from "../../layout/ThemeContext";
 import { EXTENDED_WINDOW } from "../../DataBuilder";
 
@@ -10,7 +10,7 @@ const infoData = [
   { label: 'Email', value: 'bri@gmail.com', icon: <IconAt className="w-5 h-5 text-grey" /> },
   { label: 'No Telepon', value: '+621234567890', icon: <IconPhoneCall className="w-5 h-5 text-grey" /> },
   { label: 'Jenis Lembaga', value: 'Pemerintah', icon: <IconAt className="w-5 h-5 text-grey" /> },
-  { label: 'Nominal Modal', value: 'Rp 10.000.000', icon: <IconBuildingBank className="w-5 h-5 text-grey" /> },
+  { label: 'Nominal Modal', value: '1500000000', icon: <IconBuildingBank className="w-5 h-5 text-grey" /> },
 ];
 
 const requirements = [
@@ -38,7 +38,7 @@ const DetailInfoModal = () => {
   const { windowWidth } = useThemeContext();
   return (
     <Layout pageTitle="Detail Info Modal">
-      <div className="flex flex-col justify-center items-center w-full pt-5xl xl:pt-5.5xl bg-silver dark:bg-slate-800 text-sm md:texet-base">
+      <div className="flex flex-col justify-center items-center w-full pt-5xl xl:pt-5.5xl bg-silver dark:bg-slate-800 text-sm md:text-base">
         <div className="w-11/12 xl:w-8/12 flex justify-start mb-2 xl:mb-4">
           <Breadcrumb />
         </div>
@@ -80,7 +80,21 @@ const DetailInfoModal = () => {
                           </span>
                         </td>
                       ) : (
-                        <td className="text-gray-800 dark:text-gray-200 max-w-[15rem]">{item.value}</td>
+                        item.label === "Nominal Modal" ? (
+                          <td className="text-gray-800 dark:text-gray-200">  <span
+                            className={`${getNominalModalColor(parseInt(item?.value)).bg
+                              } ${getNominalModalColor(parseInt(item?.value)).text
+                              } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                          >
+                            <span className="text-xs md:text-sm font-semibold">
+                              Rp{" "}
+                            </span>
+                            {formatRupiah(parseInt(item.value))}
+                          </span></td>
+                        ) : (
+
+                          <td className="text-gray-800 dark:text-gray-200 max-w-[15rem]">{item.value}</td>
+                        )
                       )}
                     </tr>
                   ))}
@@ -116,7 +130,16 @@ const DetailInfoModal = () => {
                           </span>
                         </td>
                       ) : (
-                        <td className="text-gray-800 dark:text-gray-200 max-w-[15rem]">{item.value}</td>
+                        <td className="text-gray-800 dark:text-gray-200">  <span
+                          className={`${getNominalModalColor(parseInt(item?.value)).bg
+                            } ${getNominalModalColor(parseInt(item?.value)).text
+                            } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                        >
+                          <span className="text-xs md:text-sm font-semibold">
+                            Rp{" "}
+                          </span>
+                          {formatRupiah(parseInt(item.value))}
+                        </span></td>
                       )}
                     </tr>
                   ))}
