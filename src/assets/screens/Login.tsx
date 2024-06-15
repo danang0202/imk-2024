@@ -1,37 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../components/Layout";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const { theme } = useThemeContext(); // Menggunakan tema dari konteks
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  const toggleForgotPassword = () => {
+    setShowForgotPassword(!showForgotPassword);
+  };
+
+  const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      setLogoUrl("/logo/logo_white.png");
+    } else {
+      setLogoUrl("/logo/logo.png");
+    }
+  }, [theme]);
+
   return (
     <Layout pageTitle="LOGIN">
       <div className="flex justify-center items-center min-h-screen bg-silver dark:bg-slate-800">
-        <div className="flex shadow-sm bg-white rounded-lg overflow-hidden w-11/12 md:w-2/3 lg:h-3/5">
-          <div className="hidden xl:flex xl:w-1/2">
+        <div className="flex shadow-sm bg-white rounded-lg overflow-hidden w-11/12 md:w-2/3 lg:h-3/5 dark:bg-black">
+          <div className="hidden xl:flex xl:w-1/2 dark:bg-black relative">
             <img
-              src={`/logo/ilulogin.png`}
+              src={`/logo/ombak.png`}
+              alt="ombak"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <img
+              src={`/logo/orang.png`}
               alt="Ilustrasi Login"
-              className="w-full h-full"
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
-
-          <div className="w-full xl:w-1/2 p-8  flex flex-col xl:pl-0 xl:pr-10">
+          <div className="w-full xl:w-1/2 p-8 flex flex-col xl:pl-0 xl:pr-10">
             <div className="flex justify-center m-6">
               <img
-                src={`/logo/logo.png`}
+                src={logoUrl}
                 alt="Logo"
                 className="w-24 transform translate-x-3"
               />
             </div>
-            <h2 className="text-2xl xl:text-3xl font-bold text-black text-center">
+            <h2 className="text-2xl xl:text-3xl font-bold text-black text-center dark:text-white">
               Login
             </h2>
-            <p className="font-extralight text-lg xl:text-xl text-center mb-4">
+            <p className="font-extralight text-lg xl:text-xl text-center mb-4 dark:text-white">
               e-UMKM
             </p>
 
@@ -48,7 +69,7 @@ const Login = () => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="icon icon-tabler icons-tabler-outline icon-tabler-user opacity-55"
+                    className="icon icon-tabler icons-tabler-outline icon-tabler-user opacity-55 dark:text-white"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -59,13 +80,13 @@ const Login = () => {
                   type="text"
                   name="floating_username"
                   id="floating_username"
-                  className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                  className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                   placeholder=" "
                   required
                 />
                 <label
                   htmlFor="floating_username"
-                  className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                  className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                 >
                   Username
                 </label>
@@ -83,7 +104,7 @@ const Login = () => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-lock"
+                    className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-lock dark:text-white"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
@@ -95,13 +116,13 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   name="floating_password"
                   id="floating_password"
-                  className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                  className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                   placeholder=" "
                   required
                 />
                 <label
                   htmlFor="floating_password"
-                  className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                  className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                 >
                   Password
                 </label>
@@ -119,7 +140,7 @@ const Login = () => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-eye"
+                    className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-eye dark:text-white"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -142,7 +163,7 @@ const Login = () => {
                 </div>
                 <label
                   htmlFor="remember"
-                  className="text-sm text-greyDark cursor-pointer"
+                  className="text-sm text-greyDark cursor-pointer dark:text-white"
                 >
                   Ingat Saya
                 </label>
@@ -151,7 +172,8 @@ const Login = () => {
               <div className="flex justify-end items-center text-sm w-1/2">
                 <a
                   href="#"
-                  className="text-greyDark hover:text-greyDark/50 transition duration-300"
+                  onClick={toggleForgotPassword}
+                  className="text-greyDark hover:text-greyDark/50 transition duration-300 dark:text-white"
                 >
                   Lupa password?
                 </a>
@@ -165,7 +187,7 @@ const Login = () => {
             </div>
 
             <div className="mt-4 text-base flex justify-center">
-              <span className="mr-2">Belum punya akun?</span>
+              <span className="mr-2 dark:text-white">Belum punya akun?</span>
               <a
                 href="/register"
                 className="text-primary hover:text-primary/50 transition duration-300"
@@ -185,20 +207,47 @@ const Login = () => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left opacity-70"
+                className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left opacity-70 dark:text-white"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 12l14 0" />
                 <path d="M5 12l4 4" />
                 <path d="M5 12l4 -4" />
               </svg>
-              <a href="/beranda" className="py-1">
+              <a href="/beranda" className="py-1 dark:text-white">
                 Kembali ke Home
               </a>
             </div>
           </div>
         </div>
       </div>
+
+      {showForgotPassword && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-md shadow-md w-11/12 md:w-1/3 dark:bg-black">
+            <h3 className="text-xl font-bold mb-4 dark:text-white">
+              Lupa Password
+            </h3>
+            <p className="mb-4 dark:text-white">Masukkan alamat email anda:</p>
+            <input
+              type="email"
+              className="w-full p-2 mb-4 text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0"
+              placeholder="Email"
+            />
+            <div className="flex justify-end">
+              <button
+                onClick={toggleForgotPassword}
+                className="mr-4 text-gray-500 hover:text-gray-700 bg-silver px-4 py-2 rounded-md dark:bg-slate-800  dark:text-white"
+              >
+                Batal
+              </button>
+              <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primaryHover">
+                Kirim
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };
