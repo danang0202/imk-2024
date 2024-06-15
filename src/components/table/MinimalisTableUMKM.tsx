@@ -135,7 +135,7 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                           </div>
                           <div className="flex flex-row gap-1 items-center">
                             <IconMapPins size={12} />
-                            <p className="whitespace-normal">{data.alamat}</p>
+                            <p className="whitespace-normal text-left">{data.alamat}</p>
                           </div>
                         </div>
                       </td>

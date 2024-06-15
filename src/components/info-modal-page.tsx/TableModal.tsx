@@ -133,7 +133,7 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                       </div>
                     </td>
 
-                    <td className="px-2 lg:px-3 whitespace-normal font-normal dark:border-slate-700 text-info">
+                    <td className="px-2 lg:px-3 whitespace-normal font-normal dark:border-slate-700">
                       {data?.email}
                     </td>
 
