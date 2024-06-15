@@ -59,7 +59,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
         exit="exit"
         variants={variantsFadeInOutFormLeft}
         transition={{ duration: 0.3 }}
-        className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black z-30 w-[19rem] xl:w-[18rem]"
+        className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black  w-[19rem] xl:w-[18rem] z-40 border border-gray-300 xl:border-none"
       >
         <div className="relative">
           <ChevronDown

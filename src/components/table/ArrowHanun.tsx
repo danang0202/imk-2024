@@ -5,6 +5,7 @@ interface ArrowHanunProps {
 }
 
 const ArrowHanun: React.FC<ArrowHanunProps> = ({ active }) => {
+  console.log(active);
   return (
     <svg
       className="w-4 h-4 cursor-pointer text-inactive group-hover:text-black rotate-180 mr-2"

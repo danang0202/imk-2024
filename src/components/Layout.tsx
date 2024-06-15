@@ -58,7 +58,7 @@ const Layout: React.FC<LayoutProps> = ({ children, pageTitle }) => {
         ) : (
           <>
             {pageTitle !== "LOGIN" && pageTitle !== "REGISTER" && (
-              <div className="fixed w-screen top-0 z-40">
+              <div className="fixed w-screen top-0 z-[999]">
                 <Navbar />
               </div>
             )}

@@ -20,6 +20,7 @@ interface Props {
   keyword: string;
   setKeyword: (column: string) => void;
   data?: UMKMProperties[];
+  hiddenReccommendation?: boolean;
 }
 
 const SearchBar: React.FC<Props> = ({
@@ -29,6 +30,7 @@ const SearchBar: React.FC<Props> = ({
   keyword,
   setKeyword,
   data,
+  hiddenReccommendation,
 }) => {
   const [showFilfterColumn, setShowsearchColumn] = useState(false);
   const columns: titleSlugType[] = dataColumnUMKMBuilder;
@@ -41,30 +43,36 @@ const SearchBar: React.FC<Props> = ({
     setKeyword(value);
     const dataFix = data ? data : umkmData;
 
-    if (value.length > 0) {
-      const filteredRecommendations = dataFix
-        .filter((umkm) =>
-          umkm[searchColumn]?.toLowerCase().includes(value.toLowerCase())
-        )
-        .sort((a, b) => {
-          const aField = a[searchColumn]?.toLowerCase() || "";
-          const bField = b[searchColumn]?.toLowerCase() || "";
-          const aStartsWith = aField.startsWith(value.toLowerCase());
-          const bStartsWith = bField.startsWith(value.toLowerCase());
-          if (aStartsWith && !bStartsWith) return -1;
-          if (!aStartsWith && bStartsWith) return 1;
-          return (
-            aField.indexOf(value.toLowerCase()) -
-            bField.indexOf(value.toLowerCase())
-          );
-        })
-        .slice(0, 10)
-        .map((umkm) => umkm[searchColumn]);
-      setRecommendations(filteredRecommendations);
-    } else {
-      setRecommendations([]);
+    if (!hiddenReccommendation) {
+      if (value.length > 0) {
+        const filteredRecommendations = dataFix
+          .filter((umkm) =>
+            umkm[searchColumn]?.toLowerCase().includes(value.toLowerCase())
+          )
+          .sort((a, b) => {
+            const aField = a[searchColumn]?.toLowerCase() || "";
+            const bField = b[searchColumn]?.toLowerCase() || "";
+            const aStartsWith = aField.startsWith(value.toLowerCase());
+            const bStartsWith = bField.startsWith(value.toLowerCase());
+            if (aStartsWith && !bStartsWith) return -1;
+            if (!aStartsWith && bStartsWith) return 1;
+            return (
+              aField.indexOf(value.toLowerCase()) -
+              bField.indexOf(value.toLowerCase())
+            );
+          })
+          .slice(0, 10)
+          .map((umkm) => umkm[searchColumn]);
+        setRecommendations(filteredRecommendations);
+      } else {
+        setRecommendations([]);
+      }
     }
   };
+
+  useEffect(() => {
+    console.log(recommendations.length);
+  }, [recommendations]);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -191,13 +199,13 @@ const SearchBar: React.FC<Props> = ({
             {recommendations.length > 0 && (
               <motion.ul
                 id="dropdown"
-                className="absolute z-20 bg-white dark:bg-gray-800 w-full border dark:border-gray-700 rounded shadow-lg mt-1"
+                className="absolute bg-white dark:bg-gray-800 w-full border dark:border-gray-700 rounded shadow-lg mt-1"
                 initial="hidden"
                 animate="visible"
                 exit="exit"
                 variants={dropdownVariants}
               >
-                <ul className="absolute z-10 bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs md:text-sm">
+                <ul className="absolute bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs md:text-sm">
                   <AnimatePresence>
                     {recommendations.map((item, index) => (
                       <motion.li

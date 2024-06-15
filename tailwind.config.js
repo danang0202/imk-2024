@@ -34,6 +34,12 @@ export default {
         primaryTint2: '#E8F5E9',
         inactive: '#BCBDBE',
         purpleBlue: '#342B6E',
+        orangeChart: '#FEAB00',
+        orangeLightChart: '#FECE50',
+        purpleDarkChart: '#332A6D',
+        blueChart: '#0070B8',
+        blueLightChart: '#7596CC',
+        yellowChart: '#FED050'
       },
       fontSize: {
         'xs': '.75rem',     // ukuran ekstra kecil

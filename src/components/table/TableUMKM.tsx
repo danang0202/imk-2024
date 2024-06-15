@@ -72,7 +72,7 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
     <div className="">
       {paginatedUMKM?.length > 0 ? (
         <>
-          <div className={`table-container overflow-x-auto w-full relative`}>
+          <div className={`table-container overflow-x-auto w-full relative `}>
             <table className="w-full text-left border-separate border-spacing-y-2 lg:border-spacing-y-3 font-inter transform -translate-y-3">
               <thead className="rounded-lg text-black text-xs md:text-sm lg:text-base">
                 <tr className="">
