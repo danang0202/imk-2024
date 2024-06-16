@@ -452,14 +452,15 @@ export interface UMKMProperties {
 }
 
 export interface ProdukProperties {
-  index: number;
-  name: string;
-  image: string;
-  price: number;
-  stock: number;
-  kecamatan: string;
-  description: string;
-  category: string;
+  id: number;
+  gambar: string;
+  nama: string;
+  kategori: string;
+  lokasi: string;
+  harga: number;
+  umkm: string;
+  like: number;
+  isLiked: boolean;
   [key: string]: any;
 }
 
@@ -1698,35 +1699,170 @@ export const umkmData: UMKMProperties[] = [
 //   kecamatan: string;
 //   description: string;
 //   category: string;
-export const produkData = [
+export const produkData: ProdukProperties[] = [
   {
-    index: 1,
-    name: "Pupuk Organik",
-    image: "/logo-umkm/logo-umkm-1.png",
-    price: 10000,
-    stock: 100,
-    kecamatan: "Wates",
-    description: "Pupuk organik adalah pupuk yang berasal dari bahan-bahan organik yang mengandung unsur hara yang diperlukan tanaman.",
-    category: "Pertanian",
+    id: 1,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Lebaran",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 150000,
+    umkm: "Safiira Hampers",
+    like: 120,
+    isLiked: false,
   },
   {
-    index: 2,
-    name: "Pupuk Kimia",
-    image: "/logo-umkm/logo-umkm-1.png",
-    price: 15000,
-    stock: 100,
-    kecamatan: "Wates",
-    description: "Pupuk kimia adalah pupuk yang mengandung unsur hara yang diperlukan tanaman.",
-    category: "Pertanian",
+    id: 2,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Natal",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 180000,
+    umkm: "Safiira Hampers",
+    like: 95,
+    isLiked: false,
   },
   {
-    index: 3,
-    name: "Bibit Tanaman",
-    image: "/logo-umkm/logo-umkm-1.png",
-    price: 20000,
-    stock: 100,
-    kecamatan: "Wates",
-    description: "Bibit tanaman adalah tanaman yang masih muda yang siap ditanam.",
-    category: "Pertanian",
+    id: 3,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Ulang Tahun",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 130000,
+    umkm: "Safiira Hampers",
+    like: 110,
+    isLiked: false,
   },
-]
+  {
+    id: 4,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Pernikahan",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 200000,
+    umkm: "Safiira Hampers",
+    like: 150,
+    isLiked: false,
+  },
+  {
+    id: 5,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Baby Shower",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 160000,
+    umkm: "Safiira Hampers",
+    like: 130,
+    isLiked: false,
+  },
+  {
+    id: 6,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Graduation",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 170000,
+    umkm: "Safiira Hampers",
+    like: 140,
+    isLiked: false,
+  },
+  {
+    id: 7,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket New Year",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 190000,
+    umkm: "Safiira Hampers",
+    like: 115,
+    isLiked: false,
+  },
+  {
+    id: 8,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Anniversary",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 210000,
+    umkm: "Safiira Hampers",
+    like: 125,
+    isLiked: false,
+  },
+  {
+    id: 9,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Valentine",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 180000,
+    umkm: "Safiira Hampers",
+    like: 135,
+    isLiked: false,
+  },
+  {
+    id: 10,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Eid al-Adha",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 160000,
+    umkm: "Safiira Hampers",
+    like: 145,
+    isLiked: false,
+  },
+  {
+    id: 11,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Father's Day",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 150000,
+    umkm: "Safiira Hampers",
+    like: 155,
+    isLiked: false,
+  },
+  {
+    id: 12,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Mother's Day",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 170000,
+    umkm: "Safiira Hampers",
+    like: 165,
+    isLiked: false,
+  },
+  {
+    id: 13,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Teacher's Day",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 140000,
+    umkm: "Safiira Hampers",
+    like: 175,
+    isLiked: false,
+  },
+  {
+    id: 14,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Retirement",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 180000,
+    umkm: "Safiira Hampers",
+    like: 185,
+    isLiked: false,
+  },
+  {
+    id: 15,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Graduation",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 200000,
+    umkm: "Safiira Hampers",
+    like: 195,
+    isLiked: false,
+  },
+];

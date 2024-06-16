@@ -1,31 +1,24 @@
+import { faList } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import { ChevronDown } from "lucide-react";
-import Layout from "../../components/Layout";
-import SearchBar from "../../components/table/SearchBar";
-import Selection, { TypeData } from "../../components/table/Selection";
 import {
   EXTENDED_WINDOW,
   ProdukProperties,
-  kecamatanSlug,
   kategoriProduk,
+  kecamatanSlug,
   produkData,
 } from "../../DataBuilder";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList } from "@fortawesome/free-solid-svg-icons";
-import AdvancedFilter from "../../components/table/AdvancedFilter";
+import Layout from "../../components/Layout";
+import Selection, { TypeData } from "../../components/table/Selection";
 // import { filterDataUMKM } from "../../utils/utils";
-import { filterDataProduk } from "../../utils/utils";
-import BadgeFilter from "../../components/commons/BadgeFilter";
-import { IconDownload, IconFilterSearch } from "@tabler/icons-react";
-import ClearBadge from "../../components/commons/ClearBadge";
+import { IconFilterSearch } from "@tabler/icons-react";
 import Breadcrumb from "../../components/commons/BreadCrumb";
-import { useThemeContext } from "../../layout/ThemeContext";
-import DownloadConfirmationModal from "../../components/commons/DownloadConfirmationModal";
-import NormalFilterBadge from "../../components/commons/NormalFilterBadge";
-import AdvancedFilter2 from "../../components/table/AdvancedFilter2";
-import SearchBar2 from "../../components/table/SearchBar2";
 import DetailProdukContent from "../../components/detail-umkm-page/DetailProdukContent";
+import AdvancedFilter2 from "../../components/table/AdvancedFilter2";
+import { useThemeContext } from "../../layout/ThemeContext";
+import { filterDataProduk } from "../../utils/utils";
 
 const GaleriProduk = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true);
@@ -74,44 +67,14 @@ const GaleriProduk = () => {
     );
   }, [searchColumn, keyword, kecamatanFilter, kategoriProdukFilter, data]);
 
-  // kecamatan
-  const handleDeleteKecamatanFilter = (item: TypeData) => {
-    if (kecamatanFilter.length == 1) {
-      setKecamatanFilter(kecamatanSlug);
-    } else {
-      setKecamatanFilter(
-        kecamatanFilter.filter((selectedItem) => selectedItem !== item)
-      );
-    }
-  }
-
-  // kategori produk
-  const handleDeleteKategoriProdukFilter = (item: TypeData) => {
-    if (kategoriProdukFilter.length == 1) {
-      setKategoriProdukFilter(kategoriProduk);
-    } else {
-      setKategoriProdukFilter(
-        kategoriProdukFilter.filter((selectedItem) => selectedItem !== item)
-      );
-    }
-  }
-
-  const handleClearKeyword = () => {
-    setKeyword("");
-  };
-
-  const handleDeleteAllFilter = () => {
-    setKeyword("");
-    setKecamatanFilter(kecamatanSlug);
-    setKategoriProdukFilter(kategoriProduk);
-  };
 
   return (
     <Layout pageTitle="Galeri Produk">
       <div className="px-4 w-full pt-5xl xl:hidden bg-silver dark:bg-slate-800">
         <Breadcrumb />
       </div>
-      <div className="flex items-stretch flex-row w-full pb-8 xl:pt-5.5xl  xl:pb-3xl xl:gap-10 xl:px-36 bg-silver dark:bg-slate-800 dark:text-white gap-2">
+
+      <div className="flex items-stretch flex-row 2xl:w-5/6 pb-8 xl:pt-5.5xl xl:pb-3xl xl:gap-10 xl:mx-auto xl:w-fit bg-silver dark:bg-slate-800 dark:text-white gap-2">
         <CSSTransition
           in={showAdvancedFilter}
           timeout={300}
@@ -136,6 +99,8 @@ const GaleriProduk = () => {
             </div>
           </div>
         </CSSTransition>
+
+        {/* Faceted Search */}
         <CSSTransition
           in={showFilter && !showAdvancedFilter}
           timeout={300}
@@ -189,67 +154,13 @@ const GaleriProduk = () => {
           </div>
         </CSSTransition>
 
+        {/* Card Produk */}
         <div className="table-container rounded-lg shadow-sm w-full grow px-4 xl:px-0">
-          <div className="pt-4 xl:pt-8 box flex flex-col gap-4 xl:flex-row xl:gap-0 py-4 rounded-t dark:bg-black">
-            <div className="md:flex flex-row md:justify-between gap-8 md:w-full xl:w-fit pt-2 xl:pt-0">
-              <SearchBar2
-                width={windowWidth < EXTENDED_WINDOW.md ? "12.5rem" : "20rem"}
-                searchColumn={searchColumn}
-                setSearchColumn={setSearchColumn}
-                keyword={keyword}
-                setKeyword={setKeyword}
-              />
-            </div>
-            <div className="xl:hidden w-full flex flex-row gap-2 text-grey hover:text-black justify-start cursor-pointer dark:text-white dark:hover:text-grey">
-              <IconFilterSearch size={17} />
-              <p
-                onClick={() => setShowFilter(true)}
-                className="text-xs md:text-sm"
-              >
-                {c("openFilter")}
-              </p>
-            </div>
-          </div>
-          <div className="badge-filter px-4 lg:px-8 xl:px-3xl pb-2 flex flex-grow flex-wrap gap-2 lg:gap-4 dark:bg-black">
-            {keyword && (
-              <NormalFilterBadge
-                text={`${c("keyword")}: ${keyword}`}
-                handleClick={handleClearKeyword}
-              />
-            )}
-            {kecamatanFilter.length != kecamatanSlug.length &&
-              kecamatanFilter.map((item, index) => (
-                <BadgeFilter
-                  item={item}
-                  handleClick={handleDeleteKecamatanFilter}
-                  key={index}
-                />
-              ))}
-
-            {kategoriProdukFilter.length != kategoriProduk.length &&
-              kategoriProdukFilter.map((item, index) => (
-                <BadgeFilter
-                  item={item}
-                  handleClick={handleDeleteKategoriProdukFilter}
-                  key={index}
-                />
-              ))}
-          </div>
-          {/* {filteredData.length != data.length && (
-            <div className="px-4 lg:px-8 xl:px-3xl bg-white dark:bg-black flex justify-between items-center pb-3 xl:pb-0">
-            <p className="text-grey dark:text-white text-xs lg:text-sm">
-            Mendapatkan {filteredData.length} data
-            </p>
-            <div className="flex flex-row items-center text-accent5 hover:text-accent5a cursor-pointer transition duration-300">
-            <ClearBadge handleClick={handleDeleteAllFilter} />
-            </div>
-            </div>
-            )} */}
           <DetailProdukContent />
         </div>
 
       </div>
-    </Layout>
+    </Layout >
   );
 };
 
