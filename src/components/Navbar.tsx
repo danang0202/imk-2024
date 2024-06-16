@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ButtonPrimary from "./Button/ButtonPrimary";
 import { menuItemsData } from "../DataBuilder";
 import ToggleTheme from "./ToggleTheme";
 import { useThemeContext } from "../layout/ThemeContext";
 import DropDownLang from "./commons/DropDownLang";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { motion } from "framer-motion";
 
 export interface MenuItem {
   label: string;
@@ -19,13 +20,22 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { isMobile } = useThemeContext();
   const [navBg, setNavBg] = useState(
-    `${open || isMobile ? "bg-silver dark:bg-slate-800" : "bg-transparent"}`
+    `${
+      open || isMobile
+        ? "bg-silver dark:bg-slate-800"
+        : "bg-transparent dark:bg-slate-800"
+    }`
   );
   const [navBgItem, setNavBgItem] = useState(
-    `${open || isMobile ? "bg-silver dark:bg-slate-800" : "bg-transparent"}`
+    `${
+      open || isMobile
+        ? "bg-silver dark:bg-slate-800"
+        : "bg-transparent dark:bg-slate-800"
+    }`
   );
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const { theme, common } = useThemeContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,20 +50,20 @@ const Navbar = () => {
             `${
               open || isMobile
                 ? "bg-silver dark:bg-slate-800"
-                : "bg-transparent"
+                : "bg-transparent dark:bg-slate-800"
             }`
           );
           setNavBgItem(
             `${
               open || isMobile
                 ? "bg-silver dark:bg-slate-800"
-                : "bg-transparent"
+                : "bg-transparent dark:bg-slate-800"
             }`
           );
         }
       }
     };
-    console.log(isMobile);
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -69,14 +79,14 @@ const Navbar = () => {
   }, [theme]);
 
   const logInOnClick = () => {
-    console.log("test");
+    navigate("/login");
   };
   return (
     <div
       className={`w-full top-0 left-0 xl:px-8 py-3 ${
         location.pathname == "/beranda"
           ? navBg
-          : "bg-white shadow-sm dark:bg-black border-b dark:border-b-gray-700"
+          : "bg-white shadow-sm dark:bg-black border-b dark:border-b-gray-700 z-50"
       }`}
     >
       <div className="xl:flex items-center justify-between xl:px-10 px-7">
@@ -120,9 +130,11 @@ const Navbar = () => {
           }`}
         >
           {menuItems.map((link) => (
-            <li
+            <motion.li
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               key={link.label}
-              className="xl:ml-8 xl:my-0 my-7 hover:scale-110 transition duration-300 text-sm md:text-base"
+              className="xl:ml-8 xl:my-0 my-7 text-sm md:text-base"
             >
               <a
                 href={link.href}
@@ -134,7 +146,7 @@ const Navbar = () => {
               >
                 {common(link.slug)}
               </a>
-            </li>
+            </motion.li>
           ))}
           <div className="hidden xl:inline">
             <ToggleTheme />

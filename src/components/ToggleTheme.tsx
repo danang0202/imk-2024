@@ -1,21 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useThemeContext } from "../layout/ThemeContext";
+import { motion } from "framer-motion";
 
 const ToggleTheme: React.FC = () => {
   const { theme, setTheme } = useThemeContext();
-
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
-
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       type="button"
-      className="btn btn--icon transform hover:scale-110 duration-300 transition"
+      className="btn btn--icon"
       aria-label="toggle theme"
     >
       {theme === "dark" ? (
@@ -56,7 +50,7 @@ const ToggleTheme: React.FC = () => {
           </svg>
         </div>
       )}
-    </button>
+    </motion.button>
   );
 };
 

@@ -1,10 +1,12 @@
 import Layout from "../../components/Layout";
-
+import SideBarFIlter from "../../components/table/SideBarFIlter";
 
 const Test = () => {
   return (
     <Layout pageTitle="TEST">
-      <p className="test">test</p>
+      <div className="pt-5.5xl">
+        <SideBarFIlter />
+      </div>
     </Layout>
   );
 };
