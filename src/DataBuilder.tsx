@@ -53,7 +53,7 @@ export const menuItemsData = [
   { label: "Data UMKM", href: "/data-umkm", slug: "data" },
   { label: "Statistik", href: "/statistics", slug: "statistics" },
   { label: "GIS", href: "/gis", slug: "gis" },
-  { label: "Galeri Produk", href: "#", slug: "product" },
+  { label: "Galeri Produk", href: "/galeri-produk", slug: "product" },
   { label: "Info Modal", href: "#", slug: "modal" },
 ];
 
@@ -151,6 +151,38 @@ export const dataColumnUMKMBuilder: titleSlugType[] = [
   {
     title: "Alamat",
     slug: "alamat",
+  },
+];
+
+// dataColumnProdukBuilder walaupun nanti ditampilkannya pake card
+export const dataColumnProdukBuilder: titleSlugType[] = [
+  {
+    title: "ID",
+    slug: "index",
+  },
+  {
+    title: "Nama Produk",
+    slug: "name",
+  },
+  {
+    title: "Harga",
+    slug: "price",
+  },
+  {
+    title: "Stok",
+    slug: "stock",
+  },
+  {
+    title: "Kategori",
+    slug: "category",
+  },
+  {
+    title: "Deskripsi",
+    slug: "description",
+  },
+  {
+    title: "Kecamatan",
+    slug: "kecamatan",
   },
 ];
 
@@ -295,6 +327,94 @@ export const bidangUsaha = [
   },
 ];
 
+// kecamatan dengan slug
+export const kecamatanSlug = [
+  {
+    name: "Temon",
+    slug: "temon",
+  },
+  {
+    name: "Wates",
+    slug: "wates",
+  },
+  {
+    name: "Panjatan",
+    slug: "panjatan",
+  },
+  {
+    name: "Galur",
+    slug: "galur",
+  },
+  {
+    name: "Lendah",
+    slug: "lendah",
+  },
+  {
+    name: "Sentolo",
+    slug: "sentolo",
+  },
+  {
+    name: "Pengasih",
+    slug: "pengasih",
+  },
+  {
+    name: "Kokap",
+    slug: "kokap",
+  },
+  {
+    name: "Girimulyo",
+    slug: "girimulyo",
+  },
+  {
+    name: "Nanggulan",
+    slug: "nanggulan",
+  },
+  {
+    name: "Kalibawang",
+    slug: "kalibawang",
+  },
+  {
+    name: "Samigaluh",
+    slug: "samigaluh",
+  },
+];
+
+// kategori produk
+export const kategoriProduk: nameSlugType[] = [
+  {
+    name: "Aksesoris",
+    slug: "aksesoris",
+  },
+  {
+    name: "Fesyen",
+    slug: "fesyen",
+  },
+  {
+    name: "Industri",
+    slug: "industri",
+  },
+  {
+    name: "Kerajinan",
+    slug: "kerajinan",
+  },
+  {
+    name: "Kuliner",
+    slug: "kuliner",
+  },
+  {
+    name: "Perikanan",
+    slug: "perikanan",
+  },
+  {
+    name: "Pertanian",
+    slug: "pertanian",
+  },
+  {
+    name: "Sembako",
+    slug: "sembako",
+  },
+];
+
 export const kecamatanKulonProgo = [
   "Temon",
   "Wates",
@@ -322,6 +442,18 @@ export interface UMKMProperties {
   kecamatan: string;
   alamat: string;
   position?: LatLngTuple;
+  [key: string]: any;
+}
+
+export interface ProdukProperties {
+  index: number;
+  name: string;
+  image: string;
+  price: number;
+  stock: number;
+  kecamatan: string;
+  description: string;
+  category: string;
   [key: string]: any;
 }
 
@@ -1550,3 +1682,45 @@ export const umkmData: UMKMProperties[] = [
     alamat: "RT 97 RW 98, Temon Barat, Temon",
   },
 ];
+
+// produkData
+// index: number;
+//   name: string;
+//   image: string;
+//   price: number;
+//   stock: number;
+//   kecamatan: string;
+//   description: string;
+//   category: string;
+export const produkData = [
+  {
+    index: 1,
+    name: "Pupuk Organik",
+    image: "/logo-umkm/logo-umkm-1.png",
+    price: 10000,
+    stock: 100,
+    kecamatan: "Wates",
+    description: "Pupuk organik adalah pupuk yang berasal dari bahan-bahan organik yang mengandung unsur hara yang diperlukan tanaman.",
+    category: "Pertanian",
+  },
+  {
+    index: 2,
+    name: "Pupuk Kimia",
+    image: "/logo-umkm/logo-umkm-1.png",
+    price: 15000,
+    stock: 100,
+    kecamatan: "Wates",
+    description: "Pupuk kimia adalah pupuk yang mengandung unsur hara yang diperlukan tanaman.",
+    category: "Pertanian",
+  },
+  {
+    index: 3,
+    name: "Bibit Tanaman",
+    image: "/logo-umkm/logo-umkm-1.png",
+    price: 20000,
+    stock: 100,
+    kecamatan: "Wates",
+    description: "Bibit tanaman adalah tanaman yang masih muda yang siap ditanam.",
+    category: "Pertanian",
+  },
+]

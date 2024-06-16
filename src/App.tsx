@@ -9,6 +9,7 @@ import Test from "./assets/screens/Test";
 import Gis from "./assets/screens/Gis";
 import GaleriProduk from "./assets/screens/GaleriProduk";
 import DetailUmkm from "./assets/screens/DetailUmkm";
+import DetailProduk from "./assets/screens/DetailProduk";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/beranda" element={<LandingPage />}></Route>
         <Route path="/galeri-produk" element={<GaleriProduk />}></Route>
+        <Route path="/galeri-produk/detail" element={<DetailProduk />}></Route>
         <Route path="/data-umkm" element={<DataUmkm />}></Route>
         <Route path="/statistics" element={<Statistics />}></Route>
         <Route path="/data-umkm/detail" element={<DetailUmkm />}></Route>
