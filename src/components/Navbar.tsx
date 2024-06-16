@@ -86,7 +86,7 @@ const Navbar = () => {
       className={`w-full top-0 left-0 xl:px-8 py-3 ${
         location.pathname == "/beranda"
           ? navBg
-          : "bg-white shadow-sm dark:bg-black border-b dark:border-b-gray-700 z-50"
+          : "bg-white shadow-sm dark:bg-black border-b dark:border-b-gray-700"
       }`}
     >
       <div className="xl:flex items-center justify-between xl:px-10 px-7">
@@ -131,14 +131,12 @@ const Navbar = () => {
         >
           {menuItems.map((link) => (
             <motion.li
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
               key={link.label}
               className="xl:ml-8 xl:my-0 my-7 text-sm md:text-base"
             >
               <a
                 href={link.href}
-                className={`hover:text-black/75 dark:hover:text-white/75 font-semibold ${
+                className={`hover:text-black/75 dark:hover:text-white/75 font-semibold transition-colors duration-300  ${
                   location.pathname.includes(link.href)
                     ? "text-black border-b-2 pb-1 border-black  dark:border-white dark:text-white"
                     : "text-[#000] dark:text-white"

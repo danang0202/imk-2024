@@ -1,3 +1,10 @@
+import {
+  IconArrowDown,
+  IconBuildingStore,
+  IconHeart,
+  IconMapPin,
+} from "@tabler/icons-react";
+import { getBadanUsahaColor, getSkalaUsahaColor } from "../../utils/utils";
 import { useEffect, useState } from "react";
 import { fetchDataSafiiraByPagination } from "../../utils";
 import MinimalisPagination from "./MinimalisPagination";
@@ -5,22 +12,21 @@ import MinimalisSearch from "./MinimalisSearch";
 import { useThemeContext } from "../../layout/ThemeContext";
 import { EXTENDED_WINDOW } from "../../DataBuilder";
 import SortingSelection from "./SortingSelection";
+import { IconSortAscending } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
-import { FilterDetailUMKM } from "../../types/detail-umkm.types";
-import {
-  AnimatePresence,
-  motion
-} from "framer-motion";
-import { dropdownItemVariants } from "../../helper/motion.helper";
-import { productType } from "../../types/common.types";
-import {
-  filterAndSortProducts,
-  handleToggleLike
-} from "../../helper/detail-product.helper";
-import ProductCard from "./ProductCard";
+
+export type productType = {
+  gambar: string;
+  nama: string;
+  kategori: string;
+  lokasi: string;
+  harga: number;
+  umkm: string;
+  like: number;
+  isLiked: boolean;
+};
 
 const DetailProdukContent = () => {
-  const [product, setProduct] = useState<productType[]>(produkSafiira);
   const [paginatedData, setPaginatedData] = useState<productType[]>([]);
   const { windowWidth } = useThemeContext();
   const limit =
@@ -33,16 +39,20 @@ const DetailProdukContent = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    if (product) {
+    setPaginatedData(produkSafiira);
+  }, []);
+
+  useEffect(() => {
+    if (produkSafiira) {
       const paginatedData: productType[] = fetchDataSafiiraByPagination(
-        product,
+        produkSafiira,
         page,
         limit
       );
       setPaginatedData(paginatedData);
-      setTotalpage(Math.ceil(product.length / limit));
+      setTotalpage(Math.ceil(produkSafiira.length / limit));
     }
-  }, [page, product]);
+  }, [page]);
 
   const ButtonLihatProductOnClick = () => {
     const element = document.getElementById("list-product");
@@ -50,54 +60,74 @@ const DetailProdukContent = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  const handleLike = (id: number) => {
-    handleToggleLike(id, setProduct);
-  };
-
-  const [filter, setFilter] = useState<FilterDetailUMKM>({
-    keyword: "",
-    sortedColumn: "nama",
-    sortOrder: "asc",
-  });
-
-  useEffect(() => {
-    setProduct(filterAndSortProducts(produkSafiira, filter));
-  }, [filter]);
-
   return (
     <div
-      className="w-full flex flex-col items-center justify-between"
+      className="w-full flex flex-col"
       id="list-product"
     >
-      <div className="box w-full flex flex-col items-center xl:-translate-y-1">
-        <div className="title w-full my-4 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
-          <p className="text-base lg:text-lg  font-bold">Galeri Produk</p>
-          <div className="box flex w-full md:w-fit justify-between md:justify-normal gap-4">
-            <SortingSelection filter={filter} setFilter={setFilter} />
-            <MinimalisSearch filter={filter} setFilter={setFilter} />
-          </div>
-        </div>
-        <AnimatePresence>
-          {filter.keyword !== "" && (
-            <motion.div
-              variants={dropdownItemVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: 0.3 }}
-              className="search-result w-full text-left pb-2 md:pb-4"
-            >
-              <p className="text-xs md:text-sm text-grey dark:text-white">
-                {`Mendapatkan ${product.length} hasil untuk kata kunci '${filter.keyword}'`}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <div className="box w-full flex flex-col">
         <div className="">
-          <div className="galeri-container w-fit grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-row gap-4 lg:gap-6">
-            {paginatedData.map((item, index) => (
-              <ProductCard item={item} handleLike={handleLike} key={index} />
+          <div className="flex flex-row justify-between items-center w-full">
+            {/* rata kanan */}
+            <div className="flex flex-row items-center gap-2 mb-6">
+              {/* h2: "urutkan berdasarkan :" */}
+              <div className="text-sm md:text-base lg:text-base font-semibold">
+                Urutkan berdasarkan :
+              </div>
+              <form className="max-w-sm mx-auto">
+                <select
+                  id="countries"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:border-secondary  block w-full px-2.5 py-2 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  "
+                >
+                  {/* harga, like, ditambahkan */}
+                  <option value="harga">Harga</option>
+                  <option value="like">Like</option>
+                  <option value="add">Ditambahkan</option>
+
+                </select>
+              </form>
+              <IconSortAscending className="text-grey dark:text-white" />
+            </div>
+          </div>
+          <div className="galeri-container w-fit grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 grid-flow-row gap-4 lg:gap-6">
+            {paginatedData.map((item) => (
+              <div className="pt-4 px-2 md:px-3 pb-3 bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-56 hover:shadow-lg transition duration-300 cursor-pointer hover:scale-105">
+                {/* link to */}
+                <Link to="/galeri-produk/detail">
+                  <div className="w-full flex justify-center">
+                    <img
+                      src={`/logo-umkm/${item.gambar}`}
+                      className="w-28 md:w-32 lg:w-36"
+                      alt={item.nama}
+                    />
+                  </div>
+                  <p className="text-sm lg:text-base">{item.nama}</p>
+                  <p className="text-sm">
+                    Rp{" "}
+                    <span className="text-sm md:text-base lg:text-lg font-semibold">
+                      {item.harga}
+                    </span>
+                  </p>
+                  <div className="text-white flex justify-start text-xs lg:text-sm">
+                    <div className="box px-1 bg-secondary rounded-sm">
+                      <p>{item.kategori.toLowerCase()}</p>
+                    </div>
+                  </div>
+                  <div className="hidden xl:flex flex-row gap-1 items-center">
+                    <IconMapPin size={15} />
+                    <p className="text-xs lg:text-sm">{item.lokasi}</p>
+                  </div>
+                  <div className="hidden xl:flex  flex-row gap-1 items-center">
+                    <IconBuildingStore size={14} />
+                    <p className="text-xs lg:text-sm">{item.umkm}</p>
+                  </div>
+                  <div className="flex flex-row gap-1 items-center w-full justify-end">
+                    <p className="text-xs text-right">{item.like}</p>
+                    {/* <IconHeartFilled color="red" size={15}  /> */}
+                    <IconHeart size={15} />
+                  </div>
+                </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -123,7 +153,6 @@ export default DetailProdukContent;
 
 const produkSafiira = [
   {
-    id: 1,
     gambar: "product-1-safiira.png",
     nama: "Bucket Lebaran",
     kategori: "Kerajinan",
@@ -134,7 +163,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 2,
     gambar: "product-1-safiira.png",
     nama: "Bucket Natal",
     kategori: "Kerajinan",
@@ -145,7 +173,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 3,
     gambar: "product-1-safiira.png",
     nama: "Bucket Ulang Tahun",
     kategori: "Kerajinan",
@@ -156,7 +183,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 4,
     gambar: "product-1-safiira.png",
     nama: "Bucket Pernikahan",
     kategori: "Kerajinan",
@@ -167,7 +193,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 5,
     gambar: "product-1-safiira.png",
     nama: "Bucket Baby Shower",
     kategori: "Kerajinan",
@@ -178,7 +203,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 6,
     gambar: "product-1-safiira.png",
     nama: "Bucket Graduation",
     kategori: "Kerajinan",
@@ -189,7 +213,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 7,
     gambar: "product-1-safiira.png",
     nama: "Bucket New Year",
     kategori: "Kerajinan",
@@ -200,7 +223,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 8,
     gambar: "product-1-safiira.png",
     nama: "Bucket Anniversary",
     kategori: "Kerajinan",
@@ -211,7 +233,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 9,
     gambar: "product-1-safiira.png",
     nama: "Bucket Valentine",
     kategori: "Kerajinan",
@@ -222,7 +243,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 10,
     gambar: "product-1-safiira.png",
     nama: "Bucket Eid al-Adha",
     kategori: "Kerajinan",
@@ -233,7 +253,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 11,
     gambar: "product-1-safiira.png",
     nama: "Bucket Father's Day",
     kategori: "Kerajinan",
@@ -244,7 +263,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 12,
     gambar: "product-1-safiira.png",
     nama: "Bucket Mother's Day",
     kategori: "Kerajinan",
@@ -255,7 +273,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 13,
     gambar: "product-1-safiira.png",
     nama: "Bucket Teacher's Day",
     kategori: "Kerajinan",
@@ -266,7 +283,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 14,
     gambar: "product-1-safiira.png",
     nama: "Bucket Retirement",
     kategori: "Kerajinan",
@@ -277,7 +293,6 @@ const produkSafiira = [
     isLiked: false,
   },
   {
-    id: 15,
     gambar: "product-1-safiira.png",
     nama: "Bucket Graduation",
     kategori: "Kerajinan",

@@ -1,4 +1,10 @@
+import { useEffect, useRef } from "react";
+import {
+  dropdownItemVariants,
+  dropdownVariants,
+} from "../../helper/motion.helper";
 import { TypeData } from "../table/Selection";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Props {
   show: boolean;
@@ -15,8 +21,22 @@ const FilterChartSelection: React.FC<Props> = ({
   selectedFilter,
   setSelectedFilter,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const handleClickOutside = (event: MouseEvent) => {
+    if (ref.current && !ref.current.contains(event.target as Node)) {
+      setShow(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" ref={ref}>
       <div>
         <button
           type="button"
@@ -40,30 +60,38 @@ const FilterChartSelection: React.FC<Props> = ({
           </svg>
         </button>
       </div>
-      <div
-        className={`${
-          !show && "hidden"
-        } absolute left-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800`}
-        role="menu"
-        aria-orientation="vertical"
-        aria-labelledby="menu-button"
-      >
-        <div className="" role="none">
-          {filterList.map((item: TypeData, index: number) => (
-            <p
-              key={index}
-              className="text-gray-700 block px-4 py-2 text-xs md:text-sm hover:bg-silver cursor-pointer transition duration-300  hover:text-black dark:text-white"
-              role="menuitem"
-              onClick={() => {
-                setSelectedFilter(item);
-                setShow(false);
-              }}
-            >
-              {item.name}
-            </p>
-          ))}
-        </div>
-      </div>
+      <AnimatePresence>
+        {show && (
+          <motion.div
+            className={`absolute left-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800`}
+            role="menu"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={dropdownVariants}
+          >
+            <div className="" role="none">
+              <AnimatePresence>
+                {filterList.map((item: TypeData, index: number) => (
+                  <motion.p
+                    key={index}
+                    className="text-gray-700 block px-4 py-2 text-xs md:text-sm hover:bg-silver cursor-pointer  dark:text-white dark:hover:bg-slate-700 transition-colors duration-300"
+                    role="menuitem"
+                    onClick={() => {
+                      setSelectedFilter(item);
+                      setShow(false);
+                    }}
+                    variants={dropdownItemVariants}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {item.name}
+                  </motion.p>
+                ))}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

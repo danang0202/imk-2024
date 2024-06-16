@@ -28,6 +28,12 @@ export const EXTENDEDCOLORS = {
   accent6: "#D9D9D9",
   primaryTint2: "#E8F5E9",
   inactive: "#BCBDBE",
+  orangeChart: "#FEAB00",
+  orangeLightChart: "#FECE50",
+  purpleDarkChart: "#332A6D",
+  blueChart: "#0070B8",
+  blueLightChart: "#7596CC",
+  yellowChart: "#FED050",
 };
 
 export const EXTENDED_WINDOW = {
@@ -54,7 +60,7 @@ export const menuItemsData = [
   { label: "Statistik", href: "/statistics", slug: "statistics" },
   { label: "GIS", href: "/gis", slug: "gis" },
   { label: "Galeri Produk", href: "/galeri-produk", slug: "product" },
-  { label: "Info Modal", href: "#", slug: "modal" },
+  { label: "Info Modal", href: "/info-modal", slug: "modal" },
 ];
 
 export const serviceItemsData = [

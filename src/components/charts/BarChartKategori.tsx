@@ -56,7 +56,7 @@ const BarChartKategori = () => {
     },
   ];
   const [show, setShow] = useState<boolean>(false);
-  const [colorChart, setColorChart] = useState<string>(EXTENDEDCOLORS.accent3);
+  const [colorChart, setColorChart] = useState<string>(EXTENDEDCOLORS.blueChart);
   const [showIsVertical, setShowIsVertical] = useState<boolean>(false);
   const [selectedFilter, setSelectedFilter] = useState<TypeData>({
     name: "Badan Hukum",
@@ -103,7 +103,7 @@ const BarChartKategori = () => {
             <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-center md:text-start">
               Grafik Batang Jumlah UMKM Berdasarkan {selectedFilter?.name}
             </p>
-            <div className="box flex flex-wrap justify-between gap-2 md:gap-8 curosr-pointer items-center">
+            <div className="box flex flex-wrap justify-end gap-2 md:gap-4 curosr-pointer items-center">
               <ColorInput
                 pointer={true}
                 value={colorChart}

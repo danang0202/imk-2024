@@ -99,6 +99,20 @@ const BarChartKecamatanAndFilter = () => {
       setSeries(chartKecamatanAndDinasPengampu);
     }
   }, [selectedFilter]);
+
+  const getCartHeight = () => {
+    const result =
+      isVertical.slug === "vertical"
+        ? stackedFilter.slug == "stacked"
+          ? data?.length * 45
+          : data?.length * 100
+        : 450;
+    if (result < 600) {
+      return 550;
+    } else {
+      return result;
+    }
+  };
   return (
     <>
       <div className="w-full xl:px-6">
@@ -137,21 +151,22 @@ const BarChartKecamatanAndFilter = () => {
           </div>
         </div>
         <BarChart
-          h={isVertical.slug == "vertical" ? data?.length * 55 : 450}
+          h={getCartHeight()}
           data={data ? data : []}
           dataKey="kecamatan"
-          type={stackedFilter.slug == "stacked" ? "stacked" : "default"}
-          barProps={{ barSize: 20 }}
+          type={stackedFilter.slug === "stacked" ? "stacked" : "default"}
+          barProps={{ barSize: stackedFilter.slug === "stacked" ? 30 : 25 }}
           withTooltip
-          yAxisLabel={isVertical.slug == "vertical" ? "" : "Jumlah"}
-          xAxisLabel={isVertical.slug == "vertical" ? "Jumlah" : ""}
+          yAxisLabel={isVertical.slug === "vertical" ? "" : "Jumlah"}
+          xAxisLabel={isVertical.slug === "vertical" ? "Jumlah" : ""}
           tooltipAnimationDuration={200}
           orientation={
-            isVertical.slug == "vertical" ? "vertical" : "horizontal"
+            isVertical.slug === "vertical" ? "vertical" : "horizontal"
           }
-          gridAxis={isVertical.slug == "vertical" ? "y" : "x"}
+          gridAxis={isVertical.slug === "vertical" ? "y" : "x"}
           series={series}
         />
+
         <div className="flex flex-wrap gap-4 lg:gap-8 w-full justify-center items-center pt-4">
           {series?.map((item, index) => (
             <div className="box flex flex-row gap-2 items-center" key={index}>
