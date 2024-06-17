@@ -19,6 +19,8 @@ import DetailProdukContent from "../../components/detail-umkm-page/DetailProdukC
 import AdvancedFilter2 from "../../components/table/AdvancedFilter2";
 import { useThemeContext } from "../../layout/ThemeContext";
 import { filterDataProduk } from "../../utils/utils";
+import DoubleSlider from "../../components/commons/DoubleSlider";
+import MultiRangeSlider from "../../components/multiRangeSlider/multiRangeSlider";
 
 const GaleriProduk = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true);
@@ -96,6 +98,11 @@ const GaleriProduk = () => {
                 kategoriFilter={kategoriProdukFilter}
                 setKategoriFilter={setKategoriProdukFilter}
               />
+              {/* harga */}
+              <div className="item-filter flex flex-col gap-4 pb-10">
+                <h1 className="font-semibold">{c("thead_produk_harga")}</h1>
+                <MultiRangeSlider min={0} max={1000} />
+              </div>
             </div>
           </div>
         </CSSTransition>
@@ -139,6 +146,12 @@ const GaleriProduk = () => {
                       setSelectedData={setKategoriProdukFilter}
                     />
                   </div>
+                  {/* harga */}
+                  <div className="item-filter flex flex-col gap-4 pb-10">
+                    <h1 className="font-semibold">{c("thead_produk_harga")}</h1>
+                    <MultiRangeSlider min={0} max={1000} />
+                  </div>
+
                 </div>
               </div>
               <div className="flex flex-row gap-2 text-grey hover:text-black dark:text-white dark:hover:text-grey justify-end lg:justify-end pt-6 cursor-pointer">

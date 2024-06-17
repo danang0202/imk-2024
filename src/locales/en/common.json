@@ -23,6 +23,7 @@
     "thead_umkm_action": "Action",
     "thead_produk_kecamatan": "District",
     "thead_produk_kategori": "Category",
+    "thead_produk_harga": "Price",
     "keyword": "Keyword",
     "filterTitle":"Data Filter",
     "openFilter": "Open Filter",
