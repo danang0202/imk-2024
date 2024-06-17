@@ -19,6 +19,7 @@ import {
 import ProductCard from "./ProductCard";
 import { filterDataProduk } from "../../utils/utils";
 import { TypeData } from "../table/Selection";
+import ProductCard2 from "./ProductCard2";
 
 const DetailProdukContent = () => {
   const [product, setProduct] = useState<ProdukProperties[]>(produkData);
@@ -100,7 +101,7 @@ const DetailProdukContent = () => {
           {/* <div className="galeri-container w-fit grid grid-cols-2 md:grid-cols-4 md+200px:grid-cols-5 xl:grid-cols-4 2xl:grid-cols-5 grid-flow-row gap-4 lg:gap-6"> */}
           <div className="galeri-container w-full justify-center xl:w-fit flex flex-wrap grid-cols-2 md:grid-cols-5 xl:grid-cols-4 2xl:grid-cols-5 grid-flow-row gap-4 lg:gap-6 xl:justify-start">
             {paginatedData.map((item, index) => (
-              <ProductCard item={item} handleLike={handleLike} key={index} />
+              <ProductCard2 item={item} handleLike={handleLike} key={index} />
             ))}
           </div>
         </div>
