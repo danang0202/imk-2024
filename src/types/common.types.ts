@@ -13,4 +13,7 @@ export type productType = {
     umkm: string;
     like: number;
     isLiked: boolean;
+    kecamatan: string;
+    date: Date;
+    [key: string]: any;
 };

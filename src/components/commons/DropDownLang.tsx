@@ -37,12 +37,12 @@ const DropDownLang = () => {
                 alt="English"
                 className="pr-2 h-5"
               />
-              Indonesia
+              ID
             </>
           ) : (
             <>
               <img src="/logo/uk.png" alt="English" className="pr-2 h-5" />
-              English (UK)
+              EN
             </>
           )}
         </motion.button>

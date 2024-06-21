@@ -4,20 +4,21 @@ import { variantsBadgeFilter } from "../../helper/motion.helper";
 
 interface Props {
   handleClick: () => void;
+  bg?: string;
 }
 
-const ClearBadge: React.FC<Props> = ({ handleClick }) => {
+const ClearBadge: React.FC<Props> = ({ handleClick, bg }) => {
   return (
     <AnimatePresence>
       <motion.span
-        whileHover={{ backgroundColor: EXTENDEDCOLORS.accent5, color:EXTENDEDCOLORS.white }}
+        whileHover={{ backgroundColor: EXTENDEDCOLORS.accent5, color: EXTENDEDCOLORS.white }}
         initial="hidden"
         animate="visible"
         exit="exit"
         variants={variantsBadgeFilter}
         transition={{ duration: 0.3 }}
         id="badge-dismiss-red"
-        className="inline-flex cursor-pointer hover items-center px-2 py-1 me-2 text-xs lg:text-sm text-accent5 bg-silver font-base md:font-medium rounded-sm"
+        className={`inline-flex cursor-pointer hover items-center px-2 py-1 me-2 text-xs lg:text-sm text-accent5 ${bg ? bg : 'bg-silver'} font-base md:font-medium rounded-sm`}
         onClick={() => handleClick()}
       >
         Bersihkan

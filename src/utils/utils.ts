@@ -1,6 +1,6 @@
 import { UMKMProperties, colorType, dataColumnUMKMBuilder } from "../DataBuilder";
-import { ProdukProperties } from "../DataBuilder";
 import { TypeData } from "../components/table/Selection";
+import { productType } from "../types/common.types";
 
 export const filterDataUMKM = (
     searchColumn: string,
@@ -65,7 +65,7 @@ export const filterDataProduk = (
     keyword: string,
     kecamatanSlug: TypeData[],
     kategoriProduk: TypeData[],
-    data: ProdukProperties[],): ProdukProperties[] => {
+    data: productType[],): productType[] => {
     const keywordLower = keyword.toLowerCase();
     let filteredData = data;
 

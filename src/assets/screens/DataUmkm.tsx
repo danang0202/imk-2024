@@ -143,7 +143,7 @@ const DataUmkm = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
+ 
         <motion.div
           className="table-container rounded-lg w-full grow px-4 xl:px-0"
           initial={{ width: "100%" }}

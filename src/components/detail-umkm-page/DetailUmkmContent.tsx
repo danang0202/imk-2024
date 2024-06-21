@@ -97,7 +97,7 @@ const DetailUmkmContent = () => {
     <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-8 dark:text-white">
       <div className="w-full xl:w-1/2 flex flex-col items-center">
         <div className="title w-full pb-2 my-4 flex justify-between  dark:border-gray-500">
-          <p className=" text-base lg:text-lg font-bold">
+          <p className=" text-base lg:text-lg font-semibold">
             Informasi Dasar UMKM
           </p>{" "}
         </div>
@@ -110,16 +110,16 @@ const DetailUmkmContent = () => {
             />
           </div>
           <div className="main-information flex flex-col md:flex-row md:gap-4 items-stretch w-full">
-            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(0, 4).map((item, index) => (
                   <tr key={index}>
-                    <th
+                    <td
                       scope="row"
-                      className="w-40 px-4 py-2 font-medium text-gray-900 dark:text-white"
+                      className="w-40 px-4 py-2 text-grey dark:text-gray-300"
                     >
                       {item.label}
-                    </th>
+                    </td>
                     {item.label != "Skala Usaha" ? (
                       <td className="dark:text-white">{item.value}</td>
                     ) : (
@@ -137,16 +137,16 @@ const DetailUmkmContent = () => {
                 ))}
               </tbody>
             </table>
-            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(4, 8).map((item, index) => (
                   <tr key={index}>
-                    <th
+                    <td
                       scope="row"
-                      className="w-40 px-4 py-2 font-medium text-gray-900  dark:text-white"
+                      className="w-40 px-4 py-2 text-grey dark:text-gray-300"
                     >
                       {item.label}
-                    </th>
+                    </td>
                     {item.label != "Badan Hukum" ? (
                       <td className={`dark:text-white`}>{item.value}</td>
                     ) : (
@@ -168,7 +168,7 @@ const DetailUmkmContent = () => {
         </div>
         <div className="flex xl:hidden justify-center w-full pt-4">
           <div
-            className="bg-primary px-2 py-1 text-xs md:text-sm rounded flex flex-row gap-2 items-center text-white"
+            className="bg-primary p-2 text-xs md:text-sm rounded flex flex-row gap-2 items-center text-white"
             onClick={() => ButtonLihatProductOnClick()}
           >
             <p>Lihat Produk</p>
@@ -176,22 +176,22 @@ const DetailUmkmContent = () => {
           </div>
         </div>
         <div className="title w-full py-2 my-4 flex justify-between  dark:border-gray-500">
-          <p className="text-base lg:text-lg  font-bold">
+          <p className="text-base lg:text-lg  font-semibold">
             Informasi Lanjutan UMKM
           </p>{" "}
         </div>
         {windowWidth < EXTENDED_WINDOW.md ? (
           <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 xl:p-8 rounded">
-            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(8).map((item, index) => (
                   <tr key={index}>
-                    <th
+                    <td
                       scope="row"
-                      className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
+                      className="px-4 py-2 text-grey whitespace-normal dark:text-gray-300"
                     >
                       {item.label}
-                    </th>{" "}
+                    </td>{" "}
                     <td className="dark:text-white">{item.value}</td>
                   </tr>
                 ))}
@@ -200,16 +200,16 @@ const DetailUmkmContent = () => {
           </div>
         ) : (
           <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 xl:p-8 rounded">
-            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 text-sm lg:text-base">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(8, 17).map((item, index) => (
                   <tr key={index}>
-                    <th
+                    <td
                       scope="row"
-                      className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
+                      className="px-4 py-2 text-grey whitespace-normal dark:text-gray-300"
                     >
                       {item.label}
-                    </th>{" "}
+                    </td>{" "}
                     <td className="whitespace-nowrap dark:text-white">
                       {item.value}
                     </td>
@@ -217,16 +217,16 @@ const DetailUmkmContent = () => {
                 ))}
               </tbody>
             </table>
-            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-white text-sm lg:text-base">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
               <tbody>
                 {umkmData.slice(17).map((item, index) => (
                   <tr key={index}>
-                    <th
+                    <td
                       scope="row"
-                      className="px-4 py-2 font-medium text-gray-900 whitespace-normal dark:text-white"
+                      className="px-4 py-2 text-grey whitespace-normal dark:text-gray-300"
                     >
                       {item.label}
-                    </th>
+                    </td>
                     <td
                       className={`${
                         item.label == "Alamat"
@@ -310,6 +310,8 @@ const produkSafiira = [
     umkm: "Safiira Hampers",
     like: 120,
     isLiked: false,
+    kecamatan:"Lendah",
+    date: new Date("2024-01-01"),
   },
   {
     id: 2,
@@ -321,6 +323,8 @@ const produkSafiira = [
     umkm: "Safiira Hampers",
     like: 95,
     isLiked: false,
+    kecamatan:"Lendah",
+    date: new Date("2024-01-01"),
   },
   {
     id: 3,
@@ -331,7 +335,9 @@ const produkSafiira = [
     harga: 130000,
     umkm: "Safiira Hampers",
     like: 110,
+    kecamatan:"Lendah",
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 4,
@@ -342,7 +348,9 @@ const produkSafiira = [
     harga: 200000,
     umkm: "Safiira Hampers",
     like: 150,
+    kecamatan:"Lendah",
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 5,
@@ -352,8 +360,10 @@ const produkSafiira = [
     lokasi: "Lendah",
     harga: 160000,
     umkm: "Safiira Hampers",
+    kecamatan:"Lendah",
     like: 130,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 6,
@@ -363,8 +373,10 @@ const produkSafiira = [
     lokasi: "Lendah",
     harga: 170000,
     umkm: "Safiira Hampers",
+    kecamatan:"Lendah",
     like: 140,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 7,
@@ -375,7 +387,9 @@ const produkSafiira = [
     harga: 190000,
     umkm: "Safiira Hampers",
     like: 115,
+    kecamatan:"Lendah",
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 8,
@@ -383,10 +397,12 @@ const produkSafiira = [
     nama: "Bucket Anniversary",
     kategori: "Kerajinan",
     lokasi: "Lendah",
+    kecamatan:"Lendah",
     harga: 210000,
     umkm: "Safiira Hampers",
     like: 125,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 9,
@@ -396,8 +412,10 @@ const produkSafiira = [
     lokasi: "Lendah",
     harga: 180000,
     umkm: "Safiira Hampers",
+    kecamatan:"Lendah",
     like: 135,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 10,
@@ -408,7 +426,9 @@ const produkSafiira = [
     harga: 160000,
     umkm: "Safiira Hampers",
     like: 145,
+    kecamatan:"Lendah",
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 11,
@@ -418,8 +438,10 @@ const produkSafiira = [
     lokasi: "Lendah",
     harga: 150000,
     umkm: "Safiira Hampers",
+    kecamatan:"Lendah",
     like: 155,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 12,
@@ -427,21 +449,25 @@ const produkSafiira = [
     nama: "Bucket Mother's Day",
     kategori: "Kerajinan",
     lokasi: "Lendah",
+    kecamatan:"Lendah",
     harga: 170000,
     umkm: "Safiira Hampers",
     like: 165,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 13,
     gambar: "product-1-safiira.png",
     nama: "Bucket Teacher's Day",
     kategori: "Kerajinan",
+    kecamatan:"Lendah",
     lokasi: "Lendah",
     harga: 140000,
     umkm: "Safiira Hampers",
     like: 175,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 14,
@@ -450,9 +476,11 @@ const produkSafiira = [
     kategori: "Kerajinan",
     lokasi: "Lendah",
     harga: 180000,
+    kecamatan:"Lendah",
     umkm: "Safiira Hampers",
     like: 185,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
   {
     id: 15,
@@ -461,8 +489,10 @@ const produkSafiira = [
     kategori: "Kerajinan",
     lokasi: "Lendah",
     harga: 200000,
+    kecamatan:"Lendah",
     umkm: "Safiira Hampers",
     like: 195,
     isLiked: false,
+    date: new Date("2024-01-01"),
   },
 ];
