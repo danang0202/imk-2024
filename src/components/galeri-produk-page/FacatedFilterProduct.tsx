@@ -117,7 +117,7 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
                                         min={0}
                                         max={1000000}
                                         marks={marks}
-                                        color="black"
+                                        color="primary"
                                     />
                                 </div>
                                 <p className="text-xs lg:text-sm text-grey dark:text-gray-200 mt-2 mb-3">
