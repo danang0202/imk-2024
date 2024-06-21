@@ -60,7 +60,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
       setIsLoaded(true);
     };
     load();
-  }, []);
+  }, [location]);
   const { t: dataLang } = useTranslation("data-page");
   const { t: landingLang } = useTranslation("landing-page");
   const { t: common } = useTranslation("common");

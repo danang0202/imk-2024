@@ -22,6 +22,7 @@ import MinimalisTableUMKM from "../../components/table/MinimalisTableUMKM";
 import { AnimatePresence, motion } from "framer-motion";
 import NormalFilter from "../../components/table/NormalFilter";
 import AllFilterBadge from "../../components/table/AllFilterBadge";
+import { variantsOpacity } from "../../helper/motion.helper";
 
 const DataUmkm = () => {
   const data = umkmData;
@@ -98,7 +99,7 @@ const DataUmkm = () => {
         />
       )}
       <div className="flex items-stretch flex-row w-full pb-8 xl:pt-5.5xl  xl:pb-3xl xl:gap-4 xl:px-8 bg-silver dark:bg-slate-800 dark:text-white">
-        <div className="bg-white dark:bg-black rounded shadow-sm">
+        <div className="bg-white dark:bg-black rounded shadow-sm z-50">
           <AnimatePresence>
             {delayAdvancedFilter && (
               <AdvancedFilter
@@ -135,7 +136,14 @@ const DataUmkm = () => {
             )}
           </AnimatePresence>
         </div>
-
+        <AnimatePresence>
+          {!showFilter && !showAdvancedFilter && (
+            <motion.div variants={variantsOpacity} transition={{ duration: .3 }} initial="hidden" animate="visible" exit={"exit"} className="hidden xl:inline box bg-white dark:bg-black h-fit p-4 rounded hover:bg-inactive cursor-pointer transition-colors duration-300" onClick={() => { setShowFilter(true); setDelayFilter(true) }}>
+              <IconFilterSearch size={20} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+ 
         <motion.div
           className="table-container rounded-lg w-full grow px-4 xl:px-0"
           initial={{ width: "100%" }}
@@ -145,7 +153,7 @@ const DataUmkm = () => {
             <h1 className="font-bold d text-base text-center border-b border-grey pb-2 lg:text-lg xl:font-bold xl:text-left xl:border-0 xl:pb-0 text-black dark:text-white">
               {t("dataTitle")}
             </h1>
-            <div className="md:flex flex-row md:justify-between gap-8 md:w-full xl:w-fit pt-2 xl:pt-0">
+            <div className="md:flex flex-row md:justify-between gap-8 md:w-full xl:w-fit pt-2 xl:pt-0 z-40">
               <SearchBar
                 width={windowWidth < EXTENDED_WINDOW.md ? "14rem" : "20rem"}
                 searchColumn={searchColumn}

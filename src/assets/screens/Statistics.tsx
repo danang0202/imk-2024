@@ -19,9 +19,10 @@ const Statistics = () => {
           <CardSummary />
           <CardSummary />
           <CardSummary />
+          <CardSummary />
         </div>
         <div className="my-4">
-          <Tabs defaultValue="umkm" color={EXTENDEDCOLORS.primary}>
+          <Tabs defaultValue="umkm" color={EXTENDEDCOLORS.black}>
             <Tabs.List grow __size="xs">
               <Tabs.Tab
                 value="umkm"

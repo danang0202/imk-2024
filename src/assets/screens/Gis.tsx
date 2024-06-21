@@ -33,6 +33,7 @@ import NormalFilter from "../../components/table/NormalFilter";
 import AllFilterBadge from "../../components/table/AllFilterBadge";
 import { handleDeleteAllFilter } from "../../helper/filter-umkm.helper";
 import SearchBar from "../../components/table/SearchBar";
+import { rowVariants } from "../../helper/motion.helper";
 
 const Gis: React.FC = () => {
   const [selectedKecamatan, setSelectedKecamatan] =
@@ -162,7 +163,7 @@ const Gis: React.FC = () => {
 
         <motion.div
           transition={{ duration: 0.5 }}
-          className="w-full rounded-lg px-0 p-4 lg:p-8 pb-8 shadow-sm bg-white dark:bg-black h-full relative"
+          className="w-full rounded px-0 p-4 lg:p-8 pb-8 shadow-sm bg-white dark:bg-black h-full relative"
         >
           <div className="flex flex-col xl:flex-row justify-between items-center pb-2 gap-4 xl:gap-0">
             <p className="text-sm md:text-base lg:text-lg font-bold text-black dark:text-white">
@@ -174,7 +175,7 @@ const Gis: React.FC = () => {
               setSearchColumn={setSearchColumn}
               keyword={keyword}
               setKeyword={setKeyword}
-              data={filteredDataByKec}
+              hiddenReccommendation={true}
             />
           </div>
           <div className="px-4 lg:px-0 xl:hidden w-full flex flex-row gap-2 text-grey hover:text-black dark:text-white dark:hover:text-grey justify-start cursor-pointer py-2">
@@ -212,138 +213,142 @@ const Gis: React.FC = () => {
               </p>
             </div>
           )}
-          <MapContainer
-            center={[-7.8503, 110.1598] as LatLngTuple} // Koordinat default Kulon Progo, DIY, Indonesia
-            zoom={11.25}
-            scrollWheelZoom={false}
-            className="rounded border border-gray-300 w-100 min-h-[77vh]"
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <MapUpdater
-              position={selectedKecamatan ? selectedKecamatan.position : null}
-              filteredData={filteredDataUMKM}
-            />
+          <div className="relative">
+            <MapContainer
+              center={[-7.8503, 110.1598] as LatLngTuple} // Koordinat default Kulon Progo, DIY, Indonesia
+              zoom={11.25}
+              scrollWheelZoom={false}
+              className="rounded border border-gray-300 w-100 min-h-[77vh]"
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <MapUpdater
+                position={selectedKecamatan ? selectedKecamatan.position : null}
+                filteredData={filteredDataUMKM}
+              />
 
-            {filteredDataUMKM &&
-              filteredDataUMKM
-                .filter((item) => item.position != undefined)
-                .map((umkm) => (
-                  <Marker
-                    key={umkm.id}
-                    position={umkm.position ? umkm.position : [0, 0]}
-                    eventHandlers={
-                      {
-                        // click: () => handleMarkerClick(umkm),
+              {filteredDataUMKM &&
+                filteredDataUMKM
+                  .filter((item) => item.position != undefined)
+                  .map((umkm) => (
+                    <Marker
+                      key={umkm.id}
+                      position={umkm.position ? umkm.position : [0, 0]}
+                      eventHandlers={
+                        {
+                          // click: () => handleMarkerClick(umkm),
+                        }
                       }
-                    }
+                    >
+                      <Popup>
+                        <GisModal item={umkm} />
+                      </Popup>{" "}
+                    </Marker>
+                  ))}
+
+              {filteredDataUMKM.length === 1 &&
+                filteredDataUMKM[0].position && (
+                  <Marker
+                    key={filteredDataUMKM[0].id}
+                    position={filteredDataUMKM[0].position}
+                    eventHandlers={{
+                      add: (e) => {
+                        e.target.openPopup();
+                      },
+                    }}
                   >
                     <Popup>
-                      <GisModal item={umkm} />
-                    </Popup>{" "}
+                      <GisModal item={filteredDataUMKM[0]} />
+                    </Popup>
                   </Marker>
-                ))}
+                )}
+              {boundaries?.map((kecamatan) => {
+                const coordinates = kecamatan.geometry.coordinates[0].map(
+                  (item) => [item[1], item[0]]
+                );
 
-            {filteredDataUMKM.length === 1 && filteredDataUMKM[0].position && (
-              <Marker
-                key={filteredDataUMKM[0].id}
-                position={filteredDataUMKM[0].position}
-                eventHandlers={{
-                  add: (e) => {
-                    e.target.openPopup();
-                  },
-                }}
-              >
-                <Popup>
-                  <GisModal item={filteredDataUMKM[0]} />
-                </Popup>
-              </Marker>
-            )}
-            {boundaries?.map((kecamatan) => {
-              const coordinates = kecamatan.geometry.coordinates[0].map(
-                (item) => [item[1], item[0]]
-              );
-
-              return (
-                <Polygon
-                  pathOptions={{
-                    fillOpacity: 0.0,
-                    weight:
-                      kecamatan.properties.name == selectedKecamatan?.name
-                        ? 3
-                        : 1,
-                    opacity: 1,
-                    color: selectedKecamatan
-                      ? kecamatan.properties.name == selectedKecamatan.name
-                        ? "blue"
-                        : "gray"
-                      : "blue",
-                  }}
-                  positions={coordinates as LatLngExpression[]}
-                />
-              );
-            })}
-          </MapContainer>
-          <div
-            className="absolute top-56 md:top-56 xl:top-44 right-0 xl:right-10 z-10 flex flex-col gap-2 max-h-[38rem] lg:max-h-[60rem] xl:max-h-[38rem] overflow-y-scroll "
-            data-aos="fade-up"
-          >
-            {filteredDataUMKM?.length != data.length &&
-              filteredDataUMKM.length != 1 &&
-              filteredDataUMKM.map((item) => (
-                <div
-                  className="box p-2 xl:p-4 flex flex-row gap-2 items-center bg-white dark:bg-black border border-gray-300 hover:bg-silver  dark:hover:bg-gray-700 cursor-pointer transition duration-300"
-                  onClick={() => {
-                    () => {
-                      handleDeleteAllFilter(
-                        setKeyword,
-                        setDinasPengampuFilter,
-                        setSkalaUsahaFilter,
-                        setBadanHukumFilter,
-                        setBidangUsahaFilter,
-                        dinasPengampu,
-                        skalaUsaha,
-                        badanHukumUsaha,
-                        bidangUsaha,
-                        setSelectedKecamatan,
-                        kecamatanList
-                      );
-                    };
-                    setKeyword(item.name);
-                  }}
-                >
-                  <img
-                    src={item.avatar}
-                    alt={item.name}
-                    className="rounded-full max-w-6 xl:max-w-10 dark:bg-white"
+                return (
+                  <Polygon
+                    pathOptions={{
+                      fillOpacity: 0.0,
+                      weight:
+                        kecamatan.properties.name == selectedKecamatan?.name
+                          ? 3
+                          : 1,
+                      opacity: 1,
+                      color: selectedKecamatan
+                        ? kecamatan.properties.name == selectedKecamatan.name
+                          ? "blue"
+                          : "gray"
+                        : "blue",
+                    }}
+                    positions={coordinates as LatLngExpression[]}
                   />
-                  <div className="flex flex-col gap-2 dark:text-white">
-                    <p className="font-semibold text-xs md:text-sm xl:text-base">
-                      {item.name}
-                    </p>
-                    <div className="flex flex-row gap-2">
-                      <span
-                        className={`${
-                          getBadanUsahaColor(item?.badanHukum).bg
-                        } ${
-                          getBadanUsahaColor(item?.badanHukum).text
-                        } text-xs px-1 rounded-sm`}
-                      >
-                        {item?.badanHukum}
-                      </span>
-                      <span
-                        className={`${getSkalaUsahaColor(item?.skala).bg} ${
-                          getSkalaUsahaColor(item?.skala).text
-                        } text-xs px-1  rounded-sm`}
-                      >
-                        {item?.skala}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
+            </MapContainer>
+            <div className="absolute top-5 bottom-5 md:top-10  md:bottom-10 right-0 xl:right-2 z-10 flex flex-col gap-2 max-h-full overflow-y-scroll">
+              <AnimatePresence>
+                {filteredDataUMKM?.length != data.length &&
+                  filteredDataUMKM.length != 1 &&
+                  filteredDataUMKM.map((item) => (
+                    <motion.div
+                      className="box p-2 xl:p-4 flex flex-row gap-2 items-center bg-white dark:bg-black border border-gray-300 hover:bg-silver  dark:hover:bg-gray-700 cursor-pointer"
+                      variants={rowVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      transition={{ duration: 0.3 }}
+                      onClick={() => {
+                        () => {
+                          handleDeleteAllFilter(
+                            setKeyword,
+                            setDinasPengampuFilter,
+                            setSkalaUsahaFilter,
+                            setBadanHukumFilter,
+                            setBidangUsahaFilter,
+                            dinasPengampu,
+                            skalaUsaha,
+                            badanHukumUsaha,
+                            bidangUsaha,
+                            setSelectedKecamatan,
+                            kecamatanList
+                          );
+                        };
+                        setKeyword(item.name);
+                      }}
+                    >
+                      <img
+                        src={item.avatar}
+                        alt={item.name}
+                        className="rounded-full max-w-6 xl:max-w-10 dark:bg-white"
+                      />
+                      <div className="flex flex-col gap-2 dark:text-white">
+                        <p className="font-semibold text-xs md:text-sm xl:text-base">
+                          <HighlightText text={item.name} keyword={keyword} />{" "}
+                        </p>
+                        <div className="flex flex-row gap-2">
+                          <span
+                            className={`${getBadanUsahaColor(item?.badanHukum).bg
+                              } ${getBadanUsahaColor(item?.badanHukum).text
+                              } text-xs px-1 rounded-sm`}
+                          >
+                            {item?.badanHukum}
+                          </span>
+                          <span
+                            className={`${getSkalaUsahaColor(item?.skala).bg} ${getSkalaUsahaColor(item?.skala).text
+                              } text-xs px-1  rounded-sm`}
+                          >
+                            {item?.skala}
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+              </AnimatePresence>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -352,3 +357,29 @@ const Gis: React.FC = () => {
 };
 
 export default Gis;
+
+interface HighlightTextProps {
+  text: string;
+  keyword: string;
+}
+
+const HighlightText: React.FC<HighlightTextProps> = ({ text, keyword }) => {
+  if (!keyword) return <>{text}</>;
+
+  const regex = new RegExp(`(${keyword})`, "gi");
+  const parts = text.split(regex);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        part.toLowerCase() === keyword.toLowerCase() ? (
+          <span key={index} className="text-orange-500">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+};

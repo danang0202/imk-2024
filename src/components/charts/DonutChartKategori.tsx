@@ -56,14 +56,14 @@ const DonutChartKategori = () => {
     setShow(false);
   }, [selectedFilter]);
 
-  const { windowWidth } = useThemeContext();
+  const { windowWidth, theme } = useThemeContext();
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row justify-center md:justify-between pb-6 gap-4 items-center">
         <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-center md:text-start">
           Grafik Lingkaran Jumlah UMKM Berdasarkan {selectedFilter?.name}
         </p>
-        <div className="flex flex-row justify-between  gap-2 md:gap-4 w-full md:w-fit">
+        <div className="flex flex-row justify-end  gap-2 md:gap-4 w-full md:w-fit">
           <div className="box flex flex-row gap-4">
             <FilterChartSelection
               show={show}
@@ -80,6 +80,7 @@ const DonutChartKategori = () => {
       </div>
       <div className="flex justify-center w-full">
         <DonutChart
+          labelColor={theme == "dark" ? "white" : "black"}
           withLabelsLine
           withLabels
           data={data || []}

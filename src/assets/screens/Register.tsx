@@ -22,7 +22,7 @@ const Register = () => {
               {/* <!-- Kolom Kiri --> */}
               <div className="px-4">
                 <div className="relative w-full mb-8 group">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10 ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -33,7 +33,7 @@ const Register = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      className="icon icon-tabler icons-tabler-outline icon-tabler-building-store opacity-55"
+                      className="icon icon-tabler icons-tabler-outline icon-tabler-building-store opacity-55 dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M3 21l18 0" />
@@ -47,13 +47,13 @@ const Register = () => {
                     type="text"
                     name="namaUMKM"
                     id="namaUMKM"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="namaUMKM"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Nama UMKM
                   </label>
@@ -71,7 +71,7 @@ const Register = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-arrows-maximize"
+                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-arrows-maximize dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M16 4l4 0l0 4" />
@@ -87,7 +87,7 @@ const Register = () => {
                   <select
                     name="skalaUsaha"
                     id="skalaUsaha"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     required
                     defaultValue=""
                   >
@@ -100,7 +100,7 @@ const Register = () => {
                   </select>
                   <label
                     htmlFor="skalaUsaha"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
                     Skala Usaha
                   </label>
@@ -118,7 +118,7 @@ const Register = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-layout-grid"
+                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-layout-grid dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
@@ -130,7 +130,7 @@ const Register = () => {
                   <select
                     name="bidangUsaha"
                     id="bidangUsaha"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     required
                   >
                     <option value="" disabled selected>
@@ -166,7 +166,7 @@ const Register = () => {
                   </select>
                   <label
                     htmlFor="skalaUsaha"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
                     Bidang Usaha
                   </label>
@@ -184,7 +184,7 @@ const Register = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-gavel"
+                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-gavel dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M13 10l7.383 7.418c.823 .82 .823 2.148 0 2.967a2.11 2.11 0 0 1 -2.976 0l-7.407 -7.385" />
@@ -197,7 +197,7 @@ const Register = () => {
                   <select
                     name="badanHukum"
                     id="badanHukum"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     required
                   >
                     <option value="" disabled selected>
@@ -210,7 +210,7 @@ const Register = () => {
                   </select>
                   <label
                     htmlFor="skalaUsaha"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
                     Badan Hukum
                   </label>
@@ -228,7 +228,7 @@ const Register = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-user-pentagon"
+                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-user-pentagon dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M13.163 2.168l8.021 5.828c.694 .504 .984 1.397 .719 2.212l-3.064 9.43a1.978 1.978 0 0 1 -1.881 1.367h-9.916a1.978 1.978 0 0 1 -1.881 -1.367l-3.064 -9.43a1.978 1.978 0 0 1 .719 -2.212l8.021 -5.828a1.978 1.978 0 0 1 2.326 0z" />
@@ -239,7 +239,7 @@ const Register = () => {
                   <select
                     name="dinasPengampu"
                     id="dinasPengampu"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     required
                   >
                     <option value="" disabled selected>
@@ -267,7 +267,7 @@ const Register = () => {
                   </select>
                   <label
                     htmlFor="skalaUsaha"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
                     Dinas Pengampu
                   </label>
@@ -285,7 +285,7 @@ const Register = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-map-pin"
+                      className="opacity-55 icon icon-tabler icons-tabler-outline icon-tabler-map-pin dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
@@ -295,13 +295,13 @@ const Register = () => {
                   <textarea
                     name="alamat"
                     id="alamat"
-                    className="block py-2.5 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2.5 pl-10 w-full text-sm md:text-base text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   ></textarea>
                   <label
                     htmlFor="alamat"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Alamat
                   </label>
@@ -322,7 +322,7 @@ const Register = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      className="icon icon-tabler icons-tabler-outline icon-tabler-phone opacity-55"
+                      className="icon icon-tabler icons-tabler-outline icon-tabler-phone opacity-55 dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
@@ -332,13 +332,13 @@ const Register = () => {
                     type="text"
                     name="nomorTelepon"
                     id="nomorTelepon"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="nomorTelepon"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Nomor Telepon
                   </label>
@@ -356,7 +356,7 @@ const Register = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      className="icon icon-tabler icons-tabler-outline icon-tabler-mail opacity-55"
+                      className="icon icon-tabler icons-tabler-outline icon-tabler-mail opacity-55 dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
@@ -367,13 +367,13 @@ const Register = () => {
                     type="text"
                     name="email"
                     id="email"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="email"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Email
                   </label>
@@ -391,7 +391,7 @@ const Register = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="icon icon-tabler icons-tabler-outline icon-tabler-user opacity-55"
+                      className="icon icon-tabler icons-tabler-outline icon-tabler-user opacity-55 dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -402,13 +402,13 @@ const Register = () => {
                     type="text"
                     name="username"
                     id="username"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="username"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Username
                   </label>
@@ -426,7 +426,7 @@ const Register = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-lock"
+                      className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-lock dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
@@ -438,13 +438,13 @@ const Register = () => {
                     type={showPassword ? "text" : "password"}
                     name="password"
                     id="password"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="password"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Password
                   </label>
@@ -462,7 +462,7 @@ const Register = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="opacity-50 icon icon-tabler icons-tabler-eye"
+                      className="opacity-50 icon icon-tabler icons-tabler-eye dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -483,7 +483,7 @@ const Register = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-lock"
+                      className="opacity-50 icon icon-tabler icons-tabler-outline icon-tabler-lock dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
@@ -495,13 +495,13 @@ const Register = () => {
                     type={showPassword ? "text" : "password"}
                     name="confirmPassword"
                     id="confirmPassword"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="confirmPassword"
-                    className="absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Confirm Password
                   </label>
@@ -519,7 +519,7 @@ const Register = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="opacity-50 icon icon-tabler icons-tabler-eye"
+                      className="opacity-50 icon icon-tabler icons-tabler-eye dark:text-white"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -540,7 +540,7 @@ const Register = () => {
                   </div>
                   <label
                     htmlFor="remember"
-                    className="text-sm text-greyDark cursor-pointer"
+                    className="text-sm text-greyDark cursor-pointer dark:text-white"
                   >
                     Saya menerima syarat dan ketentuan yang berlaku
                   </label>
@@ -562,14 +562,14 @@ const Register = () => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left opacity-70"
+                  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left opacity-70 dark:text-white"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M5 12l14 0" />
                   <path d="M5 12l4 4" />
                   <path d="M5 12l4 -4" />
                 </svg>
-                <a href="/beranda" className="">
+                <a href="/beranda" className="dark:text-white">
                   Kembali ke Home
                 </a>
               </div>

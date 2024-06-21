@@ -19,8 +19,8 @@ interface Props {
 
 const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
   const headerDataTable: titleSlugType[] = dataColumnUMKMBuilder;
-  const [activeColumn, setActiveColumn] = useState<string>("Price");
-  const [sortingColumn, setSortingColumn] = useState<string | null>("Price");
+  const [activeColumn, setActiveColumn] = useState<string>("index");
+  const [sortingColumn, setSortingColumn] = useState<string | null>("index");
   const [sortingData, setSortingData] = useState<UMKMProperties[]>([]);
   const [paginatedUMKM, setPaginatedUMKM] = useState<UMKMProperties[]>([]);
   const [limit, setLimit] = useState(10);
@@ -72,7 +72,7 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
     <div className="">
       {paginatedUMKM?.length > 0 ? (
         <>
-          <div className={`table-container overflow-x-auto w-full relative`}>
+          <div className={`table-container overflow-x-auto w-full relative `}>
             <table className="w-full text-left border-separate border-spacing-y-2 lg:border-spacing-y-3 font-inter transform -translate-y-3">
               <thead className="rounded-lg text-black text-xs md:text-sm lg:text-base">
                 <tr className="">
@@ -160,7 +160,7 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                       </td>
                       <td className="pr-4x lg:pr-8x xl:pr-8 dark:border-slate-700 rounded-tr rounded-br">
                         <a href="/data-umkm/detail">
-                          <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-secondaryHover px-2 py-1 rounded text-white transition duration-300">
+                          <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-primary/75 px-2 py-1 rounded text-white transition duration-300">
                             Detail
                             <IconInfoCircle size={17} />
                           </button>

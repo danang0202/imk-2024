@@ -38,12 +38,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
         </div>
       </div>
       <div className="hidden xl:flex flex-row gap-1 items-center">
-        <IconMapPin size={15} />
+        <IconMapPin size={15} className="text-black dark:text-white" />
         <p className="text-xs lg:text-sm">{item.lokasi}</p>
       </div>
       <div className="hidden xl:flex flex-row gap-1 items-center">
-        <IconBuildingStore size={14} />
-        <p className="text-xs lg:text-sm">{item.umkm}</p>
+        <IconBuildingStore size={14} className="text-black dark:text-white" />
+        <p className="text-xs lg:text-sm" >{item.umkm}</p>
       </div>
       <div className="flex flex-row gap-1 items-center w-full justify-end">
         <p className="text-xs text-right">{item.like}</p>
@@ -61,7 +61,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
           {item.isLiked ? (
             <IconHeartFilled size={15} color={EXTENDEDCOLORS.accent5} />
           ) : (
-            <IconHeart size={15} />
+            <IconHeart size={15} className="text-black" />
           )}
         </motion.div>
       </div>

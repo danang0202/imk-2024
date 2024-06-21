@@ -89,7 +89,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
       <div
         id="timeline-modal"
         aria-hidden="true"
-        className="overflow-y-auto overflow-x-hidden flex bg-black/25 fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen transition duration-500"
+        className="overflow-y-auto overflow-x-hidden flex bg-black/25 fixed top-0 right-0 left-0 z-[100] justify-center items-center w-full md:inset-0 h-screen transition duration-500"
       >
         <div className="relative p-4 w-full max-w-md max-h-full">
           <AnimatePresence>

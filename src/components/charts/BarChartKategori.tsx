@@ -56,7 +56,7 @@ const BarChartKategori = () => {
     },
   ];
   const [show, setShow] = useState<boolean>(false);
-  const [colorChart, setColorChart] = useState<string>(EXTENDEDCOLORS.accent3);
+  const [colorChart, setColorChart] = useState<string>(EXTENDEDCOLORS.blueChart);
   const [showIsVertical, setShowIsVertical] = useState<boolean>(false);
   const [selectedFilter, setSelectedFilter] = useState<TypeData>({
     name: "Badan Hukum",
@@ -71,7 +71,7 @@ const BarChartKategori = () => {
     getDataCountPerCategory(umkmData, skalaUsaha)
   );
 
-  const { windowWidth } = useThemeContext();
+  const { windowWidth, theme } = useThemeContext();
 
   useEffect(() => {
     if (selectedFilter?.slug == "skala") {
@@ -103,7 +103,7 @@ const BarChartKategori = () => {
             <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-center md:text-start">
               Grafik Batang Jumlah UMKM Berdasarkan {selectedFilter?.name}
             </p>
-            <div className="box flex flex-wrap justify-between gap-2 md:gap-8 curosr-pointer items-center">
+            <div className="box flex flex-wrap justify-end gap-2 md:gap-4 curosr-pointer items-center">
               <ColorInput
                 pointer={true}
                 value={colorChart}
@@ -144,7 +144,15 @@ const BarChartKategori = () => {
             h={getCartHeight()}
             data={data}
             dataKey="name"
-            barProps={{ barSize: 25 }}
+            barProps={{
+              barSize: isVertical.slug == "vertical" ? 25 : 35, label: {
+                position: isVertical.slug == 'vertical' ? "insideRight" : "top",
+                fill: theme == "dark" ? "#fff" : "#000",
+                fontSize: 12,
+                textAnchor: "middle",
+                dx: isVertical.slug == "vertical" ? 20 : 0,
+              },
+            }}
             withTooltip
             tooltipAnimationDuration={200}
             orientation={
@@ -160,6 +168,16 @@ const BarChartKategori = () => {
                     ? 75
                     : 100
                   : 15,
+              tick: {
+                fill: theme == "dark" ? "#fff" : "#000",
+                fontSize: 12,
+              },
+            }}
+            xAxisProps={{
+              tick: {
+                fill: theme == "dark" ? "#fff" : "#000",
+                fontSize: 12,
+              },
             }}
             series={[{ name: "value", color: colorChart }]}
           />

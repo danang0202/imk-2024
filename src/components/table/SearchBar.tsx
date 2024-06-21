@@ -1,10 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  UMKMProperties,
-  dataColumnUMKMBuilder,
-  titleSlugType,
-  umkmData,
-} from "../../DataBuilder";
+import { dataColumnUMKMBuilder, titleSlugType, umkmData } from "../../DataBuilder";
 import { useThemeContext } from "../../layout/ThemeContext";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -12,6 +7,10 @@ import {
   dropdownVariants,
   rowVariants,
 } from "../../helper/motion.helper";
+import {
+  columnTabelInfoModal,
+  infoModalData,
+} from "../../static/InfoModalDataBuilder";
 
 interface Props {
   width: string;
@@ -19,7 +18,8 @@ interface Props {
   setSearchColumn: (column: string) => void;
   keyword: string;
   setKeyword: (column: string) => void;
-  data?: UMKMProperties[];
+  hiddenReccommendation?: boolean;
+  isInfoModal?: boolean;
 }
 
 const SearchBar: React.FC<Props> = ({
@@ -28,10 +28,14 @@ const SearchBar: React.FC<Props> = ({
   setSearchColumn,
   keyword,
   setKeyword,
-  data,
+  hiddenReccommendation,
+  isInfoModal,
 }) => {
   const [showFilfterColumn, setShowsearchColumn] = useState(false);
-  const columns: titleSlugType[] = dataColumnUMKMBuilder;
+  const columns: titleSlugType[] = isInfoModal
+    ? columnTabelInfoModal
+    : dataColumnUMKMBuilder;
+
   const [recommendations, setRecommendations] = useState<string[]>([]);
   const { common: c } = useThemeContext();
   const ref = useRef<HTMLFormElement>(null);
@@ -39,36 +43,39 @@ const SearchBar: React.FC<Props> = ({
   const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setKeyword(value);
-    const dataFix = data ? data : umkmData;
+    const dataFix = isInfoModal ? infoModalData : umkmData;
 
-    if (value.length > 0) {
-      const filteredRecommendations = dataFix
-        .filter((umkm) =>
-          umkm[searchColumn]?.toLowerCase().includes(value.toLowerCase())
-        )
-        .sort((a, b) => {
-          const aField = a[searchColumn]?.toLowerCase() || "";
-          const bField = b[searchColumn]?.toLowerCase() || "";
-          const aStartsWith = aField.startsWith(value.toLowerCase());
-          const bStartsWith = bField.startsWith(value.toLowerCase());
-          if (aStartsWith && !bStartsWith) return -1;
-          if (!aStartsWith && bStartsWith) return 1;
-          return (
-            aField.indexOf(value.toLowerCase()) -
-            bField.indexOf(value.toLowerCase())
-          );
-        })
-        .slice(0, 10)
-        .map((umkm) => umkm[searchColumn]);
-      setRecommendations(filteredRecommendations);
-    } else {
-      setRecommendations([]);
+    if (!hiddenReccommendation) {
+      if (value.length > 0) {
+        const filteredRecommendations = dataFix
+          .filter((data) =>
+            data[searchColumn]?.toLowerCase().includes(value.toLowerCase())
+          )
+          .sort((a, b) => {
+            const aField = a[searchColumn]?.toLowerCase() || "";
+            const bField = b[searchColumn]?.toLowerCase() || "";
+            const aStartsWith = aField.startsWith(value.toLowerCase());
+            const bStartsWith = bField.startsWith(value.toLowerCase());
+            if (aStartsWith && !bStartsWith) return -1;
+            if (!aStartsWith && bStartsWith) return 1;
+            return (
+              aField.indexOf(value.toLowerCase()) -
+              bField.indexOf(value.toLowerCase())
+            );
+          })
+          .slice(0, 10)
+          .map((umkm) => umkm[searchColumn]);
+        setRecommendations(filteredRecommendations);
+      } else {
+        setRecommendations([]);
+      }
     }
   };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
       setRecommendations([]);
+      setShowsearchColumn(false)
     }
   };
 
@@ -89,7 +96,14 @@ const SearchBar: React.FC<Props> = ({
           type="button"
           onClick={() => setShowsearchColumn(!showFilfterColumn)}
         >
-          {searchColumn == "all" ? c("all") : c(`thead_umkm_${searchColumn}`)}
+          {!isInfoModal
+            ? searchColumn == "all"
+              ? c("all")
+              : c(`thead_umkm_${searchColumn}`)
+            : searchColumn == "all"
+              ? c("all")
+              : columns.find((item) => item.slug == searchColumn)?.title}
+
           <svg
             className="w-2 h-2  md:w-2.5 md:h-2.5 ms-2"
             aria-hidden="true"
@@ -146,7 +160,7 @@ const SearchBar: React.FC<Props> = ({
                       type="button"
                       className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:text-white text-xs md:text-sm"
                     >
-                      {c(`thead_umkm_${item.slug}`)}
+                      {isInfoModal ? item.title : c(`thead_umkm_${item.slug}`)}
                     </button>
                   </motion.li>
                 ))}
@@ -191,13 +205,13 @@ const SearchBar: React.FC<Props> = ({
             {recommendations.length > 0 && (
               <motion.ul
                 id="dropdown"
-                className="absolute z-20 bg-white dark:bg-gray-800 w-full border dark:border-gray-700 rounded shadow-lg mt-1"
+                className="absolute bg-white dark:bg-gray-800 w-full border dark:border-gray-700 rounded shadow-lg mt-1"
                 initial="hidden"
                 animate="visible"
                 exit="exit"
                 variants={dropdownVariants}
               >
-                <ul className="absolute z-10 bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs md:text-sm">
+                <ul className="absolute bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs md:text-sm">
                   <AnimatePresence>
                     {recommendations.map((item, index) => (
                       <motion.li

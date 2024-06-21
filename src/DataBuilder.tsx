@@ -28,6 +28,12 @@ export const EXTENDEDCOLORS = {
   accent6: "#D9D9D9",
   primaryTint2: "#E8F5E9",
   inactive: "#BCBDBE",
+  orangeChart: "#FEAB00",
+  orangeLightChart: "#FECE50",
+  purpleDarkChart: "#332A6D",
+  blueChart: "#0070B8",
+  blueLightChart: "#7596CC",
+  yellowChart: "#FED050",
 };
 
 export const EXTENDED_WINDOW = {
@@ -44,8 +50,8 @@ interface LangType {
   link: string;
 }
 export const LANGUAGES: LangType[] = [
-  { label: "Indonesia", code: "id", link: "/logo/indonesia.png" },
-  { label: "English", code: "en", link: "/logo/uk.png" },
+  { label: "ID", code: "id", link: "/logo/indonesia.png" },
+  { label: "EN", code: "en", link: "/logo/uk.png" },
 ];
 
 export const menuItemsData = [
@@ -53,8 +59,8 @@ export const menuItemsData = [
   { label: "Data UMKM", href: "/data-umkm", slug: "data" },
   { label: "Statistik", href: "/statistics", slug: "statistics" },
   { label: "GIS", href: "/gis", slug: "gis" },
-  { label: "Galeri Produk", href: "#", slug: "product" },
-  { label: "Info Modal", href: "#", slug: "modal" },
+  { label: "Galeri Produk", href: "/galeri-produk", slug: "product" },
+  { label: "Info Modal", href: "/info-modal", slug: "modal" },
 ];
 
 export const serviceItemsData = [
@@ -151,6 +157,38 @@ export const dataColumnUMKMBuilder: titleSlugType[] = [
   {
     title: "Alamat",
     slug: "alamat",
+  },
+];
+
+// dataColumnProdukBuilder walaupun nanti ditampilkannya pake card
+export const dataColumnProdukBuilder: titleSlugType[] = [
+  {
+    title: "ID",
+    slug: "index",
+  },
+  {
+    title: "Nama Produk",
+    slug: "name",
+  },
+  {
+    title: "Harga",
+    slug: "price",
+  },
+  {
+    title: "Stok",
+    slug: "stock",
+  },
+  {
+    title: "Kategori",
+    slug: "category",
+  },
+  {
+    title: "Deskripsi",
+    slug: "description",
+  },
+  {
+    title: "Kecamatan",
+    slug: "kecamatan",
   },
 ];
 
@@ -292,6 +330,94 @@ export const bidangUsaha = [
   {
     name: "Hukum dan Konsultasi",
     slug: "hukum-konsultasi",
+  },
+];
+
+// kecamatan dengan slug
+export const kecamatanSlug = [
+  {
+    name: "Temon",
+    slug: "temon",
+  },
+  {
+    name: "Wates",
+    slug: "wates",
+  },
+  {
+    name: "Panjatan",
+    slug: "panjatan",
+  },
+  {
+    name: "Galur",
+    slug: "galur",
+  },
+  {
+    name: "Lendah",
+    slug: "lendah",
+  },
+  {
+    name: "Sentolo",
+    slug: "sentolo",
+  },
+  {
+    name: "Pengasih",
+    slug: "pengasih",
+  },
+  {
+    name: "Kokap",
+    slug: "kokap",
+  },
+  {
+    name: "Girimulyo",
+    slug: "girimulyo",
+  },
+  {
+    name: "Nanggulan",
+    slug: "nanggulan",
+  },
+  {
+    name: "Kalibawang",
+    slug: "kalibawang",
+  },
+  {
+    name: "Samigaluh",
+    slug: "samigaluh",
+  },
+];
+
+// kategori produk
+export const kategoriProduk: nameSlugType[] = [
+  {
+    name: "Aksesoris",
+    slug: "aksesoris",
+  },
+  {
+    name: "Fesyen",
+    slug: "fesyen",
+  },
+  {
+    name: "Industri",
+    slug: "industri",
+  },
+  {
+    name: "Kerajinan",
+    slug: "kerajinan",
+  },
+  {
+    name: "Kuliner",
+    slug: "kuliner",
+  },
+  {
+    name: "Perikanan",
+    slug: "perikanan",
+  },
+  {
+    name: "Pertanian",
+    slug: "pertanian",
+  },
+  {
+    name: "Sembako",
+    slug: "sembako",
   },
 ];
 

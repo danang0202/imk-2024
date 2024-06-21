@@ -1,5 +1,6 @@
 import { UMKMProperties, colorType, dataColumnUMKMBuilder } from "../DataBuilder";
 import { TypeData } from "../components/table/Selection";
+import { productType } from "../types/common.types";
 
 export const filterDataUMKM = (
     searchColumn: string,
@@ -54,6 +55,53 @@ export const filterDataUMKM = (
         });
     }
     
+
+    return filteredData;
+};
+
+// filter data produk
+export const filterDataProduk = (
+    searchColumn: string,
+    keyword: string,
+    kecamatanSlug: TypeData[],
+    kategoriProduk: TypeData[],
+    data: productType[],): productType[] => {
+    const keywordLower = keyword.toLowerCase();
+    let filteredData = data;
+
+    // Helper function to check if the item's property matches any of the selected filters
+    const matchesFilter = (itemValue: string, filters: TypeData[]) =>
+        filters.some((filter) => itemValue === filter.name);
+
+    // Apply Kecamatan filter if it's not empty
+    filteredData = filteredData.filter((item) =>
+        matchesFilter(item.kecamatan, kecamatanSlug)
+    );
+
+    // Apply Kategori Produk filter if it's not empty
+    filteredData = filteredData.filter((item) =>
+        matchesFilter(item.kategori, kategoriProduk)
+    );
+
+    if (keyword) {
+        filteredData = filteredData.filter((item) => {
+            if (searchColumn === 'all') {
+                // If searchColumn is 'all', search across all columns except 'index'
+                return dataColumnUMKMBuilder.some((column) => {
+                    const itemValue = item[column.slug];
+                    return column.slug === 'index'
+                        ? itemValue.toString().includes(keyword)
+                        : itemValue.toLowerCase().includes(keywordLower);
+                });
+            } else {
+                // Otherwise, search in the specified column
+                const itemValue = item[searchColumn];
+                return searchColumn === 'index'
+                    ? itemValue.toString().includes(keyword)
+                    : itemValue.toLowerCase().includes(keywordLower);
+            }
+        });
+    }
 
     return filteredData;
 };

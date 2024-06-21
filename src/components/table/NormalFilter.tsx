@@ -8,7 +8,7 @@ import {
   skalaUsaha,
 } from "../../DataBuilder";
 import { IconFilterSearch } from "@tabler/icons-react";
-import { variantsFadeInOutFormLeft } from "../../helper/motion.helper";
+import { variantsFilterDataUMKM } from "../../helper/motion.helper";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { faList } from "@fortawesome/free-solid-svg-icons";
@@ -57,15 +57,14 @@ const NormalFilter: React.FC<FitlerProps> = ({
         initial="hidden"
         animate="visible"
         exit="exit"
-        variants={variantsFadeInOutFormLeft}
+        variants={variantsFilterDataUMKM}
         transition={{ duration: 0.3 }}
-        className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black z-30 w-[19rem] xl:w-[18rem]"
+        className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black z-40 border border-gray-300 xl:border-none"
       >
         <div className="relative">
           <ChevronDown
-            className={`absolute w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transition-transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer top-0 right-0 ${
-              showFilter ? "transform rotate-90" : ""
-            }`}
+            className={`absolute w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transition-transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer top-0 right-0 ${showFilter ? "transform rotate-90" : ""
+              }`}
             onClick={() => {
               setShowFilter(false), setDelayFilter(false);
             }}
@@ -78,7 +77,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
               </h1>
             </div>
             <div className="flex flex-col gap-4 xl:gap-8 ">
-              {kecamatanList && setSelectedkecamatan &&  (
+              {kecamatanList && setSelectedkecamatan && (
                 <div className="box flex flex-col gap-4">
                   <div className="flex flex-row gap-2 items-center dark:text-white">
                     <IconFilterSearch
@@ -91,7 +90,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
                   <form className="">
                     <select
                       value={selectedKecamatan ? selectedKecamatan.name : ""}
-                      onChange={(e)=>handleKecamatanChange(e, setSelectedkecamatan)}
+                      onChange={(e) => handleKecamatanChange(e, setSelectedkecamatan)}
                       className="whitespace-nowrap bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 cursor-pointer dark:bg-slate-800 dark:border-grey dark:text-white"
                     >
                       <option value="">Semua</option>

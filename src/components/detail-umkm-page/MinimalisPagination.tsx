@@ -5,9 +5,10 @@ interface Props {
   page: number;
   setPage: (column: number) => void;
   totalPage: number;
+  bg?: string;
 }
 
-const MinimalisPagination: React.FC<Props> = ({ page, setPage, totalPage }) => {
+const MinimalisPagination: React.FC<Props> = ({ page, setPage, totalPage, bg }) => {
   const siblings = 1;
   const array = paginationUtils(totalPage, page, siblings);
   const onPageChange = (value: string | number) => {
@@ -22,7 +23,7 @@ const MinimalisPagination: React.FC<Props> = ({ page, setPage, totalPage }) => {
         if (page !== totalPage) {
           setPage(page + 1);
         }
-      } else if (value === "&raquo") {
+    } else if (value === "&raquo") {
         setPage(totalPage);
       }
     } else {
@@ -32,7 +33,7 @@ const MinimalisPagination: React.FC<Props> = ({ page, setPage, totalPage }) => {
   return (
     <div className="pagination w-full md:w-fit text-xs md:text-sm">
       <div className="flex flex-col md:flex-row justify-between i items-center gap-4 md:gap-8 w-full md:w-auto">
-        <ul className="flex flex-row items-center bg-silver rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-gray-600">
+        <ul className={`flex flex-row items-center ${bg ? bg : 'bg-silver'} rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-gray-600`}>
           <li
             className="text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5 font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
             onClick={() => onPageChange("&laquo")}
@@ -54,11 +55,10 @@ const MinimalisPagination: React.FC<Props> = ({ page, setPage, totalPage }) => {
               onClick={() => onPageChange(value)}
             >
               <button
-                className={` text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5  font-semibold ${
-                  page === value
+                className={` text-black py-1 lg:py-2 px-2 md:px-3 lg:px-3.5  font-semibold ${page === value
                     ? "bg-primary text-white rounded "
                     : "text-black hover:bg-inactive rounded  "
-                } dark:text-white`}
+                  } dark:text-white`}
               >
                 {value}
               </button>

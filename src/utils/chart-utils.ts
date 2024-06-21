@@ -1,5 +1,6 @@
 import { EXTENDEDCOLORS, UMKMProperties } from "../DataBuilder";
 import { TypeData } from "../components/table/Selection";
+import * as d3 from "d3";
 
 export interface seriesType {
     label: string;
@@ -7,14 +8,21 @@ export interface seriesType {
     color: string;
 }
 
+interface StackedChartData {
+    kecamatan: string;
+    [key: string]: number | string;
+    total: number;
+}
+
 export const getStackedChartData = (
     umkmData: UMKMProperties[],
     kecamatanList: string[],
     criteria: TypeData[]
-): any[] => {
-    const result: any[] = kecamatanList.map((kecamatan: string) => {
-        const initialData: any = {
+): StackedChartData[] => {
+    const result: StackedChartData[] = kecamatanList.map((kecamatan: string) => {
+        const initialData: StackedChartData = {
             kecamatan,
+            total: 0, // Tambahkan properti total untuk menghitung total UMKM
         };
 
         // Initialize counters for each criteria
@@ -32,33 +40,79 @@ export const getStackedChartData = (
                         umkm.pengampu === item.name ||
                         umkm.bidang === item.name
                     ) {
-                        initialData[item.slug] += 1;
+                        initialData[item.slug] = (initialData[item.slug] as number) + 1;
+                        initialData.total += 1;
                     }
                 });
             }
         });
-
         return initialData;
     });
-    // console.log(result);
-    return result;
+    const newResult: StackedChartData[] = result.filter((item) => item.total !== 0)
+    newResult.sort((a, b) => b.total - a.total);
+
+    return newResult;
 };
+
+
+const colorScale = d3
+    .scaleThreshold<number, string>()
+    .domain([5, 10, 15, 20])
+    .range(d3.schemeBlues[4]);
+
+const colorScaleFilter = d3
+    .scaleThreshold<number, string>()
+    .domain([5, 10, 15])
+    .range(d3.schemeBlues[3]);
+
+
+export const getDataCountKategoryPerKecamatan = (data: UMKMProperties[], kecamatan: string[], filter: TypeData) => {
+    let result = kecamatan.map((item) => {
+        let count = 0;
+        if (filter.slug == "semua") {
+            count = data.filter(umkm =>
+                umkm.kecamatan == item
+            ).length;
+        } else {
+            count = data.filter((umkm) =>
+                umkm.kecamatan === item && umkm.skala === filter.name
+            ).length;
+        }
+
+        let color = colorScale(count)
+
+        if (filter.slug !== "semua") {
+            color = colorScaleFilter(count)
+        }
+
+        return {
+            name: item,
+            value: count,
+            color: color
+        };
+    });
+    result = result.filter((item) => item.value != 0)
+    result.sort((a, b) => b.value - a.value)
+    return result;
+}
+
+
 
 export const chartKecamatanAndSkalaUsahaSeries = [
     {
         name: "mikro",
         label: "Usaha Mikro",
-        color: EXTENDEDCOLORS.accent6,
+        color: EXTENDEDCOLORS.purpleDarkChart,
     },
     {
         name: "menengah",
         label: "Usaha Menengah",
-        color: EXTENDEDCOLORS.accent3,
+        color: EXTENDEDCOLORS.orangeLightChart,
     },
     {
         name: "kecil",
         label: "Usaha Kecil",
-        color: EXTENDEDCOLORS.accent4,
+        color: EXTENDEDCOLORS.blueChart,
     },
 ]
 
@@ -66,22 +120,22 @@ export const chartKecamatanAndBadanHukum = [
     {
         name: "perseorangan",
         label: "Perseorangan",
-        color: EXTENDEDCOLORS.accent6,
+        color: EXTENDEDCOLORS.purpleDarkChart,
     },
     {
         name: "cv",
         label: "CV",
-        color: EXTENDEDCOLORS.accent3,
+        color: EXTENDEDCOLORS.orangeLightChart,
     },
     {
         name: "pt",
         label: "PT",
-        color: EXTENDEDCOLORS.accent4,
+        color: EXTENDEDCOLORS.accent6,
     },
     {
         name: "firma",
         label: "Firma",
-        color: EXTENDEDCOLORS.accent5,
+        color: EXTENDEDCOLORS.blueChart,
     },
 ]
 
@@ -90,47 +144,47 @@ export const chartKecamatanAndDinasPengampu = [
     {
         label: "Dinas PMD Dalduk",
         name: "dalduk",
-        color: EXTENDEDCOLORS.accent2,
+        color: EXTENDEDCOLORS.purpleDarkChart,
     },
     {
         label: "Dinas Sosial",
         name: "sosial",
-        color: EXTENDEDCOLORS.accent3,
+        color: EXTENDEDCOLORS.orangeLightChart,
     },
     {
         label: "Dinas Kelautan dan Perikanan",
         name: "perikanan",
-        color: EXTENDEDCOLORS.accent4,
+        color: EXTENDEDCOLORS.accent6,
     },
     {
         label: "Dinas Perhubungan",
         name: "perhubungan",
-        color: EXTENDEDCOLORS.accent5,
+        color: EXTENDEDCOLORS.blueChart,
     },
     {
         label: "Dinas Pariwisata",
         name: "pariwisata",
-        color: EXTENDEDCOLORS.accent6,
+        color: EXTENDEDCOLORS.orangeChart,
     },
     {
         label: "Dinas Lingkungan Hidup",
         name: "lingkungan",
-        color: EXTENDEDCOLORS.info,
+        color: EXTENDEDCOLORS.grey,
     },
     {
         label: "Dinas Koperasi dan UKM",
         name: "koperasi_ukm",
-        color: EXTENDEDCOLORS.grey,
+        color: EXTENDEDCOLORS.accent5,
     },
     {
         label: "Dinas Pertanian dan Pangan",
         name: "pertanian_pangan",
-        color: EXTENDEDCOLORS.greyBlue,
+        color: EXTENDEDCOLORS.accent4,
     },
     {
         label: "Dinas Perdagangan dan Perindustrian",
         name: "perdangan",
-        color: EXTENDEDCOLORS.black,
+        color: EXTENDEDCOLORS.blueLightChart,
     },
 ]
 
@@ -148,6 +202,8 @@ export const getDataCountPerCategory = (data: UMKMProperties[], criteria: TypeDa
             value: count,
         };
     });
+
+    result.sort((a, b) => b.value - a.value)
     return result;
 }
 
@@ -166,41 +222,42 @@ export const getDataCountPerCategoryForPieChart = (data: UMKMProperties[], crite
             color: getPieChartColor(item.slug)
         };
     });
+    result.sort((a, b) => b.value - a.value)
     return result;
 }
 
 const getPieChartColor = (item: string) => {
     if (item == 'mikro') {
-        return EXTENDEDCOLORS.accent6
+        return EXTENDEDCOLORS.purpleDarkChart
     } else if (item == 'menengah') {
-        return EXTENDEDCOLORS.accent3
+        return EXTENDEDCOLORS.orangeLightChart
     } else if (item == 'kecil') {
-        return EXTENDEDCOLORS.accent4
+        return EXTENDEDCOLORS.blueChart
     } else if (item == 'perseorangan') {
-        return EXTENDEDCOLORS.accent6
+        return EXTENDEDCOLORS.purpleDarkChart
     } else if (item == 'cv') {
-        return EXTENDEDCOLORS.accent3
+        return EXTENDEDCOLORS.orangeLightChart
     } else if (item == 'pt') {
-        return EXTENDEDCOLORS.accent4
-    } else if (item == 'firma') {
-        return EXTENDEDCOLORS.accent5
-    } else if (item == 'dalduk') {
-        return EXTENDEDCOLORS.accent2
-    } else if (item == 'sosial') {
-        return EXTENDEDCOLORS.accent3
-    } else if (item == 'perikanan') {
-        return EXTENDEDCOLORS.accent4
-    } else if (item == 'perhubungan') {
-        return EXTENDEDCOLORS.accent5
-    } else if (item == 'pariwisata') {
         return EXTENDEDCOLORS.accent6
+    } else if (item == 'firma') {
+        return EXTENDEDCOLORS.blueChart
+    } else if (item == 'dalduk') {
+        return EXTENDEDCOLORS.purpleDarkChart
+    } else if (item == 'sosial') {
+        return EXTENDEDCOLORS.orangeLightChart
+    } else if (item == 'perikanan') {
+        return EXTENDEDCOLORS.accent6
+    } else if (item == 'perhubungan') {
+        return EXTENDEDCOLORS.blueChart
+    } else if (item == 'pariwisata') {
+        return EXTENDEDCOLORS.orangeChart
     } else if (item == 'lingkungan') {
-        return EXTENDEDCOLORS.info
-    } else if (item == 'koperasi_ukm') {
         return EXTENDEDCOLORS.grey
+    } else if (item == 'koperasi_ukm') {
+        return EXTENDEDCOLORS.accent5
     } else if (item == 'pertanian_pangan') {
-        return EXTENDEDCOLORS.greyBlue
+        return EXTENDEDCOLORS.accent4
     } else {
-        return EXTENDEDCOLORS.black
+        return EXTENDEDCOLORS.blueLightChart
     }
 }

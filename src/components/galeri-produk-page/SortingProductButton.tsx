@@ -1,0 +1,72 @@
+import { IconChevronDown } from "@tabler/icons-react";
+import { Dispatch, FC, SetStateAction, useEffect, useRef, useState } from "react";
+import { updateSortOrderFilterProduct, updateSortedColumnFilterProduct } from "../../helper/galeri-produk.helper";
+import { FilterProduct } from "../../types/geleri-produk.types";
+import { nameSlugType } from "../../DataBuilder";
+
+interface SortingProductButtonProps {
+    item: nameSlugType;
+    filter: FilterProduct;
+    setFilter: Dispatch<SetStateAction<FilterProduct>>
+}
+const SortingProductButton: FC<SortingProductButtonProps> = ({ item, filter, setFilter }) => {
+    const [showList, setShowList] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (ref.current && !ref.current.contains(event.target as Node)) {
+            setShowList(false)
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+
+    const handlelFilterChange = (slug: string, order?: string) => {
+        updateSortedColumnFilterProduct(setFilter, slug)
+        if (slug != "harga") {
+            updateSortOrderFilterProduct(setFilter, "desc")
+        } else {
+            if (order) {
+                updateSortOrderFilterProduct(setFilter, order)
+            }
+            setShowList(false);
+        }
+    }
+
+    if (item.slug.toLocaleLowerCase() != "harga") {
+        return (
+            <div className={`${item.slug.toLowerCase() != filter.sortedColumn.toLowerCase() ? 'bg-white text-dark dark:bg-black' : 'bg-primary text-white'} text-xs md:text-sm lg:text-base rounded-sm dark:text-white  p-2 lg:min-w-[7rem] flex justify-center cursor-pointer transition-colors duration-300`} onClick={() => handlelFilterChange(item.slug)}>
+                <p>{item.name}</p>
+            </div>
+
+        )
+    } else {
+        return (
+            <div className="relative" ref={ref}>
+                <div className={`rounded-xs text-dark ${filter.sortedColumn == item.slug ? 'text-white bg-primary font-semibold' : 'text-black dark:text-white bg-white dark:bg-black'} p-2 px-2 md:px-4 min-w-[12.5rem] lg:min-w-[16rem] flex justify-between cursor-pointer text-xs md:text-sm lg:text-base`} onClick={() => setShowList(!showList)}>
+                    <p>{item.name}: {filter.sortOrder == "asc" ? "Rendah ke Tinggi" : "Tinggi ke Rendah"}</p>
+                    <IconChevronDown className="w-4 h-4 md:w-6 md:h-6" />
+                </div>
+                {showList && (
+                    <div className="z-10 dropdown-list text-xs md:text-sm lg:text-base absolute transition-colors duration-300 dark:text-white bg-white rounded-sm dark:bg-black whitespace-nowrap shadow-lg  min-w-[12.5rem] lg:min-w-[16rem]">
+                        <div className="w-full p-2 px-2 md:px-4 flex cursor-pointer text-black dark:text-white  hover:text-success dark:hover:text-white/75" onClick={() => handlelFilterChange(item.slug, "asc")}>
+                            <p>Harga: Rendah ke Tinggi</p>
+                        </div>
+                        <div className="p-2 w-full px-2 md:px-4 flex cursor-pointer text-black dark:text-white  hover:text-success dark:hover:text-white/75" onClick={() => handlelFilterChange(item.slug, "desc")}>
+                            <p>Harga: Tinggi ke Rendah</p>
+                        </div>
+                    </div>
+                )}
+            </div>
+        )
+    }
+
+}
+
+export default SortingProductButton

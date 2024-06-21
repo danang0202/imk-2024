@@ -1,17 +1,25 @@
-import { CSSTransition } from "react-transition-group";
+import { AnimatePresence, motion } from "framer-motion";
+import { EXTENDEDCOLORS } from "../../DataBuilder";
+import { variantsBadgeFilter } from "../../helper/motion.helper";
+
 interface Props {
   text: string;
   handleClick: () => void;
+  bg?: string;
 }
-const NormalFilterBadge: React.FC<Props> = ({ text, handleClick }) => {
+const NormalFilterBadge: React.FC<Props> = ({ text, handleClick, bg }) => {
   return (
-    <CSSTransition in={true} timeout={300} classNames="fade" unmountOnExit>
-      <span
+    <AnimatePresence>
+      <motion.span
         id="badge-dismiss-default"
-        data-aos="zoom-in"
-        data-aos-duration="300"
-        className="inline-flex items-center px-1 md:px-2 py-1 me-2 text-xs lg:text-sm font-base md:font-medium text-grey bg-silver rounded-sm hover:bg-grey hover:text-white transition duration-300 cursor-pointer"
+        className={`inline-flex items-center px-1 md:px-2 py-1 me-2 text-xs lg:text-sm font-base md:font-medium text-grey ${bg ? bg : 'bg-silver'} rounded-sm Fhover:text-white cursor-pointer`}
         onClick={handleClick}
+        whileHover={{ backgroundColor: EXTENDEDCOLORS.inactive, scale: 1.05 }}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={variantsBadgeFilter}
+        transition={{ duration: 0.3 }}
       >
         {text}
         <button
@@ -37,8 +45,8 @@ const NormalFilterBadge: React.FC<Props> = ({ text, handleClick }) => {
           </svg>
           <span className="sr-only">Remove badge</span>
         </button>
-      </span>
-    </CSSTransition>
+      </motion.span>
+    </AnimatePresence>
   );
 };
 
