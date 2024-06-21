@@ -59,7 +59,7 @@ export const menuItemsData = [
   { label: "Data UMKM", href: "/data-umkm", slug: "data" },
   { label: "Statistik", href: "/statistics", slug: "statistics" },
   { label: "GIS", href: "/gis", slug: "gis" },
-  { label: "Galeri Produk", href: "#", slug: "product" },
+  { label: "Galeri Produk", href: "/galeri-produk", slug: "product" },
   { label: "Info Modal", href: "/info-modal", slug: "modal" },
 ];
 
@@ -157,6 +157,38 @@ export const dataColumnUMKMBuilder: titleSlugType[] = [
   {
     title: "Alamat",
     slug: "alamat",
+  },
+];
+
+// dataColumnProdukBuilder walaupun nanti ditampilkannya pake card
+export const dataColumnProdukBuilder: titleSlugType[] = [
+  {
+    title: "ID",
+    slug: "index",
+  },
+  {
+    title: "Nama Produk",
+    slug: "name",
+  },
+  {
+    title: "Harga",
+    slug: "price",
+  },
+  {
+    title: "Stok",
+    slug: "stock",
+  },
+  {
+    title: "Kategori",
+    slug: "category",
+  },
+  {
+    title: "Deskripsi",
+    slug: "description",
+  },
+  {
+    title: "Kecamatan",
+    slug: "kecamatan",
   },
 ];
 
@@ -301,6 +333,94 @@ export const bidangUsaha = [
   },
 ];
 
+// kecamatan dengan slug
+export const kecamatanSlug = [
+  {
+    name: "Temon",
+    slug: "temon",
+  },
+  {
+    name: "Wates",
+    slug: "wates",
+  },
+  {
+    name: "Panjatan",
+    slug: "panjatan",
+  },
+  {
+    name: "Galur",
+    slug: "galur",
+  },
+  {
+    name: "Lendah",
+    slug: "lendah",
+  },
+  {
+    name: "Sentolo",
+    slug: "sentolo",
+  },
+  {
+    name: "Pengasih",
+    slug: "pengasih",
+  },
+  {
+    name: "Kokap",
+    slug: "kokap",
+  },
+  {
+    name: "Girimulyo",
+    slug: "girimulyo",
+  },
+  {
+    name: "Nanggulan",
+    slug: "nanggulan",
+  },
+  {
+    name: "Kalibawang",
+    slug: "kalibawang",
+  },
+  {
+    name: "Samigaluh",
+    slug: "samigaluh",
+  },
+];
+
+// kategori produk
+export const kategoriProduk: nameSlugType[] = [
+  {
+    name: "Aksesoris",
+    slug: "aksesoris",
+  },
+  {
+    name: "Fesyen",
+    slug: "fesyen",
+  },
+  {
+    name: "Industri",
+    slug: "industri",
+  },
+  {
+    name: "Kerajinan",
+    slug: "kerajinan",
+  },
+  {
+    name: "Kuliner",
+    slug: "kuliner",
+  },
+  {
+    name: "Perikanan",
+    slug: "perikanan",
+  },
+  {
+    name: "Pertanian",
+    slug: "pertanian",
+  },
+  {
+    name: "Sembako",
+    slug: "sembako",
+  },
+];
+
 export const kecamatanKulonProgo = [
   "Temon",
   "Wates",
@@ -328,6 +448,19 @@ export interface UMKMProperties {
   kecamatan: string;
   alamat: string;
   position?: LatLngTuple;
+  [key: string]: any;
+}
+
+export interface ProdukProperties {
+  id: number;
+  gambar: string;
+  nama: string;
+  kategori: string;
+  lokasi: string;
+  harga: number;
+  umkm: string;
+  like: number;
+  isLiked: boolean;
   [key: string]: any;
 }
 
@@ -1554,5 +1687,182 @@ export const umkmData: UMKMProperties[] = [
     noTelp: "086868130500",
     kecamatan: "Temon",
     alamat: "RT 97 RW 98, Temon Barat, Temon",
+  },
+];
+
+// produkData
+// index: number;
+//   name: string;
+//   image: string;
+//   price: number;
+//   stock: number;
+//   kecamatan: string;
+//   description: string;
+//   category: string;
+export const produkData: ProdukProperties[] = [
+  {
+    id: 1,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Lebaran",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 150000,
+    umkm: "Safiira Hampers",
+    like: 120,
+    isLiked: false,
+  },
+  {
+    id: 2,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Natal",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 180000,
+    umkm: "Safiira Hampers",
+    like: 95,
+    isLiked: false,
+  },
+  {
+    id: 3,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Ulang Tahun",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 130000,
+    umkm: "Safiira Hampers",
+    like: 110,
+    isLiked: false,
+  },
+  {
+    id: 4,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Pernikahan",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 200000,
+    umkm: "Safiira Hampers",
+    like: 150,
+    isLiked: false,
+  },
+  {
+    id: 5,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Baby Shower",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 160000,
+    umkm: "Safiira Hampers",
+    like: 130,
+    isLiked: false,
+  },
+  {
+    id: 6,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Graduation",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 170000,
+    umkm: "Safiira Hampers",
+    like: 140,
+    isLiked: false,
+  },
+  {
+    id: 7,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket New Year",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 190000,
+    umkm: "Safiira Hampers",
+    like: 115,
+    isLiked: false,
+  },
+  {
+    id: 8,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Anniversary",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 210000,
+    umkm: "Safiira Hampers",
+    like: 125,
+    isLiked: false,
+  },
+  {
+    id: 9,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Valentine",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 180000,
+    umkm: "Safiira Hampers",
+    like: 135,
+    isLiked: false,
+  },
+  {
+    id: 10,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Eid al-Adha",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 160000,
+    umkm: "Safiira Hampers",
+    like: 145,
+    isLiked: false,
+  },
+  {
+    id: 11,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Father's Day",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 150000,
+    umkm: "Safiira Hampers",
+    like: 155,
+    isLiked: false,
+  },
+  {
+    id: 12,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Mother's Day",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 170000,
+    umkm: "Safiira Hampers",
+    like: 165,
+    isLiked: false,
+  },
+  {
+    id: 13,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Teacher's Day",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 140000,
+    umkm: "Safiira Hampers",
+    like: 175,
+    isLiked: false,
+  },
+  {
+    id: 14,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Retirement",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 180000,
+    umkm: "Safiira Hampers",
+    like: 185,
+    isLiked: false,
+  },
+  {
+    id: 15,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Graduation",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 200000,
+    umkm: "Safiira Hampers",
+    like: 195,
+    isLiked: false,
   },
 ];
