@@ -1,21 +1,26 @@
 import { useState } from 'react';
 import Layout from '../../components/Layout';
 import Breadcrumb from '../../components/commons/BreadCrumb';
-import { IconBuildingStore, IconHeart, IconPhoneCall, IconTruck } from '@tabler/icons-react';
+import { IconBuildingStore, IconHeart, IconHeartFilled, IconPhoneCall, IconTruck } from '@tabler/icons-react';
 import { useThemeContext } from '../../layout/ThemeContext';
 import { EXTENDED_WINDOW } from '../../DataBuilder';
+import { AnimatePresence, motion } from 'framer-motion';
+import { dropdownVariants } from '../../helper/motion.helper';
 
 const DetailProduk = () => {
-  const item = {
+  const itemData = {
     nama: 'Bucket Kado Ulang Tahun dan Wisuda',
     harga: '130.000',
     kategori: 'kerajinan',
     lokasi: 'RT 10, RW 00, Gentan, Sidorejo, Lendah, Kulon Progo',
     umkm: 'Safiira Hampers',
     like: 3025,
+    isLiked: false,
     gambar: 'product-1-safiira.png',
     thumbnails: ['product-1-safiira.png', 'product-2-safiira.png', 'product-3-safiira.png'],
   };
+
+  const [item, setItem] = useState(itemData);
 
   const [showMore, setShowMore] = useState(false);
 
@@ -43,13 +48,20 @@ const DetailProduk = () => {
     }
   };
 
+  const handleLike = () => {
+    if (item.isLiked) {
+      setItem((prev) => ({ ...prev, like: item.like - 1, isLiked: false }))
+    } else {
+      setItem((prev) => ({ ...prev, like: item.like + 1, isLiked: true }))
+    }
+  }
 
   return (
     <Layout pageTitle="Detail Produk">
       <div className="box w-full pt-5xl bg-silver dark:bg-slate-800 flex justify-center mb-8">
         <div className="w-11/12 xl:w-3/5 ">
           <Breadcrumb />
-          <div className="px-4 w-full bg-white shadow-sm p-8 my-4 rounded">
+          <div className="px-4 w-full bg-white dark:bg-black text-black dark:text-white shadow-sm p-8 my-4 rounded">
             <div className="flex flex-col lg:flex-row gap-4 xl:gap-8 items-center">
               {/* Sisi kiri: Gambar Produk */}
               <div className="w-full lg:w-5/12 xl:1/2">
@@ -79,7 +91,9 @@ const DetailProduk = () => {
                 <div className="w-full md:px-8 mt-8 flex items-center gap-2">
                   <p className='text-sm md:text-base'>Bagikan: </p>
                   {socialMedia.map((media, index) => (
-                    <img key={index} src={media.src} alt={media.alt} className="cursor-pointer w-5 h-5 lg:w-auto md:h-auto " />
+                    <a href={media.href} target='_blank'>
+                      <img key={index} src={media.src} alt={media.alt} className="cursor-pointer w-5 h-5 lg:w-auto md:h-auto " />
+                    </a>
                   ))}
                 </div>
               </div>
@@ -91,36 +105,40 @@ const DetailProduk = () => {
                     <p className='ttext-sm md:text-base'>{item.kategori.toLowerCase()}</p>
                   </div>
                   <p className='text-grey'>|</p>
-                  <div className="w-full flex flex-row gap-1 items-center justify-start py-2">
-                    <IconHeart color="red" size={20} />
+                  <div className="w-full flex flex-row gap-1 items-center justify-start py-2 cursor-pointer hover:opacity-75 transition-all duration-300" onClick={() => handleLike()}>
+                    {item.isLiked ? (
+                      <IconHeartFilled color="red" size={20} />
+                    ) : (
+                      <IconHeart color="red" size={20} />
+                    )}
                     <p className="text-left">Favorit ( {item.like} )</p>
                   </div>
                 </div>
-                <div className="bg-silver rounded-sm p-4">
-                  <div className="w-full text-left text-black dark:text-gray-400 text-lg md:text-2xl lg:text-3xl font-semibold">Rp{item.harga}</div>
+                <div className="bg-silver dark:bg-slate-800 rounded-sm p-4">
+                  <div className="w-full text-left text-black dark:text-white text-lg md:text-2xl lg:text-3xl font-semibold">Rp{item.harga}</div>
                 </div>
                 <div className="flex items-center gap-1 mt-4 justify-end ">
                   <IconTruck size={windowWidth < EXTENDED_WINDOW.md ? 20 : 25} className='text-primary ' />
-                  <p className='font-semibold text-sm lg:text-base'>Pengiriman ke seluruh wilayah DI. Yogyakarta</p>
+                  <p className='font-semibold text-xs md:text-sm lg:text-base'>Pengiriman ke seluruh wilayah DI. Yogyakarta</p>
                 </div>
 
                 <div className="spesifikasi text-sm md:text-base">
                   <p className='font-semibold pt-4 md:pt-2 pb-2'>Spesifikasi Produk</p>
                   <table className='w-full border-separate border-spacing-1'>
                     <tr>
-                      <td className='text-grey'>Kategori</td>
+                      <td className='text-grey dark:text-gray-300'>Kategori</td>
                       <td >Kerajinan</td>
                     </tr>
                     <tr>
-                      <td className='text-grey'>Dikirim Dari</td>
+                      <td className='text-grey dark:text-gray-300'>Dikirim Dari</td>
                       <td >Lendah, Kulon Progo</td>
                     </tr>
                     <tr>
-                      <td className='text-grey'>Stok</td>
+                      <td className='text-grey dark:text-gray-300'>Stok</td>
                       <td ><p>20</p></td>
                     </tr>
                     <tr>
-                      <td className='text-grey'>Tipe Pemesanan</td>
+                      <td className='text-grey dark:text-gray-300'>Tipe Pemesanan</td>
                       <td>
                         <div className="w-full flex justify-start">
                           <div className="bg-blue-100 px-2 py-1 rounded-sm">
@@ -136,7 +154,7 @@ const DetailProduk = () => {
                   <p className='font-semibold pt-4 pb-2'>Tipe Produk</p>
                   <div className="w-full flex flex-wrap gap-4">
                     {productTypes.map((type, index) => (
-                      <div key={index} className={`border border-primary p-2 cursor-pointer rounded-sm  transition-colors duration-300 ${selectedImage == item.thumbnails[index] ? 'bg-primary text-white' : 'bg-white dark:bg-black hover:bg-gray-200'}`} onClick={() => { handleThumbnailClick(item.thumbnails[index]) }}>
+                      <div key={index} className={`border border-primary p-1.5 md:p-2 cursor-pointer rounded-sm  transition-colors duration-300 ${selectedImage == item.thumbnails[index] ? 'bg-primary text-white' : 'bg-white dark:bg-black hover:bg-gray-200'}`} onClick={() => { handleThumbnailClick(item.thumbnails[index]) }}>
                         <p className="text-xs md:text-sm font-semibold">{type}</p>
                       </div>
                     ))}
@@ -144,7 +162,7 @@ const DetailProduk = () => {
                 </div>
 
                 <div className="w-fll flex justify-between mt-4 xl:mt-0 items-end">
-                  <p className='text-xs md:text-sm text-grey hover:text-black cursor-pointer' onClick={() => ButtonLihatDeskripsiOnClick()}>Lihat Deskripsi</p>
+                  <p className='text-xs md:text-sm text-grey dark:text-gray-300 hover:text-black cursor-pointer' onClick={() => ButtonLihatDeskripsiOnClick()}>Lihat Deskripsi</p>
                   <div className="bg-primary text-white p-2 rounded-sm flex gap-2 items-center cursor-pointer hover:bg-primary/75 transition-colors duration-300" onClick={() => handlePesan()}>
                     <p className='text-xs md:text-sm'>Hubungi Penjual</p>
                     <IconPhoneCall className='text-white' size={17} />
@@ -155,7 +173,7 @@ const DetailProduk = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white shadow-sm my-4 w-full flex flex-col lg:flex-row justify-between gap-0 md:gap-4 xl:gap-8 px-4 xl:px-8 py-6">
+          <div className="bg-white dark:bg-black text-black dark:text-white shadow-sm my-4 w-full flex flex-col lg:flex-row justify-between gap-0 md:gap-4 xl:gap-8 px-4 xl:px-8 py-6">
             <div className="flex gap-4">
               <div className="flex items-center">
                 <img src={`/logo-umkm/logo-umkm-1.png`} alt="Logo UMKM" className='h-12 md:h-16' />
@@ -163,7 +181,7 @@ const DetailProduk = () => {
               <div className="flex flex-col items-start justify-center gap-2 border-r border-gray-200 pr-8 xl:pr-16">
                 <div className="">
                   <p className='font-semibold text-sm md:text-base'>Safiira Hampers</p >
-                  <p className='text-xs md:text-base text-gray-500'>Dinas Kopearsi dan UKM</p>
+                  <p className='text-xs md:text-base text-gray-500 dark:text-gray-400'>Dinas Kopearsi dan UKM</p>
                 </div>
               </div>
             </div>
@@ -171,26 +189,26 @@ const DetailProduk = () => {
               <div className="w-full">
                 <table className='border-separate border-spacing-1 min-w-[18rem] text-sm md:text-base'>
                   <tr>
-                    <td className='text-grey'>Produk</td>
+                    <td className='text-grey dark:text-gray-300'>Produk</td>
                     <td className=' text-orange-600'>35</td>
                   </tr>
                   <tr>
-                    <td className='text-grey'>Favorit</td>
+                    <td className='text-grey dark:text-gray-300'>Favorit</td>
                     <td className=' text-orange-600'>3RB suka</td>
                   </tr>
                   <tr>
-                    <td className='text-grey'>Bergabung</td>
+                    <td className='text-grey dark:text-gray-300'>Bergabung</td>
                     <td className='text-orange-600'>2 Tahun yang lalu</td>
                   </tr>
                   <tr>
-                    <td className='text-grey'>Favorit</td>
+                    <td className='text-grey dark:text-gray-300'>Favorit</td>
                     <td className='text-orange-600'>35 kali</td>
                   </tr>
                 </table>
                 <div className="flex items-end justify-end xl:justify-start">
                   <a href="/data-umkm/detail">
                     <div className="border rounded-sm p-2 flex gap-2 items-center cursor-pointer transition-colors duration-300 hover:bg-inactive">
-                      <IconBuildingStore className='text-black' size={windowWidth < EXTENDED_WINDOW.md ? 15 : 17} />
+                      <IconBuildingStore className='text-black dark:text-white' size={windowWidth < EXTENDED_WINDOW.md ? 15 : 17} />
                       <p className='text-xs md:text-sm'>Kunjungi UMKM</p>
                     </div>
                   </a>
@@ -201,23 +219,23 @@ const DetailProduk = () => {
                 <div className="">
                   <table className='border-separate border-spacing-1 xl:min-w-[10rem] text-sm md:text-base'>
                     <tr>
-                      <td className='text-grey'>Produk</td>
-                      <td className=' text-orange-600'>35</td>
+                      <td className='text-grey dark:text-gray-300'>Produk</td>
+                      <td className=' text-orange-600 dark:text-gray-300'>35</td>
                     </tr>
                     <tr>
-                      <td className='text-grey'>Favorit</td>
-                      <td className=' text-orange-600'>3RB suka</td>
+                      <td className='text-grey dark:text-gray-300'>Favorit</td>
+                      <td className=' text-orange-600 dark:text-gray-300'>3RB suka</td>
                     </tr>
                   </table>
                 </div>
                 <div className="">
                   <table className='border-separate border-spacing-1 xl:min-w-[18rem] text-sm md:text-base'>
                     <tr>
-                      <td className='text-grey'>Bergabung</td>
+                      <td className='text-grey dark:text-gray-300'>Bergabung</td>
                       <td className='text-orange-600'>2 Tahun yang lalu</td>
                     </tr>
                     <tr>
-                      <td className='text-grey'>Favorit</td>
+                      <td className='text-grey dark:text-gray-300'>Favorit</td>
                       <td className='text-orange-600'>35 kali</td>
                     </tr>
                   </table>
@@ -225,7 +243,7 @@ const DetailProduk = () => {
                 <div className="flex items-end justify-end xl:justify-start">
                   <a href="/data-umkm/detail">
                     <div className="border rounded-sm p-2 flex gap-2 items-center cursor-pointer transition-colors duration-300 hover:bg-inactive">
-                      <IconBuildingStore className='text-black' size={windowWidth < EXTENDED_WINDOW.md ? 15 : 17} />
+                      <IconBuildingStore className='text-black dark:text-white' size={windowWidth < EXTENDED_WINDOW.md ? 15 : 17} />
                       <p className='text-xs md:text-sm'>Kunjungi UMKM</p>
                     </div>
                   </a>
@@ -235,8 +253,8 @@ const DetailProduk = () => {
 
           </div>
 
-          <div className="desc-section w-full bg-white px-4 lg:px-8 py-6 shadow-sm" id='desc'>
-            <div className="bg-silver p-4 mb-4">
+          <div className="desc-section w-full bg-white dark:bg-black px-4 lg:px-8 py-6 shadow-sm text-black dark:text-white" id='desc'>
+            <div className="bg-silver dark:bg-slate-800 p-4 mb-4">
               <p className='font-semibold text-base md:text-lg'>Deskripsi Produk</p>
             </div>
             <div className="ps-4 text-sm md:text-base">
@@ -249,29 +267,31 @@ const DetailProduk = () => {
               <p>Untuk request Bunga Tersedia Warna :</p>
               <p>1.Bunga mawar Merah</p>
               <p>2.Bunga mawar Putih</p>
-              {showMore && (
-                <>
-                  <p>3.Bunga mawar Pink Tua</p>
-                  <p>4.Bunga mawar Pink Muda</p>
-                  <p>5. Bunga mawar Peac</p>
-                  <p>6. Bunga mawar Biru Muda</p>
-                  <br />
-                  <p>Warna Kertas Krab Bisa di ganti dgn warna yg tersedia :</p>
-                  <p>1. Warna Putih</p>
-                  <p>2. Warna Pink</p>
-                  <p>3. Warna Merah</p>
-                  <p>4. Warna Peach</p>
-                  <p>5. Warna Ungu Tua</p>
-                  <p>6. Warna Biru Muda</p>
-                  <p>7. Warna Biru Tua</p>
-                  <p>8. Warna Gold</p>
-                  <p>9. Warna Kuning</p>
-                  <p>10. Warna Orens</p>
-                  <p>11. Warna Hitam</p>
-                  <br />
-                  <p>Terimakasih telah berbelanja di toko bunga kami.</p>
-                </>
-              )}
+              <AnimatePresence>
+                {showMore && (
+                  <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} transition={{ duration: .5 }}>
+                    <p>3.Bunga mawar Pink Tua</p>
+                    <p>4.Bunga mawar Pink Muda</p>
+                    <p>5. Bunga mawar Peac</p>
+                    <p>6. Bunga mawar Biru Muda</p>
+                    <br />
+                    <p>Warna Kertas Krab Bisa di ganti dgn warna yg tersedia :</p>
+                    <p>1. Warna Putih</p>
+                    <p>2. Warna Pink</p>
+                    <p>3. Warna Merah</p>
+                    <p>4. Warna Peach</p>
+                    <p>5. Warna Ungu Tua</p>
+                    <p>6. Warna Biru Muda</p>
+                    <p>7. Warna Biru Tua</p>
+                    <p>8. Warna Gold</p>
+                    <p>9. Warna Kuning</p>
+                    <p>10. Warna Orens</p>
+                    <p>11. Warna Hitam</p>
+                    <br />
+                    <p>Terimakasih telah berbelanja di toko bunga kami.</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <button
                 className="text-primary hover:underline text-sm md:text-base"
                 onClick={toggleShowMore}
@@ -289,10 +309,10 @@ const DetailProduk = () => {
 export default DetailProduk;
 
 const socialMedia = [
-  { src: "/logo/whatsapp.png", alt: "wa" },
-  { src: "/logo/messenger.png", alt: "mes" },
-  { src: "/logo/twitter.png", alt: "x" },
-  { src: "/logo/facebook.png", alt: "fb" },
+  { src: "/logo/whatsapp.png", alt: "wa", href: "https://wa.me/6285868130401" },
+  { src: "/logo/messenger.png", alt: "mes", href: "https://messenger.com" },
+  { src: "/logo/twitter.png", alt: "x", href: "https://x.com" },
+  { src: "/logo/facebook.png", alt: "fb", href: "https://facebook.com" },
 ];
 
 const productTypes = ["Campuran", "Mawar Merah", "Mawar Putih"];  

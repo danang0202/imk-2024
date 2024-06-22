@@ -89,9 +89,9 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                       </span>
                     </div>
                   </th>
-                  <th className="bg-white py-3 pr-2 justify-center text-black sm:text-base  dark:text-white rounded-br dark:bg-black">
+                  {/* <th className="bg-white py-3 pr-2 justify-center text-black sm:text-base  dark:text-white rounded-br dark:bg-black">
                     Tindakan
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody className="text-sm md:text-base">
@@ -106,24 +106,31 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                       transition={{ duration: 0.3 }}
                       className="bg-white dark:bg-black text-sm lg:text-base"
                     >
-                      <td className="py-4 whitespace-nowrap px-2 pl-4 dark:border-slate-700 rounded-tl rounded-bl text-center">
+                      <td className="py-4 relative whitespace-nowrap px-2 pl-4 dark:border-slate-700 rounded-tl rounded-bl text-center">
                         <div className="flex w-full flex-col items-start gap-1 font-normal">
-                          <p className="font-semibold text-sm">{data.name}</p>
-                          <div className="flex flex-row gap-2">
-                            <span
-                              className={`${getSkalaUsahaColor(data?.skala).bg
-                                } ${getSkalaUsahaColor(data?.skala).text
-                                } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
-                            >
-                              {data?.skala}
-                            </span>
-                            <span
-                              className={`${getBadanUsahaColor(data?.badanHukum).bg
-                                } ${getBadanUsahaColor(data?.badanHukum).text
-                                } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
-                            >
-                              {data?.badanHukum}
-                            </span>
+                          <div className="flex flex-row gap-4 items-center mb-1">
+                            <div className="img-container">
+                              <img src={data.avatar} alt={data.name} className="rounded-full h-11 w-11 con dark:bg-white object-cover" />
+                            </div>
+                            <div className="flex flex-col items-start gap-1">
+                              <p className="font-semibold text-sm">{data.name}</p>
+                              <div className="flex flex-row gap-2">
+                                <span
+                                  className={`${getSkalaUsahaColor(data?.skala).bg
+                                    } ${getSkalaUsahaColor(data?.skala).text
+                                    } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
+                                >
+                                  {data?.skala}
+                                </span>
+                                <span
+                                  className={`${getBadanUsahaColor(data?.badanHukum).bg
+                                    } ${getBadanUsahaColor(data?.badanHukum).text
+                                    } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
+                                >
+                                  {data?.badanHukum}
+                                </span>
+                              </div>
+                            </div>
                           </div>
                           <div className="flex flex-row gap-1 items-center">
                             <IconBuildingStore size={12} />
@@ -133,18 +140,18 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                             <IconBuilding size={12} />
                             <p>{data.pengampu}</p>
                           </div>
-                          <div className="flex flex-row gap-1 items-center">
+                          <div className="flex flex-row gap-1 items-center  w-10/12">
                             <IconMapPins size={12} />
                             <p className="whitespace-normal text-left">{data.alamat}</p>
                           </div>
                         </div>
-                      </td>
-                      <td className="dark:border-slate-700 rounded-tr rounded-br">
-                        <a href="/data-umkm/detail">
-                          <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-primary/75 px-2 py-1 rounded text-white transition duration-300">
-                            Detail
-                          </button>
-                        </a>
+                        <div className="absolute bottom-4 right-4">
+                          <a href="/data-umkm/detail">
+                            <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-primary/75 px-2 py-1 rounded text-white transition duration-300">
+                              Detail
+                            </button>
+                          </a>
+                        </div>
                       </td>
                     </motion.tr>
                   ))}

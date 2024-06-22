@@ -3,7 +3,7 @@ import { z } from "zod";
 export const loginSchema = z.object({
     username: z
         .string()
-        .email("Invalid email address")
-        .min(1, "Username is required"),
-    password: z.string().min(8, "Password must be at least 8 characters long"),
+        .email("Alamat email tidak valid")
+        .min(1, "Username tidak boleh kosong"),
+    password: z.string().min(8, "Password setidaknya harus terdiri dari 8 karakter"),
 });

@@ -99,9 +99,6 @@ const MinimalisTableModal: FC<TableModalProps> = ({ dataModal }) => {
                                             </span>
                                         </div>
                                     </th>
-                                    <th className="bg-white py-3 pr-2 text-left text-black sm:text-base  dark:text-white rounded-br dark:bg-black">
-                                        Tindakan
-                                    </th>
                                 </tr>
                             </thead>
                             {/* Table body */}
@@ -112,27 +109,34 @@ const MinimalisTableModal: FC<TableModalProps> = ({ dataModal }) => {
                                         className="bg-white dark:bg-black text-sm lg:text-base"
                                     >
                                         <td className="py-4 whitespace-nowrap px-2 pl-4 dark:border-slate-700 rounded-tl rounded-bl text-center">
-                                            <div className="flex w-full flex-col items-start gap-1 font-normal">
-                                                <p className="font-semibold text-sm">{data.name}</p>
-                                                <div className="flex flex-row gap-2">
-                                                    <span
-                                                        className={`${getInstitusionColorInfoModal(data?.lembaga).bg
-                                                            } ${getInstitusionColorInfoModal(data?.lembaga).text
-                                                            } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
-                                                    >
-                                                        {data?.lembaga}
-                                                    </span>
-                                                    <span
-                                                        className={`${getNominalModalColor(data?.nominal).bg
-                                                            } ${getNominalModalColor(data?.nominal).text
-                                                            } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
-                                                    >
-                                                        <div className="flex gap-1 items-center">
-                                                            <IconMoneybag size={12} />
-                                                            <span className="text-xs md:text-sm font-semibold">Rp </span>
-                                                            {formatRupiah(data?.nominal)}
+                                            <div className="flex w-full flex-col items-start gap-1 font-normal relative">
+                                                <div className="flex flex-row gap-4 items-center mb-1">
+                                                    <div className="img-container">
+                                                        <img src={data.avatar} alt={data.name} className="rounded-full h-11 w-11 con dark:bg-white object-cover" />
+                                                    </div>
+                                                    <div className="flex flex-col gap-1 items-start">
+                                                        <p className="font-semibold text-sm">{data.name}</p>
+                                                        <div className="flex flex-row gap-2">
+                                                            <span
+                                                                className={`${getInstitusionColorInfoModal(data?.lembaga).bg
+                                                                    } ${getInstitusionColorInfoModal(data?.lembaga).text
+                                                                    } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
+                                                            >
+                                                                {data?.lembaga}
+                                                            </span>
+                                                            <span
+                                                                className={`${getNominalModalColor(data?.nominal).bg
+                                                                    } ${getNominalModalColor(data?.nominal).text
+                                                                    } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                                                            >
+                                                                <div className="flex gap-1 items-center">
+                                                                    <IconMoneybag size={12} />
+                                                                    <span className="text-xs md:text-sm font-semibold">Rp </span>
+                                                                    {formatRupiah(data?.nominal)}
+                                                                </div>
+                                                            </span>
                                                         </div>
-                                                    </span>
+                                                    </div>
                                                 </div>
                                                 <div className="flex flex-row gap-1 items-center">
                                                     <IconMail size={12} />
@@ -142,15 +146,22 @@ const MinimalisTableModal: FC<TableModalProps> = ({ dataModal }) => {
                                                     <IconMapPins size={12} />
                                                     <p className="whitespace-normal text-left">{data.alamat}</p>
                                                 </div>
+                                                <div className="absolute bottom-0 right-2">
+                                                    <a href="/info-modal/detail">
+                                                        <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-primary/75 px-2 py-1 rounded text-white transition duration-300">
+                                                            Detail
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </td>
-                                        <td className="dark:border-slate-700 rounded-tr rounded-br">
+                                        {/* <td className="dark:border-slate-700 rounded-tr rounded-br">
                                             <a href="/info-modal/detail">
                                                 <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-primary/75 px-2 py-1 rounded text-white transition duration-300">
                                                     Detail
                                                 </button>
                                             </a>
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 ))}
                             </tbody>

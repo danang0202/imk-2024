@@ -88,7 +88,7 @@ const DetailProdukContent = () => {
             )}
           </AnimatePresence>
         </div>
-        <div className="">
+        <div className="w-full">
           <div className="title my-4 flex flex-col md:flex-row justify-center xl:justify-between gap-4 dark:border-gray-500 text-black dark:text-white">
             {/*  Tempat searching dan sorting */}
             <p className="text-sm md:hidden">Urutkan</p>
@@ -100,7 +100,7 @@ const DetailProdukContent = () => {
                 <SortingProductButton key={index} item={item} filter={filter} setFilter={setFilter} />
               ))}
             </div>
-            <div className="">
+            <div className="z-20">
               <SearchProduct filter={filter} setFilter={setFilter} products={product} />
             </div>
           </div>
@@ -126,6 +126,12 @@ const DetailProdukContent = () => {
               <AllFilterBadgeGaleriProduk filter={filter} setFilter={setFilter} />
             </motion.div>
           </AnimatePresence>
+
+          {product.length !== galeriProdukData.length && (
+            <div className="bg-silver dark:bg-slate-800 pb-2 text-grey dark:text-white text-xs lg:text-sm">
+              Mendapatkan {product.length} data
+            </div>
+          )}
 
           {paginatedData.length > 0 ? (
             <>

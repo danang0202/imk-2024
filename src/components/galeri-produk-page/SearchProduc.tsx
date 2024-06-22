@@ -115,6 +115,7 @@ const SearchProduct: FC<MinimalisSearchProps> = ({ filter, setFilter, products }
                                             onClick={() => {
                                                 setRecommendationsName([]);
                                                 setRecommendationsUmkm([]);
+                                                setFilter((prev) => ({ ...prev, keyword: item.nama }))
                                             }}
                                             dangerouslySetInnerHTML={{
                                                 __html: item.nama.replace(
@@ -144,6 +145,7 @@ const SearchProduct: FC<MinimalisSearchProps> = ({ filter, setFilter, products }
                                             onClick={() => {
                                                 setRecommendationsName([]);
                                                 setRecommendationsUmkm([]);
+                                                setFilter((prev) => ({ ...prev, keyword: item.umkm }))
                                             }}
                                             dangerouslySetInnerHTML={{
                                                 __html: item.umkm.replace(
