@@ -17,7 +17,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
   return (
-    <div className="pt-3 px-2 md:px-3 pb-3 border border-gray-300 dark:border-gray-600 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 xl:hover:shadow-lg transition duration-300">
+    <div className="pt-2 md:pt-3 px-2 md:px-3 pb-3 border border-gray-300 dark:border-gray-600 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 xl:hover:shadow-lg transition duration-300">
       <a href="/galeri-produk/detail">
         <div className="w-full flex flex-col gap-1">
           <div className="w-full flex justify-center">

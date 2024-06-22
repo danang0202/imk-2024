@@ -156,7 +156,7 @@ const DetailInfoModal = () => {
           </div>
           <div className="group w-full  px-0  md:px-8">
             <h2 className="font-semibold xl:text-lg mb-2">Syarat dan Ketentuan</h2>
-            <ul className="list-disc list-inside pl-4">
+            <ul className="list-disc list-inside pl-4 ">
               {requirements.map((requirement, index) => (
                 <li className="my-1" key={index}>{requirement}</li>
               ))}

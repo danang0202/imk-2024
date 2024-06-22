@@ -168,7 +168,7 @@ const Navbar = () => {
             {menuItems.map((link) => (
               <li
                 key={link.label}
-                className="xl:ml-8 xl:my-0 my-7 text-sm md:text-base"
+                className="xl:ml-4 xl:my-0 my-7 text-sm md:text-base"
               >
                 <a
                   href={link.href}

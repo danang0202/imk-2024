@@ -10,6 +10,7 @@ import { boundaries } from "../../components/statistik-page/GeoJson";
 import { KecamatanGisType, kecamatanList } from "../../utils/gis-utils";
 import { IconFilterSearch } from "@tabler/icons-react";
 import {
+  EXTENDEDCOLORS,
   EXTENDED_WINDOW,
   UMKMProperties,
   badanHukumUsaha,
@@ -272,7 +273,7 @@ const Gis: React.FC = () => {
                 return (
                   <Polygon
                     pathOptions={{
-                      fillOpacity: 0.0,
+                      fillOpacity: 0.1,
                       weight:
                         kecamatan.properties.name == selectedKecamatan?.name
                           ? 3
@@ -280,9 +281,9 @@ const Gis: React.FC = () => {
                       opacity: 1,
                       color: selectedKecamatan
                         ? kecamatan.properties.name == selectedKecamatan.name
-                          ? "blue"
+                          ? EXTENDEDCOLORS.accent5
                           : "gray"
-                        : "blue",
+                        : EXTENDEDCOLORS.accent5,
                     }}
                     positions={coordinates as LatLngExpression[]}
                   />
