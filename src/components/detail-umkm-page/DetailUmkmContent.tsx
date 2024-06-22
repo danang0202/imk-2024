@@ -315,7 +315,7 @@ const produkSafiira = [
   },
   {
     id: 2,
-    gambar: "product-1-safiira.png",
+    gambar: "product-4-safiira.png",
     nama: "Bucket Natal",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -328,7 +328,7 @@ const produkSafiira = [
   },
   {
     id: 3,
-    gambar: "product-1-safiira.png",
+    gambar: "product-5-safiira.png",
     nama: "Bucket Ulang Tahun",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -341,7 +341,7 @@ const produkSafiira = [
   },
   {
     id: 4,
-    gambar: "product-1-safiira.png",
+    gambar: "product-6-safiira.png",
     nama: "Bucket Pernikahan",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -354,7 +354,7 @@ const produkSafiira = [
   },
   {
     id: 5,
-    gambar: "product-1-safiira.png",
+    gambar: "product-3-safiira.png",
     nama: "Bucket Baby Shower",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -367,7 +367,7 @@ const produkSafiira = [
   },
   {
     id: 6,
-    gambar: "product-1-safiira.png",
+    gambar: "product-6-safiira.png",
     nama: "Bucket Graduation",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -393,7 +393,7 @@ const produkSafiira = [
   },
   {
     id: 8,
-    gambar: "product-1-safiira.png",
+    gambar: "product-5-safiira.png",
     nama: "Bucket Anniversary",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -419,7 +419,7 @@ const produkSafiira = [
   },
   {
     id: 10,
-    gambar: "product-1-safiira.png",
+    gambar: "product-4-safiira.png",
     nama: "Bucket Eid al-Adha",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -445,7 +445,7 @@ const produkSafiira = [
   },
   {
     id: 12,
-    gambar: "product-1-safiira.png",
+    gambar: "product-3-safiira.png",
     nama: "Bucket Mother's Day",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -471,7 +471,7 @@ const produkSafiira = [
   },
   {
     id: 14,
-    gambar: "product-1-safiira.png",
+    gambar: "product-6-safiira.png",
     nama: "Bucket Retirement",
     kategori: "Kerajinan",
     lokasi: "Lendah",
@@ -484,7 +484,7 @@ const produkSafiira = [
   },
   {
     id: 15,
-    gambar: "product-1-safiira.png",
+    gambar: "product-5-safiira.png",
     nama: "Bucket Graduation",
     kategori: "Kerajinan",
     lokasi: "Lendah",

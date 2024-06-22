@@ -63,7 +63,7 @@ const Login = () => {
         clearForm();
         handleErrorNotif(
           "Login Gagal",
-          "Silahkan melakukan proses login ulang"
+          "Username dan kata sandi tidak cocok"
         );
         setLoading(false);
       }, 2000);

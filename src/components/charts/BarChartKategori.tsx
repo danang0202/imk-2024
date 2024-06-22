@@ -141,6 +141,7 @@ const BarChartKategori = () => {
             </div>
           </div>
           <BarChart
+            id="bar-kategori"
             h={getCartHeight()}
             data={data}
             dataKey="name"

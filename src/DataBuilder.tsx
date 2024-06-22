@@ -91,10 +91,10 @@ export const serviceItemsData = [
 ];
 
 export const socialMediaData = [
-  { path: "/logo/ig.svg", url: "#" },
-  { path: "/logo/twt.svg", url: "#" },
-  { path: "/logo/web.svg", url: "#" },
-  { path: "/logo/yt.svg", url: "#" },
+  { path: "/logo/ig.svg", url: "https://www.instagram.com/pemkab.kulonprogo/" },
+  { path: "/logo/twt.svg", url: "https://twitter.com" },
+  { path: "/logo/web.svg", url: "https://https://kulonprogokab.go.id/v3/" },
+  { path: "/logo/yt.svg", url: "https://www.youtube.com/@kulonprogotv6429" },
 ];
 
 export const FaqsData = [
