@@ -9,12 +9,15 @@ import ButtonSpinner from "./ButtonSpinner";
 import { handleNotifSuccess } from "../../utils/natif";
 import { AnimatePresence, motion } from "framer-motion";
 import { variantsFadeInOutFormBottom } from "../../helper/motion.helper";
+import { handleDownloadExcel, handleDownloadPng } from "../../helper/common.helper";
+import { UMKMProperties, umkmData } from "../../DataBuilder";
 
 export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 interface Props {
   chartTitle: string;
   setShow: (column: boolean) => void;
   isData?: boolean;
+  svgId?: string;
 }
 
 type FileType = {
@@ -61,9 +64,18 @@ const DownloadConfirmationModal: React.FC<Props> = ({
     }
   }, [email]);
 
+  const handleDownload = async (title: string, data: UMKMProperties[]) => {
+    if (selectedType == 'excel' || selectedType == 'csv') {
+      await handleDownloadExcel(title, data)
+    } else {
+      const id = "chloropath-map-svg";
+      await handleDownloadPng(title, id)
+    }
+  }
+
   const handleDownloadButton = () => {
     setLoading(true);
-    setProgress(0); // Reset progress
+    setProgress(0);
     const interval = setInterval(() => {
       setProgress((oldProgress) => {
         const newProgress = oldProgress + 1;
@@ -77,6 +89,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
     setTimeout(() => {
       setLoading(false);
       setShow(false);
+      handleDownload(chartTitle, umkmData)
       handleNotifSuccess(
         "Download Berhasil",
         "Jika tidak berhasil, ulangi langkah !"
@@ -162,50 +175,46 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                       <div className="flex flex-row gap-4">
                         {!isData
                           ? fileTypes.map((file) => (
+                            <div
+                              key={file.type}
+                              className={`box p-1 rounded-sm ${selectedType === file.type
+                                ? "bg-primary text-white"
+                                : "text-black bg-silver hover:bg-grey hover:text-white"
+                                } cursor-pointer transition duration-300`}
+                              onClick={() => setSelectedType(file.type)}
+                            >
+                              {file.icon}
+                            </div>
+                          ))
+                          : fileTypes
+                            .filter(
+                              (file) =>
+                                file.type != "jpg" && file.type != "png"
+                            )
+                            .map((file) => (
                               <div
                                 key={file.type}
-                                className={`box p-1 rounded-sm ${
-                                  selectedType === file.type
-                                    ? "bg-primary text-white"
-                                    : "text-black bg-silver hover:bg-grey hover:text-white"
-                                } cursor-pointer transition duration-300`}
+                                className={`box p-1 rounded-sm ${selectedType === file.type
+                                  ? "bg-primary text-white"
+                                  : "text-black bg-silver hover:bg-grey hover:text-white"
+                                  } cursor-pointer transition duration-300`}
                                 onClick={() => setSelectedType(file.type)}
                               >
                                 {file.icon}
                               </div>
-                            ))
-                          : fileTypes
-                              .filter(
-                                (file) =>
-                                  file.type != "jpg" && file.type != "png"
-                              )
-                              .map((file) => (
-                                <div
-                                  key={file.type}
-                                  className={`box p-1 rounded-sm ${
-                                    selectedType === file.type
-                                      ? "bg-primary text-white"
-                                      : "text-black bg-silver hover:bg-grey hover:text-white"
-                                  } cursor-pointer transition duration-300`}
-                                  onClick={() => setSelectedType(file.type)}
-                                >
-                                  {file.icon}
-                                </div>
-                              ))}
+                            ))}
                       </div>
                     </li>
                     <li className="mb-10 ms-8">
                       <span
-                        className={`absolute flex items-center justify-center w-6 h-6 ${
-                          step >= 2
-                            ? "bg-primary dark:bg-primary"
-                            : "bg-gray-100  dark:bg-gray-600"
-                        } rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700`}
+                        className={`absolute flex items-center justify-center w-6 h-6 ${step >= 2
+                          ? "bg-primary dark:bg-primary"
+                          : "bg-gray-100  dark:bg-gray-600"
+                          } rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700`}
                       >
                         <svg
-                          className={`w-2.5 h-2.5 ${
-                            step >= 2 ? "text-white" : "text-gray-500"
-                          } `}
+                          className={`w-2.5 h-2.5 ${step >= 2 ? "text-white" : "text-gray-500"
+                            } `}
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="currentColor"
@@ -226,9 +235,8 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                           type="email"
                           name="email"
                           id="email"
-                          className={`g-gray-50 border border-gray-300 text-gray-900 text-xs  md:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${
-                            step < 2 && "cursor-not-allowed"
-                          }`}
+                          className={`g-gray-50 border border-gray-300 text-gray-900 text-xs  md:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${step < 2 && "cursor-not-allowed"
+                            }`}
                           placeholder="Tuliskan alamat email anda"
                           required
                           disabled={step < 2}
@@ -239,16 +247,14 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                     </li>
                     <li className="ms-8">
                       <span
-                        className={`absolute flex items-center justify-center w-6 h-6 ${
-                          step >= 3
-                            ? "bg-primary dark:bg-primary"
-                            : "bg-gray-100  dark:bg-gray-600"
-                        } rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700 `}
+                        className={`absolute flex items-center justify-center w-6 h-6 ${step >= 3
+                          ? "bg-primary dark:bg-primary"
+                          : "bg-gray-100  dark:bg-gray-600"
+                          } rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-700 `}
                       >
                         <svg
-                          className={`w-2.5 h-2.5 ${
-                            step >= 3 ? "text-white" : "text-gray-500"
-                          }`}
+                          className={`w-2.5 h-2.5 ${step >= 3 ? "text-white" : "text-gray-500"
+                            }`}
                           xmlns="http://www.w3.org/2000/svg"
                           fill="currentColor"
                           viewBox="0 0 18 20"
@@ -275,11 +281,10 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                     </div>
                   )}
                   <button
-                    className={`text-sm md:text-base text-white flex items-center gap-2 w-full justify-center bg-primary py-2 rounded  transition duration-300 ${
-                      step < 3 || loading
-                        ? "bg-primary/50 cursor-not-allowed"
-                        : "hover:bg-primary/75 cursor-pointer"
-                    }`}
+                    className={`text-sm md:text-base text-white flex items-center gap-2 w-full justify-center bg-primary py-2 rounded  transition duration-300 ${step < 3 || loading
+                      ? "bg-primary/50 cursor-not-allowed"
+                      : "hover:bg-primary/75 cursor-pointer"
+                      }`}
                     disabled={step < 3}
                     onClick={() => handleDownloadButton()}
                   >

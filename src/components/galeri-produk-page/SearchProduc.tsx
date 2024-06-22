@@ -1,5 +1,5 @@
 import { FC, useState, Dispatch, SetStateAction, useRef, useEffect } from "react";
-import { IconSearch } from "@tabler/icons-react";
+import { IconSearch, IconTrendingUp } from "@tabler/icons-react";
 import { FilterProduct } from "../../types/geleri-produk.types";
 import { productType } from "../../types/common.types";
 import { updateKeywordFilterProduct } from "../../helper/galeri-produk.helper";
@@ -111,20 +111,25 @@ const SearchProduct: FC<MinimalisSearchProps> = ({ filter, setFilter, products }
                                             animate="visible"
                                             exit="exit"
                                             transition={{ duration: 0.3 }}
-                                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black"
+                                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black flex flex-row justify-between items-center"
                                             onClick={() => {
                                                 setRecommendationsName([]);
                                                 setRecommendationsUmkm([]);
                                                 setFilter((prev) => ({ ...prev, keyword: item.nama }))
                                             }}
-                                            dangerouslySetInnerHTML={{
-                                                __html: item.nama.replace(
-                                                    new RegExp(`(${filter.keyword})`, "gi"),
-                                                    (match: string) =>
-                                                        `<span class="font-semibold text-secondary">${match}</span>`
-                                                ),
-                                            }}
-                                        />
+                                        >
+                                            <span
+                                                dangerouslySetInnerHTML={{
+                                                    __html: item.nama.replace(
+                                                        new RegExp(`(${filter.keyword})`, "gi"),
+                                                        (match) => `<span class="font-semibold text-secondary">${match}</span>`
+                                                    ),
+                                                }}
+                                            />
+                                            <span className="ml-2">
+                                                <IconTrendingUp className="w-3 text-grey dark:text-gray-300" />
+                                            </span>
+                                        </motion.li>
                                     ))}
                                 </AnimatePresence>
                             </ul>
@@ -141,20 +146,26 @@ const SearchProduct: FC<MinimalisSearchProps> = ({ filter, setFilter, products }
                                             animate="visible"
                                             exit="exit"
                                             transition={{ duration: 0.3 }}
-                                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black"
+                                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black flex justify-between items-center flex-row"
                                             onClick={() => {
                                                 setRecommendationsName([]);
                                                 setRecommendationsUmkm([]);
                                                 setFilter((prev) => ({ ...prev, keyword: item.umkm }))
                                             }}
-                                            dangerouslySetInnerHTML={{
-                                                __html: item.umkm.replace(
-                                                    new RegExp(`(${filter.keyword})`, "gi"),
-                                                    (match: string) =>
-                                                        `<span class="font-semibold text-secondary">${match}</span>`
-                                                ),
-                                            }}
-                                        />
+
+                                        >
+                                            <span
+                                                dangerouslySetInnerHTML={{
+                                                    __html: item.umkm.replace(
+                                                        new RegExp(`(${filter.keyword})`, "gi"),
+                                                        (match) => `<span class="font-semibold text-secondary">${match}</span>`
+                                                    ),
+                                                }}
+                                            />
+                                            <span className="ml-2">
+                                                <IconTrendingUp className="w-3 text-grey dark:text-gray-300" />
+                                            </span>
+                                        </motion.li>
                                     ))}
                                 </AnimatePresence>
                             </ul>

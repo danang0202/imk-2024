@@ -11,6 +11,7 @@ import {
   columnTabelInfoModal,
   infoModalData,
 } from "../../static/InfoModalDataBuilder";
+import { IconTrendingUp } from "@tabler/icons-react";
 
 interface Props {
   width: string;
@@ -168,7 +169,7 @@ const SearchBar: React.FC<Props> = ({
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="relative transform -translate-x-5">
+        <div className="transform -translate-x-5">
           <input
             value={keyword}
             onChange={(e) => handleKeywordChange(e)}
@@ -221,19 +222,24 @@ const SearchBar: React.FC<Props> = ({
                         animate="visible"
                         exit="exit"
                         transition={{ duration: 0.3 }}
-                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black"
+                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black flex justify-between items-center"
                         onClick={() => {
                           setKeyword(item);
                           setRecommendations([]);
                         }}
-                        dangerouslySetInnerHTML={{
-                          __html: item.replace(
-                            new RegExp(`(${keyword})`, "gi"),
-                            (match) =>
-                              `<span class="font-semibold text-secondary">${match}</span>`
-                          ),
-                        }}
-                      />
+                      >
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: item.replace(
+                              new RegExp(`(${keyword})`, "gi"),
+                              (match) => `<span class="font-semibold text-secondary">${match}</span>`
+                            ),
+                          }}
+                        />
+                        <span className="ml-2">
+                          <IconTrendingUp className="w-3 text-grey dark:text-gray-300" />
+                        </span>
+                      </motion.li>
                     ))}
                   </AnimatePresence>
                 </ul>

@@ -92,7 +92,7 @@ const DetailProdukContent = () => {
           <div className="title my-4 flex flex-col md:flex-row justify-center xl:justify-between gap-4 dark:border-gray-500 text-black dark:text-white">
             {/*  Tempat searching dan sorting */}
             <p className="text-sm md:hidden">Urutkan</p>
-            <div className="left flex flex-row  xl:flex-row gap-2 md:gap-4 items-center">
+            <div className="left flex flex-row  xl:flex-row gap-2 md:gap-4 items-center z-30">
               <div className="hidden md:inline">
                 <p className="md:text-sm text-base">Urutkan: </p>
               </div>

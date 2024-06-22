@@ -104,8 +104,7 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
               : 0;
             tooltip
               .html(
-                `<strong>${shape.properties.name}</strong><br />Jumlah ${
-                  skalaFilter.slug === "semua" ? "UMKM" : skalaFilter.name
+                `<strong>${shape.properties.name}</strong><br />Jumlah ${skalaFilter.slug === "semua" ? "UMKM" : skalaFilter.name
                 }: ${value}`
               )
               .style("left", event.pageX + 5 + "px")
@@ -146,7 +145,7 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
   });
 
   return (
-    <div ref={containerRef} className="w-full h-fit">
+    <div ref={containerRef} className="w-full h-fit" id="chloropath-map">
       <div className="flex flex-row items-center  justify-between pb-6 gap-2 md:gap-4">
         <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-left">
           Peta Chloropleth Jumlah{" "}
@@ -163,7 +162,7 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
           <DownloadChartButton chartTitle="Download Peta Chloropleth sebaran UMKM Kulon Progo" />
         </div>
       </div>
-      <svg width={width} height={windowWidth >= EXTENDED_WINDOW.md ? 490 : 350}>
+      <svg width={width} height={windowWidth >= EXTENDED_WINDOW.md ? 490 : 350} id="chloropath-map-svg">
         {allSvgPaths}
       </svg>
       <ColorLegend

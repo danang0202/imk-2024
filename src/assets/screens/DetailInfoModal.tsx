@@ -45,15 +45,15 @@ const DetailInfoModal = () => {
         <div className="img-container w-11/12 xl:w-8/12 rounded-lg">
           <img src="/logo-umkm/bri-bg-3.jpg" alt="BRI Background" className="w-full object-cover h-[20rem] xl:h-[25rem] rounded-xl shadow" />
         </div>
-        <div className="relative w-10/12 xl:w-7/12 flex items-center flex-col bg-white shadow-sm rounded-lg transform -translate-y-14 p-4 lg:p-8 pb-12 dark:bg-black dark:text-white">
+        <div className="relative w-10/12 xl:w-7/12 flex items-center flex-col bg-white shadow rounded-lg transform -translate-y-14 p-4 lg:p-8 pb-12 dark:bg-black dark:text-white">
           <div className="absolute top-4 lg:top-8 right-4 lg:right-8 flex items-center space-x-2 xl:space-x-4">
             <div className="box p-1 bg-accent5 rounded-lg">
-              <a href="#">
+              <a href="mailto:wisnudanang86@gmail.com">
                 <IconMail className="w-4 h-4 md:w-5 md:h-5 xl:w-6 xl:h-6 text-white" />
               </a>
             </div>
             <div className="box p-1 bg-accent4 rounded-lg">
-              <a href="#">
+              <a href="https://wa.me/62858868130401" target="_blank">
                 <IconPhone className="w-4 h-4 md:w-5 md:h-5 xl:w-6 xl:h-6 text-white" />
               </a>
             </div>
@@ -147,14 +147,14 @@ const DetailInfoModal = () => {
               </table>
             )}
           </div>
-          <div className="group my-8 w-full px-4 md:px-8">
+          <div className="group my-8 w-full px-0 md:px-8">
             <h2 className="font-semibold xl:text-lg mb-2">Alamat</h2>
             <p>
               Jl. Kolonel Sugiono No.2, Gadingan, Wates, Kec. Wates,
               Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta 55651
             </p>
           </div>
-          <div className="group w-full  px-4 md:px-8">
+          <div className="group w-full  px-0  md:px-8">
             <h2 className="font-semibold xl:text-lg mb-2">Syarat dan Ketentuan</h2>
             <ul className="list-disc list-inside pl-4">
               {requirements.map((requirement, index) => (
