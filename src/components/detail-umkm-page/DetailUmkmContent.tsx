@@ -249,10 +249,10 @@ const DetailUmkmContent = () => {
       >
         <div className="box w-full flex flex-col items-center xl:-translate-y-1">
           <div className="title w-full my-4 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
-            <p className="text-base lg:text-lg  font-bold">Galeri Produk</p>
+            <p className="text-base lg:text-lg  font-semibold">Galeri Produk</p>
             <div className="box flex w-full md:w-fit justify-between md:justify-normal gap-4">
-              <SortingSelection filter={filter} setFilter={setFilter} />
-              <MinimalisSearch filter={filter} setFilter={setFilter} />
+              <SortingSelection filter={filter} setFilter={setFilter}  />
+              <MinimalisSearch filter={filter} setFilter={setFilter} produk={produkSafiira} />
             </div>
           </div>
           <AnimatePresence>

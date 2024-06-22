@@ -3,6 +3,8 @@ import { Dispatch, FC, SetStateAction, useEffect, useRef, useState } from "react
 import { updateSortOrderFilterProduct, updateSortedColumnFilterProduct } from "../../helper/galeri-produk.helper";
 import { FilterProduct } from "../../types/geleri-produk.types";
 import { nameSlugType } from "../../DataBuilder";
+import { AnimatePresence, motion } from "framer-motion";
+import { dropdownItemVariants, dropdownVariants } from "../../helper/motion.helper";
 
 interface SortingProductButtonProps {
     item: nameSlugType;
@@ -53,16 +55,22 @@ const SortingProductButton: FC<SortingProductButtonProps> = ({ item, filter, set
                     <p>{item.name}: {filter.sortOrder == "asc" ? "Rendah ke Tinggi" : "Tinggi ke Rendah"}</p>
                     <IconChevronDown className="w-4 h-4 md:w-6 md:h-6" />
                 </div>
-                {showList && (
-                    <div className="z-10 dropdown-list text-xs md:text-sm lg:text-base absolute transition-colors duration-300 dark:text-white bg-white rounded-sm dark:bg-black whitespace-nowrap shadow-lg  min-w-[12.5rem] lg:min-w-[16rem]">
-                        <div className="w-full p-2 px-2 md:px-4 flex cursor-pointer text-black dark:text-white  hover:text-success dark:hover:text-white/75" onClick={() => handlelFilterChange(item.slug, "asc")}>
-                            <p>Harga: Rendah ke Tinggi</p>
-                        </div>
-                        <div className="p-2 w-full px-2 md:px-4 flex cursor-pointer text-black dark:text-white  hover:text-success dark:hover:text-white/75" onClick={() => handlelFilterChange(item.slug, "desc")}>
-                            <p>Harga: Tinggi ke Rendah</p>
-                        </div>
-                    </div>
-                )}
+                <AnimatePresence>
+                    {showList && (
+                        <motion.div variants={dropdownVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            className="z-10 dropdown-list text-xs md:text-sm lg:text-base absolute transition-colors duration-300 dark:text-white bg-white rounded-sm dark:bg-black whitespace-nowrap shadow-lg  min-w-[12.5rem] lg:min-w-[16rem]">
+                            <motion.div variants={dropdownItemVariants} transition={{ duration: .3 }} className="w-full p-2 px-2 md:px-4 flex cursor-pointer text-black dark:text-white  hover:text-success dark:hover:text-white/75" onClick={() => handlelFilterChange(item.slug, "asc")}>
+                                <p>Harga: Rendah ke Tinggi</p>
+                            </motion.div>
+                            <motion.div variants={dropdownItemVariants} transition={{ duration: .3 }} className="p-2 w-full px-2 md:px-4 flex cursor-pointer text-black dark:text-white  hover:text-success dark:hover:text-white/75" onClick={() => handlelFilterChange(item.slug, "desc")}>
+                                <p>Harga: Tinggi ke Rendah</p>
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         )
     }

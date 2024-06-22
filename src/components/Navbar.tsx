@@ -124,7 +124,7 @@ const Navbar = () => {
                 animate="visible"
                 exit="exit"
                 variants={dropdownVariants}
-                className={`${location.pathname == "/beranda" ? navBgItem : "bg-white dark:bg-black"
+                className={`${location.pathname == "/beranda" ? `${navBgItem} shadow-lg`  : "bg-white shadow-lg dark:bg-black"
                   } gap-x-6 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9`}
               >
                 {menuItems.map((link) => (

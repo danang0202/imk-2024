@@ -18,33 +18,37 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
   return (
     <div className="pt-4 px-2 md:px-3 pb-3 border border-gray-300 dark:border-gray-600 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 xl:hover:shadow-lg transition duration-300">
-      <div className="w-full flex justify-center">
-        <img
-          src={`/logo-umkm/${item.gambar}`}
-          className="w-28 md:w-32 lg:w-36"
-          alt={item.nama}
-        />
-      </div>
-      <p className="text-sm lg:text-base">{item.nama}</p>
-      <p className="text-sm">
-        Rp{" "}
-        <span className="text-sm md:text-base lg:text-lg font-semibold">
-          {item.harga}
-        </span>
-      </p>
-      <div className="text-white flex justify-start text-xs lg:text-sm">
-        <div className="box px-1 bg-secondary rounded-sm">
-          <p>{item.kategori.toLowerCase()}</p>
+      <a href="/galeri-produk/detail">
+        <div className="w-full flex flex-col gap-1">
+          <div className="w-full flex justify-center">
+            <img
+              src={`/logo-umkm/${item.gambar}`}
+              className="w-28 md:w-32 lg:w-36"
+              alt={item.nama}
+            />
+          </div>
+          <p className="text-sm lg:text-base">{item.nama}</p>
+          <p className="text-sm">
+            Rp{" "}
+            <span className="text-sm md:text-base lg:text-lg font-semibold">
+              {item.harga}
+            </span>
+          </p>
+          <div className="text-white flex justify-start text-xs lg:text-sm">
+            <div className="box px-1 bg-secondary rounded-sm">
+              <p>{item.kategori.toLowerCase()}</p>
+            </div>
+          </div>
+          <div className="hidden xl:flex flex-row gap-1 items-center">
+            <IconMapPin size={15} className="text-black dark:text-white" />
+            <p className="text-xs lg:text-sm">{item.lokasi}</p>
+          </div>
+          <div className="hidden xl:flex flex-row gap-1 items-center">
+            <IconBuildingStore size={14} className="text-black dark:text-white" />
+            <p className="text-xs lg:text-sm" >{item.umkm}</p>
+          </div>
         </div>
-      </div>
-      <div className="hidden xl:flex flex-row gap-1 items-center">
-        <IconMapPin size={15} className="text-black dark:text-white" />
-        <p className="text-xs lg:text-sm">{item.lokasi}</p>
-      </div>
-      <div className="hidden xl:flex flex-row gap-1 items-center">
-        <IconBuildingStore size={14} className="text-black dark:text-white" />
-        <p className="text-xs lg:text-sm" >{item.umkm}</p>
-      </div>
+      </a>
       <div className="flex flex-row gap-1 items-center w-full justify-end">
         <p className="text-xs text-right">{item.like}</p>
         <motion.div
