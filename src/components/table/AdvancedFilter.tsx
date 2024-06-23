@@ -62,7 +62,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
         exit="exit"
         variants={variantsFilterDataUMKM}
         transition={{ duration: 0.3 }}
-        className="fixed xl:relative z-40 flex flex-col bg-white rounded-sm px-8 py-4 shadow-lg xl:shadow-none dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border border-gray-300 xl:border-none "
+        className="fixed xl:relative z-40 flex flex-col bg-white rounded-e-sm xl:rounded-sm px-8 py-4 shadow-lg xl:shadow-none dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border border-gray-300 xl:border-none "
       >
         <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
           <ChevronDown

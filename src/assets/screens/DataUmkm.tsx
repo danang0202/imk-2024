@@ -99,7 +99,7 @@ const DataUmkm = () => {
         />
       )}
       <div className="flex items-stretch flex-row w-full pb-8 xl:pt-4  xl:pb-3xl xl:gap-4 xl:px-8 bg-silver dark:bg-slate-800 dark:text-white">
-        <div className="bg-white dark:bg-black rounded shadow-sm z-50">
+        <div className="bg-white dark:bg-black xl:rounded-sm shadow-sm z-50">
           <AnimatePresence>
             {delayAdvancedFilter && (
               <AdvancedFilter

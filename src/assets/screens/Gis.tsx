@@ -121,7 +121,7 @@ const Gis: React.FC = () => {
         <Breadcrumb />
       </div>
       <div className="pt-4 flex flex-row w-full items-stretch pb-0 xl:pb-8 bg-silver dark:bg-slate-800 min-h-[85vh] xl:gap-4 xl:px-8">
-        <div className="bg-white dark:bg-black rounded shadow-sm dark:text-white">
+        <div className="bg-white dark:bg-black xl:rounded-sm shadow-sm dark:text-white">
           <AnimatePresence>
             {delayAdvancedFilter && (
               <AdvancedFilter

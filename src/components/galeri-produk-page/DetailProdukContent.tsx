@@ -85,7 +85,7 @@ const DetailProdukContent = () => {
         id="list-product"
       >
         {/* facated filter */}
-        <div className="absolute xl:relative bg-white dark:bg-black rounded-sm xl:my-4 w-full xl:w-fit">
+        <div className="absolute xl:relative bg-white dark:bg-black xl:rounded-sm xl:my-4 w-full xl:w-fit">
           <AnimatePresence>
             {(showFilter) && (
               <FacatedFilterProduct filter={filter} setFilter={setFilter} showFilter={showFilter} setShowFilter={setShowFilter} />
