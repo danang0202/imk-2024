@@ -117,10 +117,10 @@ const Gis: React.FC = () => {
 
   return (
     <Layout pageTitle="GIS">
-      <div className="px-4 xl:px-8 pt-5xl w-full bg-white xl:bg-silver dark:bg-slate-800">
+      <div className="px-4 xl:px-8 pt-5xl w-full bg-silver dark:bg-slate-800">
         <Breadcrumb />
       </div>
-      <div className="pt-4 flex flex-row w-full items-stretch pb-0 xl:pb-8 bg-silver dark:bg-slate-800 min-h-[85vh] xl:gap-4 xl:px-8">
+      <div className="flex xl:pt-4 flex-row w-full items-stretch pb-0 xl:pb-8 bg-silver dark:bg-slate-800 min-h-[85vh] xl:gap-4 xl:px-8">
         <div className="bg-white dark:bg-black xl:rounded-sm shadow-sm dark:text-white">
           <AnimatePresence>
             {delayAdvancedFilter && (
