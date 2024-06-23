@@ -13,7 +13,7 @@ const Statistics = () => {
         <div className="py-4">
           <Breadcrumb />
         </div>
-        <div className="summary-container flex justify-center xl:justify-center flex-wrap items-center gap-2 md:gap-4 xl:gap-8 2xl:gap-12">
+        <div className="summary-container grid  grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2 md:gap-4 xl:gap-8 2xl:gap-12">
           <CardSummary icon={IconBuildingStore} label="Total UMKM" value={100} />
           <CardSummary icon={IconHome} label="Usaha Mikro" value={32} />
           <CardSummary icon={IconBuildingSkyscraper} label="Usaha Kecil" value={34} />
