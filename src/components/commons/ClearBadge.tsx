@@ -18,7 +18,7 @@ const ClearBadge: React.FC<Props> = ({ handleClick, bg }) => {
         variants={variantsBadgeFilter}
         transition={{ duration: 0.3 }}
         id="badge-dismiss-red"
-        className={`inline-flex cursor-pointer hover items-center px-2 py-1 me-2 text-xs lg:text-sm text-accent5 ${bg ? bg : 'bg-silver'} font-base md:font-medium rounded-sm`}
+        className={`inline-flex cursor-pointer hover items-center px-2 py-1 me-2 text-xs lg:text-sm text-accent5 ${bg ? bg : 'bg-silver'} font-base rounded-sm`}
         onClick={() => handleClick()}
       >
         Bersihkan

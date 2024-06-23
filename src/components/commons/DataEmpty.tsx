@@ -16,10 +16,10 @@ const DataEmpty = () => {
           <img
             src="/image/empty.png"
             alt="Data Empty"
-            className="w-[10rem] md:w-[20rem] xl:w-[23rem]"
+            className="w-[8rem] md:w-[18rem] xl:w-[20rem]"
           />
-          <p className="text-grey font-semibold text-xs md:text-sm lg:text-lg">
-            Data tidak ditemukan !
+          <p className="text-grey text-xs md:text-sm lg:text-lg">
+            Data tidak ditemukan. Mohon coba hapus beberapa filter.
           </p>
         </div>
       </motion.div>

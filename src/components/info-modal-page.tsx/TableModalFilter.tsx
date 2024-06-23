@@ -64,7 +64,7 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
       exit="exit"
       variants={variantsFilterInfoModal}
       transition={{ duration: 0.3 }}
-      className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-sm py-8 px-6 rounded-lg text-sm md:text-base dark:bg-black z-[60] w-[20rem] md:w-[25rem] max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border xl:border-none"
+      className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-sm py-8 px-6 rounded-sm text-sm md:text-base dark:bg-black z-[60] w-[20rem] md:w-[25rem] max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border xl:border-none"
     >
       <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
         <ChevronDown
@@ -82,69 +82,6 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
           </h1>
         </div>
         <div className="flex flex-col gap-4 ">
-          <div
-            className="pt-4 flex items-center hover:text-primary justify-between cursor-pointer"
-            onClick={() => setShowNominalFilter(!showNominalFilter)}
-          >
-            <div className="flex">
-              <IconFilterSearch
-                size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
-                style={{ marginRight: "0.8rem" }}
-              />
-              <h1 className="font-semibold">Nominal Modal</h1>
-            </div>
-            <FontAwesomeIcon
-              icon={faChevronUp}
-              className={`hover:text-grey transform transition-transform duration-300 ${!showNominalFilter && "rotate-180"
-                }`}
-            />
-          </div>
-          <AnimatePresence>
-            {showNominalFilter && (
-              <motion.div
-                variants={dropdownVariants}
-                initial="hidden"
-                animate="visible"
-                exit={"exit"}
-                className="group"
-              >
-                <div className="px-2">
-                  <Slider
-                    value={nominal}
-                    onChange={(_, newValue) => setNominal(newValue as number[])}
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={10000}
-                    marks={marks}
-                    color="info"
-                  />
-                </div>
-                <p className="text-xs lg:text-sm text-grey dark:text-gray-200 mt-2 mb-3">
-                  <span className="font-semibold">Catatan: </span>Filter nominal
-                  modal dalam satuan juta rupiah
-                </p>
-                <div className="flex flex-row justify-between gap-4 items-center">
-                  <input
-                    type="text"
-                    id="slider-lower"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded w-1/2 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                    value={nominal[0]}
-                    onChange={(e) => handleInputChange(0, e.target.value)}
-                    onBlur={() => handleInputBlur(0)}
-                  />
-                  <IconLineDashed />
-                  <input
-                    type="text"
-                    id="slider-upper"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded  w-1/2 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                    value={nominal[1] || ""}
-                    onChange={(e) => handleInputChange(1, e.target.value)}
-                    onBlur={() => handleInputBlur(1)}
-                  />
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
           <div className="">
             <div
               className="pt-4 flex items-center hover:text-primary justify-between cursor-pointer"
@@ -195,6 +132,78 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
                 </motion.div>
               )}
             </AnimatePresence>
+            <div
+              className="pt-4 flex items-center hover:text-primary justify-between cursor-pointer"
+              onClick={() => setShowNominalFilter(!showNominalFilter)}
+            >
+              <div className="flex">
+                <IconFilterSearch
+                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                  style={{ marginRight: "0.8rem" }}
+                />
+                <h1 className="font-semibold">Nominal Modal</h1>
+              </div>
+              <FontAwesomeIcon
+                icon={faChevronUp}
+                className={`hover:text-grey transform transition-transform duration-300 ${!showNominalFilter && "rotate-180"
+                  }`}
+              />
+            </div>
+            <AnimatePresence>
+              {showNominalFilter && (
+                <motion.div
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit={"exit"}
+                  className="group mt-2"
+                >
+                  <div className="px-2">
+                    <Slider
+                      aria-label="Small steps"
+                      step={10}
+                      value={nominal}
+                      onChange={(_, newValue) => setNominal(newValue as number[])}
+                      valueLabelDisplay="auto"
+                      min={0}
+                      max={10000}
+                      marks={marks}
+                      color="info"
+                    />
+                  </div>
+                  <p className="text-xs lg:text-sm text-grey dark:text-gray-200 mt-2 mb-3">
+                    <span className="font-semibold">Catatan: </span>Filter nominal
+                    modal dalam satuan juta rupiah
+                  </p>
+                  <div className="flex flex-row justify-between gap-4 items-center">
+                    <input
+                      type="text"
+                      id="slider-lower"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded w-1/2 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                      value={nominal[0]}
+                      onChange={(e) => handleInputChange(0, e.target.value)}
+                      onBlur={() => handleInputBlur(0)}
+                    />
+                    <IconLineDashed />
+                    <input
+                      type="text"
+                      id="slider-upper"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded  w-1/2 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                      value={nominal[1] || ""}
+                      onChange={(e) => handleInputChange(1, e.target.value)}
+                      onBlur={() => handleInputBlur(1)}
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 my-8">
+                    <ButtonNominalFilter text="< 1M" setNominal={setNominal} nominal={nominal} min={0} max={1000} />
+                    <ButtonNominalFilter text="1M - 2.5M" setNominal={setNominal} nominal={nominal} min={1000} max={2500} />
+                    <ButtonNominalFilter text="2.5M - 5M" setNominal={setNominal} nominal={nominal} min={2500} max={5000} />
+                    <ButtonNominalFilter text="5M - 7.5M" setNominal={setNominal} nominal={nominal} min={5000} max={7500} />
+                    <ButtonNominalFilter text="> 7.5M" setNominal={setNominal} nominal={nominal} min={7500} max={10000} />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
@@ -203,3 +212,19 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
 };
 
 export default TableModalFilter;
+
+export type ButtonNominalFilterProps = {
+  text: string
+  nominal: number[]
+  setNominal: (column: number[]) => void
+  min: number
+  max: number
+}
+const ButtonNominalFilter: FC<ButtonNominalFilterProps> = ({ text, nominal, min, max, setNominal }) => {
+  return (
+    <div className={`cursor-pointer ${nominal[0] == min && nominal[1] == max ? 'border-2 border-primary text-success' : 'bg-gray-100 hover:bg-gray-200 text-black dark:text-white dark:bg-slate-800 dark:hover:bg-slate-700'} p-2 rounded-sm  transition-colors duration-300`} onClick={() => setNominal([min, max])}>
+      <p className="text-xs md:text-sm text-center">{text}</p>
+    </div>
+  )
+}
+

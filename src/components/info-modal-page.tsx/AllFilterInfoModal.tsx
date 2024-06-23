@@ -9,7 +9,7 @@ import { useThemeContext } from "../../layout/ThemeContext";
 import { institusionTypeData } from "../../static/InfoModalDataBuilder";
 import BadgeFilter from "../commons/BadgeFilter";
 import ClearBadge from "../commons/ClearBadge";
-import { handleDeleteAllInfoModalFilter } from "../../helper/info-modal.helper";
+import { formatRupiah, handleDeleteAllInfoModalFilter } from "../../helper/info-modal.helper";
 
 interface AllFilterInfoModalProps {
   keyword: string;
@@ -43,7 +43,7 @@ const AllFilterInfoModal: FC<AllFilterInfoModalProps> = ({
 
       {(nominalFilter[0] !== 0 || nominalFilter[1] !== 10000) && (
         <NormalFilterBadge
-          text={`Modal: ${nominalFilter[0]} - ${nominalFilter[1]} juta`}
+          text={`Modal: ${formatRupiah(nominalFilter[0])} - ${formatRupiah(nominalFilter[1])} juta`}
           handleClick={clearNominalFilter}
         />
       )}

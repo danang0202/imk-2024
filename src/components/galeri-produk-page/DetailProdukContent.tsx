@@ -22,6 +22,7 @@ import AllFilterBadgeGaleriProduk from "./AllFilterBadgeGaleriProduk";
 import { dropdownVariants } from "../../helper/motion.helper";
 import { IconFilterSearch } from "@tabler/icons-react";
 import { useThemeContext } from "../../layout/ThemeContext";
+import Breadcrumb from "../commons/BreadCrumb";
 
 const DetailProdukContent = () => {
   const [product, setProduct] = useState<productType[]>(galeriProdukData);
@@ -75,7 +76,10 @@ const DetailProdukContent = () => {
   }, [filter])
 
   return (
-    <div className="flex w-full justify-center">
+    <div className="flex w-full flex-col items-center">
+      <div className="w-11/12 lg:w-10/12 xl:w-4/5">
+        <Breadcrumb />
+      </div>
       <div
         className="flex flex-row gap-8 items-stretch justify-center w-11/12 lg:w-10/12 xl:w-4/5"
         id="list-product"
@@ -89,7 +93,7 @@ const DetailProdukContent = () => {
           </AnimatePresence>
         </div>
         <div className="w-full">
-          <div className="title my-4 flex flex-col md:flex-row justify-center xl:justify-between gap-4 dark:border-gray-500 text-black dark:text-white">
+          <div className="title xl:my-4 flex flex-col md:flex-row justify-center xl:justify-between gap-4 dark:border-gray-500 text-black dark:text-white">
             {/*  Tempat searching dan sorting */}
             <p className="text-sm md:hidden">Urutkan</p>
             <div className="left flex flex-row  xl:flex-row gap-2 md:gap-4 items-center z-30">

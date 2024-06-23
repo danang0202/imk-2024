@@ -79,7 +79,7 @@ const SearchProduct: FC<MinimalisSearchProps> = ({ filter, setFilter, products }
                         id="simple-search"
                         value={filter.keyword}
                         onChange={(e) => handleSearchChange(e.target.value)}
-                        className="text-gray-900 w-full pe-10 p-2.5 dark:text-white text-xs md:text-sm rounded-s bg-white dark:bg-black"
+                        className="text-gray-900 w-full pe-4 p-2.5 dark:text-white text-xs md:text-sm rounded-s bg-white dark:bg-black lg:min-w-[13rem] xl:min-w-[15rem]"
                         placeholder="Ketikkan nama produk atau UMKM.."
                         required
                     />

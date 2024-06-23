@@ -147,7 +147,7 @@ const SearchBar: React.FC<Props> = ({
                     {c("all")}
                   </button>
                 </li>
-                {columns.map((item) => (
+                {columns.filter((item) => item.slug !== "nominal" && item.slug !== "index").map((item) => (
                   <motion.li
                     key={item.slug}
                     variants={dropdownItemVariants}

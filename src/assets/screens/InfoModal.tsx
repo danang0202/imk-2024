@@ -64,7 +64,7 @@ const InfoModal = () => {
   
   return (
     <Layout pageTitle="Info Modal">
-      <div className="px-4 w-full pt-5xl xl:hidden bg-silver dark:bg-slate-800">
+      <div className="px-4 xl:px-8 w-full pt-5xl  bg-silver dark:bg-slate-800">
         <Breadcrumb />
       </div>
       {showModal && (
@@ -74,7 +74,7 @@ const InfoModal = () => {
           isData={true}
         />
       )}
-      <div className="flex items-stretch flex-row w-full pb-8 xl:pt-5.5xl  xl:pb-3xl xl:gap-4 xl:px-8 bg-silver dark:bg-slate-800 dark:text-white">
+      <div className="flex items-stretch flex-row w-full pb-8 xl:pt-4  xl:pb-3xl xl:gap-4 xl:px-8 bg-silver dark:bg-slate-800 dark:text-white">
         <AnimatePresence>
           {showFilter && (
             <TableModalFilter
@@ -131,7 +131,7 @@ const InfoModal = () => {
               </p>
             </div>
           </div>
-          <div className="px-4 lg:px-8 xl:px-3xl bg-white">
+          <div className="px-4 lg:px-8 xl:px-3xl bg-white dark:bg-black">
             <AllFilterInfoModal
               keyword={keyword}
               setKeyword={setKeyword}

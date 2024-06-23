@@ -111,6 +111,8 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
                             >
                                 <div className="px-2">
                                     <Slider
+                                        aria-label="Small steps"
+                                        step={10000}
                                         value={filter.harga}
                                         onChange={(_, newValue) => setFilter((prev) => ({ ...prev, harga: newValue as number[] }))}
                                         valueLabelDisplay="auto"
@@ -120,27 +122,36 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
                                         color="primary"
                                     />
                                 </div>
-                                <p className="text-xs lg:text-sm text-grey dark:text-gray-200 mt-2 mb-3">
+                                {/* <p className="text-xs lg:text-sm text-grey dark:text-gray-200 mt-2 mb-3">
                                     <span className="font-semibold">Catatan: </span>Harga dalam satuan rupiah
-                                </p>
-                                <div className="flex flex-row justify-between gap-4 items-center">
+                                </p> */}
+                                <div className="flex flex-row justify-between gap-4 items-center mt-3">
+                                    <p className="text-xs lg:text-sm">Rp</p>
                                     <input
                                         type="text"
                                         id="slider-lower"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded w-1/2 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded w-1/2 p-1 md:p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                                         value={filter.harga[0]}
                                         onChange={(e) => handleInputChange(0, e.target.value)}
                                         onBlur={() => handleInputBlur(0)}
                                     />
                                     <IconLineDashed />
+                                    <p className="text-xs lg:text-sm">Rp</p>
                                     <input
                                         type="text"
                                         id="slider-upper"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded  w-1/2 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded  w-1/2 p-1 md:p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                                         value={filter.harga[1] || ""}
                                         onChange={(e) => handleInputChange(1, e.target.value)}
                                         onBlur={() => handleInputBlur(1)}
                                     />
+                                </div>
+                                <div className="grid grid-cols-2 gap-4 my-8">
+                                    <ButtonNominalFilter text="< 100RB" setFilter={setFilter} filter={filter} min={0} max={100000} />
+                                    <ButtonNominalFilter text="100RB - 250RB" setFilter={setFilter} filter={filter} min={100000} max={250000} />
+                                    <ButtonNominalFilter text="250RB - 500RB" setFilter={setFilter} filter={filter} min={250000} max={500000} />
+                                    <ButtonNominalFilter text="500RB - 750RB" setFilter={setFilter} filter={filter} min={500000} max={750000} />
+                                    <ButtonNominalFilter text="> 750RB" setFilter={setFilter} filter={filter} min={750000} max={1000000} />
                                 </div>
                             </motion.div>
                         )}
@@ -150,5 +161,20 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
         </motion.div>
     )
 }
-
 export default FacatedFilterProduct
+
+
+export type ButtonNominalFilterProps = {
+    text: string
+    filter: FilterProduct
+    setFilter: Dispatch<SetStateAction<FilterProduct>>
+    min: number
+    max: number
+}
+const ButtonNominalFilter: FC<ButtonNominalFilterProps> = ({ text, setFilter, min, max, filter }) => {
+    return (
+        <div className={`cursor-pointer ${filter.harga[0] == min && filter.harga[1] == max ? 'border-2 border-primary text-success' : 'bg-gray-100 hover:bg-gray-200 text-black dark:text-white dark:bg-slate-800 dark:hover:bg-slate-700'} p-2 px-4 rounded-sm  transition-colors duration-300`} onClick={() => setFilter((prev) => ({ ...prev, harga: [min, max] }))}>
+            <p className="text-xs md:text-sm text-center">{text}</p>
+        </div>
+    )
+}

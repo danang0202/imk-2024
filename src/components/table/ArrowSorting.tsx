@@ -15,8 +15,8 @@ const ArrowSorting: React.FC<Props> = ({
     <svg
       className={`w-4 h-4 cursor-pointer ${
         activeColumn?.includes(includes)
-          ? "text-[#000]"
-          : "text-inactive group-hover:text-black rotate-180"
+          ? "text-black dark:text-white"
+          : "text-inactive group-hover:text-black rotate-180 dark:text-gray-500"
       } ${sortingColumn?.toString === includes.toString ? "rotate-180" : "rotate-0"}
 `}
       onClick={() => onClickFunction(includes)}

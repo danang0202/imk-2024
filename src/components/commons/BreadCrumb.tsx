@@ -7,14 +7,14 @@ const Breadcrumb: React.FC = () => {
 
   return (
     <nav
-      className="flex  py-3 xl:pt-3 xl:pb-0 text-gray-700  dark:text-white"
+      className="flex py-3 xl:pt-3 xl:pb-0 text-gray-700  dark:text-white"
       aria-label="Breadcrumb"
     >
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li className="inline-flex items-center">
           <a
             href="/beranda"
-            className="inline-flex items-center text-xs md:text-sm font-medium hover:text-primary dark:hover:text-white/75"
+            className="inline-flex items-center text-xs md:text-sm lg:text-base font-medium hover:text-primary dark:hover:text-white/75"
           >
             <svg
               className="w-3 h-3 me-2.5"
@@ -49,7 +49,7 @@ const Breadcrumb: React.FC = () => {
                     d="m1 9 4-4-4-4"
                   />
                 </svg>
-                <span className="ms-1 text-xs md:text-sm font-medium ">
+                <span className="ms-1 text-xs md:text-sm lg:text-base ">
                   {capitalizeWords(value)}
                 </span>
               </div>
@@ -74,7 +74,7 @@ const Breadcrumb: React.FC = () => {
                 </svg>
                 <a
                   href={to}
-                  className="ms-1 text-xs md:text-sm font-medium  hover:text-primary md:ms-2 dark:hover:text-white/75"
+                  className="ms-1 text-xs md:text-sm lg:text-base font-medium  hover:text-primary md:ms-2 dark:hover:text-white/75"
                 >
                   {capitalizeWords(value)}
                 </a>

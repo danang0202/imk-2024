@@ -89,9 +89,6 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                       </span>
                     </div>
                   </th>
-                  {/* <th className="bg-white py-3 pr-2 justify-center text-black sm:text-base  dark:text-white rounded-br dark:bg-black">
-                    Tindakan
-                  </th> */}
                 </tr>
               </thead>
               <tbody className="text-sm md:text-base">

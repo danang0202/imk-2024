@@ -272,11 +272,13 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                     </li>
                   </ol>
                   {loading && (
-                    <div className="w-ful rounded-full mb-4">
-                      <p className="text-xs md:text-sm">Mempersiapkan data</p>
+                    <div className="w-full rounded-full mb-4 px-1 py-1">
+                      <p className="text-xs md:text-sm pb-2">Mempersiapkan data ({progress}%)</p>
                       <div
-                        className="bg-info h-1.5 rounded-full dark:bg-blue-500"
-                        style={{ width: `${progress}%` }}
+                        className="h-1.5 rounded-full bg-info"
+                        style={{
+                          width: `${progress}%`,
+                        }}
                       ></div>
                     </div>
                   )}
@@ -310,7 +312,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
           </AnimatePresence>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

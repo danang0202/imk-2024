@@ -34,7 +34,7 @@ import NormalFilter from "../../components/table/NormalFilter";
 import AllFilterBadge from "../../components/table/AllFilterBadge";
 import { handleDeleteAllFilter } from "../../helper/filter-umkm.helper";
 import SearchBar from "../../components/table/SearchBar";
-import { rowVariants } from "../../helper/motion.helper";
+import { rowVariants, variantsOpacity } from "../../helper/motion.helper";
 
 const Gis: React.FC = () => {
   const [selectedKecamatan, setSelectedKecamatan] =
@@ -117,10 +117,10 @@ const Gis: React.FC = () => {
 
   return (
     <Layout pageTitle="GIS">
-      <div className="px-4 xl:hidden pt-5xl w-full bg-white xl:bg-silver dark:bg-slate-800">
+      <div className="px-4 xl:px-8 pt-5xl w-full bg-white xl:bg-silver dark:bg-slate-800">
         <Breadcrumb />
       </div>
-      <div className="xl:pt-5.5xl flex flex-row w-full items-stretch pb-0 xl:pb-8 bg-silver dark:bg-slate-800 min-h-[85vh] xl:gap-4 xl:px-8">
+      <div className="pt-4 flex flex-row w-full items-stretch pb-0 xl:pb-8 bg-silver dark:bg-slate-800 min-h-[85vh] xl:gap-4 xl:px-8">
         <div className="bg-white dark:bg-black rounded shadow-sm dark:text-white">
           <AnimatePresence>
             {delayAdvancedFilter && (
@@ -161,6 +161,13 @@ const Gis: React.FC = () => {
             )}
           </AnimatePresence>
         </div>
+        <AnimatePresence>
+          {!showFilter && !showAdvancedFilter && (
+            <motion.div variants={variantsOpacity} transition={{ duration: .3 }} initial="hidden" animate="visible" exit={"exit"} className="hidden xl:inline box bg-white dark:bg-black h-fit p-4 rounded hover:bg-inactive cursor-pointer transition-colors duration-300" onClick={() => { setShowFilter(true); setDelayFilter(true) }}>
+              <IconFilterSearch size={20} />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <motion.div
           transition={{ duration: 0.5 }}

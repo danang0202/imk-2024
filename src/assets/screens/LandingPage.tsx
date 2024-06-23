@@ -81,7 +81,7 @@ const LandingPage: React.FC = () => {
               </h1>
               <IconDotsVertical
                 size={100}
-                className="hidden xl:block translate-x-20 dark:text-white"
+                className="hidden xl:block translate-x-20 text-grey dark:text-white"
               />
             </div>
             <h1 className="text-black font-semibold text-3xl md:text-4xl lg:text-6xl text-center xl:text-left dark:text-white w-full">
@@ -104,7 +104,7 @@ const LandingPage: React.FC = () => {
                 data-aos-duration="800"
                 className="h-[200px] md:h-[350px] lg:h-[500px] object-contain drop-shadow-lg"
               />
-              <div className="flex flex-row justify-center gap-4 dark:text-white">
+              <div className="flex flex-row justify-center gap-4 text-grey dark:text-white">
                 <IconDotsVertical className="transform rotate-90" size={30} />
                 <IconDotsVertical className="transform rotate-90" size={30} />
               </div>
@@ -151,7 +151,7 @@ const LandingPage: React.FC = () => {
               className="h-[750px] object-contain drop-shadow-lg"
             />
           </div>
-          <div className="flex justify-end -translate-y-4 pr-3xl dark:text-white">
+          <div className="flex justify-end -translate-y-4 pr-3xl text-grey dark:text-white">
             <IconDotsVertical className="transform rotate-90" size={100} />
           </div>
         </div>
