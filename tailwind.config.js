@@ -65,6 +65,10 @@ export default {
         '5.5xl': '6rem',
         '6xl': '7rem', // Add a new padding size with a custom value
       },
+      fontFamily: {
+        sans: ['DM Sans', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
     },
   },
   plugins: [],

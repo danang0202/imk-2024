@@ -73,7 +73,7 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
                     }}
                 />
                 <div className="pb-4 border-b border-grey">
-                    <h1 className="font-bold text-center text-black dark:text-white">
+                    <h1 className="font-semibold text-center text-black dark:text-white">
                         <FontAwesomeIcon icon={faList} className="pr-3" />
                         Filter Produk
                     </h1>

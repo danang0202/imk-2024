@@ -74,7 +74,7 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
       </div>
       <div className="flex flex-col justify-start gap-2">
         <div className="border-b border-grey pt-2 pb-4">
-          <h1 className="font-bold text-center">
+          <h1 className="font-semibold text-center">
             {" "}
             <FontAwesomeIcon icon={faList} className="pr-3" />
             {c("filterTitle")}

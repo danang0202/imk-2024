@@ -150,7 +150,7 @@ const DataUmkm = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="p-4 xl:p-6 xl:pb-4 bg-white box flex flex-col gap-4 xl:flex-row xl:gap-0 justify-between items-center rounded-t dark:bg-black">
-            <h1 className="font-bold d text-base text-center border-b border-grey pb-2 xl:font-semibolf xl:text-left xl:border-0 xl:pb-0 text-black dark:text-white">
+            <h1 className="font-semibold d text-base text-center border-b border-grey pb-2 xl:font-semibolf xl:text-left xl:border-0 xl:pb-0 text-black dark:text-white">
               {t("dataTitle")}
             </h1>
             <div className="md:flex flex-row md:justify-between md:w-full xl:w-fit pt-2 xl:pt-0 z-40">

@@ -74,7 +74,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           <div
             className={`border-b-2 border-grey pb-4`}
           >
-            <h1 className="font-bold text-sm lg:text-base text-center">
+            <h1 className="font-semibold text-sm lg:text-base text-center">
               {" "}
               <FontAwesomeIcon icon={faList} className="pr-3" /> {c('advancedTitle')}
             </h1>

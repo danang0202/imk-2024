@@ -71,7 +71,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
           </div>
           <div className="flex flex-col justify-start gap-4">
             <div className="border-b border-grey pb-4">
-              <h1 className="font-bold text-center xl:text-base">
+              <h1 className="font-semibold text-center xl:text-base">
                 <FontAwesomeIcon icon={faList} className="pr-3" />
                 {c("filterTitle")}
               </h1>

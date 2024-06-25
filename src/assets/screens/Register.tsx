@@ -2,7 +2,6 @@ import { useState } from "react";
 import Layout from "../../components/Layout";
 import { useThemeContext } from "../../layout/ThemeContext";
 import { badanHukumUsaha, bidangUsaha, dinasPengampu } from "../../DataBuilder";
-import { index } from "d3";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
