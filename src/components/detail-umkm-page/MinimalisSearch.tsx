@@ -4,6 +4,7 @@ import { updateKeywordFilterDetailUMKM } from "../../helper/detail-product.helpe
 import { productType } from "../../types/common.types";
 import { AnimatePresence, motion } from "framer-motion";
 import { dropdownVariants, rowVariants } from "../../helper/motion.helper";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface MinimalisSearchProps {
   filter: FilterDetailUMKM;
@@ -14,6 +15,7 @@ interface MinimalisSearchProps {
 const MinimalisSearch: FC<MinimalisSearchProps> = ({ filter, setFilter, produk }) => {
   const [recommendationsName, setRecommendationsName] = useState<productType[]>([]);
   const ref = useRef<HTMLUListElement>(null);
+  const { common: c } = useThemeContext();
 
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -81,7 +83,7 @@ const MinimalisSearch: FC<MinimalisSearchProps> = ({ filter, setFilter, produk }
               handleSearchChange(e.target.value);
             }}
             className="bg-gray-50 border border-gray-300 text-gray-900 rounded focus:border-secondary focus:ring-secondary w-full ps-10 p-1.5 px-2 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500  text-xs"
-            placeholder="Ketikkan nama product.."
+            placeholder={`${c("keyword")}...`}
             required
           />
         </div>

@@ -47,10 +47,40 @@ const umkmData = [
   },
 ];
 
+const translatedData = [
+  { label: "Business Name", value: "Safiira Hampers" },
+  { label: "Business Scale", value: "Micro Business" },
+  { label: "Business Field", value: "Trade" },
+  { label: "Supervising Department", value: "Department of Cooperatives and SMEs" },
+  { label: "Owner Name", value: "Nining Ayuni, S.Ak." },
+  { label: "Legal Entity", value: "Individual" },
+  { label: "Product", value: "Handicrafts" },
+  { label: "Phone Number", value: "08123456789" },
+  { label: "Registration Number", value: "123456" },
+  { label: "License Number", value: "7891011" },
+  { label: "Brand", value: "Safiira" },
+  { label: "Website", value: "http://www.umkmsafiira.com" },
+  { label: "Employees", value: "M: 5 people, F: 3 people" },
+  { label: "Assets", value: "Rp. 50,000,000.00" },
+  { label: "Revenue", value: "Rp. 100,000,000.00" },
+  { label: "Tax Number", value: "01.234.567.8-901.000" },
+  { label: "Raw Materials", value: "Wood, Bamboo" },
+  { label: "Material Source", value: "Local" },
+  { label: "Export Countries", value: "Japan, America" },
+  { label: "Production", value: "1000 units / month" },
+  { label: "Land Area", value: "500 m²" },
+  { label: "Land Ownership", value: "Private Property" },
+  { label: "KMS Ownership", value: "Yes" },
+  { label: "Address", value: "RT 10, RW 00, Gentan, Sidorejo, Lendah, Kulon Progo" }
+];
+
+
 const DetailUmkmContent = () => {
+  const { common: c } = useThemeContext();
   const [product, setProduct] = useState<productType[]>(produkSafiira);
+  const [data, setData] = useState(umkmData);
   const [paginatedData, setPaginatedData] = useState<productType[]>([]);
-  const { windowWidth } = useThemeContext();
+  const { windowWidth, lang } = useThemeContext();
   const limit =
     windowWidth < EXTENDED_WINDOW.md
       ? 10
@@ -93,12 +123,20 @@ const DetailUmkmContent = () => {
     setProduct(filterAndSortProducts(produkSafiira, filter));
   }, [filter]);
 
+  useEffect(() => {
+    if (lang == 'id') {
+      setData(umkmData)
+    } else {
+      setData(translatedData)
+    }
+  }, [lang])
+
   return (
     <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-4 dark:text-white">
       <div className="w-full xl:w-1/2 flex flex-col items-center">
         <div className="title w-full pb-2 my-4 flex justify-between  dark:border-gray-500">
           <p className=" text-base font-semibold">
-            Informasi Dasar UMKM
+            {c("Informasi Dasar UMKM")}
           </p>{" "}
         </div>
         <div className="main-content flex flex-col  md:flex-row gap-2 bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 rounded items-center justify-between w-full">
@@ -112,7 +150,7 @@ const DetailUmkmContent = () => {
           <div className="main-information flex flex-col md:flex-row md:gap-4 items-stretch w-full">
             <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
-                {umkmData.slice(0, 4).map((item, index) => (
+                {data.slice(0, 4).map((item, index) => (
                   <tr key={index}>
                     <td
                       scope="row"
@@ -138,7 +176,7 @@ const DetailUmkmContent = () => {
             </table>
             <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
-                {umkmData.slice(4, 8).map((item, index) => (
+                {data.slice(4, 8).map((item, index) => (
                   <tr key={index}>
                     <td
                       scope="row"
@@ -175,14 +213,14 @@ const DetailUmkmContent = () => {
         </div>
         <div className="title w-full py-2 my-4 flex justify-between  dark:border-gray-500">
           <p className="text-base font-semibold">
-            Informasi Lanjutan UMKM
+            {c("Informasi Lanjutan UMKM")}
           </p>{" "}
         </div>
         {windowWidth < EXTENDED_WINDOW.md ? (
           <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 rounded">
             <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
-                {umkmData.slice(8).map((item, index) => (
+                {data.slice(8).map((item, index) => (
                   <tr key={index}>
                     <td
                       scope="row"
@@ -204,7 +242,7 @@ const DetailUmkmContent = () => {
           <div className="flex flex-col md:flex-row md:gap-2 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 rounded">
             <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
-                {umkmData.slice(8, 17).map((item, index) => (
+                {data.slice(8, 17).map((item, index) => (
                   <tr key={index}>
                     <td
                       scope="row"
@@ -226,7 +264,7 @@ const DetailUmkmContent = () => {
             </table>
             <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
-                {umkmData.slice(17).map((item, index) => (
+                {data.slice(17).map((item, index) => (
                   <tr key={index}>
                     <td
                       scope="row"
@@ -235,7 +273,7 @@ const DetailUmkmContent = () => {
                       {item.label}
                     </td>
                     <td
-                      className={`${item.label == "Alamat"
+                      className={`${item.label == "Alamat" || item.label == "Address"
                         ? "whitespace-normal"
                         : "whitespace-nowrap"
                         }`}
@@ -255,7 +293,7 @@ const DetailUmkmContent = () => {
       >
         <div className="box w-full flex flex-col items-center xl:-translate-y-1">
           <div className="title w-full my-4 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
-            <p className="text-base font-semibold">Galeri Produk</p>
+            <p className="text-base font-semibold">{c("Galeri Produk")}</p>
             <div className="box flex w-full md:w-fit justify-between md:justify-normal gap-4">
               <SortingSelection filter={filter} setFilter={setFilter} />
               <MinimalisSearch filter={filter} setFilter={setFilter} produk={produkSafiira} />
@@ -287,9 +325,9 @@ const DetailUmkmContent = () => {
         </div>
         <div className="py-6 flex flex-col md:flex-row justify-between items-center w-full gap-4">
           <p className="text-xs md:text-sm ">
-            Menampilkan{" "}
-            <span className="">{page * limit - limit + 1}</span> -
-            <span className=""> {page * limit} </span> dari {""}
+            {c("show")}
+            <span className=""> {page * limit - limit + 1}</span> -
+            <span className=""> {page * limit} </span> dari {c("from")}
             <span className=""> {produkSafiira.length} </span> produk
           </p>
           <MinimalisPagination

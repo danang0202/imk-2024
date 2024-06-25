@@ -5,6 +5,7 @@ import {
 } from "../../helper/motion.helper";
 import { TypeData } from "../table/Selection";
 import { AnimatePresence, motion } from "framer-motion";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface Props {
   show: boolean;
@@ -22,6 +23,7 @@ const FilterChartSelection: React.FC<Props> = ({
   setSelectedFilter,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const { common: c } = useThemeContext()
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
       setShow(false);
@@ -40,12 +42,12 @@ const FilterChartSelection: React.FC<Props> = ({
       <div>
         <button
           type="button"
-          className="whitespace-nowrap inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white dark:bg-slate-800 dark:text-white py-1.5 px-2 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-slate-800"
+          className="whitespace-nowrap inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white dark:bg-slate-800 dark:text-white py-1.5 px-2 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-slate-800 min-w-20"
           aria-expanded="true"
           aria-haspopup="true"
           onClick={() => setShow(!show)}
         >
-          {selectedFilter?.name}
+          {c(selectedFilter?.name)}
           <svg
             className="-mr-1 h-4 w-4 text-gray-400"
             viewBox="0 0 20 20"
@@ -84,7 +86,7 @@ const FilterChartSelection: React.FC<Props> = ({
                     variants={dropdownItemVariants}
                     transition={{ duration: 0.3 }}
                   >
-                    {item.name}
+                    {c(item.name)}
                   </motion.p>
                 ))}
               </AnimatePresence>

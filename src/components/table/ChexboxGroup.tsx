@@ -26,7 +26,7 @@ const ChexboxGroup: React.FC<Props> = ({
     }
   };
 
-  const { theme } = useThemeContext();
+  const { theme, common: c } = useThemeContext();
 
   return (
     <ul className="w-full text-xs md:text-sm text-gray-900 bg-white rounded-lg dark:bg-black">
@@ -36,7 +36,7 @@ const ChexboxGroup: React.FC<Props> = ({
             <div className="flex items-center ps-1">
               <Checkbox
                 checked={selectedData.includes(item)}
-                label={item.name}
+                label={c(item.name)}
                 c={theme == "dark" ? "white" : EXTENDEDCOLORS.black}
                 color={EXTENDEDCOLORS.primary}
                 py={".5rem"}

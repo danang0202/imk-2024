@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import Breadcrumb from '../../components/commons/BreadCrumb';
 import { IconBuildingStore, IconHeart, IconHeartFilled, IconPhoneCall, IconTruck } from '@tabler/icons-react';
@@ -11,7 +11,7 @@ const DetailProduk = () => {
   const itemData = {
     nama: 'Bucket Kado Ulang Tahun dan Wisuda',
     harga: '130.000',
-    kategori: 'kerajinan',
+    kategori: 'Kerajinan',
     lokasi: 'RT 10, RW 00, Gentan, Sidorejo, Lendah, Kulon Progo',
     umkm: 'Safiira Hampers',
     like: 3025,
@@ -21,6 +21,8 @@ const DetailProduk = () => {
   };
 
   const [item, setItem] = useState(itemData);
+  const { common: c, lang } = useThemeContext();
+  const [content, setContent] = useState<contentType>();
 
   const [showMore, setShowMore] = useState(false);
 
@@ -55,6 +57,14 @@ const DetailProduk = () => {
       setItem((prev) => ({ ...prev, like: item.like + 1, isLiked: true }))
     }
   }
+
+  useEffect(() => {
+    if (lang == "id") {
+      setContent(desc[0])
+    } else {
+      setContent(desc[1])
+    }
+  }, [lang])
 
   return (
     <Layout pageTitle="Detail Produk">
@@ -102,7 +112,7 @@ const DetailProduk = () => {
                 <div className="text-left text-base font-medium">{item.nama}</div>
                 <div className="text-left text-sm flex items-center gap-8 mb-2">
                   <div className="box px-1 bg-secondary rounded-sm w-fit text-white">
-                    <p className='ttext-sm'>{item.kategori.toLowerCase()}</p>
+                    <p className='ttext-sm'>{c(item.kategori)}</p>
                   </div>
                   <p className='text-grey'>|</p>
                   <div className="w-full flex flex-row gap-1 items-center justify-start py-2 cursor-pointer hover:opacity-75 transition-all duration-300" onClick={() => handleLike()}>
@@ -119,26 +129,26 @@ const DetailProduk = () => {
                 </div>
                 <div className="flex items-center gap-1 mt-4 justify-end ">
                   <IconTruck size={windowWidth < EXTENDED_WINDOW.md ? 20 : 20} className='text-primary ' />
-                  <p className='font-semibold text-xs md:text-sm'>Pengiriman ke seluruh wilayah DI. Yogyakarta</p>
+                  <p className='font-semibold text-xs md:text-sm'>{c("Pengiriman ke seluruh wilayah DI. Yogyakarta")}</p>
                 </div>
 
                 <div className="spesifikasi text-sm">
-                  <p className='font-semibold pt-4 md:pt-2 pb-2'>Spesifikasi Produk</p>
+                  <p className='font-semibold pt-4 md:pt-2 pb-2'>{c("Spesifikasi Produk")}</p>
                   <table className='w-full border-separate border-spacing-1'>
                     <tr>
-                      <td className='text-grey dark:text-gray-300'>Kategori</td>
-                      <td >Kerajinan</td>
+                      <td className='text-grey dark:text-gray-300'>{c("Kategori")}</td>
+                      <td >{c("Kerajinan")}</td>
                     </tr>
                     <tr>
-                      <td className='text-grey dark:text-gray-300'>Dikirim Dari</td>
+                      <td className='text-grey dark:text-gray-300'>{c("Dikirim Dari")}</td>
                       <td >Lendah, Kulon Progo</td>
                     </tr>
                     <tr>
-                      <td className='text-grey dark:text-gray-300'>Stok</td>
+                      <td className='text-grey dark:text-gray-300'>{c("Stok")}</td>
                       <td ><p>20</p></td>
                     </tr>
                     <tr>
-                      <td className='text-grey dark:text-gray-300'>Tipe Pemesanan</td>
+                      <td className='text-grey dark:text-gray-300'>{c("Tipe Pemesanan")}</td>
                       <td>
                         <div className="w-full flex justify-start">
                           <div className="bg-blue-100 px-2 py-1 rounded-sm">
@@ -151,7 +161,7 @@ const DetailProduk = () => {
                 </div>
 
                 <div className="spesifikasi text-sm">
-                  <p className='font-semibold pt-4 pb-2'>Tipe Produk</p>
+                  <p className='font-semibold pt-4 pb-2'>{c("Tipe Produk")}</p>
                   <div className="w-full flex flex-wrap gap-4">
                     {productTypes.map((type, index) => (
                       <div key={index} className={`border border-primary p-1.5 md:p-2 cursor-pointer rounded-sm  transition-colors duration-300 ${selectedImage == item.thumbnails[index] ? 'bg-primary text-white' : 'bg-white dark:bg-black hover:bg-gray-200'}`} onClick={() => { handleThumbnailClick(item.thumbnails[index]) }}>
@@ -162,9 +172,9 @@ const DetailProduk = () => {
                 </div>
 
                 <div className="w-fll flex justify-between mt-4 items-end">
-                  <p className='text-xs text-grey dark:text-gray-300 hover:text-black cursor-pointer' onClick={() => ButtonLihatDeskripsiOnClick()}>Lihat Deskripsi</p>
+                  <p className='text-xs text-grey dark:text-gray-300 hover:text-black cursor-pointer' onClick={() => ButtonLihatDeskripsiOnClick()}>{c("Lihat Deskripsi")}</p>
                   <div className="bg-primary text-white p-2 rounded-sm flex gap-2 items-center cursor-pointer hover:bg-primary/75 transition-colors duration-300" onClick={() => handlePesan()}>
-                    <p className='text-xs'>Hubungi Penjual</p>
+                    <p className='text-xs'>{c("Hubungi Penjual")}</p>
                     <IconPhoneCall className='text-white' size={17} />
                   </div>
 
@@ -174,14 +184,14 @@ const DetailProduk = () => {
             </div>
           </div>
           <div className="bg-white dark:bg-black text-black dark:text-white shadow-sm my-4 w-full flex flex-col lg:flex-row justify-between gap-0 md:gap-4 px-4 xl:px-6 py-6">
-            <div className="flex gap-4 xl:min-w-[15rem]">
+            <div className="flex gap-4 xl:min-w-[18rem]">
               <div className="flex items-center">
-                <img src={`/logo-umkm/logo-umkm-1.png`} alt="Logo UMKM" className='h-12 md:h-14' />
+                <img src={`/logo-umkm/logo-umkm-1.png`} alt="Logo UMKM" className='h-12 md:h-14 md:w-16' />
               </div>
               <div className="flex flex-col items-start justify-center gap-2 border-r border-gray-200 pr-4">
                 <div className="">
                   <p className='font-semibold text-sm'>Safiira Hampers</p >
-                  <p className='text-xs text-gray-500 dark:text-gray-400'>Dinas Kopearsi dan UKM</p>
+                  <p className='text-xs text-gray-500 dark:text-gray-400'>{c("Dinas Koperasi dan UKM")}</p>
                 </div>
               </div>
             </div>
@@ -189,16 +199,16 @@ const DetailProduk = () => {
               <div className="w-full">
                 <table className='border-separate border-spacing-1 min-w-[18rem] text-sm md:text-base'>
                   <tr>
-                    <td className='text-grey dark:text-gray-300'>Produk</td>
+                    <td className='text-grey dark:text-gray-300'>{c("Produk")}</td>
                     <td className=' text-orange-600'>35</td>
                   </tr>
                   <tr>
                     <td className='text-grey dark:text-gray-300'>Favorit</td>
-                    <td className=' text-orange-600'>3RB suka</td>
+                    <td className=' text-orange-600'>3RB  {c('Suka').toLowerCase()}</td>
                   </tr>
                   <tr>
-                    <td className='text-grey dark:text-gray-300'>Bergabung</td>
-                    <td className='text-orange-600'>2 Tahun yang lalu</td>
+                    <td className='text-grey dark:text-gray-300'>{c("Bergabung")}</td>
+                    <td className='text-orange-600'>2 {c("Years Ago")}</td>
                   </tr>
                   <tr>
                     <td className='text-grey dark:text-gray-300'>Favorit</td>
@@ -219,20 +229,20 @@ const DetailProduk = () => {
                 <div className="">
                   <table className='border-separate border-spacing-1 text-sm'>
                     <tr>
-                      <td className='text-grey dark:text-gray-300'>Produk</td>
+                      <td className='text-grey dark:text-gray-300'>{c("Produk")}</td>
                       <td className=' text-orange-600 dark:text-gray-300'>35</td>
                     </tr>
                     <tr>
                       <td className='text-grey dark:text-gray-300'>Favorit</td>
-                      <td className=' text-orange-600 dark:text-gray-300'>3RB suka</td>
+                      <td className=' text-orange-600 dark:text-gray-300'>3RB {c('Suka').toLowerCase()}</td>
                     </tr>
                   </table>
                 </div>
                 <div className="">
-                  <table className='border-separate border-spacing-1 xl:min-w-[18rem] text-sm'>
+                  <table className='border-separate border-spacing-1 text-sm'>
                     <tr>
-                      <td className='text-grey dark:text-gray-300'>Bergabung</td>
-                      <td className='text-orange-600'>2 Tahun yang lalu</td>
+                      <td className='text-grey dark:text-gray-300'>{c("Bergabung")}</td>
+                      <td className='text-orange-600'>2 {c("Years Ago")}</td>
                     </tr>
                     <tr>
                       <td className='text-grey dark:text-gray-300'>Favorit</td>
@@ -244,7 +254,7 @@ const DetailProduk = () => {
                   <a href="/data-umkm/detail">
                     <div className="border rounded-sm p-2 flex gap-2 items-center cursor-pointer transition-colors duration-300 hover:bg-inactive">
                       <IconBuildingStore className='text-black dark:text-white' size={windowWidth < EXTENDED_WINDOW.md ? 15 : 17} />
-                      <p className='text-xs'>Kunjungi UMKM</p>
+                      <p className='text-xs'>{c("Kunjungi UMKM")}</p>
                     </div>
                   </a>
                 </div>
@@ -255,40 +265,38 @@ const DetailProduk = () => {
 
           <div className="desc-section w-full bg-white dark:bg-black px-4 lg:px-8 py-6 shadow-sm text-black dark:text-white" id='desc'>
             <div className="bg-silver dark:bg-slate-800 p-4 mb-4">
-              <p className='font-semibold text-base'>Deskripsi Produk</p>
+              <p className='font-semibold text-base'>{c("Deskripsi Produk")}</p>
             </div>
             <div className="ps-4 text-sm">
-              <p>Untuk Request warna bunga, kreb dan ucapan serta tanggal pengirimannya di tulis di catatan penjual ya kak, terimakasih</p>
-              <p>Jadwal Pengiriman dari jam 07:00 - 15:00 WIB</p>
+              <p>{content?.note}</p>
+              <p>{content?.schedule}</p>
               <br />
-              <p>Buket bunga mawar fresh isi 5 tangkai + Kartu ucapan</p>
-              <p>Bunga yang Kami Sediakan Bunga Segar</p>
+              <p>{content?.bouquet}</p>
+              <p>{content?.freshFlowers}</p>
               <br />
-              <p>Untuk request Bunga Tersedia Warna :</p>
-              <p>1.Bunga mawar Merah</p>
-              <p>2.Bunga mawar Putih</p>
+              <p>{content?.request}</p>
+              {content?.flowers.slice(0, 2).map((flower, index) => (
+                <p key={index}>{index + 1}. {flower}</p>
+              ))}
               <AnimatePresence>
                 {showMore && (
-                  <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} transition={{ duration: .5 }}>
-                    <p>3.Bunga mawar Pink Tua</p>
-                    <p>4.Bunga mawar Pink Muda</p>
-                    <p>5. Bunga mawar Peac</p>
-                    <p>6. Bunga mawar Biru Muda</p>
+                  <motion.div
+                    variants={dropdownVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    transition={{ duration: 0.5 }}
+                  >
+                    {content?.flowers.slice(2).map((flower, index) => (
+                      <p key={index}>{index + 3}. {flower}</p>
+                    ))}
                     <br />
-                    <p>Warna Kertas Krab Bisa di ganti dgn warna yg tersedia :</p>
-                    <p>1. Warna Putih</p>
-                    <p>2. Warna Pink</p>
-                    <p>3. Warna Merah</p>
-                    <p>4. Warna Peach</p>
-                    <p>5. Warna Ungu Tua</p>
-                    <p>6. Warna Biru Muda</p>
-                    <p>7. Warna Biru Tua</p>
-                    <p>8. Warna Gold</p>
-                    <p>9. Warna Kuning</p>
-                    <p>10. Warna Orens</p>
-                    <p>11. Warna Hitam</p>
+                    <p>{content?.paper}</p>
+                    {content?.papers.map((paper, index) => (
+                      <p key={index}>{index + 1}. {paper}</p>
+                    ))}
                     <br />
-                    <p>Terimakasih telah berbelanja di toko bunga kami.</p>
+                    <p>{content?.thankYou}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -315,4 +323,79 @@ const socialMedia = [
   { src: "/logo/facebook.png", alt: "fb", href: "https://facebook.com" },
 ];
 
-const productTypes = ["Campuran", "Mawar Merah", "Mawar Putih"];  
+const productTypes = ["Campuran", "Mawar Merah", "Mawar Putih"];
+
+type contentType = {
+  note: string;
+  schedule: string;
+  bouquet: string;
+  freshFlowers: string;
+  request: string;
+  flowers: string[];
+  paper: string;
+  papers: string[];
+  thankYou: string;
+}
+
+const desc = [
+  {
+    note: "Untuk Request warna bunga, kreb dan ucapan serta tanggal pengirimannya di tulis di catatan penjual ya kak, terimakasih",
+    schedule: "Jadwal Pengiriman dari jam 07:00 - 15:00 WIB",
+    bouquet: "Buket bunga mawar fresh isi 5 tangkai + Kartu ucapan",
+    freshFlowers: "Bunga yang Kami Sediakan Bunga Segar",
+    request: "Untuk request Bunga Tersedia Warna :",
+    flowers: [
+      "Bunga mawar Merah",
+      "Bunga mawar Putih",
+      "Bunga mawar Pink Tua",
+      "Bunga mawar Pink Muda",
+      "Bunga mawar Peach",
+      "Bunga mawar Biru Muda"
+    ],
+    paper: "Warna Kertas Krab Bisa di ganti dgn warna yg tersedia :",
+    papers: [
+      "Warna Putih",
+      "Warna Pink",
+      "Warna Merah",
+      "Warna Peach",
+      "Warna Ungu Tua",
+      "Warna Biru Muda",
+      "Warna Biru Tua",
+      "Warna Gold",
+      "Warna Kuning",
+      "Warna Orens",
+      "Warna Hitam"
+    ],
+    thankYou: "Terimakasih telah berbelanja di toko bunga kami."
+  },
+  {
+    note: "For flower color requests, crepe paper, and greeting cards, as well as the delivery date, please write in the seller's notes, thank you",
+    schedule: "Delivery Schedule from 07:00 - 15:00 WIB",
+    bouquet: "Fresh rose bouquet contains 5 stems + Greeting card",
+    freshFlowers: "We Provide Fresh Flowers",
+    request: "For flower requests, available colors are:",
+    flowers: [
+      "Red Rose",
+      "White Rose",
+      "Dark Pink Rose",
+      "Light Pink Rose",
+      "Peach Rose",
+      "Light Blue Rose"
+    ],
+    paper: "Crepe paper colors can be replaced with available colors:",
+    papers: [
+      "White",
+      "Pink",
+      "Red",
+      "Peach",
+      "Dark Purple",
+      "Light Blue",
+      "Dark Blue",
+      "Gold",
+      "Yellow",
+      "Orange",
+      "Black"
+    ],
+    thankYou: "Thank you for shopping at our flower shop."
+  }
+]

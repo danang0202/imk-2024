@@ -49,7 +49,7 @@ const Selection: React.FC<Props> = ({
         <option value="#">{c("all")}</option>
         {selectionData.map((item) => (
           <option key={item.slug} value={item.slug} className="text-xs">
-            {item.name}
+            {c(item.name)}
           </option>
         ))}
       </select>

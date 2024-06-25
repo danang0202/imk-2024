@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { TypeData } from "../table/Selection";
 import { EXTENDEDCOLORS } from "../../DataBuilder";
 import { variantsBadgeFilter } from "../../helper/motion.helper";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface Props {
   item: TypeData;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const BadgeFilter: React.FC<Props> = ({ item, handleClick, bg }) => {
+
+  const { common: c } = useThemeContext();
   return (
     <AnimatePresence>
       <motion.span
@@ -23,7 +26,7 @@ const BadgeFilter: React.FC<Props> = ({ item, handleClick, bg }) => {
         variants={variantsBadgeFilter}
         transition={{ duration: 0.3 }}
       >
-        {item.name}
+        {c(item.name)}
         <button
           type="button"
           className="inline-flex items-center p-1 ms-2 bg-transparent rounded-sm"

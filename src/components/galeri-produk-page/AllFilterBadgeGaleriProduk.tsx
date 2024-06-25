@@ -12,7 +12,7 @@ interface Props {
     setFilter: Dispatch<SetStateAction<FilterProduct>>
 }
 const AllFilterBadgeGaleriProduk: FC<Props> = ({ filter, setFilter }) => {
-    const { common: c } = useThemeContext();
+    const { common: c, product: p } = useThemeContext();
     return (
         <div className="my-4 flex flex-wrap gap-y-4">
             {filter.keyword && (
@@ -25,7 +25,7 @@ const AllFilterBadgeGaleriProduk: FC<Props> = ({ filter, setFilter }) => {
 
             {(filter.harga[0] !== 0 || filter.harga[1] !== 1000000) && (
                 <NormalFilterBadge
-                    text={`Harga: Rp ${formatRupiah(filter.harga[0])} - Rp ${formatRupiah(filter.harga[1])}`}
+                    text={`${p("sortHarga")}: Rp ${formatRupiah(filter.harga[0])} - Rp ${formatRupiah(filter.harga[1])}`}
                     handleClick={() => setFilter((prev) => ({ ...prev, harga: [0, 1000000] }))}
                     bg="bg-white"
                 />

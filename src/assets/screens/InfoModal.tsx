@@ -61,7 +61,7 @@ const InfoModal = () => {
       )
     );
   }, [searchColumn, keyword, nominalFilter, institutionFilter, data]);
-  
+
   return (
     <Layout pageTitle="Info Modal">
       <div className="px-4 xl:px-8 w-full pt-5xl  bg-silver dark:bg-slate-800">
@@ -101,7 +101,7 @@ const InfoModal = () => {
         >
           <div className="pt-4 xl:pt-8 bg-white box flex flex-col gap-4 xl:flex-row xl:gap-0 justify-between px-4 lg:px-8 py-4 items-center rounded-t dark:bg-black">
             <h1 className="font-semibold text-base text-center border-b border-grey pb-2 xl:text-left  xl:border-0 xl:pb-0 text-black dark:text-white">
-              {"Info Modal UMKM Kulonprogo Tahun 2024"}
+              {c("Info Modal UMKM Kulon Progo Tahun 2024")}
             </h1>
             <div className="md:flex flex-row md:justify-between  md:w-full xl:w-fit pt-2 xl:pt-0 z-40">
               <SearchBar
@@ -115,7 +115,7 @@ const InfoModal = () => {
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="hidden md:flex text-xs lg:text-sm bg-secondary flex-row gap-2 items-center px-2.5 py-1 rounded hover:bg-secondary/90 cursor-pointer text-white"
+                className="hidden md:flex text-xs lg:text-sm bg-secondary flex-row gap-2 items-center px-2 py-1 rounded hover:bg-secondary/90 cursor-pointer text-white"
                 onClick={() => setShowModal(true)}
               >
                 <IconDownload />

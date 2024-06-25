@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faList } from "@fortawesome/free-solid-svg-icons";
-import {  kategoriProduk, kecamatanSlug } from "../../DataBuilder";
+import { kategoriProduk, kecamatanSlug } from "../../DataBuilder";
 import FilterGroup from "./FilterGroup";
 import { FilterProduct } from "../../types/geleri-produk.types";
 import { Dispatch, FC, SetStateAction, useState } from "react";
@@ -11,6 +11,7 @@ import { dropdownVariants, variantsFilterInfoModal } from "../../helper/motion.h
 import { Slider } from "@mui/material";
 import { IconFilterSearch, IconLineDashed } from "@tabler/icons-react";
 import { ChevronDown } from "lucide-react";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface FacatedFilterProductProps {
     showFilter: boolean,
@@ -52,6 +53,8 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
         setFilter((prev) => ({ ...prev, harga: newNominal }));
     };
 
+    const { common: c } = useThemeContext();
+
     return (
         <motion.div
             initial="hidden"
@@ -75,7 +78,7 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
                         Filter Produk
                     </h1>
                 </div>
-                <FilterGroup title="Kategori" data={kategoriProduk} selectedData={filter.kategori} handleClick={handleKategoriClick} handleClickAll={() => handleClickAllFilterProductPerGroup(kategoriProduk, setFilter, 'kategori')} handleClearAll={() => handleClearFilterProductPerGroup(setFilter, 'kategori')}
+                <FilterGroup title={c("category")} data={kategoriProduk} selectedData={filter.kategori} handleClick={handleKategoriClick} handleClickAll={() => handleClickAllFilterProductPerGroup(kategoriProduk, setFilter, 'kategori')} handleClearAll={() => handleClearFilterProductPerGroup(setFilter, 'kategori')}
                 />
                 <FilterGroup title="Kecamatan" data={kecamatanSlug} selectedData={filter.kecamatan} handleClick={handleKecamatanClick} handleClickAll={() => handleClickAllFilterProductPerGroup(kecamatanSlug, setFilter, 'kecamatan')} handleClearAll={() => handleClearFilterProductPerGroup(setFilter, 'kecamatan')}
                 />
@@ -89,7 +92,7 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
                                 size={15}
                                 style={{ marginRight: "0.8rem" }}
                             />
-                            <h1 className="font-semibold tetx-sm">Harga</h1>
+                            <h1 className="font-semibold tetx-sm">{c("price")}</h1>
                         </div>
                         <FontAwesomeIcon
                             icon={faChevronUp}

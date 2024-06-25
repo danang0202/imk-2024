@@ -11,7 +11,7 @@ import {
   columnTabelInfoModal,
   infoModalData,
 } from "../../static/InfoModalDataBuilder";
-import { IconTrendingUp } from "@tabler/icons-react";
+import {  IconTrendingUp } from "@tabler/icons-react";
 
 interface Props {
   width: string;
@@ -103,7 +103,7 @@ const SearchBar: React.FC<Props> = ({
               : c(`thead_umkm_${searchColumn}`)
             : searchColumn == "all"
               ? c("all")
-              : columns.find((item) => item.slug == searchColumn)?.title}
+              : c(columns.find((item) => item.slug == searchColumn)?.title ?? "")}
 
           <svg
             className="w-2 h-2 ms-2"
@@ -161,7 +161,7 @@ const SearchBar: React.FC<Props> = ({
                       type="button"
                       className="inline-flex text-left w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:text-white text-xs"
                     >
-                      {isInfoModal ? item.title : c(`thead_umkm_${item.slug}`)}
+                      {isInfoModal ? c(item.title) : c(`thead_umkm_${item.slug}`)}
                     </button>
                   </motion.li>
                 ))}
@@ -177,8 +177,8 @@ const SearchBar: React.FC<Props> = ({
             id="search-dropdown"
             className="block p-2 pl-7 md:pl-7 w-full z-20 text-xs text-gray-900 bg-gray-50 rounded-s-none rounded-e border-s-gray-50 border-s-2 border border-gray-300 dark:bg-slate-800 dark:text-white dark:border-gray-600 dark:focus:bg-slate-800"
             placeholder={`${c('keyword')}...`}
-          style={{ width: width }}
-          required
+            style={{ width: width }}
+            required
           />
           <button
             type="submit"

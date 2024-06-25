@@ -18,7 +18,7 @@ interface Props {
     handleClick: (item: TypeData) => void;
 }
 const FilterGroup: FC<Props> = ({ title, data, selectedData, handleClick, handleClickAll, handleClearAll }) => {
-    const { theme } = useThemeContext();
+    const { theme, common: c, product: p } = useThemeContext();
     const [showFilter, setShowFilter] = useState(true);
     return (
         <>
@@ -49,14 +49,14 @@ const FilterGroup: FC<Props> = ({ title, data, selectedData, handleClick, handle
                                         className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                                         onClick={handleClickAll}
                                     >
-                                        Pilih semua
+                                        {c("selectAll")}
                                     </p>
                                     <p className="text-grey text-xs lg:text-sm">|</p>
                                     <p
                                         className="text-xs text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                                         onClick={handleClearAll}
                                     >
-                                        Bersihkan
+                                        {c("unselectAll")}
                                     </p>
                                 </div>
                                 <ul className="w-full grid grid-cols-2 text-xs md:text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-black">
@@ -67,7 +67,7 @@ const FilterGroup: FC<Props> = ({ title, data, selectedData, handleClick, handle
 
                                                     <Checkbox
                                                         checked={selectedData.includes(item)}
-                                                        label={item.name}
+                                                        label={p(item.name)}
                                                         c={theme == "dark" ? "white" : EXTENDEDCOLORS.black}
                                                         fw={"normal"}
                                                         color={EXTENDEDCOLORS.primary}

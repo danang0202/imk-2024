@@ -27,7 +27,7 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { width, height } = useDimensions(containerRef);
   const [show, setShow] = useState<boolean>(false);
-  const { windowWidth } = useThemeContext();
+  const { windowWidth, common: c } = useThemeContext();
 
   const { stat: s } = useThemeContext();
 
@@ -157,11 +157,11 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
             selectedFilter={skalaFilter}
             setSelectedFilter={setSkalaFilter}
           />
-          <DownloadChartButton chartTitle={`${s("titleChart2")} ${skalaFilter.slug == "semua" ? "UMKM" : skalaFilter.name}`} />
+          <DownloadChartButton chartTitle={`${s("titleChart2")} ${skalaFilter.slug == "semua" ? "UMKM" : c(skalaFilter?.name)}`} />
         </div>
         <p className="font-semibold text-sm md:text-base text-wrap text-left">
           {s("titleChart2")}
-          {skalaFilter.slug == "semua" ? "UMKM" : skalaFilter.name}
+          {skalaFilter.slug == "semua" ? "UMKM" : c(skalaFilter?.name)}
         </p>
       </div>
       <svg width={width} height={windowWidth >= EXTENDED_WINDOW.md ? 450 : 350} id="chloropath-map-svg">

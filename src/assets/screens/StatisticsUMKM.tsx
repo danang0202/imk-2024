@@ -88,7 +88,7 @@ const StatisticsUMKM = () => {
         </div>
       </div>
       <div className="flex flex-col xl:flex-row gap-4 w-full">
-        <div className="p-4   bg-white rounded mt-4 border border-gray-300 dark:border-gray-700 relative w-full dark:bg-black dark:text-white">
+        <div className="p-4  bg-white rounded mt-4 border border-gray-300 dark:border-gray-700 relative w-full dark:bg-black dark:text-white">
           <BarChartKecamatanAndFilter />
           <div
             className="box absolute bottom-8 right-6 cursor-pointer text-grey hover:text-black bg-silver rounded p-1 "

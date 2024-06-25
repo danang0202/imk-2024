@@ -71,9 +71,9 @@ const DetailProdukContent = () => {
     setProduct(filterProducts(galeriProdukData, filter));
   }, [filter]);
 
-  useEffect(() => {
-    console.log(filter);
-  }, [filter])
+  const { product: p, common: c } = useThemeContext();
+
+
 
   return (
     <div className="flex w-full flex-col items-center">
@@ -95,10 +95,10 @@ const DetailProdukContent = () => {
         <div className="w-full">
           <div className="title xl:my-4 flex flex-col md:flex-row justify-center xl:justify-between gap-4 dark:border-gray-500 text-black dark:text-white">
             {/*  Tempat searching dan sorting */}
-            <p className="text-sm md:hidden">Urutkan</p>
+            <p className="text-sm md:hidden">{p("sorting")}</p>
             <div className="left flex flex-row  xl:flex-row gap-2 md:gap-4 items-center z-30">
               <div className="hidden md:inline">
-                <p className="text-sm">Urutkan: </p>
+                <p className="text-sm">{p("sorting")}: </p>
               </div>
               {buttonLabels.map((item, index) => (
                 <SortingProductButton key={index} item={item} filter={filter} setFilter={setFilter} />
@@ -118,7 +118,7 @@ const DetailProdukContent = () => {
                   }}
                   className="text-xs md:text-sm"
                 >
-                  Buka Filter
+                  {c("openFilter")}
                 </p>
               </div>
             </div>
@@ -133,7 +133,7 @@ const DetailProdukContent = () => {
 
           {product.length !== galeriProdukData.length && (
             <div className="bg-silver dark:bg-slate-800 pb-2 text-grey dark:text-white text-xs">
-              Mendapatkan {product.length} data
+              {c("get")} {product.length} data
             </div>
           )}
 
@@ -146,10 +146,10 @@ const DetailProdukContent = () => {
               </div>
               <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-black dark:text-white">
                 <p className="text-xs md:text-sm ">
-                  Menampilkan{" "}
-                  <span className="">{page * limit - limit + 1}</span> -
-                  <span className=""> {page * limit} </span> dari {""}
-                  <span className=""> {product.length} </span> produk
+                  {c("show")}
+                  <span className=""> {page * limit - limit + 1} </span> -
+                  <span className=""> {page * limit} </span> {c("from")}
+                  <span className=""> {product.length} </span> {c("productString").toLowerCase()}
                 </p>
                 <MinimalisPagination
                   page={page}

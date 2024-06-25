@@ -1,8 +1,12 @@
 import { useState } from "react";
 import Layout from "../../components/Layout";
+import { useThemeContext } from "../../layout/ThemeContext";
+import { badanHukumUsaha, bidangUsaha, dinasPengampu } from "../../DataBuilder";
+import { index } from "d3";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { common: c } = useThemeContext();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -13,7 +17,7 @@ const Register = () => {
         <div className="bg-white dark:bg-black rounded-md shadow-sm overflow-hidden w-11/12 lg:w-2/3">
           <div className="p-5 flex flex-col xl:px-10">
             <h2 className="text-2xl font-semibold text-black dark:text-white text-center">
-              Pendaftaran
+              {c("Pendaftaran")}
             </h2>
             <p className="font-extralight text-lg text-center mb-8 text-black dark:text-white">
               e-UMKM
@@ -55,7 +59,7 @@ const Register = () => {
                     htmlFor="namaUMKM"
                     className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
-                    Nama UMKM
+                    {c("Nama UMKM")}
                   </label>
                 </div>
 
@@ -92,11 +96,11 @@ const Register = () => {
                     defaultValue=""
                   >
                     <option value="" disabled>
-                      Pilih Skala Usaha
+                      {c("Pilih")} {c("Skala Usaha")}
                     </option>
-                    <option value="mikro">Usaha Mikro</option>
-                    <option value="kecil">Usaha Kecil</option>
-                    <option value="menengah">Usaha Menengah</option>
+                    <option value="mikro">{c("Usaha Mikro")}</option>
+                    <option value="kecil">{c("Usaha Kecil")}</option>
+                    <option value="menengah">{c("Usaha Menengah")}</option>
                   </select>
                   <label
                     htmlFor="skalaUsaha"
@@ -134,35 +138,12 @@ const Register = () => {
                     required
                   >
                     <option value="" disabled selected>
-                      Pilih Bidang Usaha
+                      {c("Pilih")} {c("Bidang Usaha")}
                     </option>
-                    <option value="Pertanian">Pertanian</option>
-                    <option value="Perikanan">Perikanan</option>
-                    <option value="Perdagangan">Perdagangan</option>
-                    <option value="Industri Manufaktur">
-                      Industri Manufaktur
-                    </option>
-                    <option value="Konstruksi">Konstruksi</option>
-                    <option value="Transportasi dan Logisitik">
-                      Transportasi dan Logisitik
-                    </option>
-                    <option value="Teknologi Informasi">
-                      Teknologi Informasi
-                    </option>
-                    <option value="Jasa Keuangan">Jasa Keuangan</option>
-                    <option value="Kesehatan">Kesehatan</option>
-                    <option value="Pendidikan">Pendidikan</option>
-                    <option value="Pariwisata">Pariwisata</option>
-                    <option value="Properti dan Real EstateESDM">
-                      Energi dan Sumber Daya Mineral
-                    </option>
-                    <option value="Properti dan Real Estate">
-                      Properti dan Real Estate
-                    </option>
-                    <option value="Pertambangan">Pertambangan</option>
-                    <option value="Hukum dan Konsultasi">
-                      Hukum dan Konsultasi
-                    </option>
+                    {bidangUsaha.map((item, index) => (
+                      <option key={index} value={item.slug}>{c(item.name)}</option>
+                    ))}
+
                   </select>
                   <label
                     htmlFor="skalaUsaha"
@@ -201,18 +182,17 @@ const Register = () => {
                     required
                   >
                     <option value="" disabled selected>
-                      Pilih Badan Hukum
+                      {c("Pilih")} {c("Badan Hukum")}
                     </option>
-                    <option value="pt">PT</option>
-                    <option value="cv">CV</option>
-                    <option value="firm">Firma</option>
-                    <option value="perseorangan">Perseorangan</option>
+                    {badanHukumUsaha.map((item) => (
+                      <option value={item.slug}>{c(item.name)}</option>
+                    ))}
                   </select>
                   <label
                     htmlFor="skalaUsaha"
                     className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
-                    Badan Hukum
+                    {c("Badan Hukum")}
                   </label>
                 </div>
 
@@ -243,33 +223,17 @@ const Register = () => {
                     required
                   >
                     <option value="" disabled selected>
-                      Pilih Dinas Pengampu
+                      {c("Pilih")} {c("Dinas Pengampu")}
                     </option>
-                    <option value="Dinas PMD Dalduk">Dinas PMD Dalduk</option>
-                    <option value="Dinas Sosial">Dinas Sosial</option>
-                    <option value="Dinas Kelautan dan Perikanan">
-                      Dinas Kelautan dan Perikanan
-                    </option>
-                    <option value="Dinas Perhubungan">Dinas Perhubungan</option>
-                    <option value="Dinas Pariwisata">Dinas Pariwisata</option>
-                    <option value="Dinas Lingkungan Hidup">
-                      Dinas Lingkungan Hidup
-                    </option>
-                    <option value="Dinas Koperasi dan UKM">
-                      Dinas Koperasi dan UKM
-                    </option>
-                    <option value="Dinas Pertanian dan Pangan">
-                      Dinas Pertanian dan Pangan
-                    </option>
-                    <option value="Dinas Perdagangan dan Perindustrian">
-                      Dinas Perdagangan dan Perindustrian
-                    </option>
+                    {dinasPengampu.map((item, index) => (
+                      <option key={index} value={item.slug}>{c(item.name)}</option>
+                    ))}
                   </select>
                   <label
                     htmlFor="skalaUsaha"
                     className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
-                    Dinas Pengampu
+                    {c("Dinas Pengampu")}
                   </label>
                 </div>
 
@@ -303,7 +267,7 @@ const Register = () => {
                     htmlFor="alamat"
                     className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
-                    Alamat
+                    {c("Address")}
                   </label>
                 </div>
               </div>
@@ -340,7 +304,7 @@ const Register = () => {
                     htmlFor="nomorTelepon"
                     className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
-                    Nomor Telepon
+                    {c("No Telepon")}
                   </label>
                 </div>
 
@@ -446,7 +410,7 @@ const Register = () => {
                     htmlFor="password"
                     className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
-                    Password
+                    {c("Kata Sandi")}
                   </label>
                   <div
                     className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
@@ -503,7 +467,7 @@ const Register = () => {
                     htmlFor="confirmPassword"
                     className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
-                    Confirm Password
+                    {c("Konfirmasi")} {c("Kata Sandi")}
                   </label>
                   <div
                     className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
@@ -542,12 +506,12 @@ const Register = () => {
                     htmlFor="remember"
                     className="text-xs text-greyDark cursor-pointer dark:text-white"
                   >
-                    Saya menerima syarat dan ketentuan yang berlaku
+                    {c("Saya menerima syarat dan ketentuan yang berlaku")}
                   </label>
                 </div>
 
                 <button className="w-full py-2 bg-primary text-white rounded font-semibold text-sm mt-4 hover:bg-primary/75 transition duration-300">
-                  Daftar
+                  {c("Register")}
                 </button>
               </div>
 
@@ -570,7 +534,7 @@ const Register = () => {
                   <path d="M5 12l4 -4" />
                 </svg>
                 <a href="/beranda" className="dark:text-white text-xs">
-                  Kembali ke Home
+                  {c("Kembali ke Beranda")}
                 </a>
               </div>
             </form>

@@ -102,7 +102,7 @@ const DonutChartKategori = () => {
               }
               fw={500}
             >
-              {item.name.toUpperCase()}
+              {c(item.name).toUpperCase()}
             </Text>
           </div>
         ))}

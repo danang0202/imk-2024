@@ -12,6 +12,7 @@ import {
 } from "../../helper/info-modal.helper";
 import Pagination from "../table/Pagination";
 import DataEmpty from "../commons/DataEmpty";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface TableModalProps {
     dataModal: InfoModalType[];
@@ -24,6 +25,7 @@ const MinimalisTableModal: FC<TableModalProps> = ({ dataModal }) => {
     const [paginatedDataModal, setPaginatedDataModal] = useState<InfoModalType[]>(
         []
     );
+    const { common: c } = useThemeContext();
     const [limit, setLimit] = useState(12);
     const [totalPage, setTotalpage] = useState(1);
     const [page, setPage] = useState(1);
@@ -122,7 +124,7 @@ const MinimalisTableModal: FC<TableModalProps> = ({ dataModal }) => {
                                                                     } ${getInstitusionColorInfoModal(data?.lembaga).text
                                                                     } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
                                                             >
-                                                                {data?.lembaga}
+                                                                {c(data?.lembaga)}
                                                             </span>
                                                             <span
                                                                 className={`${getNominalModalColor(data?.nominal).bg

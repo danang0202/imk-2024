@@ -23,6 +23,8 @@ interface ThemeContextType {
   dataLang: TFunction<"data-page", undefined>;
   common: TFunction<"commoon", undefined>;
   stat: TFunction<"stat", undefined>;
+  product: TFunction<"product", undefined>;
+
 }
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
@@ -66,6 +68,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   const { t: landingLang } = useTranslation("landing-page");
   const { t: common } = useTranslation("common");
   const { t: stat } = useTranslation("statistics-page");
+  const { t: product } = useTranslation("product");
 
   return (
     <ThemeContext.Provider
@@ -83,7 +86,8 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
         dataLang,
         landingLang,
         common,
-        stat
+        stat,
+        product
       }}
     >
       {children}
@@ -107,6 +111,8 @@ const loadNameSpaceByPathUrl = async (pathName: string) => {
       await loadNamespaces("data-page");
     } else if (pathName == "/statistics") {
       await loadNamespaces("statistics-page")
+    } else if (pathName == "/galeri-produk" || pathName == "/galeri-produk/detatil") {
+      await loadNamespaces("product")
     }
     i18next.reloadResources();
   }

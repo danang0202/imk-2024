@@ -1,7 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { variantsBadgeFilter } from "../../helper/motion.helper";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 const DataEmpty = () => {
+  const {common:c} = useThemeContext()
   return (
     <AnimatePresence>
       <motion.div
@@ -19,7 +21,7 @@ const DataEmpty = () => {
             className="w-[8rem] md:w-[15rem]"
           />
           <p className="text-grey text-xs md:text-sm">
-            Data tidak ditemukan. Mohon coba hapus beberapa filter.
+            {c("Data tidak ditemukan. Mohon coba hapus beberapa filter")}.
           </p>
         </div>
       </motion.div>

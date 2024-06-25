@@ -39,7 +39,7 @@ const BarChartKecamatan: FC<BarChartKecamatanProps> = ({
   const [data, setData] = useState(
     getDataCountKategoryPerKecamatan(umkmData, kecamatanKulonProgo, skalaFilter)
   );
-  const { theme, stat: s } = useThemeContext();
+  const { theme, stat: s, common: c } = useThemeContext();
 
   useEffect(() => {
     setData(
@@ -63,12 +63,12 @@ const BarChartKecamatan: FC<BarChartKecamatanProps> = ({
               setSelectedFilter={setSkalaFilter}
             />
             <DownloadChartButton
-              chartTitle={`${s('titleChart1_1')} ${skalaFilter?.slug == "semua" ? "UMKM" : skalaFilter?.name} ${s("titleChart1_2")}`}
+              chartTitle={`${s('titleChart1_1')} ${skalaFilter?.slug == "semua" ? "UMKM" : c(skalaFilter?.name)} ${s("titleChart1_2")}`}
             />
           </div>
           <p className="font-semibold text-sm md:text-base text-wrap text-center md:text-start">
             {s("titleChart1_1")}
-            {skalaFilter?.slug == "semua" ? "UMKM" : skalaFilter?.name} {s("titleChart1_2")}
+            {skalaFilter?.slug == "semua" ? "UMKM" : c(skalaFilter?.name)} {s("titleChart1_2")}
           </p>
         </div>
         <BarChart

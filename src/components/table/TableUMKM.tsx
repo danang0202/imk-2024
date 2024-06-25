@@ -134,11 +134,11 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                           className={`${getSkalaUsahaColor(data?.skala).bg} ${getSkalaUsahaColor(data?.skala).text
                             } text-xs  me-2 px-1.5 py-0.5 rounded`}
                         >
-                          {data?.skala}
+                          {c(data?.skala)}
                         </span>
                       </td>
                       <td className="px-2 lg:px-2 whitespace-normal font-normal dark:border-slate-700">
-                        {data?.bidang}
+                        {c(data?.bidang)}
                       </td>
                       <td className="px-2 lg:px-2 whitespace-nowrap font-normal dark:border-slate-700">
                         <span
@@ -146,11 +146,11 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                             } ${getBadanUsahaColor(data?.badanHukum).text
                             } text-xs  me-2 px-1.5 py-0.5 rounded`}
                         >
-                          {data?.badanHukum}
+                          {c(data?.badanHukum)}
                         </span>
                       </td>
                       <td className="px-2 lg:px-2  whitespace-normal font-normal dark:border-slate-700">
-                        {data?.pengampu}
+                        {c(data?.pengampu)}
                       </td>
                       <td className="py-2 px-3  font-normal min-w-[15rem] dark:border-slate-700">
                         {data?.alamat}

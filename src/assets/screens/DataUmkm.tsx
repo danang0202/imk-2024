@@ -200,7 +200,7 @@ const DataUmkm = () => {
           </div>
           {filteredData.length !== data.length && (
             <div className="px-4 lg:px-6 bg-white dark:bg-black pb-3 xl:pb-2 text-grey dark:text-white text-xs">
-              Mendapatkan {filteredData.length} data
+              {c("get")} {filteredData.length} data
             </div>
           )}
           {windowWidth < EXTENDED_WINDOW.md ? (

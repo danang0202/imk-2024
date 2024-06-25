@@ -8,6 +8,7 @@ import DataEmpty from "../commons/DataEmpty";
 import { AnimatePresence, motion } from "framer-motion";
 import { rowVariants } from "../../helper/motion.helper";
 import { IconBuilding, IconBuildingStore, IconMapPins } from "@tabler/icons-react";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface Props {
   dataUmkm: UMKMProperties[];
@@ -63,6 +64,8 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
     }
   }, [sortingData, limit, page]);
 
+  const { common: c } = useThemeContext()
+
   return (
     <div className="">
       {paginatedUMKM?.length > 0 ? (
@@ -117,25 +120,25 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                                     } ${getSkalaUsahaColor(data?.skala).text
                                     } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
                                 >
-                                  {data?.skala}
+                                  {c(data?.skala)}
                                 </span>
                                 <span
                                   className={`${getBadanUsahaColor(data?.badanHukum).bg
                                     } ${getBadanUsahaColor(data?.badanHukum).text
                                     } text-xs font-medium me-2 px-2.5 py-0.5 rounded`}
                                 >
-                                  {data?.badanHukum}
+                                  {c(data?.badanHukum)}
                                 </span>
                               </div>
                             </div>
                           </div>
                           <div className="flex flex-row gap-1 items-center">
                             <IconBuildingStore size={12} />
-                            <p>{data.bidang}</p>
+                            <p>{c(data.bidang)}</p>
                           </div>
                           <div className="flex flex-row gap-1 items-center">
                             <IconBuilding size={12} />
-                            <p>{data.pengampu}</p>
+                            <p>{c(data.pengampu)}</p>
                           </div>
                           <div className="flex flex-row gap-1 items-center  w-10/12">
                             <IconMapPins size={12} />
@@ -158,9 +161,9 @@ const MinimalisTableUMKM: React.FC<Props> = ({ dataUmkm }) => {
           </div>
           <div className="bg-white rounded px-4 lg:px-8 xl:px-3xl py-6 flex flex-col lg:flex-row items-center md:items-end gap-y-4 lg:justify-between lg:items-center dark:bg-black">
             <p className="text-xs md:text-sm lg:text-base">
-              Menampilkan{" "}
-              <span className="font-semibold">{page * limit - limit + 1}</span>{" "}
-              -<span className="font-semibold"> {page * limit} </span> dari {""}
+              {c("show")}
+              <span className="font-semibold"> {page * limit - limit + 1}</span>{" "}
+              -<span className="font-semibold"> {page * limit} </span> {c("from")} {""}
               <span className="font-bold"> {dataUmkm.length} </span> data
             </p>
             <div className="pagination w-full md:w-fit">

@@ -343,13 +343,13 @@ const Gis: React.FC = () => {
                               } ${getBadanUsahaColor(item?.badanHukum).text
                               } text-xs px-1 rounded-sm`}
                           >
-                            {item?.badanHukum}
+                            {c(item?.badanHukum)}
                           </span>
                           <span
                             className={`${getSkalaUsahaColor(item?.skala).bg} ${getSkalaUsahaColor(item?.skala).text
                               } text-xs px-1  rounded-sm`}
                           >
-                            {item?.skala}
+                            {c(item?.skala)}
                           </span>
                         </div>
                       </div>

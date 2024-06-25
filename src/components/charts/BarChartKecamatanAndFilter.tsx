@@ -109,8 +109,8 @@ const BarChartKecamatanAndFilter = () => {
           ? data?.length * 45
           : data?.length * 100
         : 450;
-    if (result < 600) {
-      return 550;
+    if (result < 550) {
+      return 450;
     } else {
       return result;
     }
@@ -190,7 +190,7 @@ const BarChartKecamatanAndFilter = () => {
           series={series}
         />
 
-        <div className="flex flex-wrap gap-4 lg:gap-8 w-full justify-center items-center pt-4">
+        <div className="flex flex-wrap gap-4 w-full justify-center items-center pt-4">
           {series?.map((item, index) => (
             <div className="box flex flex-row gap-2 items-center" key={index}>
               <IconSquareFilled size={16} color={item.color} />
@@ -203,7 +203,7 @@ const BarChartKecamatanAndFilter = () => {
                 }
                 fw={500}
               >
-                {item.label.toUpperCase()}
+                {c(item.label).toUpperCase()}
               </Text>
             </div>
           ))}

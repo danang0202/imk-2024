@@ -23,7 +23,7 @@ const MinimalisPagination: React.FC<Props> = ({ page, setPage, totalPage, bg }) 
         if (page !== totalPage) {
           setPage(page + 1);
         }
-    } else if (value === "&raquo") {
+      } else if (value === "&raquo") {
         setPage(totalPage);
       }
     } else {
@@ -56,8 +56,8 @@ const MinimalisPagination: React.FC<Props> = ({ page, setPage, totalPage, bg }) 
             >
               <button
                 className={` text-black py-1 lg:py-1 px-2 md:px-3 lg:px-2.5  font-semibold ${page === value
-                    ? "bg-primary text-white rounded "
-                    : "text-black hover:bg-inactive rounded  "
+                  ? "bg-primary text-white rounded "
+                  : "text-black hover:bg-inactive rounded  "
                   } dark:text-white`}
               >
                 {value}

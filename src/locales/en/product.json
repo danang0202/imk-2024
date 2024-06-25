@@ -1,0 +1,17 @@
+{
+    "sorting": "Sorting",
+    "sortPopuler": "Popular",
+    "sortTerbaru": "Newest",
+    "sortHarga": "Price",
+    "sortHarga_asc": "Cheap to Expensive",
+    "sortHarga_desc": "Expensive to Cheap",
+    "searchPlaceHolder": "Type the name of the product or UMKM's...",
+    "Aksesoris": "Accessories",
+    "Fesyen": "Fashion",
+    "Industri": "Industry",
+    "Kerajinan": "Craft",
+    "Kuliner": "Culinary",
+    "Perikanan": "Fisheries",
+    "Pertanian": "Agriculture",
+    "Sembako": "Staple Goods"
+}

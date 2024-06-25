@@ -5,6 +5,7 @@ import { productType } from "../../types/common.types";
 import { updateKeywordFilterProduct } from "../../helper/galeri-produk.helper";
 import { AnimatePresence, motion } from "framer-motion";
 import { dropdownVariants, rowVariants } from "../../helper/motion.helper";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface MinimalisSearchProps {
     filter: FilterProduct;
@@ -16,6 +17,7 @@ const SearchProduct: FC<MinimalisSearchProps> = ({ filter, setFilter, products }
     const [recommendationsName, setRecommendationsName] = useState<productType[]>([]);
     const [recommendationsUmkm, setRecommendationsUmkm] = useState<productType[]>([]);
     const ref = useRef<HTMLUListElement>(null);
+    const { product: p } = useThemeContext()
 
     const handleClickOutside = (event: MouseEvent) => {
         if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -80,7 +82,7 @@ const SearchProduct: FC<MinimalisSearchProps> = ({ filter, setFilter, products }
                         value={filter.keyword}
                         onChange={(e) => handleSearchChange(e.target.value)}
                         className="text-gray-900 w-full pe-4 p-2 dark:text-white text-xs rounded-s bg-white dark:bg-black lg:min-w-[13rem] xl:min-w-[15rem]"
-                        placeholder="Ketikkan nama produk atau UMKM.."
+                        placeholder={p("searchPlaceHolder")}
                         required
                     />
                 </div>

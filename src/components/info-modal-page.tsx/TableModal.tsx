@@ -13,6 +13,7 @@ import {
 } from "../../helper/info-modal.helper";
 import Pagination from "../table/Pagination";
 import DataEmpty from "../commons/DataEmpty";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface TableModalProps {
   dataModal: InfoModalType[];
@@ -26,6 +27,7 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
   const [paginatedDataModal, setPaginatedDataModal] = useState<InfoModalType[]>(
     []
   );
+  const { common: c } = useThemeContext();
   const [limit, setLimit] = useState(10);
   const [totalPage, setTotalpage] = useState(1);
   const [page, setPage] = useState(1);
@@ -100,13 +102,13 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                           className="cursor-pointer pl-1"
                           onClick={() => sortByColumn(item?.slug)}
                         >
-                          {item?.title}
+                          {c(item?.title)}
                         </span>
                       </div>
                     </th>
                   ))}
                   <th className="bg-white py-3 pr-4x font-semibold lg:pr-8x xl:pr-8 justify-center text-black  dark:text-white rounded-br dark:bg-black">
-                    Tindakan
+                    {c("action")}
                   </th>
                 </tr>
               </thead>
@@ -139,7 +141,7 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                           } ${getInstitusionColorInfoModal(data?.lembaga).text
                           } text-xs me-2 px-1.5 py-0.5 rounded`}
                       >
-                        {data?.lembaga}
+                        {c(data?.lembaga)}
                       </span>
                     </td>
                     <td className="px-2 lg:px-2 whitespace-normal font-normal dark:border-slate-700">
@@ -177,9 +179,9 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
           </div>
           <div className="bg-white rounded px-4 lg:px-8 xl:px-3xl py-6 flex flex-col lg:flex-row items-center md:items-end gap-y-4 lg:justify-between lg:items-center dark:bg-black">
             <p className="text-xs md:text-sm ">
-              Menampilkan{" "}
-              <span className="">{page * limit - limit + 1}</span>{" "}
-              -<span className=""> {page * limit} </span> dari {""}
+              {c("show")}
+              <span className=""> {page * limit - limit + 1}</span>{" "}
+              -<span className=""> {page * limit} </span> {c("from")} 
               <span className=""> {dataModal.length} </span> data
             </p>
             <div className="pagination w-full md:w-fit">

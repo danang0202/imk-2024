@@ -15,7 +15,7 @@ import ButtonSpinner from "../../components/commons/ButtonSpinner";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
-  const { theme } = useThemeContext(); // Menggunakan tema dari konteks
+  const { theme, common: c } = useThemeContext(); // Menggunakan tema dari konteks
 
   const [logoUrl, setLogoUrl] = useState("/logo/logo.png");
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -190,7 +190,7 @@ const Login = () => {
                     htmlFor="remember"
                     className="text-xs text-greyDark cursor-pointer dark:text-white"
                   >
-                    Ingat Saya
+                    {c("Ingat Saya")}
                   </label>
                 </div>
 
@@ -200,16 +200,15 @@ const Login = () => {
                     onClick={toggleForgotPassword}
                     className="text-greyDark hover:text-greyDark/50 transition duration-300 dark:text-white"
                   >
-                    Lupa password?
+                    {c("Lupa Password")}?
                   </a>
                 </div>
               </div>
 
               <div className="flex justify-center w-full mb-0">
                 <button
-                  className={`text-sm font-semibold bg-primary text-white py-1.5 rounded hover:bg-primary/75 px-8 text-center transition duration-300 ${
-                    loading && "cursor-not-allowed hover:bg-primary"
-                  }`}
+                  className={`text-sm font-semibold bg-primary text-white py-1.5 rounded hover:bg-primary/75 px-8 text-center transition duration-300 ${loading && "cursor-not-allowed hover:bg-primary"
+                    }`}
                   disabled={loading}
                 >
                   {loading && <ButtonSpinner />}
@@ -218,12 +217,12 @@ const Login = () => {
               </div>
 
               <div className="mt-4 text-xs flex justify-center">
-                <span className="mr-2 dark:text-white">Belum punya akun?</span>
+                <span className="mr-2 dark:text-white">{c("Belum punya akun")}?</span>
                 <a
                   href="/register"
                   className="text-primary hover:text-primary/50 transition duration-300"
                 >
-                  Daftar
+                  {c("Daftar")}
                 </a>
               </div>
             </form>
@@ -233,7 +232,7 @@ const Login = () => {
                 href="/beranda"
                 className="py-1 dark:text-white hover:text-black/50 transition duration-300"
               >
-                Kembali ke Home
+                {c("Kembali ke Beranda")}
               </a>
             </div>
           </div>
@@ -243,10 +242,10 @@ const Login = () => {
       {showForgotPassword && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-md shadow-md w-11/12 md:w-1/3 dark:bg-black text-sm">
-            <h3 className="text-base font-bold mb-4 dark:text-white">
-              Lupa Password
+            <h3 className="text-base font-semibold mb-4 dark:text-white">
+              {c("Lupa Password")}
             </h3>
-            <p className="mb-4 dark:text-white">Masukkan alamat email anda:</p>
+            <p className="mb-4 dark:text-white text-xs">{c("inputYourEmail")}:</p>
             <input
               type="email"
               className="w-full p-2 mb-4 text-xs text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0"
@@ -255,12 +254,12 @@ const Login = () => {
             <div className="flex justify-end">
               <button
                 onClick={toggleForgotPassword}
-                className="transition duration-300 mr-4 text-gray-500 hover:text-gray-700 bg-silver px-4 py-2 rounded dark:bg-slate-800  dark:text-white hover:bg-inactive"
+                className="transition duration-300 mr-4 text-gray-500 hover:text-gray-700 bg-silver px-3 py-1.5 rounded dark:bg-slate-800  dark:text-white hover:bg-inactive"
               >
-                Batal
+                {c("Batal")}
               </button>
-              <button className="bg-primary transition-colors duration-300 text-white px-4 py-2 rounded hover:bg-primaryHover">
-                Kirim
+              <button className="bg-primary transition-colors duration-300 text-white px-3 py-1.5 rounded hover:bg-primaryHover">
+                {c("Kirim")}
               </button>
             </div>
           </div>

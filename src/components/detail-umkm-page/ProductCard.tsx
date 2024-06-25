@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import { EXTENDEDCOLORS } from "../../DataBuilder";
 import { productType } from "../../types/common.types";
 import { dropdownItemVariants } from "../../helper/motion.helper";
+import { useThemeContext } from "../../layout/ThemeContext";
+import { Tooltip } from "@mui/material";
 
 interface ProductCardProps {
   item: productType;
@@ -16,17 +18,21 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
+  const { common: c } = useThemeContext();
   return (
     <div className="pt-2 px-2 pb-3 border border-gray-300 dark:border-gray-600 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-44 xl:w-44 xl:hover:shadow-lg transition duration-300">
       <a href="/galeri-produk/detail">
         <div className="w-full flex flex-col gap-1">
-          <div className="w-full flex justify-center">
-            <img
-              src={`/logo-umkm/${item.gambar}`}
-              className="w-full max-h-36"
-              alt={item.nama}
-            />
-          </div>
+          <Tooltip title={c("Klik untuk Detail")} arrow>
+            <div className="w-full flex justify-center">
+              <img
+                src={`/logo-umkm/${item.gambar}`}
+                className="w-full max-h-36"
+                alt={item.nama}
+              />
+            </div>
+          </Tooltip>
+
           <p className="text-sm font-semibold">{item.nama}</p>
           <p className="text-xs text-orange-600">
             Rp{" "}
@@ -36,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
           </p>
           <div className="text-orange-600 flex justify-start text-xs">
             <div className="box px-1 border border-orange-600 rounded-sm">
-              <p>{item.kategori}</p>
+              <p>{c(item.kategori)}</p>
             </div>
           </div>
           <div className="hidden xl:flex flex-row gap-1 items-center">

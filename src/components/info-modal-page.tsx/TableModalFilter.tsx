@@ -91,7 +91,7 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
                   size={15}
                   style={{ marginRight: "0.8rem" }}
                 />
-                <h1 className="font-semibold">Jenis Lembaga</h1>
+                <h1 className="font-semibold">{c("Jenis Lembaga")}</h1>
               </div>
               <FontAwesomeIcon
                 icon={faChevronUp}
@@ -111,7 +111,7 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
                     <div className="flex flex-row justify-between py-1">
                       <p className="text-xs text-grey hover:text-grey/50 transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey" onClick={() => setInstitusionFilter(institusionTypeData)
                       }>
-                        Pilih semua
+                        {c("selectAll")}
                       </p>
                       <p className="text-grey text-xs lg:text-sm">|</p>
                       <p
@@ -119,7 +119,7 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
                         onClick={() => setInstitusionFilter([])
                         }
                       >
-                        Bersihkan
+                        {c("unselectAll")}
                       </p>
                     </div>
                   </div>
@@ -171,8 +171,7 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
                     />
                   </div>
                   <p className="text-xs text-grey dark:text-gray-200 mt-2 mb-3">
-                    <span className="font-semibold">Catatan: </span>Filter nominal
-                    modal dalam satuan juta rupiah
+                    <span className="font-semibold">{c("Catatan")}: </span>{c("nominalNote")}
                   </p>
                   <div className="flex flex-row justify-between gap-4 items-center">
                     <input

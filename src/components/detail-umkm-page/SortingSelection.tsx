@@ -6,6 +6,8 @@ import {
   updateSortOrderFilterDetailUMKM,
   updateSortedColumnFilterDetailUMKM,
 } from "../../helper/detail-product.helper";
+import { useThemeContext } from "../../layout/ThemeContext";
+import { Tooltip } from "@mui/material";
 
 const productSortingOption: titleSlugType[] = [
   {
@@ -25,6 +27,7 @@ interface SortingSelectionProps {
 }
 
 const SortingSelection: FC<SortingSelectionProps> = ({ filter, setFilter }) => {
+  const { common: c } = useThemeContext();
   return (
     <div className="flex flex-row items-center gap-2">
       <form className="max-w-sm mx-auto">
@@ -38,26 +41,30 @@ const SortingSelection: FC<SortingSelectionProps> = ({ filter, setFilter }) => {
         >
           {productSortingOption.map((item, index) => (
             <option value={item.slug} key={index}>
-              {item.title}
+              {c(item.title)}
             </option>
           ))}
         </select>
       </form>
       <div className="sort-order">
         {filter.sortOrder == "asc" ? (
-          <IconSortAscending
-            className="text-grey dark:text-white"
-            onClick={() => {
-              updateSortOrderFilterDetailUMKM(setFilter, "desc");
-            }}
-          />
+          <Tooltip title="Ascending" arrow>
+            <IconSortAscending
+              className="text-grey dark:text-white"
+              onClick={() => {
+                updateSortOrderFilterDetailUMKM(setFilter, "desc");
+              }}
+            />
+          </Tooltip>
         ) : (
-          <IconSortDescending
-            className="text-grey dark:text-white"
-            onClick={() => {
-              updateSortOrderFilterDetailUMKM(setFilter, "asc");
-            }}
-          />
+          <Tooltip title="Descanding" arrow>
+            <IconSortDescending
+              className="text-grey dark:text-white"
+              onClick={() => {
+                updateSortOrderFilterDetailUMKM(setFilter, "asc");
+              }}
+            />
+          </Tooltip>
         )}
       </div>
     </div>
