@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <div className="bg-black py-8 px-8 xl:p-3xl xl:px-6xl text-white flex flex-col md:flex-row justify-between gap-8 pb-8">
+      <div className="bg-black py-8 px-8 xl:p-3xl xl:px-6xl text-white flex flex-col md:flex-row justify-between gap-8 pb-4">
         <div className="flex flex-col gap-y-8">
           {/* logo */}
           <div className="flex flex-row gap-3 justify-center xl:justify-start">
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="flex-row hidden lg:flex">
-          <div className="flex flex-col gap-y-3">
+          <div className="flex flex-col gap-y-1">
             <h1 className="font-bold pb-4 text-lg">{common("linksTitle")}</h1>
             {menuItems.map((item) => (
               <div key={item.slug}>
