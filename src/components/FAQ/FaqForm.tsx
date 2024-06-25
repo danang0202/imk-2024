@@ -124,7 +124,7 @@ const FaqForm: React.FC<Props> = ({
           data-aos="fade-up"
           data-aos-duration="800"
         >
-          <ButtonBlack text="Submit" size="xs md:text-base" />
+          <ButtonBlack text="Submit" size="xs md:text-sm" />
         </div>
       </form>
     </>

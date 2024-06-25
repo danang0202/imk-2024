@@ -25,7 +25,7 @@ const ButtonPrimary: React.FC<ButtonProps> = ({
       animate={isHovered ? { scale: [1, 1.1, 1] } : { scale: 1 }}
       transition={isHovered ? { duration: 0.6, repeat: Infinity } : { duration: 0.2 }}
       whileTap={{ scale: 0.9 }}
-      className={`px-4 py-2 rounded bg-primary text-white text-${size} hover:bg-primary/90`}
+      className={`px-2 py-1 rounded bg-primary text-white text-${size} hover:bg-primary/90`}
       onClick={onClick}
     >
       {text}

@@ -2,7 +2,7 @@ import { Checkbox } from "@mantine/core";
 import { dropdownItemVariants } from "../../helper/motion.helper";
 import { TypeData } from "./Selection";
 import { AnimatePresence, motion } from "framer-motion";
-import { EXTENDEDCOLORS, EXTENDED_WINDOW } from "../../DataBuilder";
+import { EXTENDEDCOLORS } from "../../DataBuilder";
 import { useThemeContext } from "../../layout/ThemeContext";
 
 interface Props {
@@ -26,10 +26,10 @@ const ChexboxGroup: React.FC<Props> = ({
     }
   };
 
-  const { theme, windowWidth } = useThemeContext();
+  const { theme } = useThemeContext();
 
   return (
-    <ul className="w-full text-xs md:text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-black">
+    <ul className="w-full text-xs md:text-sm text-gray-900 bg-white rounded-lg dark:bg-black">
       <AnimatePresence>
         {data.map((item, index) => (
           <motion.li variants={dropdownItemVariants} transition={{ duration: .3 }} className="w-full" key={index}>
@@ -42,7 +42,7 @@ const ChexboxGroup: React.FC<Props> = ({
                 py={".5rem"}
                 onClick={() => handleCheckboxChange(item)}
                 fw={"normal"}
-                size={windowWidth < EXTENDED_WINDOW.lg ? "xs" : "sm"}
+                size={"xs"}
               />
             </div>
           </motion.li>

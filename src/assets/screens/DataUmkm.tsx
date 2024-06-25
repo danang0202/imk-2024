@@ -143,19 +143,19 @@ const DataUmkm = () => {
             </motion.div>
           )}
         </AnimatePresence>
- 
+
         <motion.div
           className="table-container rounded-lg w-full grow px-4 xl:px-0"
           initial={{ width: "100%" }}
           transition={{ duration: 0.5 }}
         >
-          <div className="pt-4 xl:pt-8 bg-white box flex flex-col gap-4 xl:flex-row xl:gap-0 justify-between px-4 lg:px-8 py-4 items-center rounded-t dark:bg-black">
-            <h1 className="font-bold d text-base text-center border-b border-grey pb-2 lg:text-lg xl:font-bold xl:text-left xl:border-0 xl:pb-0 text-black dark:text-white">
+          <div className="p-4 xl:p-6 xl:pb-4 bg-white box flex flex-col gap-4 xl:flex-row xl:gap-0 justify-between items-center rounded-t dark:bg-black">
+            <h1 className="font-bold d text-base text-center border-b border-grey pb-2 xl:font-semibolf xl:text-left xl:border-0 xl:pb-0 text-black dark:text-white">
               {t("dataTitle")}
             </h1>
-            <div className="md:flex flex-row md:justify-between gap-8 md:w-full xl:w-fit pt-2 xl:pt-0 z-40">
+            <div className="md:flex flex-row md:justify-between md:w-full xl:w-fit pt-2 xl:pt-0 z-40">
               <SearchBar
-                width={windowWidth < EXTENDED_WINDOW.md ? "14rem" : "20rem"}
+                width={windowWidth < EXTENDED_WINDOW.md ? "14rem" : "17rem"}
                 searchColumn={searchColumn}
                 setSearchColumn={setSearchColumn}
                 keyword={keyword}
@@ -164,10 +164,10 @@ const DataUmkm = () => {
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="hidden md:flex text-xs lg:text-sm bg-secondary flex-row gap-2 items-center px-2 lg:px-3 py-2 rounded hover:bg-secondary/90 cursor-pointer text-white "
+                className="hidden md:flex text-xs lg:text-sm bg-secondary flex-row gap-2 items-center px-2.5 py-1 rounded hover:bg-secondary/90 cursor-pointer text-white "
                 onClick={() => setShowModal(true)}
               >
-                <IconDownload />
+                <IconDownload size={18} />
               </motion.div>
             </div>
             <div className="xl:hidden w-full flex flex-row gap-2 text-grey hover:text-black justify-start cursor-pointer dark:text-white dark:hover:text-grey">
@@ -183,7 +183,7 @@ const DataUmkm = () => {
               </p>
             </div>
           </div>
-          <div className="px-4 lg:px-8 xl:px-3xl bg-white dark:bg-black">
+          <div className="px-4 lg:px-6 bg-white dark:bg-black">
             <AllFilterBadge
               keyword={keyword}
               setKeyword={setKeyword}
@@ -199,7 +199,7 @@ const DataUmkm = () => {
             />
           </div>
           {filteredData.length !== data.length && (
-            <div className="px-4 lg:px-8 xl:px-3xl bg-white dark:bg-black pb-3 xl:pb-0 text-grey dark:text-white text-xs lg:text-sm">
+            <div className="px-4 lg:px-6 bg-white dark:bg-black pb-3 xl:pb-2 text-grey dark:text-white text-xs">
               Mendapatkan {filteredData.length} data
             </div>
           )}

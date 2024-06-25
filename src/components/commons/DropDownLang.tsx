@@ -35,7 +35,7 @@ const DropDownLang = () => {
               <img
                 src="/logo/indonesia.png"
                 alt="English"
-                className="pr-2 h-5"
+                className="pr-2 h-4"
               />
               ID
             </>
@@ -70,14 +70,14 @@ const DropDownLang = () => {
                     >
                       <a
                         href="#"
-                        className="block py-2 text-sm text-gray-700  dark:text-white dark:hover:text-white/75"
+                        className="block py-1 text-sm text-gray-700  dark:text-white dark:hover:text-white/75"
                         role="menuitem"
                       >
-                        <div className="inline-flex items-center">
+                        <div className="inline-flex items-center text-xs">
                           <img
                             src={item.link}
                             alt={item.label}
-                            className="pr-2 h-4"
+                            className="pr-2 h-3"
                           />
                           {item.label}
                         </div>

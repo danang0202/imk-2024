@@ -18,7 +18,7 @@ const Statistics = () => {
           <CardSummary icon={IconHome} label="Usaha Mikro" value={32} />
           <CardSummary icon={IconBuildingSkyscraper} label="Usaha Kecil" value={34} />
           <CardSummary icon={IconBuildingFactory2} label="Usaha Menengah" value={34} />
-          <CardSummary icon={IconBuildingBank} label="Lembaga Pemberi Modal" value={20} />
+          <CardSummary icon={IconBuildingBank} label="Pemberi Modal" value={20} />
         </div>
         <div className="my-4">
           <Tabs defaultValue="umkm" color={EXTENDEDCOLORS.black}>
@@ -26,22 +26,22 @@ const Statistics = () => {
               <Tabs.Tab
                 value="umkm"
                 leftSection={
-                  <IconBuildingStore className="dark:text-white w-5 h-5 md:w-6 md:h6 lg:w-7 lg:h7" />
+                  <IconBuildingStore className="dark:text-white w-5 h-5 md:w-6 md:h6" />
                 }
                 className="dark:hover:bg-black hover:bg-white"
               >
-                <p className="font-semibold hover:text-grey transition duration-300 dark:text-white text-xs md:text-sm lg:text-base">
+                <p className="font-semibold hover:text-grey transition duration-300 dark:text-white text-xs md:text-sm">
                   Statatistik UMKM
                 </p>
               </Tabs.Tab>
               <Tabs.Tab
                 value="modal"
                 leftSection={
-                  <IconBusinessplan className="dark:text-white w-5 h-5 md:w-6 md:h6 lg:w-7 lg:h7" />
+                  <IconBusinessplan className="dark:text-white w-5 h-5 md:w-6 md:h6" />
                 }
                 className="dark:hover:bg-black hover:bg-white"
               >
-                <p className="font-semibold hover:text-grey transition duration-300 dark:text-white text-xs md:text-sm lg:text-base">
+                <p className="font-semibold hover:text-grey transition duration-300 dark:text-white text-xs md:text-sm">
                   Statistik Info Modal
                 </p>
               </Tabs.Tab>

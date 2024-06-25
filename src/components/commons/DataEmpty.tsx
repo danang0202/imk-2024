@@ -5,7 +5,7 @@ const DataEmpty = () => {
   return (
     <AnimatePresence>
       <motion.div
-        className="w-full flex justify-center items-center p-4 lg:p-8 "
+        className="w-full flex justify-center items-center p-4 lg:p-8"
         initial="hidden"
         animate="visible"
         exit="exit"
@@ -16,9 +16,9 @@ const DataEmpty = () => {
           <img
             src="/image/empty.png"
             alt="Data Empty"
-            className="w-[8rem] md:w-[18rem] xl:w-[20rem]"
+            className="w-[8rem] md:w-[15rem]"
           />
-          <p className="text-grey text-xs md:text-sm lg:text-lg">
+          <p className="text-grey text-xs md:text-sm">
             Data tidak ditemukan. Mohon coba hapus beberapa filter.
           </p>
         </div>

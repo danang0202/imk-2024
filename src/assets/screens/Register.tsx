@@ -12,10 +12,10 @@ const Register = () => {
       <div className="flex justify-center items-center min-h-screen bg-silver dark:bg-slate-800 py-8">
         <div className="bg-white dark:bg-black rounded-md shadow-sm overflow-hidden w-11/12 lg:w-2/3">
           <div className="p-5 flex flex-col xl:px-10">
-            <h2 className="text-2xl xl:text-3xl font-semibold text-black dark:text-white text-center">
+            <h2 className="text-2xl font-semibold text-black dark:text-white text-center">
               Pendaftaran
             </h2>
-            <p className="font-extralight text-lg xl:text-xl text-center mb-8 text-black dark:text-white">
+            <p className="font-extralight text-lg text-center mb-8 text-black dark:text-white">
               e-UMKM
             </p>
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
@@ -25,8 +25,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10 ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -47,13 +47,13 @@ const Register = () => {
                     type="text"
                     name="namaUMKM"
                     id="namaUMKM"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm  text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="namaUMKM"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Nama UMKM
                   </label>
@@ -63,8 +63,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -87,7 +87,7 @@ const Register = () => {
                   <select
                     name="skalaUsaha"
                     id="skalaUsaha"
-                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm  text-grey  bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     required
                     defaultValue=""
                   >
@@ -100,7 +100,7 @@ const Register = () => {
                   </select>
                   <label
                     htmlFor="skalaUsaha"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
                     Skala Usaha
                   </label>
@@ -110,8 +110,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -130,7 +130,7 @@ const Register = () => {
                   <select
                     name="bidangUsaha"
                     id="bidangUsaha"
-                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm  text-grey  bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     required
                   >
                     <option value="" disabled selected>
@@ -166,7 +166,7 @@ const Register = () => {
                   </select>
                   <label
                     htmlFor="skalaUsaha"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
                     Bidang Usaha
                   </label>
@@ -176,8 +176,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -197,7 +197,7 @@ const Register = () => {
                   <select
                     name="badanHukum"
                     id="badanHukum"
-                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm  text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     required
                   >
                     <option value="" disabled selected>
@@ -210,7 +210,7 @@ const Register = () => {
                   </select>
                   <label
                     htmlFor="skalaUsaha"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
                     Badan Hukum
                   </label>
@@ -220,8 +220,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -239,7 +239,7 @@ const Register = () => {
                   <select
                     name="dinasPengampu"
                     id="dinasPengampu"
-                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="dark:text-white block py-2 lg:py-3 pl-10 w-full text-sm  text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     required
                   >
                     <option value="" disabled selected>
@@ -267,7 +267,7 @@ const Register = () => {
                   </select>
                   <label
                     htmlFor="skalaUsaha"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 opacity-0 peer-focus:opacity-100 peer-focus:left-0 peer-focus:text-primary peer-valid:opacity-100 peer-valid:left-0 peer-valid:scale-90 peer-valid:-translate-y-8"
                   >
                     Dinas Pengampu
                   </label>
@@ -277,8 +277,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex pt-3 pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -295,13 +295,13 @@ const Register = () => {
                   <textarea
                     name="alamat"
                     id="alamat"
-                    className="block py-2.5 pl-10 w-full text-sm md:text-base text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2.5 pl-10 w-full text-sm  text-grey bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   ></textarea>
                   <label
                     htmlFor="alamat"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Alamat
                   </label>
@@ -314,8 +314,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -332,13 +332,13 @@ const Register = () => {
                     type="text"
                     name="nomorTelepon"
                     id="nomorTelepon"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm  text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="nomorTelepon"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Nomor Telepon
                   </label>
@@ -348,8 +348,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -367,13 +367,13 @@ const Register = () => {
                     type="text"
                     name="email"
                     id="email"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm  text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="email"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Email
                   </label>
@@ -383,8 +383,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -402,13 +402,13 @@ const Register = () => {
                     type="text"
                     name="username"
                     id="username"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm  text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="username"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Username
                   </label>
@@ -418,8 +418,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -438,13 +438,13 @@ const Register = () => {
                     type={showPassword ? "text" : "password"}
                     name="password"
                     id="password"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm  text-grey  dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="password"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Password
                   </label>
@@ -454,8 +454,8 @@ const Register = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -475,8 +475,8 @@ const Register = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -495,13 +495,13 @@ const Register = () => {
                     type={showPassword ? "text" : "password"}
                     name="confirmPassword"
                     id="confirmPassword"
-                    className="block py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block py-2 lg:py-3 pl-10 w-full text-sm  text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="confirmPassword"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm  text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90"
                   >
                     Confirm Password
                   </label>
@@ -511,8 +511,8 @@ const Register = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -529,24 +529,24 @@ const Register = () => {
                 </div>
 
                 <div className="flex items-center mb-2">
-                  <div className="h-5 mr-2 ">
+                  <div className="mr-2 ">
                     <input
                       id="remember"
                       type="checkbox"
                       value=""
-                      className="w-4 h-4 border border-silver rounded bg-silver focus:ring-3 cursor-pointer"
+                      className="w-3 h-3 border border-silver rounded bg-silver focus:ring-3 cursor-pointer"
                       required
                     />
                   </div>
                   <label
                     htmlFor="remember"
-                    className="text-sm text-greyDark cursor-pointer dark:text-white"
+                    className="text-xs text-greyDark cursor-pointer dark:text-white"
                   >
                     Saya menerima syarat dan ketentuan yang berlaku
                   </label>
                 </div>
 
-                <button className="w-full py-2 bg-primary text-white rounded-md font-semibold md:font-bold mt-4 hover:bg-primary/75 transition duration-300">
+                <button className="w-full py-2 bg-primary text-white rounded font-semibold text-sm mt-4 hover:bg-primary/75 transition duration-300">
                   Daftar
                 </button>
               </div>
@@ -554,8 +554,8 @@ const Register = () => {
               <div className="mt-0 text-sm flex justify-start items-center mb-0  ml-5 text-black py-1 hover:text-black/50 transition duration-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
+                  width="17"
+                  height="17"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -569,7 +569,7 @@ const Register = () => {
                   <path d="M5 12l4 4" />
                   <path d="M5 12l4 -4" />
                 </svg>
-                <a href="/beranda" className="dark:text-white">
+                <a href="/beranda" className="dark:text-white text-xs">
                   Kembali ke Home
                 </a>
               </div>

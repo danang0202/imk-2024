@@ -171,14 +171,14 @@ const Gis: React.FC = () => {
 
         <motion.div
           transition={{ duration: 0.5 }}
-          className="w-full rounded px-0 p-4 lg:p-8 pb-8 shadow-sm bg-white dark:bg-black h-full relative"
+          className="w-full rounded px-0 p-4 lg:p-6 pb-8 shadow-sm bg-white dark:bg-black h-full relative"
         >
           <div className="flex flex-col xl:flex-row justify-between items-center pb-2 gap-4 xl:gap-0">
-            <p className="text-sm md:text-base lg:text-lg font-bold text-black dark:text-white">
+            <p className="text-sm md:text-base font-semibold text-black dark:text-white">
               Sistem Informasi Geografis UMKM Kulon Progo
             </p>
             <SearchBar
-              width={windowWidth < EXTENDED_WINDOW.md ? "14rem" : "20rem"}
+              width={windowWidth < EXTENDED_WINDOW.md ? "14rem" : "17rem"}
               searchColumn={searchColumn}
               setSearchColumn={setSearchColumn}
               keyword={keyword}
@@ -195,7 +195,7 @@ const Gis: React.FC = () => {
               Buka Filter
             </p>
           </div>
-          <div className="px-4 lg:px-0  filter-box flex flex-wrap py-2 gap-2 lg:gap-4">
+          <div className="px-4 lg:px-0 filter-box flex flex-wrap py-2 gap-2 lg:gap-4">
             <AllFilterBadge
               keyword={keyword}
               setKeyword={setKeyword}
@@ -213,8 +213,8 @@ const Gis: React.FC = () => {
             />
           </div>
           {filteredDataUMKM.length != filteredDataByKec.length && (
-            <div className="px-4 lg:px-0 pb-4">
-              <p className="text-grey text-xs lg:text-sm dark:text-white">
+            <div className="px-4 lg:px-0 pb-3">
+              <p className="text-grey text-xs dark:text-white">
                 Hasil:
                 <span className="font-medium"> {filteredDataUMKM.length} </span>
                 UMKM ditemukan{" "}
@@ -303,7 +303,7 @@ const Gis: React.FC = () => {
                   filteredDataUMKM.length != 1 &&
                   filteredDataUMKM.map((item) => (
                     <motion.div
-                      className="box p-2 xl:p-4 flex flex-row gap-2 items-center bg-white dark:bg-black border border-gray-300 hover:bg-silver  dark:hover:bg-gray-700 cursor-pointer"
+                      className="box p-2 xl:p-2 flex flex-row gap-2 items-center bg-white dark:bg-black border border-gray-300 hover:bg-silver  dark:hover:bg-gray-700 cursor-pointer"
                       variants={rowVariants}
                       initial="hidden"
                       animate="visible"
@@ -334,7 +334,7 @@ const Gis: React.FC = () => {
                         className="rounded-full max-w-6 xl:max-w-10 dark:bg-white"
                       />
                       <div className="flex flex-col gap-2 dark:text-white">
-                        <p className="font-semibold text-xs md:text-sm xl:text-base">
+                        <p className="font-semibold text-xs md:text-sm">
                           <HighlightText text={item.name} keyword={keyword} />{" "}
                         </p>
                         <div className="flex flex-row gap-2">

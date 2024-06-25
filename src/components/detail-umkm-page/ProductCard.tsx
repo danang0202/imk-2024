@@ -17,35 +17,35 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
   return (
-    <div className="pt-2 md:pt-3 px-2 md:px-3 pb-3 border border-gray-300 dark:border-gray-600 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-48 xl:w-52 xl:hover:shadow-lg transition duration-300">
+    <div className="pt-2 px-2 pb-3 border border-gray-300 dark:border-gray-600 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-44 xl:w-44 xl:hover:shadow-lg transition duration-300">
       <a href="/galeri-produk/detail">
         <div className="w-full flex flex-col gap-1">
           <div className="w-full flex justify-center">
             <img
               src={`/logo-umkm/${item.gambar}`}
-              className="w-full"
+              className="w-full max-h-36"
               alt={item.nama}
             />
           </div>
-          <p className="text-sm lg:text-base font-semibold">{item.nama}</p>
-          <p className="text-sm text-orange-600">
+          <p className="text-sm font-semibold">{item.nama}</p>
+          <p className="text-xs text-orange-600">
             Rp{" "}
-            <span className="text-sm md:text-base lg:text-lg font-semibold">
+            <span className="text-sm md:text-base font-semibold">
               {item.harga}
             </span>
           </p>
-          <div className="text-orange-600 flex justify-start text-xs lg:text-sm">
+          <div className="text-orange-600 flex justify-start text-xs">
             <div className="box px-1 border border-orange-600 rounded-sm">
               <p>{item.kategori}</p>
             </div>
           </div>
           <div className="hidden xl:flex flex-row gap-1 items-center">
-            <IconMapPin size={15} className="text-black dark:text-white" />
-            <p className="text-xs lg:text-sm">{item.lokasi}</p>
+            <IconMapPin size={13} className="text-black dark:text-white" />
+            <p className="text-xs">{item.lokasi}</p>
           </div>
           <div className="hidden xl:flex flex-row gap-1 items-center">
-            <IconBuildingStore size={14} className="text-black dark:text-white" />
-            <p className="text-xs lg:text-sm" >{item.umkm}</p>
+            <IconBuildingStore size={13} className="text-black dark:text-white" />
+            <p className="text-xs" >{item.umkm}</p>
           </div>
         </div>
       </a>

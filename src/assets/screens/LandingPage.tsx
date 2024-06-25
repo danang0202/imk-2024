@@ -159,10 +159,10 @@ const LandingPage: React.FC = () => {
             alt="Your image description"
             data-aos="fade-up"
             data-aos-duration="800"
-            className="h-6 xl:h-9"
+            className="h-6"
           />
           <h1
-            className="text-xl md:text-3xl font-bold dark:text-white"
+            className="text-xl md:text-2xl font-bold dark:text-white"
             data-aos="fade-up"
             data-aos-duration="800"
           >
@@ -202,9 +202,9 @@ const LandingPage: React.FC = () => {
           <img
             src={`/image/faq-logo.svg`}
             alt="Your image description"
-            className="h-6 xl:h-9"
+            className="h-6"
           />
-          <h1 className="text-xl md:text-3xl font-bold dark:text-white">
+          <h1 className="text-xl md:text-2xl font-bold dark:text-white">
             Frequntly Asked <span className="text-primary">Question</span>
           </h1>
         </div>
@@ -212,7 +212,7 @@ const LandingPage: React.FC = () => {
           <div data-aos="fade-up" className="flex flex-col gap-4">
             <div className="xl:mb-2 text-left">
               <p
-                className="text-center text-xs md:text-sm  lg:text-base xl:text-left text-gray-600 font-semibold dark:text-white"
+                className="text-center text-xs md:text-sm  lg:text-sm xl:text-left text-gray-600 font-semibold dark:text-white"
                 data-aos="fade-up"
                 data-aos-duration="800"
               >
@@ -258,7 +258,7 @@ const LandingPage: React.FC = () => {
         }  p-8 py-16 flex flex-col items-center`}
       >
         <h1
-          className="text-grey text-base md:text-xl lg:text-2xl font-semibold dark:text-white"
+          className="text-grey text-base md:text-xl lg:text-lg font-semibold dark:text-white"
           data-aos="fade-up"
           data-aos-duration="800"
         >
@@ -272,15 +272,15 @@ const LandingPage: React.FC = () => {
           <img
             src="/logo/logo.png"
             alt=""
-            className="h-[40px] md:h-[60px] xl:h-[80px]"
+            className="h-[40px] md:h-[60px]"
           />
           <div className="kp flex flex-row items-center">
             <img
               src="/logo/logo_kp.png"
               alt=""
-              className=" h-[40px] md:h-[60px] xl:h-[70px]"
+              className=" h-[40px] md:h-[60px]"
             />
-            <div className="flex flex-col font-semibold xl:font-bold pl-4 text-xs md:text-sm lg:text-base">
+            <div className="flex flex-col font-semibold xl:font-bold pl-4 text-xs md:text-sm">
               <h1>PEMKAB</h1>
               <h1>KULON PROGO</h1>
             </div>
@@ -288,7 +288,7 @@ const LandingPage: React.FC = () => {
           <img
             src="/logo/kerisku.jpeg"
             alt=""
-            className="h-[40px] md:h-[60px] xl:h-[80px]"
+            className="h-[40px] md:h-[60px]"
           />
         </div>
       </div>

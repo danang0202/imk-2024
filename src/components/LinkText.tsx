@@ -11,7 +11,7 @@ const LinkText: React.FC<Props> = ({ text, branding, url }) => {
   return (
     <a
       href={url}
-      className={`text-${branding} font-semibold py-1 transform hover:scale-110 transition duration-300`}
+      className={`text-${branding} text-sm font-semibold py-1 transform hover:text-primary/75 transition duration-300`}
     >
       {text}
       <FontAwesomeIcon icon={faArrowRight} className="pl-2 font-bold" />

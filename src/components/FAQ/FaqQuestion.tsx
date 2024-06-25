@@ -27,7 +27,7 @@ const FaqQuestion: React.FC<Item> = ({
     >
       <button className="flex justify-between w-full items-center focus:outline-none">
         <h4
-          className={`flex-1 text-sm md:text-base xl:text-lg text-left font-semibold hover:text-primary ${
+          className={`flex-1 text-sm text-left font-semibold hover:text-primary ${
             isActive ? "text-primary" : "text-black dark:text-white"
           }`}
         >
@@ -53,7 +53,7 @@ const FaqQuestion: React.FC<Item> = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, }}
-              className="text-sm md:text-base dark:text-white"
+              className="text-sm dark:text-white"
             >
               {content}
             </motion.p>

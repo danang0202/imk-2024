@@ -14,7 +14,7 @@ const BadgeFilter: React.FC<Props> = ({ item, handleClick, bg }) => {
     <AnimatePresence>
       <motion.span
         id="badge-dismiss-default"
-        className={`inline-flex items-center px-2 py-1 me-2 text-xs lg:text-sm font-base text-gray-600 ${bg ? bg : 'bg-silver'} rounded-sm cursor-pointer`}
+        className={`inline-flex items-center px-2 py-1 me-2 text-xs font-base text-gray-600 ${bg ? bg : 'bg-silver'} rounded-sm cursor-pointer`}
         onClick={() => handleClick(item)}
         whileHover={{ backgroundColor: EXTENDEDCOLORS.inactive, scale: 1.05 }}
         initial="hidden"

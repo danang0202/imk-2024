@@ -59,8 +59,8 @@ const DonutChartKategori = () => {
   const { windowWidth, theme } = useThemeContext();
   return (
     <div className="w-full">
-      <div className="flex flex-col md:flex-row justify-center md:justify-between pb-6 gap-4 items-center">
-        <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-center md:text-start">
+      <div className="flex flex-col justify-center md:justify-between pb-6 gap-4 items-center">
+        <p className="font-semibold text-sm md:text-base text-wrap text-center">
           Grafik Lingkaran Jumlah UMKM Berdasarkan {selectedFilter?.name}
         </p>
         <div className="flex flex-row justify-end  gap-2 md:gap-4 w-full md:w-fit">

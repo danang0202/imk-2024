@@ -94,29 +94,29 @@ const DetailUmkmContent = () => {
   }, [filter]);
 
   return (
-    <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-8 dark:text-white">
+    <div className="px-4 lg:px-8 xl:px-3xl flex flex-col xl:flex-row items-stretch w-full gap-4 dark:text-white">
       <div className="w-full xl:w-1/2 flex flex-col items-center">
         <div className="title w-full pb-2 my-4 flex justify-between  dark:border-gray-500">
-          <p className=" text-base lg:text-lg font-semibold">
+          <p className=" text-base font-semibold">
             Informasi Dasar UMKM
           </p>{" "}
         </div>
-        <div className="main-content flex flex-col  md:flex-row gap-4 bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 xl:p-8 rounded items-center justify-between w-full">
+        <div className="main-content flex flex-col  md:flex-row gap-2 bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 rounded items-center justify-between w-full">
           <div className="logo">
             <img
               src="/logo-umkm/logo-umkm-1.png"
               alt="Logo UMKM"
-              className="w-44"
+              className="w-36"
             />
           </div>
           <div className="main-information flex flex-col md:flex-row md:gap-4 items-stretch w-full">
-            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
                 {umkmData.slice(0, 4).map((item, index) => (
                   <tr key={index}>
                     <td
                       scope="row"
-                      className="w-40 px-4 py-2 text-grey dark:text-gray-300"
+                      className="w-30 px-4 py-2 text-grey dark:text-gray-300"
                     >
                       {item.label}
                     </td>
@@ -126,7 +126,7 @@ const DetailUmkmContent = () => {
                       <td className="whitespace-nowrap font-normal">
                         <span
                           className={`${getSkalaUsahaColor(item?.label).bg} ${getSkalaUsahaColor(item?.label).text
-                            } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                            } text-xs me-2 px-1.5 py-0.5 rounded`}
                         >
                           {item.value}
                         </span>
@@ -136,13 +136,13 @@ const DetailUmkmContent = () => {
                 ))}
               </tbody>
             </table>
-            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
                 {umkmData.slice(4, 8).map((item, index) => (
                   <tr key={index}>
                     <td
                       scope="row"
-                      className="w-40 px-4 py-2 text-grey dark:text-gray-300"
+                      className="w-30 px-4 py-2 text-grey dark:text-gray-300"
                     >
                       {item.label}
                     </td>
@@ -152,7 +152,7 @@ const DetailUmkmContent = () => {
                       <td className="whitespace-nowrap font-normal  dark:border-slate-700">
                         <span
                           className={`${getBadanUsahaColor(item?.label).bg} ${getBadanUsahaColor(item?.label).text
-                            } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                            } text-xs me-2 px-1.5 py-0.5 rounded`}
                         >
                           {item.value}
                         </span>
@@ -174,13 +174,13 @@ const DetailUmkmContent = () => {
           </div>
         </div>
         <div className="title w-full py-2 my-4 flex justify-between  dark:border-gray-500">
-          <p className="text-base lg:text-lg  font-semibold">
+          <p className="text-base font-semibold">
             Informasi Lanjutan UMKM
           </p>{" "}
         </div>
         {windowWidth < EXTENDED_WINDOW.md ? (
-          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 xl:p-8 rounded">
-            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
+          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 rounded">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
                 {umkmData.slice(8).map((item, index) => (
                   <tr key={index}>
@@ -201,8 +201,8 @@ const DetailUmkmContent = () => {
             </table>
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row md:gap-4 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 xl:p-8 rounded">
-            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
+          <div className="flex flex-col md:flex-row md:gap-2 w-full bg-white border border-gray-300 dark:border-gray-600 dark:bg-black p-4 rounded">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
                 {umkmData.slice(8, 17).map((item, index) => (
                   <tr key={index}>
@@ -224,7 +224,7 @@ const DetailUmkmContent = () => {
                 ))}
               </tbody>
             </table>
-            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm lg:text-base">
+            <table className="w-full text-left rtl:text-right text-black dark:text-white text-sm">
               <tbody>
                 {umkmData.slice(17).map((item, index) => (
                   <tr key={index}>
@@ -255,7 +255,7 @@ const DetailUmkmContent = () => {
       >
         <div className="box w-full flex flex-col items-center xl:-translate-y-1">
           <div className="title w-full my-4 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
-            <p className="text-base lg:text-lg  font-semibold">Galeri Produk</p>
+            <p className="text-base font-semibold">Galeri Produk</p>
             <div className="box flex w-full md:w-fit justify-between md:justify-normal gap-4">
               <SortingSelection filter={filter} setFilter={setFilter} />
               <MinimalisSearch filter={filter} setFilter={setFilter} produk={produkSafiira} />
@@ -288,9 +288,9 @@ const DetailUmkmContent = () => {
         <div className="py-6 flex flex-col md:flex-row justify-between items-center w-full gap-4">
           <p className="text-xs md:text-sm ">
             Menampilkan{" "}
-            <span className="font-semibold">{page * limit - limit + 1}</span> -
-            <span className="font-semibold"> {page * limit} </span> dari {""}
-            <span className="font-bold"> {produkSafiira.length} </span> produk
+            <span className="">{page * limit - limit + 1}</span> -
+            <span className=""> {page * limit} </span> dari {""}
+            <span className=""> {produkSafiira.length} </span> produk
           </p>
           <MinimalisPagination
             page={page}

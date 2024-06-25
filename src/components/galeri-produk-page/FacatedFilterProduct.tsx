@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faList } from "@fortawesome/free-solid-svg-icons";
-import { EXTENDED_WINDOW, kategoriProduk, kecamatanSlug } from "../../DataBuilder";
+import {  kategoriProduk, kecamatanSlug } from "../../DataBuilder";
 import FilterGroup from "./FilterGroup";
 import { FilterProduct } from "../../types/geleri-produk.types";
 import { Dispatch, FC, SetStateAction, useState } from "react";
@@ -10,7 +10,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { dropdownVariants, variantsFilterInfoModal } from "../../helper/motion.helper";
 import { Slider } from "@mui/material";
 import { IconFilterSearch, IconLineDashed } from "@tabler/icons-react";
-import { useThemeContext } from "../../layout/ThemeContext";
 import { ChevronDown } from "lucide-react";
 
 interface FacatedFilterProductProps {
@@ -29,8 +28,6 @@ const marks = [
 
 const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter, showFilter, setShowFilter }) => {
     const [showNominalFilter, setShowNominalFilter] = useState(true);
-    const { windowWidth } = useThemeContext();
-
     const handleKategoriClick = (item: TypeData) => {
         handleFilterProductToggle(item, filter.kategori, (updatedKategori) =>
             setFilter((prevState) => ({ ...prevState, kategori: updatedKategori }))
@@ -62,11 +59,11 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
             exit="exit"
             variants={variantsFilterInfoModal}
             transition={{ duration: 0.3 }}
-            className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 xl:py-4 px-6 rounded-e-sm xl:rounded-sm text-sm md:text-base dark:bg-black z-40 border border-gray-300 xl:border-none xl:my-4 md:min-w-[20rem]  overflow-y-auto xl:overflow-y-hidden max-h-[80vh] xl:max-h-fit"
+            className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 xl:py-4 px-6 rounded-e-sm xl:rounded-sm text-sm dark:bg-black z-40 border border-gray-300 xl:border-none xl:my-4 md:min-w-[20rem]  overflow-y-auto xl:overflow-y-hidden max-h-[80vh] xl:max-h-fit"
         >
             <div className="filter rounded relative">
                 <ChevronDown
-                    className={`xl:hidden absolute top-0 right-0 w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transition-transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer ${showFilter ? "transform rotate-90" : ""
+                    className={`xl:hidden absolute top-0 right-0 w-7 h-7 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transition-transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer ${showFilter ? "transform rotate-90" : ""
                         }`}
                     onClick={() => {
                         setShowFilter(false)
@@ -87,16 +84,16 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
                         className="pt-4 flex items-center hover:text-primary justify-between cursor-pointer"
                         onClick={() => setShowNominalFilter(!showNominalFilter)}
                     >
-                        <div className="flex">
+                        <div className="flex items-center">
                             <IconFilterSearch
-                                size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                                size={15}
                                 style={{ marginRight: "0.8rem" }}
                             />
-                            <h1 className="font-semibold">Harga</h1>
+                            <h1 className="font-semibold tetx-sm">Harga</h1>
                         </div>
                         <FontAwesomeIcon
                             icon={faChevronUp}
-                            className={`hover:text-grey transform transition-transform duration-300 ${!showNominalFilter && "rotate-180"
+                            className={`hover:text-grey transform transition-transform duration-300 text-xs ${!showNominalFilter && "rotate-180"
                                 }`}
                         />
                     </div>
@@ -122,25 +119,22 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
                                         color="primary"
                                     />
                                 </div>
-                                {/* <p className="text-xs lg:text-sm text-grey dark:text-gray-200 mt-2 mb-3">
-                                    <span className="font-semibold">Catatan: </span>Harga dalam satuan rupiah
-                                </p> */}
                                 <div className="flex flex-row justify-between gap-4 items-center mt-3">
-                                    <p className="text-xs lg:text-sm">Rp</p>
+                                    <p className="text-xs">Rp</p>
                                     <input
                                         type="text"
                                         id="slider-lower"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded w-1/2 p-1 md:p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded w-1/2 p-1 md:p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                                         value={filter.harga[0]}
                                         onChange={(e) => handleInputChange(0, e.target.value)}
                                         onBlur={() => handleInputBlur(0)}
                                     />
                                     <IconLineDashed />
-                                    <p className="text-xs lg:text-sm">Rp</p>
+                                    <p className="text-xs">Rp</p>
                                     <input
                                         type="text"
                                         id="slider-upper"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded  w-1/2 p-1 md:p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded  w-1/2 p-1 md:px-2 md:py-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                                         value={filter.harga[1] || ""}
                                         onChange={(e) => handleInputChange(1, e.target.value)}
                                         onBlur={() => handleInputBlur(1)}
@@ -173,8 +167,8 @@ export type ButtonNominalFilterProps = {
 }
 const ButtonNominalFilter: FC<ButtonNominalFilterProps> = ({ text, setFilter, min, max, filter }) => {
     return (
-        <div className={`cursor-pointer ${filter.harga[0] == min && filter.harga[1] == max ? 'border-2 border-primary text-success' : 'bg-gray-100 hover:bg-gray-200 text-black dark:text-white dark:bg-slate-800 dark:hover:bg-slate-700'} p-2 px-4 rounded-sm  transition-colors duration-300`} onClick={() => setFilter((prev) => ({ ...prev, harga: [min, max] }))}>
-            <p className="text-xs md:text-sm text-center">{text}</p>
+        <div className={`cursor-pointer ${filter.harga[0] == min && filter.harga[1] == max ? 'border-2 border-primary text-success' : 'bg-gray-100 hover:bg-gray-200 text-black dark:text-white dark:bg-slate-800 dark:hover:bg-slate-700'} p-2 px-2 rounded-sm  transition-colors duration-300`} onClick={() => setFilter((prev) => ({ ...prev, harga: [min, max] }))}>
+            <p className="text-xs text-center">{text}</p>
         </div>
     )
 }

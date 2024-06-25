@@ -38,14 +38,14 @@ const DetailInfoModal = () => {
   const { windowWidth } = useThemeContext();
   return (
     <Layout pageTitle="Detail Info Modal">
-      <div className="flex flex-col justify-center items-center w-full pt-5xl xl:pt-5.5xl bg-silver dark:bg-slate-800 text-sm md:text-base">
-        <div className="w-11/12 xl:w-8/12 flex justify-start mb-2 xl:mb-4">
+      <div className="flex flex-col justify-center items-center w-full pt-5xl bg-silver dark:bg-slate-800 text-sm md:text-base">
+        <div className="w-11/12 xl:w-9/12 flex justify-start mb-2 xl:mb-4">
           <Breadcrumb />
         </div>
-        <div className="img-container w-11/12 xl:w-8/12 rounded-lg">
-          <img src="/logo-umkm/bri-bg-3.jpg" alt="BRI Background" className="w-full object-cover h-[20rem] xl:h-[25rem] rounded-xl shadow" />
+        <div className="img-container w-11/12 xl:w-9/12 rounded-lg">
+          <img src="/logo-umkm/bri-bg-3.jpg" alt="BRI Background" className="w-full object-cover h-[20rem] rounded-xl shadow" />
         </div>
-        <div className="relative w-10/12 xl:w-7/12 flex items-center flex-col bg-white shadow rounded-lg transform -translate-y-14 p-4 lg:p-8 pb-12 dark:bg-black dark:text-white">
+        <div className="relative w-10/12 xl:w-8/12 flex items-center flex-col bg-white shadow rounded-lg transform -translate-y-14 p-4 lg:p-8 pb-12 dark:bg-black dark:text-white">
           <div className="absolute top-4 lg:top-8 right-4 lg:right-8 flex items-center space-x-2 xl:space-x-4">
             <div className="box p-1 bg-accent5 rounded-lg">
               <a href="mailto:wisnudanang86@gmail.com">
@@ -58,7 +58,7 @@ const DetailInfoModal = () => {
               </a>
             </div>
           </div>
-          <h2 className="font-bold text-base w-[10rem] md:w-fit text-center md:text-lg xl:text-xl">Informasi Lengkap Pemberi modal</h2>
+          <h2 className="font-bold text-base w-[10rem] md:w-fit text-center md:text-lg">Informasi Lengkap Pemberi modal</h2>
           <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center w-full space-x-4 xl:space-x-8 mt-2 lg:mt-8">
             <img
               src="https://jasalogocepat.com/wp-content/uploads/2023/09/logo-bri-png-transparan-jasalogocepat-01.png"
@@ -84,7 +84,7 @@ const DetailInfoModal = () => {
                           <td className="text-gray-800 dark:text-gray-200">  <span
                             className={`${getNominalModalColor(parseInt(item?.value)).bg
                               } ${getNominalModalColor(parseInt(item?.value)).text
-                              } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                              } text-xs font-medium me-2 px-1.5 py-0.5 rounded`}
                           >
                             <span className="text-xs md:text-sm font-semibold">
                               Rp{" "}
@@ -103,12 +103,12 @@ const DetailInfoModal = () => {
             )}
 
             {windowWidth >= EXTENDED_WINDOW.lg && (
-              <table className="">
+              <table className="text-sm">
                 <tbody>
                   {infoData.slice(0, 3).map((item, index) => (
                     <tr key={index}>
-                      <td className="pr-8 py-2 font-semibold">{item.label}</td>
-                      <td className="text-gray-800 dark:text-gray-200">{item.value}</td>
+                      <td className="pr-8 py-2 text-grey dark:text-gray-300">{item.label}</td>
+                      <td className="text-black dark:text-white">{item.value}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -116,15 +116,15 @@ const DetailInfoModal = () => {
             )}
 
             {windowWidth >= EXTENDED_WINDOW.lg && (
-              <table className="">
+              <table className="text-sm">
                 <tbody>
                   {infoData.slice(3).map((item, index) => (
                     <tr key={index}>
-                      <td className="pr-8 py-2 font-semibold">{item.label}</td>
+                      <td className="pr-8 py-2 text-grey dark:text-gray-300">{item.label}</td>
                       {item.label === "Jenis Lembaga" ? (
-                        <td className="text-gray-800 dark:text-gray-200">
+                        <td className="">
                           <span
-                            className={`${getInstitusionColorInfoModal(item.value).bg} ${getInstitusionColorInfoModal(item.value).text} text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                            className={`${getInstitusionColorInfoModal(item.value).bg} ${getInstitusionColorInfoModal(item.value).text} text-xs me-2 px-1.5 py-0.5 rounded`}
                           >
                             {item.value}
                           </span>
@@ -133,9 +133,9 @@ const DetailInfoModal = () => {
                         <td className="text-gray-800 dark:text-gray-200">  <span
                           className={`${getNominalModalColor(parseInt(item?.value)).bg
                             } ${getNominalModalColor(parseInt(item?.value)).text
-                            } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                            } text-xs -medium me-2 px-1.5 py-0.5 rounded`}
                         >
-                          <span className="text-xs md:text-sm font-semibold">
+                          <span className="text-xs">
                             Rp{" "}
                           </span>
                           {formatRupiah(parseInt(item.value))}
@@ -148,15 +148,15 @@ const DetailInfoModal = () => {
             )}
           </div>
           <div className="group my-8 w-full px-0 md:px-8">
-            <h2 className="font-semibold xl:text-lg mb-2">Alamat</h2>
-            <p>
+            <h2 className="font-semibold mb-2">Alamat</h2>
+            <p className="text-sm">
               Jl. Kolonel Sugiono No.2, Gadingan, Wates, Kec. Wates,
               Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta 55651
             </p>
           </div>
           <div className="group w-full  px-0  md:px-8">
-            <h2 className="font-semibold xl:text-lg mb-2">Syarat dan Ketentuan</h2>
-            <ul className="list-disc list-inside pl-4 ">
+            <h2 className="font-semibold mb-2">Syarat dan Ketentuan</h2>
+            <ul className="list-disc list-inside pl-4 text-sm">
               {requirements.map((requirement, index) => (
                 <li className="my-1" key={index}>{requirement}</li>
               ))}

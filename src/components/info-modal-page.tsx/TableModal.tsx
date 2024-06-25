@@ -1,4 +1,3 @@
-import { IconInfoCircle } from "@tabler/icons-react";
 import { titleSlugType } from "../../types/common.types";
 import { FC, useEffect, useState } from "react";
 import ArrowSorting from "../table/ArrowSorting";
@@ -82,12 +81,12 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
           <div className="rounded-lg  overflow-x-auto w-full relative">
             <table className="w-full text-left border-separate border-spacing-y-2 lg:border-spacing-y-3 font-inter transform -translate-y-3">
               {/* Table header */}
-              <thead className="rounded-lg text-black text-xs md:text-sm lg:text-base">
+              <thead className="rounded-lg text-black text-xs md:text-sm ">
                 <tr>
                   {headerDataTable?.map((item, index) => (
                     <th
                       className={`bg-white py-3 lg:py-6 text-black  justify-start whitespace-nowrap ${item.slug == "index" && "px-4 lg:px-8 xl:pl-8 "
-                        } rounded-bl dark:text-white px-2 dark:bg-black`}
+                        } rounded-bl dark:text-white px-2 dark:bg-black font-semibold`}
                       key={index}
                     >
                       <div className="bg-white flex items-center justify-start dark:bg-black">
@@ -106,7 +105,7 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                       </div>
                     </th>
                   ))}
-                  <th className="bg-white py-3 pr-4x lg:pr-8x xl:pr-8 justify-center text-black sm:text-base  dark:text-white rounded-br dark:bg-black">
+                  <th className="bg-white py-3 pr-4x font-semibold lg:pr-8x xl:pr-8 justify-center text-black  dark:text-white rounded-br dark:bg-black">
                     Tindakan
                   </th>
                 </tr>
@@ -116,13 +115,13 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                 {paginatedDataModal.map((data, index) => (
                   <tr
                     key={index}
-                    className="bg-white dark:bg-black text-sm lg:text-base"
+                    className="bg-white dark:bg-black text-sm"
                   >
-                    <td className="py-4 lg:py-5 whitespace-nowrap px-2 lg:px-4 xl:pl-xl font-bold dark:border-slate-700 rounded-tl rounded-bl text-center">
+                    <td className="py-4 whitespace-nowrap px-2 lg:px-4 xl:pl-8 font-bold dark:border-slate-700 rounded-tl rounded-bl text-center">
                       {data?.index}
                     </td>
 
-                    <td className="px-2 lg:px-3 whitespace-normal font-normal  dark:border-slate-700">
+                    <td className="px-2 lg:px-2 whitespace-normal font-normal  dark:border-slate-700">
                       <div className="flex flex-row items-center w-full gap-2 lg:gap-3">
                         <img
                           src={data.avatar}
@@ -134,40 +133,39 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                     </td>
 
 
-                    <td className="px-2 lg:px-3 whitespace-nowrap font-normal dark:border-slate-700">
+                    <td className="px-2 lg:px-2 whitespace-nowrap font-normal dark:border-slate-700">
                       <span
                         className={`${getInstitusionColorInfoModal(data?.lembaga).bg
                           } ${getInstitusionColorInfoModal(data?.lembaga).text
-                          } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                          } text-xs me-2 px-1.5 py-0.5 rounded`}
                       >
                         {data?.lembaga}
                       </span>
                     </td>
-                    <td className="px-2 lg:px-3 whitespace-normal font-normal dark:border-slate-700">
+                    <td className="px-2 lg:px-2 whitespace-normal font-normal dark:border-slate-700">
                       {data?.email}
                     </td>
-                    <td className="px-2 lg:px-3 whitespace-normal font-normal dark:border-slate-700">
+                    <td className="px-2 lg:px-2 whitespace-normal font-normal dark:border-slate-700">
 
                       <span
                         className={`${getNominalModalColor(data?.nominal).bg
                           } ${getNominalModalColor(data?.nominal).text
-                          } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                          } text-xs me-2 px-1.5 py-0.5 rounded`}
                       >
-                        <span className="text-xs md:text-sm font-semibold">
+                        <span className="text-xs">
                           Rp{" "}
                         </span>
                         {formatRupiah(data?.nominal)}
                       </span>
                     </td>
-                    <td className="py-2 px-3  font-normal min-w-[15rem]  dark:border-slate-700">
+                    <td className="py-2 px-3 font-normal min-w-[15rem]  dark:border-slate-700">
                       {data?.alamat}
                     </td>
-                    <td className="pr-4x lg:pr-8x xl:pr-8 dark:border-slate-700 rounded-tr rounded-br">
+                    <td className="pr-4 lg:pr-8 xl:pr-8 dark:border-slate-700 rounded-tr rounded-br">
                       <div className="flex justify-center">
                         <a href="/info-modal/detail" className="button-link">
-                          <button className="flex flex-row gap-2 items-center text-xs lg:text-sm bg-primary hover:bg-primary/75 px-2 py-1 rounded text-white transition duration-300">
+                          <button className="flex flex-row gap-2 items-center text-xs bg-primary hover:bg-primary/75 px-2 py-1 rounded text-white transition duration-300">
                             Detail
-                            <IconInfoCircle size={17} />
                           </button>
                         </a>
                       </div>
@@ -178,11 +176,11 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
             </table>
           </div>
           <div className="bg-white rounded px-4 lg:px-8 xl:px-3xl py-6 flex flex-col lg:flex-row items-center md:items-end gap-y-4 lg:justify-between lg:items-center dark:bg-black">
-            <p className="text-xs md:text-sm lg:text-base">
+            <p className="text-xs md:text-sm ">
               Menampilkan{" "}
-              <span className="font-semibold">{page * limit - limit + 1}</span>{" "}
-              -<span className="font-semibold"> {page * limit} </span> dari {""}
-              <span className="font-bold"> {dataModal.length} </span> data
+              <span className="">{page * limit - limit + 1}</span>{" "}
+              -<span className=""> {page * limit} </span> dari {""}
+              <span className=""> {dataModal.length} </span> data
             </p>
             <div className="pagination w-full md:w-fit">
               <Pagination

@@ -1,7 +1,6 @@
 import Selection, { TypeData } from "./Selection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  EXTENDED_WINDOW,
   badanHukumUsaha,
   bidangUsaha,
   dinasPengampu,
@@ -50,7 +49,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
   setSelectedkecamatan,
   kecamatanList,
 }) => {
-  const { common: c, windowWidth } = useThemeContext();
+  const { common: c } = useThemeContext();
   return (
     <div>
       <motion.div
@@ -59,30 +58,28 @@ const NormalFilter: React.FC<FitlerProps> = ({
         exit="exit"
         variants={variantsFilterDataUMKM}
         transition={{ duration: 0.3 }}
-        className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 px-6 rounded-e-sm xl:rounded-sm text-sm md:text-base dark:bg-black z-40 border border-gray-300 xl:border-none"
+        className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none p-6 rounded-e-sm xl:rounded-sm text-sm  dark:bg-black z-40 border border-gray-300 xl:border-none"
       >
         <div className="relative">
-          <ChevronDown
-            className={`absolute w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transition-transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer top-0 right-0 ${showFilter ? "transform rotate-90" : ""
-              }`}
-            onClick={() => {
-              setShowFilter(false), setDelayFilter(false);
-            }}
-          />
-          <div className="flex flex-col justify-start gap-8">
-            <div className="border-b border-grey pt-2 pb-4">
-              <h1 className="font-bold text-center">
+          <div className="box absolute top-0 right-0 transform translate-x-3 -translate-y-3">
+            <ChevronDown
+              className={`w-7 h-7 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer transition duration-300 ${showFilter ? "transform rotate-90" : ""
+                }`}
+              onClick={() => {
+                setShowFilter(false), setDelayFilter(false);
+              }} />
+          </div>
+          <div className="flex flex-col justify-start gap-4">
+            <div className="border-b border-grey pb-4">
+              <h1 className="font-bold text-center xl:text-base">
                 <FontAwesomeIcon icon={faList} className="pr-3" />
                 {c("filterTitle")}
               </h1>
             </div>
-            <div className="flex flex-col gap-4 xl:gap-8 ">
+            <div className="flex flex-col gap-4">
               {kecamatanList && setSelectedkecamatan && (
-                <div className="box flex flex-col gap-4">
+                <div className="box flex flex-col gap-2">
                   <div className="flex flex-row gap-2 items-center dark:text-white">
-                    <IconFilterSearch
-                      size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
-                    />
                     <h1 className="font-semibold whitespace-nowrap">
                       Kecamatan
                     </h1>
@@ -91,7 +88,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
                     <select
                       value={selectedKecamatan ? selectedKecamatan.name : ""}
                       onChange={(e) => handleKecamatanChange(e, setSelectedkecamatan)}
-                      className="whitespace-nowrap bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 cursor-pointer dark:bg-slate-800 dark:border-grey dark:text-white"
+                      className="whitespace-nowrap bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded focus:ring-primary focus:border-primary block w-full p-2 cursor-pointer dark:bg-slate-800 dark:border-grey dark:text-white"
                     >
                       <option value="">Semua</option>
                       {kecamatanList.map((item, index) => (
@@ -103,7 +100,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
                   </form>
                 </div>
               )}
-              <div className="item-filter flex flex-col gap-4">
+              <div className="item-filter flex flex-col gap-2">
                 <h1 className="font-semibold">{c("thead_umkm_skala")}</h1>
                 <Selection
                   selectionData={skalaUsaha}
@@ -111,7 +108,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
                   setSelectedData={setSkalaUsahaFilter}
                 />
               </div>
-              <div className="item-filter flex flex-col gap-4">
+              <div className="item-filter flex flex-col gap-2">
                 <h1 className="font-semibold">{c("thead_umkm_pengampu")}</h1>
                 <Selection
                   selectionData={dinasPengampu}
@@ -119,7 +116,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
                   setSelectedData={setDinasPengampuFilter}
                 />
               </div>
-              <div className="item-filter flex flex-col gap-4">
+              <div className="item-filter flex flex-col gap-2">
                 <h1 className="font-semibold">{c("thead_umkm_badanHukum")}</h1>
                 <Selection
                   selectionData={badanHukumUsaha}
@@ -127,7 +124,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
                   setSelectedData={setBadanHukumFilter}
                 />
               </div>
-              <div className="item-filter flex flex-col gap-4">
+              <div className="item-filter flex flex-col gap-2">
                 <h1 className="font-semibold">{c("thead_umkm_bidang")}</h1>
                 <Selection
                   selectionData={bidangUsaha}
@@ -141,7 +138,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
             <IconFilterSearch size={17} />
             <p
               onClick={() => setShowAdvancedFilter(true)}
-              className="text-xs md:text-sm "
+              className="text-xs md:text-xs "
             >
               {c("openAdvFilter")}
             </p>

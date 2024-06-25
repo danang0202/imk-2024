@@ -147,7 +147,7 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
   return (
     <div ref={containerRef} className="w-full h-fit" id="chloropath-map">
       <div className="flex flex-row items-center  justify-between pb-6 gap-2 md:gap-4">
-        <p className="font-semibold text-sm md:text-base xl:text-lg text-wrap text-left">
+        <p className="font-semibold text-sm md:text-base text-wrap text-left">
           Peta Chloropleth Jumlah{" "}
           {skalaFilter.slug == "semua" ? "UMKM" : skalaFilter.name}
         </p>

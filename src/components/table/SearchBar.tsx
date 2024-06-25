@@ -93,7 +93,7 @@ const SearchBar: React.FC<Props> = ({
         <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
-          className="translate-x-1 flex flex-row-0 z-10 items-center py-2.5 px-1 pl-2  md:px-4 text-xs lg:text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 w-[7rem] md:w-[8rem] lg:w-[10rem] dark:bg-slate-800 dark:border-gray-600  dark:text-white dark:hover:bg-slate-800 whitespace-nowrap transition duration-300"
+          className="translate-x-1 flex flex-row-0 z-10 items-center py-2 px-1 pl-2  md:px-2 text-xs font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s hover:bg-gray-200 w-[7rem] md:w-[7.5rem] dark:bg-slate-800 dark:border-gray-600  dark:text-white dark:hover:bg-slate-800 whitespace-nowrap transition duration-300"
           type="button"
           onClick={() => setShowsearchColumn(!showFilfterColumn)}
         >
@@ -106,7 +106,7 @@ const SearchBar: React.FC<Props> = ({
               : columns.find((item) => item.slug == searchColumn)?.title}
 
           <svg
-            className="w-2 h-2  md:w-2.5 md:h-2.5 ms-2"
+            className="w-2 h-2 ms-2"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -125,7 +125,7 @@ const SearchBar: React.FC<Props> = ({
           {showFilfterColumn && (
             <motion.div
               id="dropdown"
-              className="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44 transform translate-y-12 dark:bg-slate-800"
+              className="z-10 left-2 absolute bg-white divide-y divide-gray-100 rounded shadow w-32 transform translate-y-12 dark:bg-slate-800"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -142,7 +142,7 @@ const SearchBar: React.FC<Props> = ({
                       setShowsearchColumn(false);
                     }}
                     type="button"
-                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-black dark:text-white text-xs md:text-sm"
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-black dark:text-white text-xs"
                   >
                     {c("all")}
                   </button>
@@ -159,7 +159,7 @@ const SearchBar: React.FC<Props> = ({
                         setShowsearchColumn(false);
                       }}
                       type="button"
-                      className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:text-white text-xs md:text-sm"
+                      className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:text-white text-xs"
                     >
                       {isInfoModal ? item.title : c(`thead_umkm_${item.slug}`)}
                     </button>
@@ -175,17 +175,17 @@ const SearchBar: React.FC<Props> = ({
             onChange={(e) => handleKeywordChange(e)}
             type="search"
             id="search-dropdown"
-            className="block p-2.5 pl-7 md:pl-7 w-full z-20 text-xs lg:text-sm text-gray-900 bg-gray-50 rounded-s-none rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 dark:bg-slate-800 dark:text-white dark:border-gray-600 dark:focus:bg-slate-800"
+            className="block p-2 pl-7 md:pl-7 w-full z-20 text-xs text-gray-900 bg-gray-50 rounded-s-none rounded-e border-s-gray-50 border-s-2 border border-gray-300 dark:bg-slate-800 dark:text-white dark:border-gray-600 dark:focus:bg-slate-800"
             placeholder="Kata kunci..."
             style={{ width: width }}
             required
           />
           <button
             type="submit"
-            className="absolute top-0 end-0 py-2.5 px-3 md:px-4 text-sm font-medium h-full text-white bg-primary rounded-e-lg hover:bg-primaryHover "
+            className="absolute top-0 end-0 py-2.5 px-3 md:px-4 text-sm font-medium h-full text-white bg-primary rounded-e hover:bg-primaryHover "
           >
             <svg
-              className="w-3 h-3 md:w-4 md:h-4"
+              className="w-3 h-3"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -212,7 +212,7 @@ const SearchBar: React.FC<Props> = ({
                 exit="exit"
                 variants={dropdownVariants}
               >
-                <ul className="absolute bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs md:text-sm">
+                <ul className="absolute bg-white dark:bg-gray-800 w-full border  dark:border-gray-700 rounded shadow-lg mt-1 text-xs">
                   <AnimatePresence>
                     {recommendations.map((item, index) => (
                       <motion.li
@@ -222,7 +222,7 @@ const SearchBar: React.FC<Props> = ({
                         animate="visible"
                         exit="exit"
                         transition={{ duration: 0.3 }}
-                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black flex justify-between items-center"
+                        className="px-4 py-1 hover:bg-gray-200 cursor-pointer dark:text-white dark:hover:bg-black flex justify-between items-center"
                         onClick={() => {
                           setKeyword(item);
                           setRecommendations([]);

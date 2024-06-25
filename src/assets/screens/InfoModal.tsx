@@ -100,10 +100,10 @@ const InfoModal = () => {
           className="table-container rounded-lg shadow-sm w-full grow px-4 xl:px-0"
         >
           <div className="pt-4 xl:pt-8 bg-white box flex flex-col gap-4 xl:flex-row xl:gap-0 justify-between px-4 lg:px-8 py-4 items-center rounded-t dark:bg-black">
-            <h1 className="font-bold d text-base text-center border-b border-grey pb-2 lg:text-lg xl:font-bol xl:text-left  xl:border-0 xl:pb-0 text-black dark:text-white">
+            <h1 className="font-semibold text-base text-center border-b border-grey pb-2 xl:text-left  xl:border-0 xl:pb-0 text-black dark:text-white">
               {"Info Modal UMKM Kulonprogo Tahun 2024"}
             </h1>
-            <div className="md:flex flex-row md:justify-between gap-8 md:w-full xl:w-fit pt-2 xl:pt-0 z-40">
+            <div className="md:flex flex-row md:justify-between  md:w-full xl:w-fit pt-2 xl:pt-0 z-40">
               <SearchBar
                 width={windowWidth < EXTENDED_WINDOW.md ? "12.5rem" : "20rem"}
                 searchColumn={searchColumn}
@@ -115,7 +115,7 @@ const InfoModal = () => {
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="hidden md:flex text-xs lg:text-sm bg-secondary flex-row gap-2 items-center px-2 lg:px-3 py-2 rounded hover:bg-secondary/90 cursor-pointer text-white "
+                className="hidden md:flex text-xs lg:text-sm bg-secondary flex-row gap-2 items-center px-2.5 py-1 rounded hover:bg-secondary/90 cursor-pointer text-white"
                 onClick={() => setShowModal(true)}
               >
                 <IconDownload />
@@ -141,7 +141,7 @@ const InfoModal = () => {
               setInstitutionFilter={setInstitutionFilter} />
           </div>
           {filteredData.length !== data.length && (
-            <div className="px-4 lg:px-8 xl:px-3xl bg-white dark:bg-black pb-3 xl:pb-0 text-grey dark:text-white text-xs lg:text-sm">
+            <div className="px-4 lg:px-8 xl:px-3xl bg-white dark:bg-black pb-3 xl:pb-0 text-grey dark:text-white text-xs">
               Mendapatkan {filteredData.length} data
             </div>
           )}

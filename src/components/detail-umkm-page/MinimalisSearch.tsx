@@ -58,7 +58,7 @@ const MinimalisSearch: FC<MinimalisSearchProps> = ({ filter, setFilter, produk }
         <div className="relative w-full">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
-              className="w-3 h-3 md:w-4 md:h-4"
+              className="w-3 h-3"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -80,7 +80,7 @@ const MinimalisSearch: FC<MinimalisSearchProps> = ({ filter, setFilter, produk }
             onChange={(e) => {
               handleSearchChange(e.target.value);
             }}
-            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-secondary focus:ring-secondary w-full ps-10 p-2.5 py-2 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500  text-xs md:text-sm"
+            className="bg-gray-50 border border-gray-300 text-gray-900 rounded focus:border-secondary focus:ring-secondary w-full ps-10 p-1.5 px-2 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500  text-xs"
             placeholder="Ketikkan nama product.."
             required
           />

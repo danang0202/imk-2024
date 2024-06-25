@@ -77,11 +77,11 @@ const DetailProdukContent = () => {
 
   return (
     <div className="flex w-full flex-col items-center">
-      <div className="w-11/12 lg:w-10/12 xl:w-4/5">
+      <div className="w-11/12 lg:w-10/12 xl:w-11/12">
         <Breadcrumb />
       </div>
       <div
-        className="flex flex-row gap-8 items-stretch justify-center w-11/12 lg:w-10/12 xl:w-4/5"
+        className="flex flex-row gap-8 items-stretch justify-center w-11/12 lg:w-10/12 xl:w-11/12"
         id="list-product"
       >
         {/* facated filter */}
@@ -98,7 +98,7 @@ const DetailProdukContent = () => {
             <p className="text-sm md:hidden">Urutkan</p>
             <div className="left flex flex-row  xl:flex-row gap-2 md:gap-4 items-center z-30">
               <div className="hidden md:inline">
-                <p className="md:text-sm text-base">Urutkan: </p>
+                <p className="text-sm">Urutkan: </p>
               </div>
               {buttonLabels.map((item, index) => (
                 <SortingProductButton key={index} item={item} filter={filter} setFilter={setFilter} />
@@ -132,14 +132,14 @@ const DetailProdukContent = () => {
           </AnimatePresence>
 
           {product.length !== galeriProdukData.length && (
-            <div className="bg-silver dark:bg-slate-800 pb-2 text-grey dark:text-white text-xs lg:text-sm">
+            <div className="bg-silver dark:bg-slate-800 pb-2 text-grey dark:text-white text-xs">
               Mendapatkan {product.length} data
             </div>
           )}
 
           {paginatedData.length > 0 ? (
             <>
-              <div className="galeri-container w-full flex justify-center xl:w-fit flex-wrap gap-4 md:gap-6 xl:justify-start">
+              <div className="galeri-container w-full flex justify-center xl:w-fit flex-wrap gap-4 md:gap-6 xl:justify-center">
                 {paginatedData.map((item, index) => (
                   <ProductCard2 item={item} handleLike={handleLike} key={index} />
                 ))}
@@ -147,9 +147,9 @@ const DetailProdukContent = () => {
               <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-black dark:text-white">
                 <p className="text-xs md:text-sm ">
                   Menampilkan{" "}
-                  <span className="font-semibold">{page * limit - limit + 1}</span> -
-                  <span className="font-semibold"> {page * limit} </span> dari {""}
-                  <span className="font-bold"> {product.length} </span> produk
+                  <span className="">{page * limit - limit + 1}</span> -
+                  <span className=""> {page * limit} </span> dari {""}
+                  <span className=""> {product.length} </span> produk
                 </p>
                 <MinimalisPagination
                   page={page}

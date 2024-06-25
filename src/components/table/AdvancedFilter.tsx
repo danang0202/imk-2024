@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  EXTENDED_WINDOW,
   badanHukumUsaha,
   bidangUsaha,
   dinasPengampu,
@@ -11,7 +10,6 @@ import { faChevronUp, faList } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { TypeData } from "./Selection";
 import { IconFilterSearch } from "@tabler/icons-react";
-import { useThemeContext } from "../../layout/ThemeContext";
 import { dropdownVariants, variantsFilterDataUMKM } from "../../helper/motion.helper";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -52,8 +50,6 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
   const [showAdvancedDinasPengampuFilter, setShowAdvancedDinasPengampuFilter] =
     useState<boolean>(false);
 
-  const { windowWidth } = useThemeContext();
-
   return (
     <>
       <motion.div
@@ -62,19 +58,18 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
         exit="exit"
         variants={variantsFilterDataUMKM}
         transition={{ duration: 0.3 }}
-        className="fixed xl:relative z-40 flex flex-col bg-white rounded-e-sm xl:rounded-sm px-8 py-4 shadow-lg xl:shadow-none dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border border-gray-300 xl:border-none "
+        className="fixed xl:relative z-40 flex flex-col bg-white rounded-e-sm xl:rounded-sm p-6 shadow-lg xl:shadow-none dark:bg-black max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border border-gray-300 xl:border-none "
       >
         <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
           <ChevronDown
-            className={`w-7 h-7 xl:w-8 xl:h-8 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer transition duration-300 ${showAdvancedFilter ? "transform rotate-90" : ""
+            className={`w-7 h-7 p-1 bg-silver text-black dark:bg-black dark:border dark:text-white transform hover:bg-inactive hover:text-accent5 rounded-full cursor-pointer transition duration-300 ${showAdvancedFilter ? "transform rotate-90" : ""
               }`}
             onClick={() => setShowAdvancedFilter(false)}
           />
         </div>
-        <div className="text-xs md:text-sm lg:text-base ">
+        <div className="text-xs md:text-sm">
           <div
-            className={`border-b-2 border-grey py-4 ${location.pathname == "/gis" && "hidden"
-              }`}
+            className={`border-b-2 border-grey pb-4`}
           >
             <h1 className="font-bold text-sm lg:text-base text-center">
               {" "}
@@ -82,16 +77,16 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             </h1>
           </div>
           {/* skala usaha filter */}
-          <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4 mt-6">
+          <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue my-4">
             <div
               className="flex flex-row gap-4 items-center justify-between cursor-pointer hover:text-primary"
               onClick={() => {
                 setAdvancedSkalaUsahaFilter(!showAdvancedSkalaUsahaFilter);
               }}
             >
-              <div className="flex gap-4">
+              <div className="flex gap-2 items-center">
                 <IconFilterSearch
-                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                  size={15}
                 />
                 <h1 className="font-semibold whitespace-nowrap">Skala Usaha</h1>
               </div>
@@ -106,14 +101,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} className="box w-full">
                   <div className="flex flex-row justify-between py-1">
                     <p
-                      className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                      className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                       onClick={() => setSkalaUsahaFilter(skalaUsaha)}
                     >
                       Pilih semua
                     </p>
-                    <p className="text-grey text-xs lg:text-sm">|</p>
+                    <p className="text-grey text-xs ">|</p>
                     <p
-                      className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                      className="text-xs text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                       onClick={() => setSkalaUsahaFilter([])}
                     >
                       Bersihkan
@@ -131,16 +126,16 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           {/* skala usaha filter end */}
 
           {/* badan hukum filter */}
-          <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
+          <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue my-4">
             <div
               className="flex flex-row gap-4 items-center justify-between  cursor-pointer hover:text-primary"
               onClick={() => {
                 setAdvancedBadanHukumFilter(!showAdvancedBadanHukumFilter);
               }}
             >
-              <div className="flex gap-4">
+              <div className="flex gap-2 items-center">
                 <IconFilterSearch
-                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                  size={15}
                 />{" "}
                 <h1 className="font-semibold whitespace-nowrap">Badan Hukum</h1>
               </div>
@@ -155,14 +150,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} className="box w-full">
                   <div className="flex flex-row justify-between py-1">
                     <p
-                      className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                      className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                       onClick={() => setBadanHukumFilter(badanHukumUsaha)}
                     >
                       Pilih semua
                     </p>
-                    <p className="text-grey text-xs lg:text-sm">|</p>
+                    <p className="text-grey text-xs ">|</p>
                     <p
-                      className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                      className="text-xs text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                       onClick={() => setBadanHukumFilter([])}
                     >
                       Bersihkan
@@ -180,7 +175,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           {/* badan hukum filter end */}
 
           {/* dinas pangampu filter */}
-          <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
+          <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue my-4">
             <div
               className="flex flex-row gap-4 items-center justify-between cursor-pointer hover:text-primary"
               onClick={() => {
@@ -189,9 +184,9 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 );
               }}
             >
-              <div className="flex gap-4">
+              <div className="flex gap-2 items-center">
                 <IconFilterSearch
-                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                  size={15}
                 />{" "}
                 <h1 className="font-semibold whitespace-nowrap">
                   Dinas Pengampu
@@ -208,14 +203,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} className="box w-full">
                   <div className="flex flex-row justify-between py-1">
                     <p
-                      className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                      className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                       onClick={() => setDinasPengampuFilter(dinasPengampu)}
                     >
                       Pilih semua
                     </p>
-                    <p className="text-grey text-xs lg:text-sm">|</p>
+                    <p className="text-grey text-xs ">|</p>
                     <p
-                      className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                      className="text-xs text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                       onClick={() => setDinasPengampuFilter([])}
                     >
                       Bersihkan
@@ -233,16 +228,16 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           {/* dinas pengampu end */}
 
           {/* bidang usaha filter */}
-          <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue mb-4">
+          <div className="box flex flex-col gap-2 py-2 border-b border-greyBlue my-4">
             <div
               className="flex flex-row gap-4 items-center  justify-between cursor-pointer hover:text-primary"
               onClick={() => {
                 setShowAdvancedBidangFilter(!showAdvancedBidangFilter);
               }}
             >
-              <div className="flex gap-4">
+              <div className="flex gap-2 items-center">
                 <IconFilterSearch
-                  size={windowWidth < EXTENDED_WINDOW.lg ? 17 : 20}
+                  size={15}
                 />{" "}
                 <h1 className="font-semibold whitespace-nowrap">Bidang Usaha</h1>
               </div>
@@ -257,14 +252,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 <motion.div variants={dropdownVariants} initial="hidden" animate="visible" exit={"exit"} className="box w-full">
                   <div className="flex flex-row justify-between py-1">
                     <p
-                      className="text-xs lg:text-sm text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
+                      className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                       onClick={() => setBidangUsahaFilter(bidangUsaha)}
                     >
                       Pilih semua
                     </p>
-                    <p className="text-grey text-xs lg:text-sm">|</p>
+                    <p className="text-grey text-xs">|</p>
                     <p
-                      className="text-xs lg:text-sm text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
+                      className="text-xs  text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                       onClick={() => setBidangUsahaFilter([])}
                     >
                       Bersihkan

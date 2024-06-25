@@ -12,7 +12,7 @@ const NormalFilterBadge: React.FC<Props> = ({ text, handleClick, bg }) => {
     <AnimatePresence>
       <motion.span
         id="badge-dismiss-default"
-        className={`inline-flex items-center px-1 md:px-2 py-1 me-2 text-xs lg:text-sm font-base  text-gray-600 ${bg ? bg : 'bg-silver'} rounded-sm Fhover:text-white cursor-pointer`}
+        className={`inline-flex items-center px-1 md:px-2 py-1 me-2 text-xs font-base  text-gray-600 ${bg ? bg : 'bg-silver'} rounded-sm Fhover:text-white cursor-pointer`}
         onClick={handleClick}
         whileHover={{ backgroundColor: EXTENDEDCOLORS.inactive, scale: 1.05 }}
         initial="hidden"

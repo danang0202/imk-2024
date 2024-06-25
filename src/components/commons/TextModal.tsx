@@ -27,7 +27,7 @@ const TextModal: React.FC<Props> = ({ modalData, setShowModal }) => {
             >
               <div className="relative bg-white rounded shadow dark:bg-gray-700">
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                  <h3 className="xl:text-lg font-semibold text-black dark:text-white text-sm md:text-base">
+                  <h3 className="font-semibold text-black dark:text-white text-sm xl:text-base">
                     {modalData.title}
                   </h3>
                   <button
@@ -54,14 +54,14 @@ const TextModal: React.FC<Props> = ({ modalData, setShowModal }) => {
                     <span className="sr-only">Close modal</span>
                   </button>
                 </div>
-                <div className="p-4 md:p-5 space-y-4 text-sm md:text-base dark:text-white">
+                <div className="p-4 md:p-5 space-y-4 text-sm dark:text-white">
                   <p dangerouslySetInnerHTML={{ __html: modalData.desc }} />
                 </div>
                 <div className="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                   <button
                     data-modal-hide="static-modal"
                     type="button"
-                    className="py-1 px-2 ms-3 text-sm text-white  bg-accent5 rounded-sm hover:bg-gray-100 hover:text-black transition duration-300 focus:z-10   "
+                    className="p-2 ms-3 text-sm text-white bg-black rounded-sm hover:bg-black/75 transition duration-300 focus:z-10   "
                     onClick={() => setShowModal("")}
                   >
                     Tutup

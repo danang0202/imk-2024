@@ -59,7 +59,7 @@ const DetailProduk = () => {
   return (
     <Layout pageTitle="Detail Produk">
       <div className="box w-full pt-5xl bg-silver dark:bg-slate-800 flex justify-center mb-8">
-        <div className="w-11/12 xl:w-3/5 ">
+        <div className="w-11/12 xl:w-8/12 ">
           <Breadcrumb />
           <div className="px-4 w-full bg-white dark:bg-black text-black dark:text-white shadow-sm p-8 my-4 rounded">
             <div className="flex flex-col lg:flex-row gap-4 xl:gap-8 items-center">
@@ -89,20 +89,20 @@ const DetailProduk = () => {
                   ))}
                 </div>
                 <div className="w-full md:px-8 mt-8 flex items-center gap-2">
-                  <p className='text-sm md:text-base'>Bagikan: </p>
+                  <p className='text-sm'>Bagikan: </p>
                   {socialMedia.map((media, index) => (
                     <a href={media.href} target='_blank'>
-                      <img key={index} src={media.src} alt={media.alt} className="cursor-pointer w-5 h-5 lg:w-auto md:h-auto " />
+                      <img key={index} src={media.src} alt={media.alt} className="cursor-pointer w-5 h-5" />
                     </a>
                   ))}
                 </div>
               </div>
               {/* Sisi kanan: Deskripsi Produk */}
               <div className="w-full lg:w-7/12 xl:w-1/2 text-black dark:text-white md:px-8 lg:px-0">
-                <div className="text-left text-base md:text-xl font-medium">{item.nama}</div>
-                <div className="text-left text-sm md:text-base flex items-center gap-8 mb-2">
+                <div className="text-left text-base font-medium">{item.nama}</div>
+                <div className="text-left text-sm flex items-center gap-8 mb-2">
                   <div className="box px-1 bg-secondary rounded-sm w-fit text-white">
-                    <p className='ttext-sm md:text-base'>{item.kategori.toLowerCase()}</p>
+                    <p className='ttext-sm'>{item.kategori.toLowerCase()}</p>
                   </div>
                   <p className='text-grey'>|</p>
                   <div className="w-full flex flex-row gap-1 items-center justify-start py-2 cursor-pointer hover:opacity-75 transition-all duration-300" onClick={() => handleLike()}>
@@ -115,14 +115,14 @@ const DetailProduk = () => {
                   </div>
                 </div>
                 <div className="bg-silver dark:bg-slate-800 rounded-sm p-4">
-                  <div className="w-full text-left text-black dark:text-white text-lg md:text-2xl lg:text-3xl font-semibold">Rp{item.harga}</div>
+                  <div className="w-full text-left text-black dark:text-white text-lg md:text-2xl lg:text-2xl font-semibold">Rp{item.harga}</div>
                 </div>
                 <div className="flex items-center gap-1 mt-4 justify-end ">
-                  <IconTruck size={windowWidth < EXTENDED_WINDOW.md ? 20 : 25} className='text-primary ' />
-                  <p className='font-semibold text-xs md:text-sm lg:text-base'>Pengiriman ke seluruh wilayah DI. Yogyakarta</p>
+                  <IconTruck size={windowWidth < EXTENDED_WINDOW.md ? 20 : 20} className='text-primary ' />
+                  <p className='font-semibold text-xs md:text-sm'>Pengiriman ke seluruh wilayah DI. Yogyakarta</p>
                 </div>
 
-                <div className="spesifikasi text-sm md:text-base">
+                <div className="spesifikasi text-sm">
                   <p className='font-semibold pt-4 md:pt-2 pb-2'>Spesifikasi Produk</p>
                   <table className='w-full border-separate border-spacing-1'>
                     <tr>
@@ -142,7 +142,7 @@ const DetailProduk = () => {
                       <td>
                         <div className="w-full flex justify-start">
                           <div className="bg-blue-100 px-2 py-1 rounded-sm">
-                            <p className='text-xs md:text-sm text-info font-semibold'>Pre Order</p>
+                            <p className='text-xs text-info font-semibold'>Pre Order</p>
                           </div>
                         </div>
                       </td>
@@ -150,21 +150,21 @@ const DetailProduk = () => {
                   </table>
                 </div>
 
-                <div className="spesifikasi text-sm md:text-base">
+                <div className="spesifikasi text-sm">
                   <p className='font-semibold pt-4 pb-2'>Tipe Produk</p>
                   <div className="w-full flex flex-wrap gap-4">
                     {productTypes.map((type, index) => (
                       <div key={index} className={`border border-primary p-1.5 md:p-2 cursor-pointer rounded-sm  transition-colors duration-300 ${selectedImage == item.thumbnails[index] ? 'bg-primary text-white' : 'bg-white dark:bg-black hover:bg-gray-200'}`} onClick={() => { handleThumbnailClick(item.thumbnails[index]) }}>
-                        <p className="text-xs md:text-sm font-semibold">{type}</p>
+                        <p className="text-xs font-semibold">{type}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div className="w-fll flex justify-between mt-4 items-end">
-                  <p className='text-xs md:text-sm text-grey dark:text-gray-300 hover:text-black cursor-pointer' onClick={() => ButtonLihatDeskripsiOnClick()}>Lihat Deskripsi</p>
+                  <p className='text-xs text-grey dark:text-gray-300 hover:text-black cursor-pointer' onClick={() => ButtonLihatDeskripsiOnClick()}>Lihat Deskripsi</p>
                   <div className="bg-primary text-white p-2 rounded-sm flex gap-2 items-center cursor-pointer hover:bg-primary/75 transition-colors duration-300" onClick={() => handlePesan()}>
-                    <p className='text-xs md:text-sm'>Hubungi Penjual</p>
+                    <p className='text-xs'>Hubungi Penjual</p>
                     <IconPhoneCall className='text-white' size={17} />
                   </div>
 
@@ -173,15 +173,15 @@ const DetailProduk = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-black text-black dark:text-white shadow-sm my-4 w-full flex flex-col lg:flex-row justify-between gap-0 md:gap-4 xl:gap-8 px-4 xl:px-8 py-6">
-            <div className="flex gap-4">
+          <div className="bg-white dark:bg-black text-black dark:text-white shadow-sm my-4 w-full flex flex-col lg:flex-row justify-between gap-0 md:gap-4 px-4 xl:px-6 py-6">
+            <div className="flex gap-4 xl:min-w-[15rem]">
               <div className="flex items-center">
-                <img src={`/logo-umkm/logo-umkm-1.png`} alt="Logo UMKM" className='h-12 md:h-16' />
+                <img src={`/logo-umkm/logo-umkm-1.png`} alt="Logo UMKM" className='h-12 md:h-14' />
               </div>
-              <div className="flex flex-col items-start justify-center gap-2 border-r border-gray-200 pr-8 xl:pr-16">
+              <div className="flex flex-col items-start justify-center gap-2 border-r border-gray-200 pr-4">
                 <div className="">
-                  <p className='font-semibold text-sm md:text-base'>Safiira Hampers</p >
-                  <p className='text-xs md:text-base text-gray-500 dark:text-gray-400'>Dinas Kopearsi dan UKM</p>
+                  <p className='font-semibold text-sm'>Safiira Hampers</p >
+                  <p className='text-xs text-gray-500 dark:text-gray-400'>Dinas Kopearsi dan UKM</p>
                 </div>
               </div>
             </div>
@@ -215,9 +215,9 @@ const DetailProduk = () => {
                 </div>
               </div>
             ) : (
-              <div className='flex gap-8 justify-between'>
+              <div className='flex justify-between w-full'>
                 <div className="">
-                  <table className='border-separate border-spacing-1 xl:min-w-[10rem] text-sm md:text-base'>
+                  <table className='border-separate border-spacing-1 text-sm'>
                     <tr>
                       <td className='text-grey dark:text-gray-300'>Produk</td>
                       <td className=' text-orange-600 dark:text-gray-300'>35</td>
@@ -229,7 +229,7 @@ const DetailProduk = () => {
                   </table>
                 </div>
                 <div className="">
-                  <table className='border-separate border-spacing-1 xl:min-w-[18rem] text-sm md:text-base'>
+                  <table className='border-separate border-spacing-1 xl:min-w-[18rem] text-sm'>
                     <tr>
                       <td className='text-grey dark:text-gray-300'>Bergabung</td>
                       <td className='text-orange-600'>2 Tahun yang lalu</td>
@@ -244,7 +244,7 @@ const DetailProduk = () => {
                   <a href="/data-umkm/detail">
                     <div className="border rounded-sm p-2 flex gap-2 items-center cursor-pointer transition-colors duration-300 hover:bg-inactive">
                       <IconBuildingStore className='text-black dark:text-white' size={windowWidth < EXTENDED_WINDOW.md ? 15 : 17} />
-                      <p className='text-xs md:text-sm'>Kunjungi UMKM</p>
+                      <p className='text-xs'>Kunjungi UMKM</p>
                     </div>
                   </a>
                 </div>
@@ -255,9 +255,9 @@ const DetailProduk = () => {
 
           <div className="desc-section w-full bg-white dark:bg-black px-4 lg:px-8 py-6 shadow-sm text-black dark:text-white" id='desc'>
             <div className="bg-silver dark:bg-slate-800 p-4 mb-4">
-              <p className='font-semibold text-base md:text-lg'>Deskripsi Produk</p>
+              <p className='font-semibold text-base'>Deskripsi Produk</p>
             </div>
-            <div className="ps-4 text-sm md:text-base">
+            <div className="ps-4 text-sm">
               <p>Untuk Request warna bunga, kreb dan ucapan serta tanggal pengirimannya di tulis di catatan penjual ya kak, terimakasih</p>
               <p>Jadwal Pengiriman dari jam 07:00 - 15:00 WIB</p>
               <br />
@@ -293,7 +293,7 @@ const DetailProduk = () => {
                 )}
               </AnimatePresence>
               <button
-                className="text-primary hover:underline text-sm md:text-base"
+                className="text-primary hover:underline text-sm"
                 onClick={toggleShowMore}
               >
                 {showMore ? 'Tampilkan Lebih Sedikit' : 'Tampilkan Lebih Banyak'}

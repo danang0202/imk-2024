@@ -79,12 +79,12 @@ const SearchProduct: FC<MinimalisSearchProps> = ({ filter, setFilter, products }
                         id="simple-search"
                         value={filter.keyword}
                         onChange={(e) => handleSearchChange(e.target.value)}
-                        className="text-gray-900 w-full pe-4 p-2.5 dark:text-white text-xs md:text-sm rounded-s bg-white dark:bg-black lg:min-w-[13rem] xl:min-w-[15rem]"
+                        className="text-gray-900 w-full pe-4 p-2 dark:text-white text-xs rounded-s bg-white dark:bg-black lg:min-w-[13rem] xl:min-w-[15rem]"
                         placeholder="Ketikkan nama produk atau UMKM.."
                         required
                     />
                 </div>
-                <div className="y-0 right-0 flex items-center rounded-e bg-primary px-3 justify-center">
+                <div className="y-0 right-0 flex items-center rounded-e bg-primary px-2 justify-center">
                     <IconSearch className="w-4 h-4 text-white" />
                 </div>
             </form>

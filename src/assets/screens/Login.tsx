@@ -102,10 +102,10 @@ const Login = () => {
                 className="w-24 transform translate-x-3"
               />
             </div>
-            <h2 className="text-2xl xl:text-3xl font-bold text-black text-center dark:text-white">
+            <h2 className="text-2xl font-bold text-black text-center dark:text-white">
               Login
             </h2>
-            <p className="font-extralight text-lg xl:text-xl text-center mb-4 dark:text-white">
+            <p className="font-extralight text-lg text-center mb-4 dark:text-white">
               e-UMKM
             </p>
 
@@ -113,7 +113,7 @@ const Login = () => {
               <div className="box mb-8">
                 <div className="relative w-full group">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
-                    <IconUser className="text-grey dark:text-white" size={20} />
+                    <IconUser className="text-grey dark:text-white" size={17} />
                   </div>
                   <input
                     type="text"
@@ -121,13 +121,13 @@ const Login = () => {
                     id="floating_username"
                     value={formData.username}
                     onChange={handleInputChange}
-                    className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="floating_username"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90 cursor-text"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90 cursor-text"
                   >
                     Username
                   </label>
@@ -141,12 +141,12 @@ const Login = () => {
                     {showPassword ? (
                       <IconLockOpen
                         className="text-grey dark:text-white"
-                        size={20}
+                        size={17}
                       />
                     ) : (
                       <IconLock
                         className="text-grey dark:text-white"
-                        size={20}
+                        size={17}
                       />
                     )}
                   </div>
@@ -156,13 +156,13 @@ const Login = () => {
                     id="floating_password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
+                    className="block mt-4 py-2 lg:py-3 pl-10 w-full text-sm text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     htmlFor="floating_password"
-                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm md:text-base text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90 cursor-text"
+                    className="dark:text-white absolute top-2 lg:top-3 left-10 text-sm text-grey duration-300 transform origin-[0] scale-90 -translate-y-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:left-10 peer-focus:scale-90 peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:text-primary peer-valid:left-0 peer-valid:-translate-y-8 peer-valid:scale-90 cursor-text"
                   >
                     Password
                   </label>
@@ -178,23 +178,23 @@ const Login = () => {
 
               <div className="flex mb-4 w-full">
                 <div className="flex items-center w-1/2 ">
-                  <div className="h-5 mr-2 ">
+                  <div className="mr-2 ">
                     <input
                       id="remember"
                       type="checkbox"
                       value=""
-                      className="w-4 h-4 border border-silver rounded bg-silver focus:ring-3 cursor-pointer"
+                      className="w-3 h-3 border border-silver rounded bg-silver focus:ring-3 cursor-pointer"
                     />
                   </div>
                   <label
                     htmlFor="remember"
-                    className="text-sm text-greyDark cursor-pointer dark:text-white"
+                    className="text-xs text-greyDark cursor-pointer dark:text-white"
                   >
                     Ingat Saya
                   </label>
                 </div>
 
-                <div className="flex justify-end items-center text-sm w-1/2">
+                <div className="flex justify-end items-center text-xs w-1/2">
                   <a
                     href="#"
                     onClick={toggleForgotPassword}
@@ -207,7 +207,7 @@ const Login = () => {
 
               <div className="flex justify-center w-full mb-0">
                 <button
-                  className={`text-sm md:text-base font-semibold bg-primary text-white py-2 rounded-md hover:bg-primary/75 px-8 text-center transition duration-300 ${
+                  className={`text-sm font-semibold bg-primary text-white py-1.5 rounded hover:bg-primary/75 px-8 text-center transition duration-300 ${
                     loading && "cursor-not-allowed hover:bg-primary"
                   }`}
                   disabled={loading}
@@ -217,7 +217,7 @@ const Login = () => {
                 </button>
               </div>
 
-              <div className="mt-4 text-base flex justify-center">
+              <div className="mt-4 text-xs flex justify-center">
                 <span className="mr-2 dark:text-white">Belum punya akun?</span>
                 <a
                   href="/register"
@@ -227,7 +227,7 @@ const Login = () => {
                 </a>
               </div>
             </form>
-            <div className="mt-4 text-sm flex justify-start items-center mb-0 py-1 text-black">
+            <div className="mt-4 text-xs flex justify-start items-center mb-0 py-1 text-black">
               <IconArrowLeft size={20} />
               <a
                 href="/beranda"
@@ -242,24 +242,24 @@ const Login = () => {
 
       {showForgotPassword && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-md shadow-md w-11/12 md:w-1/3 dark:bg-black">
-            <h3 className="text-xl font-bold mb-4 dark:text-white">
+          <div className="bg-white p-6 rounded-md shadow-md w-11/12 md:w-1/3 dark:bg-black text-sm">
+            <h3 className="text-base font-bold mb-4 dark:text-white">
               Lupa Password
             </h3>
             <p className="mb-4 dark:text-white">Masukkan alamat email anda:</p>
             <input
               type="email"
-              className="w-full p-2 mb-4 text-sm md:text-base text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0"
+              className="w-full p-2 mb-4 text-xs text-grey dark:text-white bg-silver dark:bg-slate-800 rounded-md border-none appearance-none focus:outline-none focus:ring-0"
               placeholder="Email"
             />
             <div className="flex justify-end">
               <button
                 onClick={toggleForgotPassword}
-                className="mr-4 text-gray-500 hover:text-gray-700 bg-silver px-4 py-2 rounded-md dark:bg-slate-800  dark:text-white"
+                className="transition duration-300 mr-4 text-gray-500 hover:text-gray-700 bg-silver px-4 py-2 rounded dark:bg-slate-800  dark:text-white hover:bg-inactive"
               >
                 Batal
               </button>
-              <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primaryHover">
+              <button className="bg-primary transition-colors duration-300 text-white px-4 py-2 rounded hover:bg-primaryHover">
                 Kirim
               </button>
             </div>

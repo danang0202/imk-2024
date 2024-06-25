@@ -135,7 +135,7 @@ const Navbar = () => {
                   >
                     <a
                       href={link.href}
-                      className={`hover:text-black/75 dark:hover:text-white/75 transition-colors duration-300 ${location.pathname.includes(link.href)
+                      className={`hover:text-black/75 dark:hover:text-white/75 transition-colors duration-300 font-semibold ${location.pathname.includes(link.href)
                         ? " text-primary dark:text-accent4"
                         : "text-black dark:text-white"
                         }`}
@@ -168,11 +168,11 @@ const Navbar = () => {
             {menuItems.map((link) => (
               <li
                 key={link.label}
-                className="xl:ml-2 xl:my-0 my-7 text-sm md:text-base"
+                className="xl:ml-2 xl:my-0 my-7 text-sm "
               >
                 <a
                   href={link.href}
-                  className={`hover:text-black/75 dark:hover:text-white/75 transition-colors duration-300 ${location.pathname.includes(link.href)
+                  className={`hover:text-black/75 dark:hover:text-white/75 transition-colors duration-300 font-semibold ${location.pathname.includes(link.href)
                     ? "text-primary dark:text-accent4"
                     : "text-black dark:text-white"
                     }`}
@@ -187,7 +187,7 @@ const Navbar = () => {
             <DropDownLang />
             <div>
               <ButtonPrimary
-                text="Log In"
+                text="Login"
                 size="sm md:base"
                 onClick={logInOnClick}
               />
