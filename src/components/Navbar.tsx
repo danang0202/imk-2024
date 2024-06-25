@@ -92,9 +92,9 @@ const Navbar = () => {
             src={logoUrl}
             alt="Logo e-UMKM"
             className="pr-3"
-            style={{ height: "50px" }}
+            style={{ height: "45px" }}
           />
-          <div className="flex flex-col dark:text-white text-sm md:text-base">
+          <div className="flex flex-col dark:text-white text-sm md:text-sm">
             <h1>PEMKAB</h1>
             <h1>KULON PROGO</h1>
           </div>
@@ -135,7 +135,7 @@ const Navbar = () => {
                   >
                     <a
                       href={link.href}
-                      className={`hover:text-black/75 dark:hover:text-white/75 font-semibold transition-colors duration-300 ${location.pathname.includes(link.href)
+                      className={`hover:text-black/75 dark:hover:text-white/75 transition-colors duration-300 ${location.pathname.includes(link.href)
                         ? " text-primary dark:text-accent4"
                         : "text-black dark:text-white"
                         }`}
@@ -163,16 +163,16 @@ const Navbar = () => {
         ) : (
           <ul
             className={`${location.pathname == "/beranda" ? navBgItem : "bg-white dark:bg-black"
-              } gap-x-6 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9`}
+              } gap-x-4 xl:flex xl:items-center xl:pb-0 pb-12 absolute xl:static xl:z-auto z-[-1] left-0 w-full xl:w-auto xl:pl-0 pl-9`}
           >
             {menuItems.map((link) => (
               <li
                 key={link.label}
-                className="xl:ml-4 xl:my-0 my-7 text-sm md:text-base"
+                className="xl:ml-2 xl:my-0 my-7 text-sm md:text-base"
               >
                 <a
                   href={link.href}
-                  className={`hover:text-black/75 dark:hover:text-white/75 font-semibold transition-colors duration-300 ${location.pathname.includes(link.href)
+                  className={`hover:text-black/75 dark:hover:text-white/75 transition-colors duration-300 ${location.pathname.includes(link.href)
                     ? "text-primary dark:text-accent4"
                     : "text-black dark:text-white"
                     }`}

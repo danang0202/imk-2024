@@ -142,7 +142,7 @@ const MinimalisTableModal: FC<TableModalProps> = ({ dataModal }) => {
                                                     <IconMail size={12} />
                                                     <p>{data.email}</p>
                                                 </div>
-                                                <div className="flex flex-row gap-1 items-center">
+                                                <div className="flex flex-row gap-1 items-center w-10/12">
                                                     <IconMapPins size={12} />
                                                     <p className="whitespace-normal text-left">{data.alamat}</p>
                                                 </div>

@@ -76,22 +76,18 @@ const LandingPage: React.FC = () => {
             className="home-title bg-silver xl:bg-white w-full flex items-start flex-col justify-start pt-8 xl:pt-4xl dark:bg-slate-800"
           >
             <div className="flex flex-row justify-center xl:justify-between gap-4 w-full">
-              <h1 className="text-black font-semibold text-2xl md:text-3xl lg:text-5xl xl:text-6xl text-center md:text-left dark:text-white">
+              <h1 className="text-black font-semibold text-2xl md:text-3xl lg:text-5xl xl:text-5xl text-center md:text-left dark:text-white">
                 {landingLang("welcome")}
               </h1>
-              <IconDotsVertical
-                size={100}
-                className="hidden xl:block translate-x-20 text-grey dark:text-white"
-              />
             </div>
-            <h1 className="text-black font-semibold text-3xl md:text-4xl lg:text-6xl text-center xl:text-left dark:text-white w-full">
+            <h1 className="text-black font-semibold text-3xl md:text-4xl lg:text-5xl text-center xl:text-left dark:text-white w-full">
               <span className="font-bold text-primary drop-shadow-lg">
                 e-UMKM
               </span>{" "}
               Kabupaten
             </h1>
             <div className="flex flex-col xl:flex-row justify-center xl:justify-between items-center w-full">
-              <h1 className="text-black font-bold text-2xl md:text-3xl lg:text-6xl dark:text-white">
+              <h1 className="text-black font-bold text-2xl md:text-3xl lg:text-5xl dark:text-white">
                 Kulon Progo
               </h1>
             </div>
@@ -110,20 +106,20 @@ const LandingPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="desc py-4 text-sm md:text-base lg:text-xl md:py-8 text-center xl:text-left dark:text-white px-2 md:px-4 lg:px-8 xl:px-0">
+            <div className="desc py-4 text-sm md:text-base lg:text-base md:py-8 text-center xl:text-left dark:text-white px-2 md:px-4 lg:px-8 xl:px-0">
               <p>{landingLang("descHeroTop")}</p>
               <p>{landingLang("descHeroBottom")}</p>
             </div>
             <div className="py-4 md:py-4 flex justify-center w-full xl:justify-start">
               <ButtonBlack
                 text={landingLang("serviceBtnText")}
-                size="xs md:text-base lg:text-xl xl:text-xl"
+                size="xs md:text-base lg:text-base xl:text-base"
                 onClick={ButtonHeroOnclick}
               />
             </div>
           </div>
           <div className="box flex justify-center xl:justify-between gap-4 items-center w-full py-8 xl:py-0 xl:translate-y-0">
-            <div className="hidden md:inline bg-black p-2 xl:p-3 rounded-full text-white hover:bg-black/75 hover:scale-110 transition duration-300 cursor-pointer shadow-lg dark:text-black dark:bg-white">
+            <div className="hidden md:inline bg-black p-2 xl:p-2 rounded-full text-white hover:bg-black/75 hover:scale-110 transition duration-300 cursor-pointer shadow-lg dark:text-black dark:bg-white">
               <IconHeadset />
             </div>
             <div className="flex flex-row gap-4">
@@ -148,11 +144,8 @@ const LandingPage: React.FC = () => {
               alt="Your image description"
               data-aos="flip-right"
               data-aos-duration="800"
-              className="h-[750px] object-contain drop-shadow-lg"
+              className="h-[500px] object-contain drop-shadow-lg"
             />
-          </div>
-          <div className="flex justify-end -translate-y-4 pr-3xl text-grey dark:text-white">
-            <IconDotsVertical className="transform rotate-90" size={100} />
           </div>
         </div>
       </div>

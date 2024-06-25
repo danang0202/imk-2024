@@ -161,7 +161,7 @@ const DetailProduk = () => {
                   </div>
                 </div>
 
-                <div className="w-fll flex justify-between mt-4 xl:mt-0 items-end">
+                <div className="w-fll flex justify-between mt-4 items-end">
                   <p className='text-xs md:text-sm text-grey dark:text-gray-300 hover:text-black cursor-pointer' onClick={() => ButtonLihatDeskripsiOnClick()}>Lihat Deskripsi</p>
                   <div className="bg-primary text-white p-2 rounded-sm flex gap-2 items-center cursor-pointer hover:bg-primary/75 transition-colors duration-300" onClick={() => handlePesan()}>
                     <p className='text-xs md:text-sm'>Hubungi Penjual</p>

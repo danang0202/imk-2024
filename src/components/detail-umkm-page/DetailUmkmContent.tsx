@@ -55,8 +55,8 @@ const DetailUmkmContent = () => {
     windowWidth < EXTENDED_WINDOW.md
       ? 10
       : windowWidth < EXTENDED_WINDOW.lg
-      ? 9
-      : 8;
+        ? 9
+        : 8;
   const [totalPage, setTotalpage] = useState(1);
   const [page, setPage] = useState(1);
 
@@ -125,9 +125,8 @@ const DetailUmkmContent = () => {
                     ) : (
                       <td className="whitespace-nowrap font-normal">
                         <span
-                          className={`${getSkalaUsahaColor(item?.label).bg} ${
-                            getSkalaUsahaColor(item?.label).text
-                          } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                          className={`${getSkalaUsahaColor(item?.label).bg} ${getSkalaUsahaColor(item?.label).text
+                            } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
                         >
                           {item.value}
                         </span>
@@ -152,9 +151,8 @@ const DetailUmkmContent = () => {
                     ) : (
                       <td className="whitespace-nowrap font-normal  dark:border-slate-700">
                         <span
-                          className={`${getBadanUsahaColor(item?.label).bg} ${
-                            getBadanUsahaColor(item?.label).text
-                          } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
+                          className={`${getBadanUsahaColor(item?.label).bg} ${getBadanUsahaColor(item?.label).text
+                            } text-xs lg:text-sm font-medium me-2 px-2.5 py-0.5 rounded`}
                         >
                           {item.value}
                         </span>
@@ -192,7 +190,11 @@ const DetailUmkmContent = () => {
                     >
                       {item.label}
                     </td>{" "}
-                    <td className="dark:text-white">{item.value}</td>
+                    {item.label != "Website" ? (
+                      <td className="dark:text-white">{item.value}</td>
+                    ) : (
+                      <td className="dark:text-white"><a className="text-primary" href="https://www.umkmsafiira.com">{item.value}</a></td>
+                    )}
                   </tr>
                 ))}
               </tbody>
@@ -210,9 +212,14 @@ const DetailUmkmContent = () => {
                     >
                       {item.label}
                     </td>{" "}
-                    <td className="whitespace-nowrap dark:text-white">
-                      {item.value}
-                    </td>
+                    {item.label != "Website" ? (
+                      <td className="whitespace-nowrap dark:text-white">
+                        {item.value}
+                      </td>
+                    ) : (
+                      <td className="dark:text-white"><a className="text-primary" href="https://www.umkmsafiira.com">{item.value}</a></td>
+
+                    )}
                   </tr>
                 ))}
               </tbody>
@@ -228,11 +235,10 @@ const DetailUmkmContent = () => {
                       {item.label}
                     </td>
                     <td
-                      className={`${
-                        item.label == "Alamat"
-                          ? "whitespace-normal"
-                          : "whitespace-nowrap"
-                      }`}
+                      className={`${item.label == "Alamat"
+                        ? "whitespace-normal"
+                        : "whitespace-nowrap"
+                        }`}
                     >
                       {item.value}
                     </td>
@@ -251,7 +257,7 @@ const DetailUmkmContent = () => {
           <div className="title w-full my-4 flex flex-col md:flex-row items-start gap-4 justify-between md:items-end dark:border-gray-500">
             <p className="text-base lg:text-lg  font-semibold">Galeri Produk</p>
             <div className="box flex w-full md:w-fit justify-between md:justify-normal gap-4">
-              <SortingSelection filter={filter} setFilter={setFilter}  />
+              <SortingSelection filter={filter} setFilter={setFilter} />
               <MinimalisSearch filter={filter} setFilter={setFilter} produk={produkSafiira} />
             </div>
           </div>
@@ -310,7 +316,7 @@ const produkSafiira = [
     umkm: "Safiira Hampers",
     like: 120,
     isLiked: false,
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     date: new Date("2024-01-01"),
   },
   {
@@ -323,7 +329,7 @@ const produkSafiira = [
     umkm: "Safiira Hampers",
     like: 95,
     isLiked: false,
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     date: new Date("2024-01-01"),
   },
   {
@@ -335,7 +341,7 @@ const produkSafiira = [
     harga: 130000,
     umkm: "Safiira Hampers",
     like: 110,
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     isLiked: false,
     date: new Date("2024-01-01"),
   },
@@ -348,7 +354,7 @@ const produkSafiira = [
     harga: 200000,
     umkm: "Safiira Hampers",
     like: 150,
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     isLiked: false,
     date: new Date("2024-01-01"),
   },
@@ -360,7 +366,7 @@ const produkSafiira = [
     lokasi: "Lendah",
     harga: 160000,
     umkm: "Safiira Hampers",
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     like: 130,
     isLiked: false,
     date: new Date("2024-01-01"),
@@ -373,7 +379,7 @@ const produkSafiira = [
     lokasi: "Lendah",
     harga: 170000,
     umkm: "Safiira Hampers",
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     like: 140,
     isLiked: false,
     date: new Date("2024-01-01"),
@@ -387,7 +393,7 @@ const produkSafiira = [
     harga: 190000,
     umkm: "Safiira Hampers",
     like: 115,
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     isLiked: false,
     date: new Date("2024-01-01"),
   },
@@ -397,7 +403,7 @@ const produkSafiira = [
     nama: "Bucket Anniversary",
     kategori: "Kerajinan",
     lokasi: "Lendah",
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     harga: 210000,
     umkm: "Safiira Hampers",
     like: 125,
@@ -412,7 +418,7 @@ const produkSafiira = [
     lokasi: "Lendah",
     harga: 180000,
     umkm: "Safiira Hampers",
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     like: 135,
     isLiked: false,
     date: new Date("2024-01-01"),
@@ -426,7 +432,7 @@ const produkSafiira = [
     harga: 160000,
     umkm: "Safiira Hampers",
     like: 145,
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     isLiked: false,
     date: new Date("2024-01-01"),
   },
@@ -438,7 +444,7 @@ const produkSafiira = [
     lokasi: "Lendah",
     harga: 150000,
     umkm: "Safiira Hampers",
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     like: 155,
     isLiked: false,
     date: new Date("2024-01-01"),
@@ -449,7 +455,7 @@ const produkSafiira = [
     nama: "Bucket Mother's Day",
     kategori: "Kerajinan",
     lokasi: "Lendah",
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     harga: 170000,
     umkm: "Safiira Hampers",
     like: 165,
@@ -461,7 +467,7 @@ const produkSafiira = [
     gambar: "product-1-safiira.png",
     nama: "Bucket Teacher's Day",
     kategori: "Kerajinan",
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     lokasi: "Lendah",
     harga: 140000,
     umkm: "Safiira Hampers",
@@ -476,7 +482,7 @@ const produkSafiira = [
     kategori: "Kerajinan",
     lokasi: "Lendah",
     harga: 180000,
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     umkm: "Safiira Hampers",
     like: 185,
     isLiked: false,
@@ -489,7 +495,7 @@ const produkSafiira = [
     kategori: "Kerajinan",
     lokasi: "Lendah",
     harga: 200000,
-    kecamatan:"Lendah",
+    kecamatan: "Lendah",
     umkm: "Safiira Hampers",
     like: 195,
     isLiked: false,

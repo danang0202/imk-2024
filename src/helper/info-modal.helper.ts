@@ -95,7 +95,7 @@ export const filterDataInfoModal = (
             if (searchColumn === 'all') {
                 return columnTabelInfoModal.some((column) => {
                     const itemValue = item[column.slug];
-                    return column.slug === 'index'
+                    return column.slug === 'index' || column.slug == "nominal"
                         ? itemValue.toString().includes(keyword)
                         : itemValue.toLowerCase().includes(keywordLower);
                 });

@@ -21,7 +21,7 @@ const ButtonBlack: React.FC<ButtonProps> = ({ text, size, onClick, icon }) => {
         isHovered ? { duration: 0.6, repeat: Infinity } : { duration: 0.2 }
       }
       whileTap={{ scale: 0.9 }}
-      className={`px-4 py-2 rounded-lg bg-black text-white text-${size} hover:bg-black/90`}
+      className={`px-4 py-2 rounded-lg bg-black dark:bg-primary text-white text-${size} hover:bg-black/90`}
       onClick={onClick}
     >
       {text}
