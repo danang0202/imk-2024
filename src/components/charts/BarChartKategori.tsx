@@ -71,7 +71,7 @@ const BarChartKategori = () => {
     getDataCountPerCategory(umkmData, skalaUsaha)
   );
 
-  const { windowWidth, theme } = useThemeContext();
+  const { windowWidth, theme, stat: s, common: c } = useThemeContext();
 
   useEffect(() => {
     if (selectedFilter?.slug == "skala") {
@@ -99,11 +99,8 @@ const BarChartKategori = () => {
     <div className="w-full xl:px-6">
       {isLoaded ? (
         <>
-          <div className="flex flex-col  justify-center md:justify-between pb-6 gap-4 items-center">
-            <p className="font-semibold text-sm md:text-base text-wrap text-center md:text-start">
-              Grafik Batang Jumlah UMKM Berdasarkan {selectedFilter?.name}
-            </p>
-            <div className="box flex flex-wrap justify-end gap-2 md:gap-4 curosr-pointer items-center">
+          <div className="flex flex-col  justify-center md:justify-between pb-2 gap-2 items-center">
+            <div className="box w-full flex flex-wrap justify-end gap-2 md:gap-4 curosr-pointer items-center">
               <ColorInput
                 pointer={true}
                 value={colorChart}
@@ -137,9 +134,12 @@ const BarChartKategori = () => {
                 setSelectedFilter={setIsVertical}
               />
               <DownloadChartButton
-                chartTitle={`Grafik Batang Jumlah UMKM Berdasarkan ${selectedFilter?.name}`}
+                chartTitle={`${s("titleChart4")} ${c(`thead_umkm_${selectedFilter.slug}`)}`}
               />
             </div>
+            <p className="font-semibold text-sm md:text-base text-wrap text-center md:text-start">
+              {s("titleChart4")} {c(`thead_umkm_${selectedFilter.slug}`)}
+            </p>
           </div>
           <BarChart
             id="bar-kategori"

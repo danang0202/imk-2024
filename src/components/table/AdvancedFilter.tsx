@@ -13,6 +13,7 @@ import { IconFilterSearch } from "@tabler/icons-react";
 import { dropdownVariants, variantsFilterDataUMKM } from "../../helper/motion.helper";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface AdvancedFilterProps {
   skalaUsahaFilter: TypeData[];
@@ -50,6 +51,8 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
   const [showAdvancedDinasPengampuFilter, setShowAdvancedDinasPengampuFilter] =
     useState<boolean>(false);
 
+  const { common: c } = useThemeContext();
+
   return (
     <>
       <motion.div
@@ -73,7 +76,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
           >
             <h1 className="font-bold text-sm lg:text-base text-center">
               {" "}
-              <FontAwesomeIcon icon={faList} className="pr-3" /> Advanced Filter
+              <FontAwesomeIcon icon={faList} className="pr-3" /> {c('advancedTitle')}
             </h1>
           </div>
           {/* skala usaha filter */}
@@ -88,7 +91,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 <IconFilterSearch
                   size={15}
                 />
-                <h1 className="font-semibold whitespace-nowrap">Skala Usaha</h1>
+                <h1 className="font-semibold whitespace-nowrap">{c("thead_umkm_skala")}</h1>
               </div>
               <FontAwesomeIcon
                 icon={faChevronUp}
@@ -104,14 +107,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                       className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                       onClick={() => setSkalaUsahaFilter(skalaUsaha)}
                     >
-                      Pilih semua
+                      {c("selectAll")}
                     </p>
                     <p className="text-grey text-xs ">|</p>
                     <p
                       className="text-xs text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                       onClick={() => setSkalaUsahaFilter([])}
                     >
-                      Bersihkan
+                      {c("unselectAll")}
                     </p>
                   </div>
                   <ChexboxGroup
@@ -137,7 +140,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 <IconFilterSearch
                   size={15}
                 />{" "}
-                <h1 className="font-semibold whitespace-nowrap">Badan Hukum</h1>
+                <h1 className="font-semibold whitespace-nowrap">{c("thead_umkm_badanHukum")}</h1>
               </div>
               <FontAwesomeIcon
                 icon={faChevronUp}
@@ -153,14 +156,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                       className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                       onClick={() => setBadanHukumFilter(badanHukumUsaha)}
                     >
-                      Pilih semua
+                      {c("selectAll")}
                     </p>
                     <p className="text-grey text-xs ">|</p>
                     <p
                       className="text-xs text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                       onClick={() => setBadanHukumFilter([])}
                     >
-                      Bersihkan
+                      {c("unselectAll")}
                     </p>
                   </div>
                   <ChexboxGroup
@@ -189,7 +192,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                   size={15}
                 />{" "}
                 <h1 className="font-semibold whitespace-nowrap">
-                  Dinas Pengampu
+                  {c("thead_umkm_pengampu")}
                 </h1>
               </div>
               <FontAwesomeIcon
@@ -206,14 +209,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                       className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                       onClick={() => setDinasPengampuFilter(dinasPengampu)}
                     >
-                      Pilih semua
+                      {c("selectAll")}
                     </p>
                     <p className="text-grey text-xs ">|</p>
                     <p
                       className="text-xs text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                       onClick={() => setDinasPengampuFilter([])}
                     >
-                      Bersihkan
+                      {c("unselectAll")}
                     </p>
                   </div>
                   <ChexboxGroup
@@ -239,7 +242,7 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                 <IconFilterSearch
                   size={15}
                 />{" "}
-                <h1 className="font-semibold whitespace-nowrap">Bidang Usaha</h1>
+                <h1 className="font-semibold whitespace-nowrap">{c("thead_umkm_bidang")}</h1>
               </div>
               <FontAwesomeIcon
                 icon={faChevronUp}
@@ -255,14 +258,14 @@ const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
                       className="text-xs text-grey hover:text-black transition duration-300 cursor-pointer dark:text-white dark:hover:text-grey"
                       onClick={() => setBidangUsahaFilter(bidangUsaha)}
                     >
-                      Pilih semua
+                      {c("selectAll")}
                     </p>
                     <p className="text-grey text-xs">|</p>
                     <p
                       className="text-xs  text-accent5 hover:text-accent5a transition duration-300 cursor-pointer"
                       onClick={() => setBidangUsahaFilter([])}
                     >
-                      Bersihkan
+                      {c("unselectAll")}
                     </p>
                   </div>
                   <ChexboxGroup

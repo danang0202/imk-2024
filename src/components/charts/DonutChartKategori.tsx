@@ -35,8 +35,8 @@ const DonutChartKategori = () => {
 
   const [show, setShow] = useState<boolean>(false);
   const [selectedFilter, setSelectedFilter] = useState<TypeData>({
-    name: "Skala Usaha",
-    slug: "skala",
+    name: "Badan Hukum",
+    slug: "badanHukum",
   });
 
   const [data, setData] = useState(
@@ -56,14 +56,11 @@ const DonutChartKategori = () => {
     setShow(false);
   }, [selectedFilter]);
 
-  const { windowWidth, theme } = useThemeContext();
+  const { windowWidth, theme, stat: s, common: c } = useThemeContext();
   return (
     <div className="w-full">
-      <div className="flex flex-col justify-center md:justify-between pb-6 gap-4 items-center">
-        <p className="font-semibold text-sm md:text-base text-wrap text-center">
-          Grafik Lingkaran Jumlah UMKM Berdasarkan {selectedFilter?.name}
-        </p>
-        <div className="flex flex-row justify-end  gap-2 md:gap-4 w-full md:w-fit">
+      <div className="flex flex-col justify-center pb-2 gap-2 items-center">
+        <div className="flex flex-row justify-end  gap-2 md:gap-4 w-full ">
           <div className="box flex flex-row gap-4">
             <FilterChartSelection
               show={show}
@@ -74,9 +71,12 @@ const DonutChartKategori = () => {
             />
           </div>
           <DownloadChartButton
-            chartTitle={`Grafik Lingkaran Jumlah UMKM Berdasarkan ${selectedFilter?.name}`}
+            chartTitle={`${s("titleChart3")} ${c(`thead_umkm_${selectedFilter.slug}`)}`}
           />
         </div>
+        <p className="font-semibold text-sm md:text-base text-wrap text-center">
+          {s("titleChart3")} {c(`thead_umkm_${selectedFilter.slug}`)}
+        </p>
       </div>
       <div className="flex justify-center w-full">
         <DonutChart

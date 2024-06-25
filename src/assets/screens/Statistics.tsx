@@ -5,8 +5,10 @@ import { IconBuildingBank, IconBuildingFactory2, IconBuildingSkyscraper, IconBui
 import { EXTENDEDCOLORS } from "../../DataBuilder";
 import StatisticsUMKM from "./StatisticsUMKM";
 import Breadcrumb from "../../components/commons/BreadCrumb";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 const Statistics = () => {
+  const { stat: s } = useThemeContext();
   return (
     <Layout pageTitle="STATISTIK">
       <div className="pt-4xl px-4 lg:px-8 xl:px-6xl bg-white dark:bg-black overflow-x-hidden">
@@ -14,11 +16,11 @@ const Statistics = () => {
           <Breadcrumb />
         </div>
         <div className="summary-container grid  grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2 md:gap-4 xl:gap-8 2xl:gap-12">
-          <CardSummary icon={IconBuildingStore} label="Total UMKM" value={100} />
-          <CardSummary icon={IconHome} label="Usaha Mikro" value={32} />
-          <CardSummary icon={IconBuildingSkyscraper} label="Usaha Kecil" value={34} />
-          <CardSummary icon={IconBuildingFactory2} label="Usaha Menengah" value={34} />
-          <CardSummary icon={IconBuildingBank} label="Pemberi Modal" value={20} />
+          <CardSummary icon={IconBuildingStore} label={s("umkmTotal")} value={100} />
+          <CardSummary icon={IconHome} label={s("microBusiness")} value={32} />
+          <CardSummary icon={IconBuildingSkyscraper} label={s("smallBusiness")} value={34} />
+          <CardSummary icon={IconBuildingFactory2} label={s("mediumBusiness")} value={34} />
+          <CardSummary icon={IconBuildingBank} label={s("capitalProvider")} value={20} />
         </div>
         <div className="my-4">
           <Tabs defaultValue="umkm" color={EXTENDEDCOLORS.black}>

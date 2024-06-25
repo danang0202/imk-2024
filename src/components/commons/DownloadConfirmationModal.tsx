@@ -11,7 +11,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { variantsFadeInOutFormBottom } from "../../helper/motion.helper";
 import { handleDownloadExcel, handleDownloadPng } from "../../helper/common.helper";
 import { UMKMProperties, umkmData } from "../../DataBuilder";
-
+import Tooltip from '@mui/material/Tooltip';
+import { useThemeContext } from "../../layout/ThemeContext";
 export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 interface Props {
   chartTitle: string;
@@ -26,10 +27,10 @@ type FileType = {
 };
 
 const fileTypes: FileType[] = [
-  { type: "png", icon: <IconFileTypePng /> },
-  { type: "jpg", icon: <IconFileTypeJpg /> },
-  { type: "excel", icon: <IconFileSpreadsheet /> },
-  { type: "csv", icon: <IconFileTypeCsv /> },
+  { type: "png", icon: <IconFileTypePng size={17} /> },
+  { type: "jpg", icon: <IconFileTypeJpg size={17} /> },
+  { type: "excel", icon: <IconFileSpreadsheet size={17} /> },
+  { type: "csv", icon: <IconFileTypeCsv size={17} /> },
 ];
 const DownloadConfirmationModal: React.FC<Props> = ({
   setShow,
@@ -42,6 +43,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
   const [showMainContent, setShowMainContent] = useState(true);
+  const { common: c } = useThemeContext();
 
   useEffect(() => {
     if (selectedType != "") {
@@ -97,6 +99,8 @@ const DownloadConfirmationModal: React.FC<Props> = ({
     }, 3000);
   };
 
+
+
   return (
     <div>
       <div
@@ -116,8 +120,8 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                 className="relative bg-white rounded-lg shadow dark:bg-gray-800"
               >
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                  <h3 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white">
-                    Download {isData ? "Data" : "Grafik"}
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-white">
+                    {c("download")} {isData ? "Data" : c("chart")}
                   </h3>
                   <button
                     type="button"
@@ -148,7 +152,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                   </button>
                 </div>
                 <div className="p-4 md:p-5">
-                  <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400 pb-2">
+                  <time className="block mb-3 text-xs font-normal leading-none text-gray-500 dark:text-gray-400 pb-2">
                     {chartTitle}
                   </time>
                   <ol className="relative border-s border-gray-200 dark:border-gray-600 ms-3.5 mb-4 md:mb-5">
@@ -164,34 +168,18 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                           <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
                         </svg>
                       </span>
-                      <h3 className="flex items-start mb-1 text-sm md:text-base xl:text-lg font-semibold text-gray-900 dark:text-white">
-                        Pilih Jenis File{" "}
+                      <h3 className="flex items-start mb-1 text-sm font-semibold text-gray-900 dark:text-white">
+                        {c("selectFileType")}
                       </h3>
-                      <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
-                        Pilihan : {!isData && "PNG, JPG,"} CSV (Data), dan Excel
+                      <time className="block mb-3 text-xs font-normal leading-none text-gray-500 dark:text-gray-400">
+                        {c("choice")} : {!isData && "PNG, JPG,"} CSV (Data), {c("and")} Excel
                         (Data)
                       </time>
 
                       <div className="flex flex-row gap-4">
                         {!isData
                           ? fileTypes.map((file) => (
-                            <div
-                              key={file.type}
-                              className={`box p-1 rounded-sm ${selectedType === file.type
-                                ? "bg-primary text-white"
-                                : "text-black bg-silver hover:bg-grey hover:text-white"
-                                } cursor-pointer transition duration-300`}
-                              onClick={() => setSelectedType(file.type)}
-                            >
-                              {file.icon}
-                            </div>
-                          ))
-                          : fileTypes
-                            .filter(
-                              (file) =>
-                                file.type != "jpg" && file.type != "png"
-                            )
-                            .map((file) => (
+                            <Tooltip title={`${file.type}`} arrow>
                               <div
                                 key={file.type}
                                 className={`box p-1 rounded-sm ${selectedType === file.type
@@ -202,6 +190,28 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                               >
                                 {file.icon}
                               </div>
+                            </Tooltip>
+                          ))
+                          : fileTypes
+                            .filter(
+                              (file) =>
+                                file.type != "jpg" && file.type != "png"
+                            )
+                            .map((file) => (
+                              <>
+                                <Tooltip title={`${file.type}`} arrow>
+                                  <div
+                                    key={file.type}
+                                    className={`box p-1 rounded-sm ${selectedType === file.type
+                                      ? "bg-primary text-white"
+                                      : "text-black bg-silver hover:bg-grey hover:text-white"
+                                      } cursor-pointer transition duration-300`}
+                                    onClick={() => setSelectedType(file.type)}
+                                  >
+                                    {file.icon}
+                                  </div>
+                                </Tooltip>
+                              </>
                             ))}
                       </div>
                     </li>
@@ -223,11 +233,11 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                           <path d="M18 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM6.5 3a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.014 13.021l.157-.625A3.427 3.427 0 0 1 6.5 9.571a3.426 3.426 0 0 1 3.322 2.805l.159.622-6.967.023ZM16 12h-3a1 1 0 0 1 0-2h3a1 1 0 0 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Z" />
                         </svg>
                       </span>
-                      <h3 className="mb-1 text-sm md:text-base xl:text-lg font-semibold text-gray-900 dark:text-white">
-                        Masukkan Email Anda
+                      <h3 className="mb-1 text-sm  font-semibold text-gray-900 dark:text-white">
+                        {c("inputYourEmail")}
                       </h3>
-                      <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
-                        Tuliskan email anda pada formulir di bawah ini
+                      <time className="block mb-3 text-xs font-normal leading-none text-gray-500 dark:text-gray-400">
+                        {c("emailLabel")}
                       </time>
                       {/*  inputan email */}
                       <div className="col-span-2">
@@ -235,9 +245,9 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                           type="email"
                           name="email"
                           id="email"
-                          className={`g-gray-50 border border-gray-300 text-gray-900 text-xs  md:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${step < 2 && "cursor-not-allowed"
+                          className={`g-gray-50 border border-gray-300 text-gray-900 text-xs  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-1.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${step < 2 && "cursor-not-allowed"
                             }`}
-                          placeholder="Tuliskan alamat email anda"
+                          placeholder="Email..."
                           required
                           disabled={step < 2}
                           value={email}
@@ -262,18 +272,17 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                           <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2ZM7 2h4v3H7V2Zm5.7 8.289-3.975 3.857a1 1 0 0 1-1.393 0L5.3 12.182a1.002 1.002 0 1 1 1.4-1.436l1.328 1.289 3.28-3.181a1 1 0 1 1 1.392 1.435Z" />
                         </svg>
                       </span>
-                      <h3 className="mb-1 text-sm md:text-base xl:text-lg font-semibold text-gray-900 dark:text-white">
-                        Tekan Tombol Downlaod
+                      <h3 className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">
+                        {c("pressDownload")}
                       </h3>
-                      <time className="block mb-3 text-xs md:text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
-                        Apabila mengalami kegagalan, ulangi proses atau hubungi
-                        Kami
+                      <time className="block mb-3 text-xs font-normal leading-none text-gray-500 dark:text-gray-400">
+                        {c("pressDownloadLabel")}
                       </time>
                     </li>
                   </ol>
                   {loading && (
                     <div className="w-full rounded-full mb-4 px-1 py-1">
-                      <p className="text-xs md:text-sm pb-2">Mempersiapkan data ({progress}%)</p>
+                      <p className="text-xs pb-2">{c("preparing")} data ({progress}%)</p>
                       <div
                         className="h-1.5 rounded-full bg-info"
                         style={{
@@ -283,7 +292,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                     </div>
                   )}
                   <button
-                    className={`text-sm md:text-base text-white flex items-center gap-2 w-full justify-center bg-primary py-2 rounded  transition duration-300 ${step < 3 || loading
+                    className={`text-sm  text-white flex items-center gap-2 w-full justify-center bg-primary py-2 rounded  transition duration-300 ${step < 3 || loading
                       ? "bg-primary/50 cursor-not-allowed"
                       : "hover:bg-primary/75 cursor-pointer"
                       }`}
@@ -304,7 +313,7 @@ const DownloadConfirmationModal: React.FC<Props> = ({
                         <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
                       </svg>
                     )}
-                    Download Data
+                    {c("download")}  {isData ? "Data" : c("chart")}
                   </button>
                 </div>
               </motion.div>

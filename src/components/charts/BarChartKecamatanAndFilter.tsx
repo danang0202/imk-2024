@@ -23,6 +23,8 @@ import DownloadChartButton from "../commons/DownloadChartButton";
 import FilterChartSelection from "./FilterChartSelection";
 import { useThemeContext } from "../../layout/ThemeContext";
 const BarChartKecamatanAndFilter = () => {
+
+  const { stat: s, common: c } = useThemeContext();
   const filter: TypeData[] = [
     {
       name: "Skala Usaha",
@@ -116,12 +118,8 @@ const BarChartKecamatanAndFilter = () => {
   return (
     <>
       <div className="w-full xl:px-6">
-        <div className="flex flex-col xl:flex-row justify-center md:justify-between pb-6 gap-4 items-center">
-          <p className="font-semibold text-sm md:text-base text-wrap text-center md:text-start">
-            Grafik Batang Jumlah UMKM Berdasarkan Kecamatan dan{" "}
-            {selectedFilter?.name}
-          </p>
-          <div className="box flex flex-wrap justify-end gap-2 md:gap-4 curosr-pointer items-center">
+        <div className="flex flex-col justify-center pb-2 gap-2 items-center">
+          <div className="box flex w-full flex-wrap justify-end gap-2 md:gap-4 curosr-pointer items-center">
             <FilterChartSelection
               show={show}
               setShow={setShow}
@@ -145,10 +143,13 @@ const BarChartKecamatanAndFilter = () => {
               setSelectedFilter={setStackedFilter}
             />
             <DownloadChartButton
-              chartTitle={`Grafik Batang Jumlah UMKM Berdasarkan Kecamatan dan ${selectedFilter?.name}
-`}
+              chartTitle={`${s("titleChart5")} ${c(`thead_umkm_${selectedFilter?.slug}`)}`}
             />
           </div>
+          <p className="font-semibold text-sm md:text-base text-wrap text-center md:text-start pb-4">
+            {s("titleChart5")}
+            {c(`thead_umkm_${selectedFilter?.slug}`)}
+          </p>
         </div>
         <BarChart
           h={getCartHeight()}

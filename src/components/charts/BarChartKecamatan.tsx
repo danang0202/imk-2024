@@ -25,8 +25,8 @@ const BarChartKecamatan: FC<BarChartKecamatanProps> = ({
   const getCartHeight = () => {
     const result = data.length * 50;
     if (windowWidth >= EXTENDED_WINDOW.md) {
-      if (result < 560) {
-        return 560;
+      if (result < 510) {
+        return 500;
       } else {
         return result;
       }
@@ -39,7 +39,7 @@ const BarChartKecamatan: FC<BarChartKecamatanProps> = ({
   const [data, setData] = useState(
     getDataCountKategoryPerKecamatan(umkmData, kecamatanKulonProgo, skalaFilter)
   );
-  const { theme } = useThemeContext();
+  const { theme, stat: s } = useThemeContext();
 
   useEffect(() => {
     setData(
@@ -53,24 +53,23 @@ const BarChartKecamatan: FC<BarChartKecamatanProps> = ({
   return (
     <div className="w-full xl:px-6">
       <>
-        <div className="flex flex-col xl:flex-row justify-center md:justify-between pb-6 gap-4 items-center">
-          <p className="font-semibold text-sm md:text-base text-wrap text-center md:text-start">
-            Grafik Batang Jumlah{" "}
-            {skalaFilter?.slug == "semua" ? "UMKM" : skalaFilter?.name} Per
-            Kecamatan Kabupaten Kulon Progo
-          </p>
-          <div className="box flex flex-wrap w-full xl:w-fit justify-end xl:justify-between gap-2 md:gap-4 curosr-pointer items-center">
+        <div className="flex flex-col justify-center md:justify-between pb-2 gap-2 items-center">
+          <div className="box flex flex-wrap w-full justify-end gap-2 md:gap-4 curosr-pointer items-center">
             <FilterChartSelection
               show={show}
-            setShow={setShow}
+              setShow={setShow}
               filterList={skalaUsahaFilterChloropleth}
               selectedFilter={skalaFilter}
               setSelectedFilter={setSkalaFilter}
             />
             <DownloadChartButton
-              chartTitle={`Grafik Batang Jumlah UMKM Berdasarkan Skala Usaha per Kecamatan`}
+              chartTitle={`${s('titleChart1_1')} ${skalaFilter?.slug == "semua" ? "UMKM" : skalaFilter?.name} ${s("titleChart1_2")}`}
             />
           </div>
+          <p className="font-semibold text-sm md:text-base text-wrap text-center md:text-start">
+            {s("titleChart1_1")}
+            {skalaFilter?.slug == "semua" ? "UMKM" : skalaFilter?.name} {s("titleChart1_2")}
+          </p>
         </div>
         <BarChart
           h={getCartHeight()}

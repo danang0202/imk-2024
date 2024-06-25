@@ -1,4 +1,5 @@
 import React from "react";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 export interface TypeData {
   name: string;
@@ -16,6 +17,7 @@ const Selection: React.FC<Props> = ({
   selectedData,
   setSelectedData,
 }) => {
+  const { common: c } = useThemeContext();
   const handleChangeSelectionValue = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -44,7 +46,7 @@ const Selection: React.FC<Props> = ({
         onChange={handleChangeSelectionValue}
         className="whitespace-nowrap bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded focus:ring-primary focus:border-primary block w-full p-2 cursor-pointer dark:bg-slate-800 dark:border-gray-600 dark:text-white"
       >
-        <option value="#">Semua</option>
+        <option value="#">{c("all")}</option>
         {selectionData.map((item) => (
           <option key={item.slug} value={item.slug} className="text-xs">
             {item.name}

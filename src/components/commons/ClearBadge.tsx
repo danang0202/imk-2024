@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { EXTENDEDCOLORS } from "../../DataBuilder";
 import { variantsBadgeFilter } from "../../helper/motion.helper";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface Props {
   handleClick: () => void;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const ClearBadge: React.FC<Props> = ({ handleClick, bg }) => {
+  const { common: c } = useThemeContext();
   return (
     <AnimatePresence>
       <motion.span
@@ -21,7 +23,7 @@ const ClearBadge: React.FC<Props> = ({ handleClick, bg }) => {
         className={`inline-flex cursor-pointer hover items-center px-2 py-1 me-2 text-xs text-accent5 ${bg ? bg : 'bg-silver'} font-base rounded-sm`}
         onClick={() => handleClick()}
       >
-        Bersihkan
+        {c("clearAll")}
         <button
           type="button"
           className="inline-flex items-center p-1  ms-2"

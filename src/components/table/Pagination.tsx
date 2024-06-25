@@ -1,5 +1,6 @@
 import React from "react";
 import { paginationUtils } from "../../utils";
+import { useThemeContext } from "../../layout/ThemeContext";
 
 interface Props {
   page: number;
@@ -16,6 +17,7 @@ const Pagination: React.FC<Props> = ({
   limit,
   setLimit,
 }) => {
+  const { common: c } = useThemeContext();
   const siblings = 1;
   const array = paginationUtils(totalPage, page, siblings);
   const onPageChange = (value: string | number) => {
@@ -42,7 +44,7 @@ const Pagination: React.FC<Props> = ({
       <div className="flex flex-col md:flex-row justify-between i items-center gap-4 md:gap-8 w-full md:w-auto">
         <div className="box flex flex-col md:flex-row items-center gap-4">
           <div className="flex flex-row gap-2 items-center">
-            <label htmlFor="show-number">Tampilkan : </label>
+            <label htmlFor="show-number">{c("limit")} : </label>
             <select
               id="show-number"
               value={limit}
@@ -50,7 +52,7 @@ const Pagination: React.FC<Props> = ({
                 setLimit(parseInt(e.target.value));
                 setPage(1);
               }}
-              className="bg-gray-50  shadow-sm text-gray-900 rounded-lg p-2 font-semibold dark:bg-slate-800 dark:border dark:border-gray-600 dark:text-white text-xs"
+              className="bg-gray-100  shadow-sm text-gray-900 rounded-lg p-2 font-semibold dark:bg-slate-800 dark:border dark:border-gray-600 dark:text-white text-xs"
             >
               <option value="10">10</option>
               <option value="15">15</option>
@@ -59,7 +61,7 @@ const Pagination: React.FC<Props> = ({
           </div>
         </div>
 
-        <ul className="flex flex-row items-center bg-silver rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-gray-600">
+        <ul className="flex flex-row items-center bg-gray-100 rounded-lg px-2 shadow-sm gap-x-1 dark:bg-slate-800 dark:border dark:border-gray-600">
           <li
             className="text-black py-1 lg:py-1 px-2 md:px-3 lg:px-2.5 font-semibold hover:bg-inactive rounded cursor-pointer dark:text-white"
             onClick={() => onPageChange("&laquo")}
@@ -81,11 +83,10 @@ const Pagination: React.FC<Props> = ({
               onClick={() => onPageChange(value)}
             >
               <button
-                className={` text-black py-1 lg:py-1 px-2 md:px-3 lg:px-2.5  font-semibold ${
-                  page === value
-                    ? "bg-primary text-white rounded "
-                    : "text-black hover:bg-inactive rounded  "
-                } dark:text-white`}
+                className={` text-black py-1 lg:py-1 px-2 md:px-3 lg:px-2.5  font-semibold ${page === value
+                  ? "bg-primary text-white rounded "
+                  : "text-black hover:bg-inactive rounded  "
+                  } dark:text-white`}
               >
                 {value}
               </button>

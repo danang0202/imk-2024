@@ -26,7 +26,7 @@ interface FaqProps {
 const LandingPage: React.FC = () => {
   const serviceItems: ServiceItem[] = serviceItemsData;
   const Faqs: FaqProps[] = FaqsData;
-  const { theme } = useThemeContext();
+  const { theme, lang } = useThemeContext();
 
   const ButtonHeroOnclick = () => {
     const element = document.getElementById("service");
@@ -188,11 +188,10 @@ const LandingPage: React.FC = () => {
       </div>
       {/* FAQ */}
       <div
-        className={`${
-          theme == "light"
+        className={`${theme == "light"
             ? "bg-gradient-to-tl from-silver via-silver to-primaryTint2"
             : "bg-slate-800"
-        } flex flex-col items-center justify-center py-10 xl:py-20`}
+          } flex flex-col items-center justify-center py-10 xl:py-20`}
       >
         <div
           className="title my-8 flex flex-row items-center justify-center gap-2 lg:gap-4 pb-10"
@@ -205,7 +204,7 @@ const LandingPage: React.FC = () => {
             className="h-6"
           />
           <h1 className="text-xl md:text-2xl font-bold dark:text-white">
-            Frequntly Asked <span className="text-primary">Question</span>
+            {lang == 'id' ? "Pertanyaan yang Sering" : "Frequntly Asked"} <span className="text-primary"> {lang == 'id' ? "Muncul" : "Question"}</span>
           </h1>
         </div>
         <div className="w-full  flex flex-col xl:flex-row gap-8 justify-center items-center">
@@ -251,11 +250,10 @@ const LandingPage: React.FC = () => {
       </div>
       {/* Company */}
       <div
-        className={`w-full ${
-          theme == "light"
+        className={`w-full ${theme == "light"
             ? "bg-gradient-to-t from-white from-60% to-silver to-90%"
             : "bg-gradient-to-b from-slate-800 to-black"
-        }  p-8 py-16 flex flex-col items-center`}
+          }  p-8 py-16 flex flex-col items-center`}
       >
         <h1
           className="text-grey text-base md:text-xl lg:text-lg font-semibold dark:text-white"

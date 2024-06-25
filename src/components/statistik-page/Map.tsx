@@ -29,6 +29,8 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
   const [show, setShow] = useState<boolean>(false);
   const { windowWidth } = useThemeContext();
 
+  const { stat: s } = useThemeContext();
+
   const colorScale = d3
     .scaleThreshold<number, string>()
     .domain([5, 10, 15, 20])
@@ -146,12 +148,8 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
 
   return (
     <div ref={containerRef} className="w-full h-fit" id="chloropath-map">
-      <div className="flex flex-row items-center  justify-between pb-6 gap-2 md:gap-4">
-        <p className="font-semibold text-sm md:text-base text-wrap text-left">
-          Peta Chloropleth Jumlah{" "}
-          {skalaFilter.slug == "semua" ? "UMKM" : skalaFilter.name}
-        </p>
-        <div className="flex flex-row justify-end gap-2 md:gap-4">
+      <div className="flex flex-col items-center  justify-between pb-2 gap-2 md:gap-2">
+        <div className="flex flex-row justify-end gap-2 md:gap-4 w-full">
           <FilterChartSelection
             show={show}
             setShow={setShow}
@@ -159,10 +157,14 @@ export const Map: FC<MapProps> = ({ skalaFilter, setSkalaFilter }) => {
             selectedFilter={skalaFilter}
             setSelectedFilter={setSkalaFilter}
           />
-          <DownloadChartButton chartTitle="Download Peta Chloropleth sebaran UMKM Kulon Progo" />
+          <DownloadChartButton chartTitle={`${s("titleChart2")} ${skalaFilter.slug == "semua" ? "UMKM" : skalaFilter.name}`} />
         </div>
+        <p className="font-semibold text-sm md:text-base text-wrap text-left">
+          {s("titleChart2")}
+          {skalaFilter.slug == "semua" ? "UMKM" : skalaFilter.name}
+        </p>
       </div>
-      <svg width={width} height={windowWidth >= EXTENDED_WINDOW.md ? 490 : 350} id="chloropath-map-svg">
+      <svg width={width} height={windowWidth >= EXTENDED_WINDOW.md ? 450 : 350} id="chloropath-map-svg">
         {allSvgPaths}
       </svg>
       <ColorLegend

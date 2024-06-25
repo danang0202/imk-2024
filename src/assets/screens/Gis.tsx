@@ -59,7 +59,7 @@ const Gis: React.FC = () => {
     umkmData.filter((item) => item.position)
   );
 
-  const { windowWidth } = useThemeContext();
+  const { windowWidth, common: c } = useThemeContext();
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [showAdvancedFilter, setShowAdvancedFilter] = useState<boolean>(false);
   const [delayAdvancedFilter, setDelayAdvancedFilter] = useState(false);
@@ -175,7 +175,7 @@ const Gis: React.FC = () => {
         >
           <div className="flex flex-col xl:flex-row justify-between items-center pb-2 gap-4 xl:gap-0">
             <p className="text-sm md:text-base font-semibold text-black dark:text-white">
-              Sistem Informasi Geografis UMKM Kulon Progo
+              {c("gisPageTitle")}
             </p>
             <SearchBar
               width={windowWidth < EXTENDED_WINDOW.md ? "14rem" : "17rem"}
@@ -226,7 +226,7 @@ const Gis: React.FC = () => {
               center={[-7.8503, 110.1598] as LatLngTuple} // Koordinat default Kulon Progo, DIY, Indonesia
               zoom={11.25}
               scrollWheelZoom={false}
-              className="rounded border border-gray-300 w-100 min-h-[77vh]"
+              className="rounded border border-gray-300 w-100 min-h-[70vh]"
             >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

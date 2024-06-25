@@ -90,7 +90,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
                       onChange={(e) => handleKecamatanChange(e, setSelectedkecamatan)}
                       className="whitespace-nowrap bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded focus:ring-primary focus:border-primary block w-full p-2 cursor-pointer dark:bg-slate-800 dark:border-grey dark:text-white"
                     >
-                      <option value="">Semua</option>
+                      <option value="">{c("all")}</option>
                       {kecamatanList.map((item, index) => (
                         <option key={index} value={item.name}>
                           {item.name}
