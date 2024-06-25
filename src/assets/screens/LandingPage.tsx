@@ -10,6 +10,7 @@ import ButtonBlack from "../../components/Button/ButtonBlack";
 import ActionConfirmationModal from "../../components/commons/ActionConfirmationModal";
 import { useState } from "react";
 import { handleNotifSuccess } from "../../utils/natif";
+import { Tooltip } from "@mui/material";
 
 export interface ServiceItem {
   title: string;
@@ -119,9 +120,13 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
           <div className="box flex justify-center xl:justify-between gap-4 items-center w-full py-8 xl:py-0 xl:translate-y-0">
-            <div className="hidden md:inline bg-black p-2 xl:p-2 rounded-full text-white hover:bg-black/75 hover:scale-110 transition duration-300 cursor-pointer shadow-lg dark:text-black dark:bg-white">
-              <IconHeadset />
-            </div>
+            <Tooltip title="Call Center" arrow>
+              <div className="hidden md:inline bg-black p-2 xl:p-2 rounded-full text-white hover:bg-black/75 hover:scale-110 transition duration-300 cursor-pointer shadow-lg dark:text-black dark:bg-white">
+                <a href="https://wa.me/6285741019279" >
+                  <IconHeadset />
+                </a>
+              </div>
+            </Tooltip>
             <div className="flex flex-row gap-4">
               {socialMediaData.map((social, index) => (
                 <LogoSocialMedia
@@ -189,8 +194,8 @@ const LandingPage: React.FC = () => {
       {/* FAQ */}
       <div
         className={`${theme == "light"
-            ? "bg-gradient-to-tl from-silver via-silver to-primaryTint2"
-            : "bg-slate-800"
+          ? "bg-gradient-to-tl from-silver via-silver to-primaryTint2"
+          : "bg-slate-800"
           } flex flex-col items-center justify-center py-10 xl:py-20`}
       >
         <div
@@ -251,8 +256,8 @@ const LandingPage: React.FC = () => {
       {/* Company */}
       <div
         className={`w-full ${theme == "light"
-            ? "bg-gradient-to-t from-white from-60% to-silver to-90%"
-            : "bg-gradient-to-b from-slate-800 to-black"
+          ? "bg-gradient-to-t from-white from-60% to-silver to-90%"
+          : "bg-gradient-to-b from-slate-800 to-black"
           }  p-8 py-16 flex flex-col items-center`}
       >
         <h1
