@@ -147,7 +147,7 @@ const BarChartKecamatanAndFilter = () => {
             />
           </div>
           <p className="font-semibold text-sm md:text-base text-wrap text-center md:text-start pb-4">
-            {s("titleChart5")}
+            {s("titleChart5")} 
             {c(`thead_umkm_${selectedFilter?.slug}`)}
           </p>
         </div>
