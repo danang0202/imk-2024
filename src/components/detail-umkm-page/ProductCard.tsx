@@ -15,12 +15,13 @@ import { Tooltip } from "@mui/material";
 interface ProductCardProps {
   item: productType;
   handleLike: (id: number) => void;
+  noBorder?: boolean
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike, noBorder }) => {
   const { common: c } = useThemeContext();
   return (
-    <div className="pt-2 px-2 pb-3 border border-gray-300 dark:border-gray-600 shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-44 xl:w-44 xl:hover:shadow-lg transition duration-300">
+    <div className={`pt-2 px-2 pb-3 ${!noBorder && "border border-gray-300 dark:border-gray-600 "} shadow bg-white dark:bg-black rounded-sm flex flex-col gap-1 w-40 md:w-44 xl:w-44 xl:hover:shadow-lg transition duration-300`}>
       <a href="/galeri-produk/detail">
         <div className="w-full flex flex-col gap-1">
           <Tooltip title={c("Klik untuk Detail")} arrow>

@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 import Breadcrumb from "../../components/commons/BreadCrumb";
-import { IconMail, IconPhone, IconBuildingBank, IconAt, IconPhoneCall } from "@tabler/icons-react";
+import { IconMail, IconPhone, IconBuildingBank, IconAt, IconPhoneCall, IconArrowRight } from "@tabler/icons-react";
 import { formatRupiah, getInstitusionColorInfoModal, getNominalModalColor } from "../../helper/info-modal.helper";
 import { useThemeContext } from "../../layout/ThemeContext";
 import { EXTENDED_WINDOW } from "../../DataBuilder";
@@ -195,9 +195,64 @@ const DetailInfoModal = () => {
             </ul>
           </div>
         </div>
+        <div className="relative w-10/12 xl:w-8/12 pb-12 dark:text-white text-black tarnsfo -translate-y-8">
+          <h2 className="font-semibold">Info Modal Lainnya</h2>
+          <div className="w-full flex justify-center xl:justify-between gap-4 items-center my-4 flex-wrap">
+            <Card />
+            <Card />
+            <Card />
+          </div>
+        </div>
       </div>
     </Layout>
   );
 };
 
 export default DetailInfoModal;
+
+const Card = () => {
+  const { common: c } = useThemeContext();
+  return (
+    <div className="card bg-white dark:bg-black text-black dark:text-white p-4 rounded-lg shadow flex flex-col gap-2 max-w-[18rem] xl:max-w-[20rem]">
+      <div className="flex flex-row gap-2 items-center">
+        <img
+          src="/logo-umkm/logo-company.png"
+          alt="Logo BRI"
+          className="w-[4rem] h[4rem] lg:w-[5rem] lg:h-[5rem] bg-white p-3 rounded-lg"
+        />
+        <div className="flex flex-col gap-1">
+          <p className="text-sm lg:text-base font-semibold">PT Angkasa Pura Perkasa</p>
+          <div className="flex flex-row gap-2">
+            <td className="">
+              <span
+                className={`${getInstitusionColorInfoModal("PT").bg} ${getInstitusionColorInfoModal('PT').text} text-xs me-2 px-1.5 py-0.5 rounded`}
+              >
+                {c("PT")}
+              </span>
+            </td>
+            <td className="text-gray-800 dark:text-gray-200">  <span
+              className={`${getNominalModalColor(1000000000).bg
+                } ${getNominalModalColor(1000000000).text
+                } text-xs font-medium me-2 px-1.5 py-0.5 rounded`}
+            >
+              <span className="text-xs font-semibold">
+                Rp{" "}
+              </span>
+              {formatRupiah(1000000000)}
+            </span></td>
+          </div>
+        </div>
+      </div>
+      <div className="text">
+        <p className="text-xs text-wrap text-justify"> Jl. Kolonel Sugiono No.2, Gadingan, Wates, Kec. Wates,
+          Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta 55651</p>
+        <div className="flex text-primary mt-1 w-full justify-end">
+          <a href="/info-modal/detail" className="flex flex-row gap-2 items-center hover:text-primary/75 transition-colors duration-300">
+            <p className="text-xs cursor-pointer">Lihat Selengkapnya</p>
+            <IconArrowRight size={15} />
+          </a>
+        </div>
+      </div>
+    </div>
+  )
+}

@@ -6,6 +6,10 @@ import { useThemeContext } from '../../layout/ThemeContext';
 import { EXTENDED_WINDOW } from '../../DataBuilder';
 import { AnimatePresence, motion } from 'framer-motion';
 import { dropdownVariants } from '../../helper/motion.helper';
+import { handleToggleLike } from '../../helper/detail-product.helper';
+import { productType } from '../../types/common.types';
+import ProductCard from '../../components/detail-umkm-page/ProductCard';
+// import ProductCard from '../../components/detail-umkm-page/ProductCard';
 
 const DetailProduk = () => {
   const itemData = {
@@ -65,6 +69,13 @@ const DetailProduk = () => {
       setContent(desc[1])
     }
   }, [lang])
+
+  const [product, setProduct] = useState<productType[]>(produkSafiira);
+
+
+  const handleLikePlus = (id: number) => {
+    handleToggleLike(id, setProduct);
+  };
 
   return (
     <Layout pageTitle="Detail Produk">
@@ -308,6 +319,14 @@ const DetailProduk = () => {
               </button>
             </div>
           </div>
+          <div className="produk-lainnnya">
+            <p className='font-semibold my-4'>Produk lain dari UMKM ini</p>
+            <div className="flex flex-row flex-wrap justify-center xl:justify-between gap-4 items-center">
+              {product?.map((item, index) => (
+                <ProductCard item={item} handleLike={handleLikePlus} key={index} noBorder={true} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
@@ -398,4 +417,73 @@ const desc = [
     ],
     thankYou: "Thank you for shopping at our flower shop."
   }
+]
+
+
+const produkSafiira = [
+  {
+    id: 1,
+    gambar: "product-1-safiira.png",
+    nama: "Bucket Lebaran",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 150000,
+    umkm: "Safiira Hampers",
+    like: 120,
+    isLiked: false,
+    kecamatan: "Lendah",
+    date: new Date("2024-01-01"),
+  },
+  {
+    id: 2,
+    gambar: "product-4-safiira.png",
+    nama: "Bucket Natal",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 180000,
+    umkm: "Safiira Hampers",
+    like: 95,
+    isLiked: false,
+    kecamatan: "Lendah",
+    date: new Date("2024-01-01"),
+  },
+  {
+    id: 3,
+    gambar: "product-5-safiira.png",
+    nama: "Bucket Ulang Tahun",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 130000,
+    umkm: "Safiira Hampers",
+    like: 110,
+    kecamatan: "Lendah",
+    isLiked: false,
+    date: new Date("2024-01-01"),
+  },
+  {
+    id: 4,
+    gambar: "product-6-safiira.png",
+    nama: "Bucket Pernikahan",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 200000,
+    umkm: "Safiira Hampers",
+    like: 150,
+    kecamatan: "Lendah",
+    isLiked: false,
+    date: new Date("2024-01-01"),
+  },
+  {
+    id: 5,
+    gambar: "product-3-safiira.png",
+    nama: "Bucket Baby Shower",
+    kategori: "Kerajinan",
+    lokasi: "Lendah",
+    harga: 160000,
+    umkm: "Safiira Hampers",
+    kecamatan: "Lendah",
+    like: 130,
+    isLiked: false,
+    date: new Date("2024-01-01"),
+  },
 ]

@@ -17,7 +17,7 @@ interface ProductCardProps {
   handleLike: (id: number) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ item, handleLike}) => {
 
   const { product: p, common: c } = useThemeContext();
 
