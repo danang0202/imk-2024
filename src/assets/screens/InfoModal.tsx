@@ -134,7 +134,7 @@ const InfoModal = () => {
           <div className="px-4 lg:px-8 xl:px-3xl bg-white dark:bg-black">
             <AllFilterInfoModal
               keyword={keyword}
-              setKeyword={setKeyword}
+              setKeyword={setKeyword} 
               nominalFilter={nominalFilter}
               setNominalFilter={setNominalFilter}
               institutionFilter={institutionFilter}

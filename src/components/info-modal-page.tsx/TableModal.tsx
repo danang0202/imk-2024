@@ -160,7 +160,7 @@ const TableModal: FC<TableModalProps> = ({ dataModal }) => {
                         {formatRupiah(data?.nominal)}
                       </span>
                     </td>
-                    <td className="py-2 px-3 font-normal min-w-[15rem]  dark:border-slate-700">
+                    <td className="py-2 px-2 font-normal whitespace-normal dark:border-slate-700">
                       {data?.alamat}
                     </td>
                     <td className="pr-4 lg:pr-8 xl:pr-8 dark:border-slate-700 rounded-tr rounded-br">

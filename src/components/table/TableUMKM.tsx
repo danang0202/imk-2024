@@ -152,7 +152,7 @@ const TableUMKM: React.FC<Props> = ({ dataUmkm }) => {
                       <td className="px-2 lg:px-2  whitespace-normal font-normal dark:border-slate-700">
                         {c(data?.pengampu)}
                       </td>
-                      <td className="py-2 px-3  font-normal min-w-[15rem] dark:border-slate-700">
+                      <td className="py-2 px-3  font-normal whitespace-normal dark:border-slate-700">
                         {data?.alamat}
                       </td>
                       <td className="pr-4x lg:pr-8x xl:pr-8 dark:border-slate-700 rounded-tr rounded-br">
