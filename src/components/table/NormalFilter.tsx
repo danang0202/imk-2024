@@ -58,7 +58,7 @@ const NormalFilter: React.FC<FitlerProps> = ({
         exit="exit"
         variants={variantsFilterDataUMKM}
         transition={{ duration: 0.3 }}
-        className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none p-6 rounded-e-sm xl:rounded-sm text-sm  dark:bg-black z-40 border border-gray-300 xl:border-none xl:max-w-[16rem]"
+        className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none p-6 rounded-e-sm xl:rounded-sm text-sm  dark:bg-black z-40 border border-gray-300 xl:border-none xl:max-w-[16rem] top-20 xl:top-0"
       >
         <div className="relative">
           <div className="box absolute top-0 right-0 transform translate-x-3 -translate-y-3">

@@ -63,7 +63,7 @@ const TableModalFilter: FC<TableModalFilterProps> = ({
       exit="exit"
       variants={variantsFilterInfoModal}
       transition={{ duration: 0.3 }}
-      className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-sm p-6 rounded-e-sm xl:rounded-sm text-sm md:text-base dark:bg-black z-[60] w-[20rem] md:min-w-[16rem] max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border xl:border-none"
+      className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-sm p-6 rounded-e-sm xl:rounded-sm text-sm ';';md:text-base dark:bg-black z-[60] w-[20rem] md:min-w-[16rem] max-h-[80vh] overflow-y-scroll xl:max-h-fit xl:overflow-y-hidden border xl:border-none top-20 xl:top-0"
     >
       <div className="box absolute top-0 right-0 transform -translate-x-3 translate-y-2">
         <ChevronDown

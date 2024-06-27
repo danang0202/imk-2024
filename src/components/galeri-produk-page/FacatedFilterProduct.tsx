@@ -62,7 +62,7 @@ const FacatedFilterProduct: FC<FacatedFilterProductProps> = ({ filter, setFilter
             exit="exit"
             variants={variantsFilterInfoModal}
             transition={{ duration: 0.3 }}
-            className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 xl:py-4 px-6 rounded-e-sm xl:rounded-sm text-sm dark:bg-black z-40 border border-gray-300 xl:border-none xl:my-4 md:min-w-[20rem]  overflow-y-auto xl:overflow-y-hidden max-h-[80vh] xl:max-h-fit"
+            className="fixed xl:relative box-filter bg-white flex flex-col shadow-lg xl:shadow-none py-8 xl:py-4 px-6 rounded-e-sm xl:rounded-sm text-sm dark:bg-black z-40 border border-gray-300 xl:border-none xl:my-4 md:min-w-[20rem]  overflow-y-auto xl:overflow-y-hidden max-h-[80vh] xl:max-h-fit top-20 xl:top-0"
         >
             <div className="filter rounded relative">
                 <ChevronDown

@@ -117,10 +117,10 @@ const Gis: React.FC = () => {
 
   return (
     <Layout pageTitle="GIS">
-      <div className="px-4 xl:px-8 pt-5xl w-full bg-silver dark:bg-slate-800">
+      <div className="px-4 xl:px-8 pt-5xl w-full bg-white xl:bg-silver dark:bg-slate-800">
         <Breadcrumb />
       </div>
-      <div className="flex xl:pt-4 flex-row w-full items-stretch pb-0 xl:pb-8 bg-silver dark:bg-slate-800 min-h-[85vh] xl:gap-4 xl:px-8">
+      <div className="flex xl:pt-4 flex-row w-full items-stretch pb-0 xl:pb-8 bg-white xl:bg-silver dark:bg-slate-800 min-h-[85vh] xl:gap-4 xl:px-8">
         <div className="bg-white dark:bg-black xl:rounded-sm shadow-sm dark:text-white">
           <AnimatePresence>
             {delayAdvancedFilter && (
@@ -221,12 +221,12 @@ const Gis: React.FC = () => {
               </p>
             </div>
           )}
-          <div className="relative">
+          <div className="relative px-4 xl:px-0">
             <MapContainer
               center={[-7.8503, 110.1598] as LatLngTuple} // Koordinat default Kulon Progo, DIY, Indonesia
               zoom={11.25}
               scrollWheelZoom={false}
-              className="rounded border border-gray-300 w-100 min-h-[70vh]"
+              className="rounded border border-gray-300 w-100 min-h-[60vh] xl:min-h-[70vh]"
             >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
